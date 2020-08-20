@@ -15,47 +15,60 @@
     border-radius: 10px;
     border-color: initial;
     background-color: white;
+    top: 60px;
 }
 .div-logo{
-    position: absolute;
+    position: relative;
     width: 99px;
     height: 97px;
-    left: 126px;
     top: 12px;
+    margin: 0 auto;
 }
 .img-logo{
     width: 99px;
     height: 97px;
 }
 .div-login-u2{
-    position: absolute;
+    position: relative;
     width: 350px;
     height: 47px;
-    top: 98px;
+    top: 20px;
     color:#44c9a8;
     line-height: 28px;
     font-size: 24px;
+    margin: 0 auto;
+    text-align: center;
 }
 .div-login-u3{
-    position: absolute;
-    top: 160px;
+    position: relative;
+    top: 30px;
     height: 150px;
     width: 350px;
+}
+.from-login{
+    line-height: 0px;
 }
 .div-login-form-u1{
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 5px;
     border-radius: 10px;
+    border-color: #44c9a8;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 10px;
     height: 100px;
     width: 300px;
     left: 25px;
 }
+/* 选中账号密码时的样式 */
 .div-login-u3-form-sel{
     border-style: solid;
     border-color: #44c9a8;
     border-width: 1px;
 }
+
 #input-form-login-accpw{
+    position: relative;
     width: 280px;
     height: 45px;
     padding-left: 5px;
@@ -65,24 +78,50 @@
     border-top: 0px;
     outline: none;
     font-size: 15px;
+    left: 5px;
+}
+.input-form-login-vcode{
+    padding-left: 5px;
+    border-width: 1.5px;
 }
 .div-login-form-u2{
     position: relative;
     width: 300px;
     left: 25px;
     height: 45px;
+    top: 10px;
 }
-.input-form-login-vcode{
+
+.div-login-form-u3{
     position: relative;
+    width: 300px;
+    left: 25px;
+    height: 25px;
+    top: 25px;
+}
+
+
+.input-form-login-vcode{
+    position: absolute;
     width: 180px;
-    height: 35px;
+    height: 45px;
     outline: none;
     border: 1px solid rgb(180,180,180);
     border-radius: 3px;
+    margin-top: 0;
 }
+
 .img-vcode{
-    position: relative;
+    position: absolute;
     margin: auto;
     width: 80px;
     height: 45px;
+    right: 0px;
+}
+.span-remember{
+    color:#333333;
+    font-size: 15px;
+}
+.btn-login{
+
 }

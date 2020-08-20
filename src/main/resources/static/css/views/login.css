@@ -1,3 +1,6 @@
+body{
+    background-color: #44c9a8;
+}
 .div-vertical-center{
     position: relative;
     width: 890px;
@@ -15,7 +18,7 @@
     border-radius: 10px;
     border-color: initial;
     background-color: white;
-    top: 60px;
+    top: 280px;
 }
 .div-logo{
     position: relative;
@@ -50,18 +53,14 @@
 }
 .div-login-form-u1{
     position: relative;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0px 5px;
-    border-radius: 10px;
-    border-color: #44c9a8;
-    border-width: 1px;
-    border-style: solid;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 1px;
     border-radius: 10px;
     height: 100px;
     width: 300px;
     left: 25px;
 }
 /* 选中账号密码时的样式 */
-.div-login-u3-form-sel{
+.div-login-u3-form-sel:focus{
     border-style: solid;
     border-color: #44c9a8;
     border-width: 1px;
@@ -88,7 +87,7 @@
     position: relative;
     width: 300px;
     left: 25px;
-    height: 45px;
+    height: 35px;
     top: 10px;
 }
 
@@ -123,5 +122,12 @@
     font-size: 15px;
 }
 .btn-login{
-
+    position: relative;
+    width: 300px;
+    left: 25px;
+    height: 35px;
+    top: 25px;
+    background-color: #44c9a8;
+    color: #ffffff;
+    border: 0;
 }

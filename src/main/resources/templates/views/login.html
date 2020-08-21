@@ -27,7 +27,7 @@
         <div class="div-login-u3">
             <form action="" method="post" class="form-login">
                 <div class="div-form">
-                <div class="div-login-form-u1">
+                <div class="div-login-form-u1" id="div-login-form-u1">
                     <input type="text" id="input-form-login-accpw" onblur="inputLoseFocuse()" 
                     onfocus="inputGetFocuse()" placeholder="请输入用户名">
                     <input type="text" id="input-form-login-accpw" onblur="inputLoseFocuse()"
@@ -35,14 +35,18 @@
                 </div>
                 <!-- 验证码框 -->
                 <div class="div-login-form-u2">
-                    <input type="text" class="input-form-login-vcode" placeholder="请输入验证码">
+                    <input type="text" class="input-form-login-vcode" id="input-form-login-vcode" 
+                    onblur="vcodeLoseFocuse()" onfocus="vcodeGetFocuse()" placeholder="请输入验证码">
                     <img class="img-vcode" src=""/>
                 </div>
                 <div class="div-login-form-u3">
                     <input type="checkbox">
                     <span class="span-remember">记住账号</span>
                 </div>
-                <button class="btn-login">
+                <div class="div-login-form-u4" id="div-login-form-u4">
+                    <span>用户名或密码不正确</span>
+                </div>
+                <button class="btn-login" id="login" onclick="login()">
                     登录
                 </button>
             </div>

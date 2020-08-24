@@ -48,7 +48,7 @@
     font-size: 14px;
     text-align: center;
 }
-.home_bar_ul li .last{
+.home_bar_ul li.last{
     border-right: 1px solid #252947;/*最后一个li的右边加间隔线*/
 }
 .home_bar_ul li a.current{
@@ -88,9 +88,9 @@
     font-weight: bold;
 }
 .person{
-    display: inline-block;
-    width: 480px;
+    width: 430px;
     height: 230px;
+    float: left;
     margin-top: 20px;
     border: 1px solid #EBEBEB;
 }
@@ -130,12 +130,31 @@
     font-size: 14px;
 }
 .tips{
-    width: 480px;
-    height: 230px;
+    width: 560px;
+    height: 450px;
     float: left;
     margin-top: 20px;
+    margin-left: 10px;
     border: 1px solid #EBEBEB;
 }
 .tips_bar{
     margin-top: 10px;
+}
+.tips_bar span{
+    font-size: 18px;
+    color: #333;
+    margin-left: 20px;
+}
+.tips_ul_div ul{
+    list-style: none;
+    margin-top: 10px;
+}
+.tips_ul_div ul li{
+    height: 40px;
+    border-bottom-style:dashed;
+    border-bottom-color: #EBEBEB;
+    border-bottom-width: 1px;
+    font-size: 14px;
+    line-height: 40px;
+    margin-left: 30px;
 }

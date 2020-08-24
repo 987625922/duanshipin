@@ -1,34 +1,141 @@
-.title_bar{
-    height: 50px;
-    width: 100%;
-    background-color: #333;
+.hander{
+    height: 58px;
+    background-color: #191D3A;
 }
+.inner_c{
+    width: 1000px;
+    margin: 0 auto; /*让导航条、内容区域等部分的版心在父亲里居中*/
+}
+ /*导航条的logo*/
 .logo{
-    position: relative;
-    height: 35px;
-    width: 35px;
-    top: 7.5px;
-    margin-left: 20px;
+    float: left;
+    margin-right: 20px;
+    width: 200px;
+}
+.logo_img{
+    width: 30px;
+    height: 30px;
+    margin-top: 14px;
 }
 .logo_title_span{
     position: relative;
-    line-height: 50px;
+    line-height: 58px;
     vertical-align: top;
     color: #fff;
-    font-size: 22px;
+    font-size: 18px;
     margin-left: 10px;
 }
+.nav{
+    float: left;
+    width: 650px;
+}
 .home_bar_ul{
-    position: relative;
-    display: inline-block;
     list-style: none;
-    margin-left: 50px;
 }
 .home_bar_ul li{
-    display: inline-block;
+    float: left;
+    width: 100px;
+    line-height: 58px; /*让行高等于这一行的高度，保证里面的文字垂直居中*/
+    border-left: 1px solid #252947; /*每个li之间有间隔线*/
+    font-size: 14px;
     color: #fff;
-    height: 35px;
-    font-size: 18px;
-    line-height: 35px;
+}
+.home_bar_ul li a{
+    display: block; /*将超链接转为块儿，可以保证其霸占父亲的整行*/
+            height: 58px;
+            text-decoration: none; /*去掉超链的下划线*/
+            color:#818496;
+    font-size: 14px;
     text-align: center;
+}
+.home_bar_ul li .last{
+    border-right: 1px solid #252947;/*最后一个li的右边加间隔线*/
+}
+.home_bar_ul li a.current{
+    color:white;
+    background: #44C9A8;
+}
+.home_bar_ul li a:hover{
+    color: white;
+    background: #44C9A8;
+}
+.account_controll{
+    line-height: 58px;
+    width: 105px;
+    float: right;
+}
+.account_controll a{
+    padding-left: 8px;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none; /*去掉超链的下划线*/
+}
+.content{
+    display: block;
+    background-color: #fff;
+    padding-bottom: 57px;
+}
+.content .inner_c{
+    width: 1000px;
+    margin: 0 auto; /*让导航条、内容区域等部分的版心在父亲里居中*/
+}
+.title{
+    margin-top: 27px;
+}
+.title p{
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+.person{
+    display: inline-block;
+    width: 480px;
+    height: 230px;
+    margin-top: 20px;
+    border: 1px solid #EBEBEB;
+}
+.person_bar{
+    margin-top: 10px;
+}
+.person_bar span{
+    font-size: 18px;
+    color: #333;
+    margin-left: 20px;
+}
+.person_content{
+    margin-top: 30px;
+}
+.content_img_div{
+    display: inline;
+}
+.content_img{
+    width: 128px;
+    height: 128px;
+    margin-left: 20px;
+    display: inline-block;
+}
+.content_ul_div{
+    display: inline-block;
+}
+.content_ul_div ul{
+    margin-left: 50px;
+    float: left;
+    list-style: none;
+}
+.content_ul_div li{
+    line-height: 32px;
+}
+.content_ul_div li span{
+    color: #333;
+    font-size: 14px;
+}
+.tips{
+    width: 480px;
+    height: 230px;
+    float: left;
+    margin-top: 20px;
+    border: 1px solid #EBEBEB;
+}
+.tips_bar{
+    margin-top: 10px;
 }

@@ -5,24 +5,83 @@
     <meta charset="UTF-8">
     <title>视频管理平台</title>
     <!-- import CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link rel="stylesheet" href="../css/project.css" type="text/css">
     <link rel="stylesheet" href="../static/css/views/index.css" type="text/css">
     <link rel="stylesheet" href="../static/css/project.css" type="text/css">
 </head>
 <body>
-<div class="title_bar">
-    <img  src="../static/img/logo.png" class="logo" />
-    <span class="logo_title_span">视频后台管理系统</span>
-    <ul class="home_bar_ul">
-        <li>内容管理</li>
-        <li>用户管理</li>
-        <li>审核系统</li>
-        <li>APP内容块</li>
-        <li>消息和客服</li>
-        <li>系统管理</li>
-    </ul>
+<div class="hander">
+    <div class="inner_c">
+        <div class="logo">
+            <img src="../static/img/logo.png" alt="" class="logo_img"/>
+            <span class="logo_title_span">视频后台管理系统</span>
+        </div>
+        <div class="nav">
+        <ul class="home_bar_ul">
+            <li><a href="#" class="current">内容管理</a></li>
+            <li>
+            <a href="#">用户管理</a>
+            </li>
+            <li>
+                <a href="#">审核系统</a>
+                </li>
+            <li>
+                <a href="#">APP内容块</a>
+                </li>
+            <li>
+                <a href="#">消息和客服</a>
+                </li>
+            <li>
+                <a href="#" class="last">系统管理</a>
+                </li>
+        </ul>
+    </div>
+    <div class="account_controll">
+        <span>
+                <a href="#">
+                    账户
+                </a>
+                <a href="#">
+                    退出登录
+                </a>
+        </span>
+    </div>
+    </div>
 </div>
-    <p>欢迎进入视频后台管理系统</p>
+<div class="content">
+    <div class="inner_c">
+        <div class="title">
+            <p>欢迎进入视频后台管理系统</p>
+        </div>
+        <div class="person">
+            <div class="person_bar">
+                <span>个人信息</span>
+            </div>
+            <div class="person_content">
+                <img src="../static/img/logo.png" alt="" class="content_img">
+                <div class="content_ul_div">
+                    <ul>
+                        <li><span>姓名：</span><span></span>吴彦祖</span></li>
+                        <li><span>部门：</span><span>产品部</span></li>
+                        <li><span>最近登录：</span><span>2018-09-21 13:59</span></li>
+                        <li><span>登录次数：</span><span>555次</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tips">
+            <div class="tips_bar">
+                <span>重要提醒</span>
+            </div>
+            <div class="tips_content">
+                <div class="tips_ul_div">
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
 </body>
 </html>

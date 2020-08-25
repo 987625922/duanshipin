@@ -1,7 +1,7 @@
 /* 列表栏 */
 #item{
     height: 50px;
-    width: 200px;
+    width: 100%;
     background-color: #44c9a8;
     line-height: 50px;
     padding-left: 30px;
@@ -10,26 +10,26 @@
 }
 .item_one_one{
     height: 50px;
-    width: 200px;
+    width: 100%;
     line-height: 50px;
-    padding-left: 60px;
+    padding-left: 50px;
     font-size: 18px;
     color: #666;
     border-left: 3px solid #44c9a8;
 }
 .item_one_two{
     height: 50px;
-    width: 200px;
+    width: 100%;
     line-height: 50px;
-    padding-left: 60px;
+    padding-left: 50px;
     font-size: 18px;
     color: #666;
 }
 .item_two_one{
     height: 50px;
-    width: 200px;
+    width: 100%;
     line-height: 50px;
-    padding-left: 60px;
+    padding-left: 50px;
     font-size: 18px;
     color: #666;
 }
@@ -40,6 +40,10 @@
     line-height: 25px;
     font-size: 18px;
     color: #333;
+    border-left: 5px solid #44c9a8;
+}
+.title span{
+    margin-left: 10px;
 }
 .title_line{
     height: 1px;
@@ -84,4 +88,59 @@
     margin-top: 20px;
     margin-right: 10px;
     background-color: #EBEBEB;
+}
+.category{
+    margin-top: 20px;
+}
+.online{
+    display: inline-block;
+    width: 80px;
+    line-height: 35px;
+    width: 130px;
+    height: 35px;
+    margin-left: 20px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #44c9a8;
+}
+.draf{
+    display: inline-block;
+    width: 80px;
+    line-height: 35px;
+    width: 130px;
+    height: 35px;
+    margin-left: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #44c9a8;
+}
+.recycle_bin{
+    display: inline-block;
+    width: 80px;
+    line-height: 35px;
+    width: 130px;
+    height: 35px;
+    margin-left: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #44c9a8;
+}
+.recommend{
+    display: inline-block;
+    width: 80px;
+    line-height: 35px;
+    width: 130px;
+    height: 35px;
+    margin-left: 10px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    color: #fff;
+    background-color: #44c9a8;
 }

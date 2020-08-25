@@ -104,6 +104,19 @@ body, h1, h2, h3, h4, h5, h6, hr, p, div, blockquote, dl, dt, dd, ul, ol, li, pr
     float: left;
     overflow: hidden;
 }
+.item{
+    height: 5%;
+    width: 100%;
+    background-color: red;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+}
+.item img{
+    width: 25px;
+    height: 25px;
+    display: block;
+}
 .left_nav{
     height: 100%;
      width: 100%;

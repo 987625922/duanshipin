@@ -2,11 +2,10 @@
 #item{
     height: 50px;
     width: 100%;
-    background-color: #44c9a8;
     line-height: 50px;
-    padding-left: 30px;
+    padding-left: 10px;
     font-size: 18px;
-    color: #fff;
+    color: #333;
 }
 .item_one_one{
     height: 50px;
@@ -15,7 +14,7 @@
     padding-left: 50px;
     font-size: 18px;
     color: #666;
-    border-left: 3px solid #44c9a8;
+    border-left: 2px solid #44c9a8;
 }
 .item_one_two{
     height: 50px;
@@ -35,12 +34,12 @@
 }
 /* 内容 */
 .title{
-    margin-top: 15px;
+    margin-top: 10px;
     margin-left: 15px;
-    line-height: 25px;
+    line-height: 15px;
     font-size: 18px;
     color: #333;
-    border-left: 5px solid #44c9a8;
+    border-left: 3px solid #44c9a8;
 }
 .title span{
     margin-left: 10px;
@@ -53,14 +52,23 @@
     margin-top: 10px;
     margin-left: 15px;
 }
+.title_bar{
+    width: auto;
+    height: 45px;
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-right: 10px;
+    background-color: #f6f6f6;
+    border-radius: 2px;
+}
 .operate_video_pool{
     display: inline-block;
     width: 80px;
-    line-height: 35px;
-    width: 130px;
-    height: 35px;
+    line-height: 30px;
+    width: 100px;
+    height: 30px;
     margin-left: 20px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     border-radius: 5px;
     color: #fff;
@@ -70,35 +78,26 @@
 .user_video_pool{
     display: inline-block;
     width: 80px;
-    line-height: 35px;
-    width: 130px;
-    height: 35px;
+    line-height: 30px;
+    width: 100px;
+    height: 30px;
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     border-radius: 5px;
     color: #333;
     background-color: #fff;
     border: 1px solid #999;
 }
-.title_bar{
-    width: auto;
-    height: 55px;
-    margin-left: 15px;
-    margin-top: 20px;
-    margin-right: 10px;
-    background-color: #EBEBEB;
-}
 .category{
-    margin-top: 20px;
+    margin-top: 5px;
 }
 .online{
     display: inline-block;
+    line-height: 25px;
     width: 80px;
-    line-height: 35px;
-    width: 130px;
-    height: 35px;
-    margin-left: 20px;
+    height: 25px;
+    margin-left: 15px;
     font-size: 16px;
     text-align: center;
     border-radius: 5px;
@@ -107,10 +106,9 @@
 }
 .draf{
     display: inline-block;
+    line-height: 25px;
     width: 80px;
-    line-height: 35px;
-    width: 130px;
-    height: 35px;
+    height: 25px;
     margin-left: 10px;
     font-size: 16px;
     text-align: center;
@@ -120,10 +118,9 @@
 }
 .recycle_bin{
     display: inline-block;
+    line-height: 25px;
     width: 80px;
-    line-height: 35px;
-    width: 130px;
-    height: 35px;
+    height: 25px;
     margin-left: 10px;
     font-size: 16px;
     text-align: center;
@@ -133,14 +130,163 @@
 }
 .recommend{
     display: inline-block;
+    line-height: 25px;
     width: 80px;
-    line-height: 35px;
-    width: 130px;
-    height: 35px;
+    height: 25px;
     margin-left: 10px;
     font-size: 16px;
     text-align: center;
     border-radius: 5px;
     color: #fff;
     background-color: #44c9a8;
+}
+.controll_bar{
+    height: 35px;
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-right: 10px;
+    background-color: #f6f6f6;
+    border-radius: 2px;
+    overflow: hidden;
+}
+.list_controll{
+    height: 35px;
+    display: inline-block;
+    margin-left: 25px;
+}
+.list_controll div{
+    border-radius: 5px;
+    color: #fff;
+    background-color: #169bd5;
+    display: inline-block;
+    width: 80px;
+    height: 25px;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 25px;
+    text-align: center;
+}
+.list_search{
+    height: 35px;
+    float: right;
+}
+.list_search span{
+    color: #333;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    margin-left: 5px;
+}
+.input_zj_title{
+    height: 25px;
+    width: 150px;
+}
+.input_zj_id{
+    height: 25px;
+    width: 150px;
+}
+.list_search button{
+    height: 25px;
+    width: 50px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid #999;
+    background-color: #fff;
+}
+.list_search img{
+    position: relative;
+    height: 25px;
+    width: 25px;
+    top: 5px;
+    margin-right: 15px;
+}
+.content_table{
+    border-collapse:collapse;
+    margin-left: 15px;
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.content_table th{
+    background-color: #EBEBEB;
+}
+.table_checkbox{
+    width: 50px;
+}
+.table_id{
+    display: block;
+    width: 150px;
+    text-align: center;
+}
+.table_title{
+    display: block;
+    width: 150px;
+}
+.table_introducation{
+    display: block;
+    width: 250px;
+}
+.table_img{
+    display: block;
+    width: 100px;
+}
+.table_content_img{
+    width: 50px;
+    margin-left: 25px;
+}
+.table_mun{
+    display: block;
+    width: 100px;  
+}
+.table_time{
+    display: block;
+    width: 130px;  
+}
+.table_user{
+    display: block;
+    width: 100px;  
+}
+.table_controll{
+    display: block;
+    width: 115px;  
+    text-align: center;
+}
+.table_content_controll{
+    display: block;
+    width: 80px;  
+    text-align: center;
+    margin: 0 auto;
+}
+.table_th{
+    height: 50px;
+    line-height: 50px;
+}
+.content_table tr th{
+    text-align: left;
+}
+.table_content_controll a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+}
+.content_table tr td{
+    height: 70px;
+}
+.page_select{
+    height: 30px;
+    background-color: #333;
+    margin-top: 15px;
+}
+.page_select_inner{
+    background-color: #ff0000;
+    margin: 0 auto;
+    height: 30px;
+    width: 700px;
+    line-height: 30px;
+}
+.page_select_ul{
+    display: inline-block;
+    list-style:none;
+}
+.page_select_ul li{
+    float: left;
 }

@@ -14,6 +14,7 @@ body, h1, h2, h3, h4, h5, h6, hr, p, div, blockquote, dl, dt, dd, ul, ol, li, pr
 .hander{
     height: 58px;
     background-color: #fff;
+    border-bottom:0.2px solid #44c9a8;
 }
 .inner_c{
     width: 1000px;
@@ -22,15 +23,30 @@ body, h1, h2, h3, h4, h5, h6, hr, p, div, blockquote, dl, dt, dd, ul, ol, li, pr
  /*导航条的logo*/
 .logo{
     float: left;
-    margin-left: 13px;
-    width: 200px;
+    width: 5%;
+    height: 58px;
+    min-width: 70px;
+    line-height: 58px;
+    background-color: #44c9a8;
 }
 .logo_img{
-    width: 30px;
-    height: 30px;
-    margin-top: 14px;
+    width: 45px;
+    height: 45px;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
 }
-.logo_title_span{
+.hander_per_icon{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    background-color: #44c9a8;
+    border-radius: 50px;
+    margin-top: 9px;
+    margin-left: 25px;
+}
+.hander_per_name{
     position: relative;
     line-height: 58px;
     vertical-align: top;
@@ -38,55 +54,40 @@ body, h1, h2, h3, h4, h5, h6, hr, p, div, blockquote, dl, dt, dd, ul, ol, li, pr
     font-size: 18px;
     margin-left: 10px;
 }
-.nav{
-    float: left;
-    width: 650px;
-}
-.home_bar_ul{
-    list-style: none;
-}
-.home_bar_ul li{
-    float: left;
-    width: 100px;
-    line-height: 58px; /*让行高等于这一行的高度，保证里面的文字垂直居中*/
-    border-left: 1px solid #252947; /*每个li之间有间隔线*/
-    font-size: 14px;
-    color: #fff;
-}
-.home_bar_ul li a{
-    display: block; /*将超链接转为块儿，可以保证其霸占父亲的整行*/
-            height: 58px;
-            text-decoration: none; /*去掉超链的下划线*/
-            color:#818496;
-    font-size: 14px;
-    text-align: center;
-}
-.home_bar_ul li.last{
-    border-right: 1px solid #252947;/*最后一个li的右边加间隔线*/
-}
-.home_bar_ul li a.current{
-    color:white;
-    background: #44C9A8;
-}
-.home_bar_ul li a:hover{
-    color: white;
-    background: #44C9A8;
-}
 .account_controll{
     line-height: 58px;
-    width: 105px;
+    margin-right: 35px;
     float: right;
 }
-.account_controll a{
-    padding-left: 8px;
+.account{
+    display: inline-block;
+    height: 30px;
+    width: 50px;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #44c9a8;
     font-size: 14px;
-    color: #333;
-    text-decoration: none; /*去掉超链的下划线*/
+    color: #fff;
+    text-decoration: none;    
+}
+.logo_out{
+    display: inline-block;
+    height: 30px;
+    width: 70px;
+    border-radius: 5px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #E6A23C;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
 }
 /*  内容 */
 .content{
     width: 100%;
-    background-color: #EBEBEB;
+    background-color: #eaeff3;
     position: absolute;
     top: 58px;
     height:auto; 
@@ -100,31 +101,57 @@ body, h1, h2, h3, h4, h5, h6, hr, p, div, blockquote, dl, dt, dd, ul, ol, li, pr
  }
  .left{
     width: 5%;
+    min-width: 70px;
     height:100%;
     float: left;
     overflow: hidden;
 }
-.item{
-    height: 5%;
-    width: 100%;
-    background-color: red;
-    text-align: center;
-    display: table-cell;
-    vertical-align: middle;
-}
-.item img{
-    width: 25px;
-    height: 25px;
-    display: block;
-}
 .left_nav{
     height: 100%;
      width: 100%;
-     background-color: #191D3A;
+     background-color: #282b3a;
 }
+.left_item{
+    display: table;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+}
+.left_item:hover{
+    display: table;
+    height: 80px;
+    width: 100%;
+    text-align: center;
+    background-color: #191d26;
+}
+.left_item a{
+    display: table-cell;
+    vertical-align: middle;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-decoration: none;
+    color: #999;
+}
+.left_item a:hover{
+    display: table-cell;
+    vertical-align: middle;
+    text-decoration: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: #fff;
+}
+.left_item img{
+    padding-bottom: 5px;
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin: 0 auto;
+}
+
  .left_two{
-     width: 13%;
+     width: 5%;
      height:100%;
+     min-width: 150px;
      float: left;
      overflow: hidden;
  }
@@ -135,10 +162,11 @@ body, h1, h2, h3, h4, h5, h6, hr, p, div, blockquote, dl, dt, dd, ul, ol, li, pr
  }
  .main_content{
      float: left;
-     width: 80%;
-     margin-left: 20px;
-     height: 98%;
-     margin-top: 2%;
+     width: 81%;
+     margin-left: 5px;
+     height: 99%;
+     border-radius: 5px;
+     margin-top: 5px;
      box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
      background-color: #fff;
  }

@@ -162,11 +162,10 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
      height:100%;
  }
  .left{
-    width: 5%;
+    width: 140px;
     min-width: 70px;
     height:100%;
     float: left;
-    overflow: hidden;
 }
 .left_nav{
     height: 100%;
@@ -196,11 +195,10 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
 }
 
  .left_two{
-     width: 5%;
+     width: 140px;
      height:100%;
      min-width: 150px;
      float: left;
-     overflow: hidden;
  }
  .left_two_nav{
      height: 100%;
@@ -208,12 +206,14 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
      background-color: #fff;
  }
  .main_content{
-     float: left;
-     width: 83%;
+     position: absolute;
+     left: 280px;
+     width: 1000px;
      margin-left: 5px;
      height: 99%;
      border-radius: 5px;
      margin-top: 5px;
      box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
      background-color: #fff;
+     overflow: hidden;
  }

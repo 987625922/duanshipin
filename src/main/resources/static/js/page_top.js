@@ -1,7 +1,7 @@
 // 输出头代码
 function writeHander() {
     document.writeln("<div class=\'hander\'>");
-    document.writeln("        <div class=\'inner_c\'>");
+    // document.writeln("        <div class=\'inner_c\'>");
     document.writeln("            <div class=\'logo\'>");
     document.writeln("                    <a href=\'#\'>");
     document.writeln("                <img src=\'../../../static/img/logo-white.png\' alt=\'\' class=\'logo_img\'/>");
@@ -19,12 +19,12 @@ function writeHander() {
     document.writeln("                    </a>");
     document.writeln("            </span>");
     document.writeln("            </div>");
-    document.writeln("        </div>");
+    // document.writeln("        </div>");
     document.writeln("    </div>");
 }
 // 输出左边栏
 function writeLeft(){
-    document.writeln("<div class=\'left clearfix\'>");
+document.writeln("<div class=\'left\'>");
 document.writeln("                    <div class=\'left_nav\'>");
 document.writeln("                        <div class=\'left_item left_item_one\' id=\'left_item_one\'>");
 document.writeln("                            <a href=\'#\' id=\'left_item_one_a\'>");
@@ -66,7 +66,7 @@ document.writeln("                    </div>");
 document.writeln("                </div>");
 }
 function writeLeftTwoOfLeft(){
-document.writeln("<div class=\'left_two clearfix\'>");
+document.writeln("<div class=\'left_two\'>");
 document.writeln("                    <div class=\'left_two_nav\'>");
 document.writeln("                        <div id=\'item\'>");
 document.writeln("                            <span>视频管理</span>");

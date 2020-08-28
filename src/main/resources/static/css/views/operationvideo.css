@@ -153,19 +153,18 @@
     vertical-align: middle;
 }
 .content_table{
+    width: 100%;
     border-collapse:collapse;
-    margin-left: 15px;
     margin-top: 10px;
 }
-.content_table th{
-    background-color: #EBEBEB;
-}
 .table_checkbox{
-    width: 50px;
+    width: 30px;
+    text-align: center;
+    line-height: 50px;
 }
 .table_id{
     display: block;
-    width: 150px;
+    width: 70px;
     text-align: center;
 }
 .table_title{
@@ -174,37 +173,37 @@
 }
 .table_introducation{
     display: block;
-    width: 250px;
+    width: nowrap;
 }
 .table_img{
     display: block;
-    width: 100px;
+    width: nowrap;
     text-align: center;
 }
 .table_content_img{
-    width: 50px;
+    width: 65px;
     margin-left: 25px;
 }
 .table_mun{
     display: block;
-    width: 100px;  
+    width: nowrap;  
 }
 .table_time{
     display: block;
-    width: 130px;  
+    width: nowrap;  
 }
 .table_user{
     display: block;
-    width: 100px;  
+    width: nowrap;  
 }
 .table_controll{
     display: block;
-    width: 115px;  
+    width: 90px;  
     text-align: center;
 }
 .table_content_controll{
     display: block;
-    width: 80px;  
+    width:90px;
     text-align: center;
     margin: 0 auto;
 }
@@ -214,6 +213,7 @@
 }
 .content_table tr th{
     text-align: left;
+    background: #ebebeb;
 }
 .table_content_controll a{
     text-decoration: none;

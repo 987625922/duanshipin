@@ -166,8 +166,15 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
     height: 58px;
     width: 58px;
 }
+.left_item div{
+    position: relative;
+    width: 25px;
+    margin: 0 auto;
+    top: 50%;
+    transform:translateY(-50%);
+    text-align: center;
+}
 .left_item a{
-    vertical-align: middle;
     text-decoration: none;
     color: #999;
 }

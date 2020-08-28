@@ -118,7 +118,10 @@
     text-align: center;
 }
 .list_search{
-    float: right;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    height: 35px;
 }
 .list_search span{
     color: #333;
@@ -127,30 +130,31 @@
 }
 .fresh{
     margin-left: 10px;
+    height: 25px;
+    width: 25px;
+    margin-right: 15px;
 }
 .input_zj_title{
     height: 25px;
     width: 150px;
     border: 1px solid #666;
+    border-radius: 5px;
 }
 .input_zj_id{
     height: 25px;
     width: 150px;
     border: 1px solid #666;
+    border-radius: 5px;
 }
-.list_search button{
+.btn_list_search{
+    display: inline-block;
     height: 25px;
     width: 50px;
+    line-height: 25px;
+    text-align: center;
     border-radius: 5px;
     border: 1px solid #999;
     background-color: #fff;
-}
-.list_search img{
-    height: 25px;
-    width: 25px;
-    margin-right: 15px;
-    display: inline-block;
-    vertical-align: middle;
 }
 .content_table{
     width: 100%;
@@ -226,6 +230,7 @@
 .page_select{
     height: 30px;
     margin-top: 15px;
+    margin-bottom: 25px;
 }
 .page_select_inner{
     margin: 0 auto;
@@ -251,6 +256,7 @@
     display: inline-block;
     height: 25px;
     width: 30px;
+    border-radius: 5px;
     border: 1px solid #666;
 }
 .page_select_position_one{
@@ -264,6 +270,7 @@
 .page_input_to_mun{
     height: 25px;
     width: 30px;
+    border-radius: 5px;
     border: 1px solid #666;
 }
 .page_select_position_two{

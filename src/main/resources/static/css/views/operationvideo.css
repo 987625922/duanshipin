@@ -7,22 +7,9 @@
     margin-right: 10px;
     background-color: #f6f6f6;
     border-radius: 2px;
+    line-height: 45px;
 }
-.operate_video_pool{
-    display: inline-block;
-    width: 80px;
-    line-height: 30px;
-    width: 100px;
-    height: 30px;
-    margin-left: 20px;
-    font-size: 14px;
-    text-align: center;
-    border-radius: 5px;
-    color: #fff;
-    background-color: #44c9a8;
-    margin-top: 7.5px;
-}
-.user_video_pool{
+.video_pool{
     display: inline-block;
     width: 80px;
     line-height: 30px;

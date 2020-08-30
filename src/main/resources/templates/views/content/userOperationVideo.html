@@ -26,8 +26,8 @@
                 </div>
                 <div class="title_line"></div>
                 <div class="title_bar">
-                    <div class="operate_video_pool">运营视频池</div>
-                    <div class="user_video_pool">用户视频池</div>
+                    <div class="video_pool" id="operate_video_pool">运营视频池</div>
+                    <div class="video_pool" id="user_video_pool">用户视频池</div>
                 </div>
                 <div class="category">
                     <div class="online">上线</div>
@@ -36,23 +36,29 @@
                     <div class="recommend">推荐池</div>
                 </div>
                 <div class="controll_operation">
-                    <span class="span_auth_user">认证用户：</span>
-                    <select class="select_auth_user">
-                        <option value="volvo">Volvo</option>
-                        <option value="saab">Saab</option>
-                        <option value="opel">Opel</option>
-                        <option value="audi">Audi</option>
-                    </select>
-                    <span class="span_auth_title">专辑标题：</span>
-                    <input type="text" class="input_auth_title">
-                    <span class="span_auth_name">用户昵称：</span>
-                    <input class="input_auth_name" type="text">
-                    <span class="span_auth_id">专辑ID：</span>
-                    <input class="input_auth_id" type="text">
-                    <div class="div_list_search">查询</div>
-                    <div class="div_video_recommend">推荐</div>
-                    <div class="div_video_offline">下线</div>
-                    <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
+                    <div class="div_item">
+                        <span class="span_auth_user">认证用户：</span>
+                        <select class="select_auth_user">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </select>
+                        <span class="span_auth_title">专辑标题：</span>
+                        <input type="text" class="input_auth_title">
+                    </div>
+                    <div class="div_item">
+                        <span class="span_auth_name">用户昵称：</span>
+                        <input class="input_auth_name" type="text">
+                        <span class="span_auth_id">专辑ID：</span>
+                        <input class="input_auth_id" type="text">
+                        <div class="list_btn_search">查询</div>
+                        <div class="div_item_right">
+                            <div class="list_btn_style">推荐</div>
+                            <div class="list_btn_style">下线</div>
+                            <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
+                        </div>
+                    </div>
                 </div>
                 <div class="table_div">
                     <table class="content_table">
@@ -151,7 +157,6 @@
         </div>
     </div>
 </body>
-
-<script src="../../../static/js/operationvideo.js" type="text/javascript"></script>
+<script src="../../../static/js/operationvideoUser.js" type="text/javascript"></script>
 
 </html>

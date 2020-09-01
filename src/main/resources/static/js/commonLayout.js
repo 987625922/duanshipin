@@ -15,7 +15,7 @@ function writeHander() {
     document.writeln("                    <a class=\'account\' href=\'#\'>");
     document.writeln("                        账户");
     document.writeln("                    </a>");
-    document.writeln("                    <a class=\'logo_out\' href=\'#\'>");
+    document.writeln("                    <a class=\'logo_out\' href=\'../login.html\'>");
     document.writeln("                        退出登录");
     document.writeln("                    </a>");
     document.writeln("            </span>");

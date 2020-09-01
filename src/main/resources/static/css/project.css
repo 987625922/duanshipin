@@ -123,7 +123,7 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
     display: inline-block;
     height: 30px;
     width: 50px;
-    border-radius: 5px;
+    border-radius: 3px;
     line-height: 30px;
     text-align: center;
     background-color: #44c9a8;
@@ -131,11 +131,14 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
     color: #fff;
     text-decoration: none;    
 }
+.account:hover{
+    color: #fff;
+}
 .logo_out{
     display: inline-block;
     height: 30px;
     width: 70px;
-    border-radius: 5px;
+    border-radius: 3px;
     line-height: 30px;
     text-align: center;
     background-color: #E6A23C;
@@ -144,58 +147,6 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
     color: #fff;
     text-decoration: none;
 }
-/*  内容 */
-.content{
-    overflow: hidden;
-    position: absolute;
-    height:auto;
-    top: 58px;
-    bottom: 0;
-    padding-left: 233px;
- }
- .left{
-    width: 58px;
-    height: 100%;
-    position: relative;
-    margin-left: -100%;
-    left: -233px;
-    float: left;
-    background-color: #282b3a;
+.logo_out:hover{
+    color: #fff;
 }
-.left_item{
-    height: 58px;
-    width: 58px;
-}
-.left_item div{
-    position: relative;
-    width: 25px;
-    margin: 0 auto;
-    top: 50%;
-    transform:translateY(-50%);
-    text-align: center;
-}
-.left_item a{
-    text-decoration: none;
-    color: #999;
-}
-.left_item img{
-    width: 25px;
-    height: 25px;
-}
-.left_two{
-    width: 170px;
-    height: 100%;
-    margin-left: -100%;
-    left: -175px;
-    position: relative;
-    float: left;
-    background-color: #fff;
- }
-.main_content{
-    margin-top: 5px;
-    width: 100%;
-     border-radius: 5px;
-     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
-     float: left;
-     background: #fff;
- }

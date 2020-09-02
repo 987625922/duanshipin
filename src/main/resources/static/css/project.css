@@ -18,7 +18,29 @@ body {
     color:#666;
     background:#eaeff3;
 }
-
+button{
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    background: #fff;
+    border: 1px solid #DCDFE6;
+    border-color: #DCDFE6;
+    color: #606266;
+    -webkit-appearance: none;
+    text-align: center;
+    box-sizing: border-box;
+    outline: none;
+    margin: 0;
+    transition: .1s;
+    font-weight: 500;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    border-radius: 4px;
+}
 /*start:清除浮动【推荐此方式进行清除浮动】。左浮动和右浮动都清除了，盒子刚好达到闭合的状态*/
 .clearfix:before, .clearfix:after {
     content: "";
@@ -149,4 +171,24 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
 }
 .logo_out:hover{
     color: #fff;
+}
+/* dialog */
+.dialog_wrapper{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    background:rgba(75, 75, 75, 0.5);
+}
+.dialog{
+    width: 30%;
+    top: 20%;
+    position: relative;
+    margin: 0 auto 50px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    box-sizing: border-box;
 }

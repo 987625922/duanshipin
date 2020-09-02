@@ -13,6 +13,65 @@
 </head>
 
 <body>
+  <div class="dialog_wrapper" id="dialog_wrapper" style="z-index: 2008;">
+    <div class="dialog">
+      <div class="dialog_header">
+        <div class="tabs_bar">
+        </div>
+        <div class="tabs">
+          修改密码
+        </div>
+        <div class="tabs">
+          基本信息
+        </div>
+      </div>
+      <div class="dialog_body">
+        <div class="body_tag_one">
+          <form>
+            <div class="dialog-form-item">
+              <label for="oldPassword">
+                旧密码：
+              </label>
+              <div class="from-item-content">
+                <input type="text" id="oldPassword" />
+              </div>
+            </div>
+            <div class="dialog-form-item">
+              <label for="oldPassword">
+                新密码：
+              </label>
+              <div class="from-item-content">
+                <input type="text" id="oldPassword" />
+              </div>
+            </div>
+            <div class="dialog-form-item">
+              <label for="oldPassword">
+                确认新密码：
+              </label>
+              <div class="from-item-content">
+                <input type="text" id="oldPassword" />
+              </div>
+            </div>
+        </div>
+        <div class="dialog-form-item">
+          <div class="from-item-content">
+            <button class="dialog-form-btn-save"><span>保存</span></button>
+            <button class="dialog-form-btn-cancel"><span>取消</span></button>
+          </div>
+        </div>
+        </form>
+      </div>
+      <div class="body_tag_two">
+
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    document.getElementById('account').onclick = function () {
+      document.getElementById('dialog_wrapper').style.display = 'block';
+    }
+  </script>
   <div class="body">
     <script type="text/javascript">
       writeHander()

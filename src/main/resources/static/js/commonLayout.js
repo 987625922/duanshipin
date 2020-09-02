@@ -12,7 +12,7 @@ function writeHander() {
     document.writeln("                    </a>");
     document.writeln("            <div class=\'account_controll\'>");
     document.writeln("            <span>");
-    document.writeln("                    <a class=\'account\' href=\'#\'>");
+    document.writeln("                    <a class=\'account\' id=\'account\' href=\'#\'>");
     document.writeln("                        账户");
     document.writeln("                    </a>");
     document.writeln("                    <a class=\'logo_out\' href=\'../login.html\'>");

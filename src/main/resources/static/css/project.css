@@ -20,7 +20,6 @@ body {
 }
 button{
     display: inline-block;
-    line-height: 1;
     white-space: nowrap;
     cursor: pointer;
     background: #fff;
@@ -37,7 +36,6 @@ button{
     -moz-user-select: none;
     -webkit-user-select: none;
     -ms-user-select: none;
-    padding: 12px 20px;
     font-size: 14px;
     border-radius: 4px;
 }
@@ -179,6 +177,7 @@ s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体�
     right: 0;
     bottom: 0;
     left: 0;
+    display: none;
     overflow: auto;
     background:rgba(75, 75, 75, 0.5);
 }

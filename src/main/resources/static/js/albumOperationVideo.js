@@ -34,8 +34,8 @@ var tableControllerTwo = document.getElementById('table_controll_two');
 // 正在选中的按钮
 var isSelectBtn = btnOnline
 btnOnline.onclick = function () {
-    btnPre(btnOnline);
     btnCommon(isSelectBtn);
+    btnPre(btnOnline);
     isSelectBtn = btnOnline;
     onlineControll.style.display = 'block'
     drafcontroll.style.display = 'none'
@@ -46,8 +46,8 @@ btnOnline.onclick = function () {
 }
 //草稿的点击事件
 btnDraf.onclick = function () {
-    btnPre(btnDraf);
     btnCommon(isSelectBtn);
+    btnPre(btnDraf);
     isSelectBtn = btnDraf;
     drafcontroll.style.display = 'block'
     onlineControll.style.display = 'none'
@@ -57,8 +57,8 @@ btnDraf.onclick = function () {
     tableControllerTwo.style.display = 'none'
 }
 btnRecycleBin.onclick = function () {
-    btnPre(btnRecycleBin);
     btnCommon(isSelectBtn);
+    btnPre(btnRecycleBin);
     isSelectBtn = btnRecycleBin;
     drafcontroll.style.display = 'none'
     onlineControll.style.display = 'none'
@@ -68,8 +68,8 @@ btnRecycleBin.onclick = function () {
     tableControllerTwo.style.display = 'block'
 }
 btnRecommend.onclick = function () {
-    btnPre(btnRecommend);
     btnCommon(isSelectBtn);
+    btnPre(btnRecommend);
     isSelectBtn = btnRecommend;
     drafcontroll.style.display = 'none'
     onlineControll.style.display = 'none'

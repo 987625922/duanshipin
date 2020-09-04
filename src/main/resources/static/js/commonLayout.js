@@ -27,7 +27,7 @@ function writeLeft() {
     document.writeln("<div class=\'left\'>");
     document.writeln("                    <div class=\'left_nav\'>");
     document.writeln("                        <div class=\'left_item left_item_one\' id=\'left_item_one\'>");
-    document.writeln("                            <a href=\'#\' id=\'left_item_one_a\'>");
+    document.writeln("                            <a href=\'albumOperationVideo.html\' id=\'left_item_one_a\'>");
     document.writeln("                                <i id=\'left_item_one_img\'>");
     document.writeln("                                 </i>");
     document.writeln("                                <span>内容</span>");
@@ -77,7 +77,7 @@ function writeLeftTwoOfLeft() {
     document.writeln("                        <div id=\'left_two_nav_item\'>");
     document.writeln("                            <span>视频管理</span>");
     document.writeln("                        </div>");
-    document.writeln("                        <a  href=\"#\" class=\'item_one_one item_style\' id=\'item_one_one\'>");
+    document.writeln("                        <a  href=\"albumOperationVideo.html\" class=\'item_one_one item_style\' id=\'item_one_one\'>");
     document.writeln("                            <span>专辑管理</span>");
     document.writeln("                        </a>");
     document.writeln("                        <a  href=\"#\" class=\'item_one_two item_style\'>");

@@ -37,7 +37,9 @@ button{
     -webkit-user-select: none;
     -ms-user-select: none;
     font-size: 14px;
+    vertical-align: middle;
     border-radius: 4px;
+    padding: 0 20px;
 }
 /*start:清除浮动【推荐此方式进行清除浮动】。左浮动和右浮动都清除了，盒子刚好达到闭合的状态*/
 .clearfix:before, .clearfix:after {
@@ -55,7 +57,7 @@ button{
 /*end：清除浮动*/
 
 a {color:#666; text-decoration:none; }  /*去掉超链接的下划线*/
-a:hover{color:#C81623;} /*鼠标悬停时的颜色*/
+/* a:hover{color:#C81623;} 鼠标悬停时的颜色 */
 h1,h2,h3,h4,h5,h6 {text-decoration:none;font-weight:normal;font-size:100%;} /*font-size:100% 的意思是：让它们和父亲一样大，避免在不同的浏览器中显示大小不一致*/
 s,i,em{font-style:normal;text-decoration:none;}  /*去掉i标签和em的斜体，取消s标签的删除线*/
 .col-red{color: #C81623!important;}

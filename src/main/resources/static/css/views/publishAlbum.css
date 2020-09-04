@@ -1,0 +1,12 @@
+.form{
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+.from-item-publish-content{
+    width: 400px;
+}
+#input-intro{
+    height: 120px;
+    line-height: 1px;
+}

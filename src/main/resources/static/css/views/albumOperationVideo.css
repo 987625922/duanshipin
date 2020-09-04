@@ -152,21 +152,12 @@
     cursor: pointer;
 }
 .list_controll{
-    height: 35px;
+    height: 25px;
     display: inline-block;
     margin-left: 25px;
 }
-.list_controll div{
-    border-radius: 3px;
-    color: #fff;
-    background-color: #169bd5;
-    display: inline-block;
-    width: 80px;
-    height: 25px;
-    margin-top: 5px;
-    font-size: 14px;
-    line-height: 25px;
-    text-align: center;
+.list_controll a{
+ 
 }
 .list_search{
     display: inline-block;

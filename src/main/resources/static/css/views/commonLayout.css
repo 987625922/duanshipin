@@ -24,6 +24,8 @@
     position: absolute;
     height:auto;
     top: 58px;
+    left: 0;
+    right: 0;
     bottom: 0;
     padding-left: 233px;
  }
@@ -35,6 +37,9 @@
     left: -233px;
     float: left;
     background-color: #282b3a;
+}
+.left_nav{
+    position: absolute;
 }
 .left_item{
     height: 65px;
@@ -132,11 +137,18 @@
 }
 .main_content{
     margin-top: 5px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
+    float: left;
     width: 100%;
-     border-radius: 3px;
-     box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
-     float: left;
-     background: #fff;
+    background: #fff;
+ }
+ .full-content{
+    position: absolute;
+    width: 1040px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
  }
  /* 修改账号信息的dialog样式 */
  .dialog_header{

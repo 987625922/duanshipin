@@ -1,0 +1,66 @@
+.controll_operation{
+ margin-left: 15px;
+ display: none; 
+}
+.controll_bar{
+    height: 35px;
+    line-height: 35px;
+    margin-left: 15px;
+    margin-top: 5px;
+    margin-right: 10px;
+    background-color: #f6f6f6;
+    border-radius: 2px;
+    overflow: hidden;
+    display: none;
+}
+.controll_operation_one{
+    height: 35px;
+    line-height: 35px;
+    margin-top: 5px;
+}
+.controll_operation_one span{
+    font-size: 14px;
+    color: #333;
+    margin-right: 5px;
+}
+.controll_operation_one select{
+    height: 25px;
+    width: 150px;
+    margin-right: 35px;
+    border: 1px solid #dcdfe6;
+}
+.controll_operation_one input{
+    height: 23px;
+    width: 150px;
+    border: 1px solid #dcdfe6;
+}
+.controll_operation_two{
+    height: 25px;
+}
+.controll_operation_two span{
+    font-size: 14px;
+    color: #333;
+    margin-right: 5px;
+}
+.controll_operation_two input{
+    height: 23px;
+    width: 150px;
+    border: 1px solid #dcdfe6;
+    margin-right: 47px;
+}
+.controll-operation-two-fr{
+    display: inline;
+}
+.controll-operation-two-fr div{
+    display: inline;
+}
+.btn-search{
+   height: 25px;
+   width: 70px;
+   vertical-align: middle;
+   border: 1px solid #dcdfe6;
+   border-radius: 3px;
+   display: inline-block;
+   background-color: #fff;
+   cursor: pointer;
+}

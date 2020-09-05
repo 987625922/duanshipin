@@ -7,9 +7,22 @@
     margin-right: 10px;
     background-color: #f6f6f6;
     border-radius: 2px;
-    line-height: 45px;
 }
-.video_pool{
+.operate_video_pool{
+    display: inline-block;
+    width: 80px;
+    line-height: 30px;
+    width: 100px;
+    height: 30px;
+    margin-left: 20px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
+    margin-top: 7.5px;
+    cursor: pointer;
+}
+.user_video_pool{
     display: inline-block;
     width: 80px;
     line-height: 30px;
@@ -18,10 +31,9 @@
     margin-left: 10px;
     font-size: 14px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 3px;
     color: #333;
-    background-color: #fff;
-    border: 1px solid #999;
+    cursor: pointer;
 }
 .category{
     margin-top: 5px;
@@ -32,10 +44,11 @@
     width: 80px;
     height: 25px;
     margin-left: 15px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
     border-radius: 5px;
     color: #fff;
+    cursor: pointer;
     background-color: #44c9a8;
 }
 .draf{
@@ -44,12 +57,13 @@
     width: 80px;
     height: 25px;
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 3px;
     color: #333;
+    cursor: pointer;
     background-color: #fff;
-    border: 1px solid #999;
+    border: 1px solid #dcdfe6;
 }
 .recycle_bin{
     display: inline-block;
@@ -57,12 +71,13 @@
     width: 80px;
     height: 25px;
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 3px;
     color: #333;
+    cursor: pointer;
     background-color: #fff;
-    border: 1px solid #999;
+    border: 1px solid #dcdfe6;
 }
 .recommend{
     display: inline-block;
@@ -70,12 +85,13 @@
     width: 80px;
     height: 25px;
     margin-left: 10px;
-    font-size: 16px;
+    font-size: 14px;
     text-align: center;
-    border-radius: 5px;
+    border-radius: 3px;
     color: #333;
+    cursor: pointer;
     background-color: #fff;
-    border: 1px solid #999;
+    border: 1px solid #dcdfe6;
 }
 .controll_bar{
     height: 35px;
@@ -86,29 +102,69 @@
     background-color: #f6f6f6;
     border-radius: 2px;
     overflow: hidden;
+    display: none;
+}
+.controll_recommend_left,
+.controll_recycle_bin_left,
+.controll_online_left{
+    display: inline;
+    margin-left: 15px;
+}
+.controll_recommend_left input,
+.controll_recycle_bin_left input,
+.controll_online_left input{
+    height: 23px;
+    width: 150px;
+    border: 1px solid #dcdfe6;
+    margin-right: 47px;
+}
+.controll_recommend_left span,
+.controll_recycle_bin_left span,
+.controll_online_left span{
+    font-size: 14px;
+    color: #333;
+    margin-right: 5px;
+}
+.controll_recommend_left button,
+.controll_recycle_bin_left button,
+.controll_online_left button{
+    height: 25px;
+    width: 70px;
+    font-size: 14px;
+    vertical-align: middle;
+    border: 1px solid #dcdfe6;
+    border-radius: 3px;
+    display: inline-block;
+    background-color: #fff;
+    cursor: pointer;
+}
+.controll_recommend_right button,
+.controll_recycle_bin_right button,
+.controll_online_right button{
+    height: 25px;
+    width: 70px;
+    font-size: 14px;
+    vertical-align: middle;
+    border: 1px solid #dcdfe6;
+    border-radius: 3px;
+    display: inline-block;
+    background-color: #fff;
+    cursor: pointer;
 }
 .list_controll{
-    height: 35px;
+    height: 25px;
     display: inline-block;
     margin-left: 25px;
 }
-.list_controll div{
-    border-radius: 5px;
-    color: #fff;
-    background-color: #169bd5;
-    display: inline-block;
-    width: 80px;
-    height: 25px;
-    margin-top: 5px;
-    font-size: 14px;
-    line-height: 25px;
-    text-align: center;
+.list_controll a{
+ 
 }
 .list_search{
     display: inline-block;
     position: absolute;
     right: 0;
     height: 35px;
+    line-height: 35px;
 }
 .list_search span{
     color: #333;
@@ -119,19 +175,20 @@
     margin-left: 10px;
     height: 25px;
     width: 25px;
+    cursor: pointer;
     margin-right: 15px;
 }
 .input_zj_title{
     height: 25px;
     width: 150px;
-    border: 1px solid #666;
-    border-radius: 5px;
+    border: 1px solid #dcdfe6;
+    border-radius: 3px;
 }
 .input_zj_id{
     height: 25px;
     width: 150px;
-    border: 1px solid #666;
-    border-radius: 5px;
+    border: 1px solid #dcdfe6;
+    border-radius: 3px;
 }
 .btn_list_search{
     display: inline-block;
@@ -139,14 +196,18 @@
     width: 50px;
     line-height: 25px;
     text-align: center;
-    border-radius: 5px;
-    border: 1px solid #999;
+    border-radius: 3px;
+    border: 1px solid #dcdfe6;
     background-color: #fff;
+}
+.table_div{
+    padding-left: 15px;
+    padding-right: 10px;
+    border-collapse:collapse;
+    margin-top: 10px;
 }
 .content_table{
     width: 100%;
-    border-collapse:collapse;
-    margin-top: 10px;
 }
 .table_checkbox{
     width: 30px;
@@ -198,6 +259,14 @@
     text-align: center;
     margin: 0 auto;
 }
+.table_content_controll div{
+    display: none;
+}
+.table_content_controll a{
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+}
 .table_th{
     height: 50px;
     line-height: 50px;
@@ -205,11 +274,6 @@
 .content_table tr th{
     text-align: left;
     background: #ebebeb;
-}
-.table_content_controll a{
-    text-decoration: none;
-    font-size: 18px;
-    color: #333;
 }
 .content_table tr td{
     height: 70px;
@@ -243,8 +307,8 @@
     display: inline-block;
     height: 25px;
     width: 30px;
-    border-radius: 5px;
-    border: 1px solid #666;
+    border-radius: 3px;
+    border: 1px solid #dcdfe6;
 }
 .page_select_position_one{
     margin-left: 10px;
@@ -257,8 +321,8 @@
 .page_input_to_mun{
     height: 25px;
     width: 30px;
-    border-radius: 5px;
-    border: 1px solid #666;
+    border-radius: 3px;
+    border: 1px solid #dcdfe6;
 }
 .page_select_position_two{
     margin-left: 10px;
@@ -266,7 +330,7 @@
 .page_select_ul li{
     float: left;
     background-color: #f5f5f5;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-top: 5px;
     width: 25px;
     height: 25px;

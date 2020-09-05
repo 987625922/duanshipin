@@ -1,0 +1,255 @@
+/* 内容 */
+.title{
+    margin-top: 10px;
+    margin-left: 15px;
+    line-height: 15px;
+    font-size: 18px;
+    color: #333;
+    border-left: 3px solid #44c9a8;
+}
+.title span{
+    margin-left: 10px;
+}
+.title_line{
+    height: 1px;
+    width: auto;
+    margin-right: 10px;
+    background-color: #EBEBEB;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+/*  内容 */
+.content{
+    overflow: hidden;
+    position: absolute;
+    height:auto;
+    top: 58px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-left: 233px;
+ }
+ .left{
+    width: 58px;
+    height: 100%;
+    position: relative;
+    margin-left: -100%;
+    left: -233px;
+    float: left;
+    background-color: #282b3a;
+}
+.left_nav{
+    position: absolute;
+}
+.left_item{
+    height: 65px;
+    width: 58px;
+}
+.left_item i{
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 6.5px;
+    left: 16.5px;
+}
+.left_item_one i{
+    background: url('../../../static/img/video_content_n.png') right top;
+    background-size: 25px 25px;
+}
+.left_item_two i{
+    background: url('../../../static/img/per_n.png') right top;
+    background-size: 25px 25px;
+}
+.left_item_three i{
+    background: url('../../../static/img/ev_n.png') right top;
+    background-size: 25px 25px;
+}
+.left_item_four i{
+    background: url('../../../static/img/app_n.png') right top;
+    background-size: 25px 25px;
+}
+.left_item_five i{
+    background: url('../../../static/img/msg_n.png') right top;
+    background-size: 25px 25px;
+}
+.left_item_six i{
+    background: url('../../../static/img/sys_n.png') right top;
+    background-size: 25px 25px;
+}
+.left_item a{
+    color: #999;
+    display: block;
+    width: 58px;
+    height: 20px;
+    padding-top: 38px;
+    text-align: center;
+    line-height: 20px;
+    position: relative;
+}
+.left_two{
+    width: 170px;
+    height: 100%;
+    margin-left: -100%;
+    left: -175px;
+    position: relative;
+    float: left;
+    background-color: #fff;
+ }
+/* left的第二栏 */
+#left_two_nav_item{
+    height: 50px;
+    width: 160px;
+    line-height: 50px;
+    padding-left: 10px;
+    font-size: 18px;
+    color: #666;
+}
+.item_style:hover{
+    color: #333;
+    background-color: #ebebeb;
+}
+.item_one_one{
+    display: block;
+    width: 120px;
+    padding-left: 50px;
+    font-size: 18px;
+    color: #666;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.item_one_two{
+    display: block;
+    width: 120px;
+    padding-left: 50px;
+    font-size: 18px;
+    color: #666;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.item_two_one{
+    display: block;
+    width: 120px;
+    padding-left: 50px;
+    font-size: 18px;
+    color: #666;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.main_content{
+    margin-top: 5px;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
+    float: left;
+    width: 100%;
+    background: #fff;
+ }
+ .full-content{
+    position: absolute;
+    width: 1040px;
+    background: #fff;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
+ }
+ /* 修改账号信息的dialog样式 */
+ .dialog_header{
+     position: relative;
+     padding: 20px;
+     padding-bottom: 1px;
+ }
+ .dialog_header:after{
+    content:"";
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    height: 2px;
+    background-color: #E4E7ED;
+    z-index: 1;
+}
+ .tabs{
+    height: 40px;
+    box-sizing: border-box;
+    line-height: 40px;
+    display: inline-block;
+    list-style: none;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 20px;
+    color: #303133;
+    position: relative;
+    cursor: pointer;
+ }
+ .tabs_bar{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background-color: #44c9a8;
+    z-index: 10;
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    list-style: none;
+    width: 56px; 
+    transform: translateX(20px);
+ }
+ .dialog_body{
+    padding: 30px 20px;
+    word-break: break-all;
+ }
+ .body_tag_two{
+     display: none;
+ }
+ .dialog-form-item{
+     margin-bottom: 22px;
+ }
+ .dialog-form-item::before{
+     display: table;
+}
+.dialog-form-item::after{
+    clear: both;
+}
+.dialog-form-item label{
+    width: 100px;
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: 14px;
+    color: #606266;
+    line-height: 40px;
+    padding: 0 12px 0 0;
+    box-sizing: border-box;
+}
+.dialog-form-item input{
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #DCDFE6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    padding: 0 15px;
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+}
+.from-item-content{
+    position: relative;
+    line-height: 40px;
+    font-size: 14px;
+    margin-left: 100px;
+}
+.dialog-form-btn-save{
+    color: #fff;
+    background-color: #44c9a8;
+    border-color: #44c9a8;
+    padding: 12px 20px;
+}
+.dialog-form-btn-cancel{
+    margin-left: 50px;
+    padding: 12px 20px;
+}
+.login-dialog-title{
+    font-size: 18px;
+}

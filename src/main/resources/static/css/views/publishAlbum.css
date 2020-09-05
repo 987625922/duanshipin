@@ -10,3 +10,14 @@
     height: 120px;
     line-height: 1px;
 }
+.form-btn-upload{
+    display: inline-block;
+}
+.form-img-upload{
+    width: 100px;
+    display: inline-block;
+}
+.form-img-upload{
+    width: 250px;
+    height: 250px;
+}

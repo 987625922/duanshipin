@@ -1,0 +1,11 @@
+.div-player{
+    display: inline-block;
+    width: 505px;
+    height: 300px;
+    margin-left: 15px;
+    background-color: antiquewhite;
+}
+.div-intro{
+    display: inline-block;
+    width: 500px;
+}

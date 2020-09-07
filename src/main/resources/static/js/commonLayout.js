@@ -80,7 +80,7 @@ function writeLeftTwoOfLeft() {
     document.writeln("                        <a  href=\"albumOperationVideo.html\" class=\'item_one_one item_style\' id=\'item_one_one\'>");
     document.writeln("                            <span>专辑管理</span>");
     document.writeln("                        </a>");
-    document.writeln("                        <a  href=\"#\" class=\'item_one_two item_style\'>");
+    document.writeln("                        <a  href=\"videoOperation.html\" class=\'item_one_two item_style\' id=\'item_one_two\'>");
     document.writeln("                            <span>影视管理</span>");
     document.writeln("                        </a>");
     document.writeln("                        <div id=\'left_two_nav_item\'>");

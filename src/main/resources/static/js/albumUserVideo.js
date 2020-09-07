@@ -27,9 +27,12 @@ var onlineControll = document.getElementById('controll_online');
 var offlineControll = document.getElementById('controll_offline');
 var delControll = document.getElementById('controll_del');
 var recommendContrll = document.getElementById('controll_recommend');
+
 // 回收站table里的控制和其他按钮不一样，要单独分开处理
-var tableControllerOne = document.getElementById('table_controll_one');
-var tableControllerTwo = document.getElementById('table_controll_two');
+var tableControllerOne = document.getElementById('table-content-controll-one');
+var tableControllerTwo = document.getElementById('table-content-controll-two');
+var tableControllerThree = document.getElementById('table-content-controll-three');
+
 // 正在选中的按钮
 var isSelectBtn = btnOnline
 btnOnline.onclick = function () {
@@ -40,8 +43,9 @@ btnOnline.onclick = function () {
     offlineControll.style.display = 'none'
     delControll.style.display = 'none'
     recommendContrll.style.display = 'none'
-    // tableControllerOne.style.display = 'block'
-    // tableControllerTwo.style.display = 'none'
+    tableControllerOne.style.display = 'block'
+    tableControllerTwo.style.display = 'none'
+    tableControllerThree.style.display = 'none'
 }
 //草稿的点击事件
 btnOffline.onclick = function () {
@@ -52,8 +56,9 @@ btnOffline.onclick = function () {
     onlineControll.style.display = 'none'
     delControll.style.display = 'none'
     recommendContrll.style.display = 'none'
-    // tableControllerOne.style.display = 'block'
-    // tableControllerTwo.style.display = 'none'
+    tableControllerOne.style.display = 'none'
+    tableControllerTwo.style.display = 'block'
+    tableControllerThree.style.display = 'none'
 }
 btnDel.onclick = function () {
     btnPre(btnDel);
@@ -63,8 +68,9 @@ btnDel.onclick = function () {
     onlineControll.style.display = 'none'
     delControll.style.display = 'block'
     recommendContrll.style.display = 'none'
-    // tableControllerOne.style.display = 'none'
-    // tableControllerTwo.style.display = 'block'
+    tableControllerOne.style.display = 'none'
+    tableControllerTwo.style.display = 'none'
+    tableControllerThree.style.display = 'block'
 }
 btnRecommend.onclick = function () {
     btnPre(btnRecommend);
@@ -74,8 +80,9 @@ btnRecommend.onclick = function () {
     onlineControll.style.display = 'none'
     delControll.style.display = 'none'
     recommendContrll.style.display = 'block'
-    // tableControllerOne.style.display = 'block'
-    // tableControllerTwo.style.display = 'none'
+    tableControllerOne.style.display = 'block'
+    tableControllerTwo.style.display = 'none'
+    tableControllerThree.style.display = 'none'
 }
 //把view改成按下按钮的颜色
 function btnPre(dom) {

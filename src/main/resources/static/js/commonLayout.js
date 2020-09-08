@@ -86,7 +86,7 @@ function writeLeftTwoOfLeft() {
     document.writeln("                        <div id=\'left_two_nav_item\'>");
     document.writeln("                            <span>标签管理</span>");
     document.writeln("                        </div>");
-    document.writeln("                        <a href=\"#\" class=\'item_two_one item_style\'>");
+    document.writeln("                        <a href=\"tags.html\" class=\'item_two_one item_style\' id=\'item_two_one\'>");
     document.writeln("                            <span>标签管理</span>");
     document.writeln("                        </a>");
     document.writeln("                    </div>");

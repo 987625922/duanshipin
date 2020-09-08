@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 发布专辑 -->
+<!-- 发布视频 -->
 
 <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
     <!-- import CSS -->
     <link rel="stylesheet" href="../../../static/css/project.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/css/views/commonLayout.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/css/views/publishAlbum.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/publishVideo.css" type="text/css" />
     <!-- hander  -->
     <script src="../../../static/js/commonLayout.js" type="text/javascript"></script>
 </head>
@@ -22,13 +22,13 @@
             <div class="main_content">
                 <div class="full-content" style="height:100%;overflow: scroll;">
                     <div class="title">
-                        <span>发布专辑</span>
+                        <span>发布视频</span>
                     </div>
                     <div class="title_line"></div>
                     <form action="" class="form">
                         <div class="dialog-form-item">
                             <label for="">
-                                专辑标题：
+                                视频标题：
                             </label>
                             <div class="from-item-content from-item-publish-content">
                                 <input type="text">
@@ -36,11 +36,16 @@
                         </div>
                         <div class="dialog-form-item">
                             <label for="">
-                                专辑简介：
+                                视频简介：
                             </label>
                             <div class="from-item-content">
                                 <input type="text" id="input-intro">
                             </div>
+                        </div>
+                        <div class="dialog-form-item">
+                            <label>推荐语：</label>
+                            <div class="from-item-content">
+                                <input type="text"></div>
                         </div>
                         <div class="dialog-form-item">
                             <label>上传封面：</label>
@@ -52,19 +57,6 @@
                                     <img class="form-img-upload" src="../../../static/img/tx.jpg" alt="">
                                 </div>
                             </div>
-                        </div>
-                        <div class="dialog-form-item">
-                            <label>推荐语：</label>
-                            <div class="from-item-content">
-                                <input type="text"></div>
-                        </div>
-                        <div class="dialog-form-item">
-                            <label>是否完结：</label>
-                            <div class="from-item-content">
-                                <input type="radio" name="isEnd" value="noEnd" id="form-input-isEnd">
-                                <span class="form-input-isEnd-span">未完结</span>
-                                <input type="radio" name="isEnd" value="isEnd" id="form-input-isEnd" checked="checked">
-                                <span class="form-input-isEnd-span">完结</span></div>
                         </div>
                         <div class="dialog-form-item">
                             <label>导演：</label>
@@ -110,6 +102,18 @@
                             </div>
                         </div>
                         <div class="dialog-form-item">
+                            <label>上传视频：</label>
+                            <div class="from-item-content">
+                                <div style="display: inline-block; transform: translateY(-55px);">
+                                    <button class="form-btn-upload">选择文件</button>
+                                </div>
+                                <div style="display: inline-block;">
+                                    视频文件
+                                    <img class="form-img-upload" src="../../../static/img/tx.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dialog-form-item">
                             <label>屏蔽搜索：</label>
                             <div class="from-item-content">
                                 <input type="radio" name="isSelect" value="noEnd" id="form-input-isEnd">
@@ -117,17 +121,6 @@
                                 <input type="radio" name="isSelect" value="isEnd" checked="checked"
                                     id="form-input-isEnd">
                                 <span class="form-input-isEnd-span">否</span>
-                            </div>
-                        </div>
-                        <div class="dialog-form-item">
-                            <label>状态：</label>
-                            <div class="from-item-content">
-                                <input type="radio" name="isState" value="noEnd" id="form-input-isEnd">
-                                <span class="form-input-isEnd-span">上线</span>
-                                <input type="radio" name="isState" value="isEnd" checked="checked"
-                                    id="form-input-isEnd">
-                                <span class="form-input-isEnd-span">草稿</span>
-
                             </div>
                         </div>
                         <div class="dialog-form-item">

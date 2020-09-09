@@ -1,0 +1,107 @@
+.div-user-info{
+    width: 100%;
+    padding: 15px;
+    /* 解决inline-block元素中的空隙问题 */
+    font-size: 0;
+}
+.div-user-info-left{
+    display: inline-block;
+    width: 700px;
+    font-size:0;
+    vertical-align: middle;
+}
+.div-user-info-img{
+    display: inline-block;
+    width: 300px;
+    text-align: center;
+}
+.div-user-info-left-left{
+    width: 350px;
+    display: inline-block;
+}
+.div-user-info-left-right{
+    width: 350px;
+    display: inline-block;
+}
+.div-user-info-item-tips{
+    width: 100px;
+    font-size: 14px;
+    color: #333;
+    display: inline-block;
+    text-align: right;
+}
+.div-user-info-item-tips span{
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #333;
+}
+.div-user-info-item-content{
+    width: 250px;
+    font-size: 14px;
+    color: #333;
+    display: inline-block;
+}
+.div-user-info-item-content span{
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #333;
+}
+.div-user-info-img img{
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+}
+.div-user-controll{
+    padding: 15px;
+}
+.div-user-controll-main{
+    margin-top: 20px;
+}
+.div-user-info-controll-tips-check{
+    display: inline;
+    margin-left: 20px;
+    position: relative;
+}
+.div-user-info-controll-tips{
+    font-size: 16px;
+    color: #333;
+}
+.div-user-controll-title{
+    font-size: 16px;
+    color: #333;
+}
+.div-user-controll-main{
+    margin-left: 25px;
+    font-size: 14px;
+    color: #333;
+}
+.div-user-info-item-tips-check input{
+    float: left;
+}
+.div-user-info-item-tips-check span{
+    float: left;
+}
+#input-intro{
+    height: 120px;
+    width: 300px;
+    border: 1px solid #333;
+    vertical-align: middle;
+    border-radius: 3px;
+}
+.div-user-info-controll-check-tips{
+    display: inline-block;
+    height: 120px;
+    font-size: 16px;
+    color: #333;
+    vertical-align: middle;   
+}
+.div-user-info-controll-check-item{
+    margin-top: 20px;
+}
+
+.div-user-info-controll-tips-check button{
+    height: 40px;
+}

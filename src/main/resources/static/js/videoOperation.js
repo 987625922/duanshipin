@@ -86,7 +86,7 @@ btnRecommend.onclick = function () {
     tableControllerOne.style.display = 'none'
     tableControllerTwo.style.display = 'none'
     tableControllerThree.style.display = 'none'
-    tableControllerFour.style.display = 'none'
+    tableControllerFour.style.display = 'block'
 }
 //把view改成按下按钮的颜色
 function btnPre(dom) {

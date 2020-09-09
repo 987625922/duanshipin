@@ -38,9 +38,10 @@
 .category{
     margin-top: 5px;
 }
-.tags-one{
+.online{
     display: inline-block;
     line-height: 25px;
+    width: 80px;
     height: 25px;
     margin-left: 15px;
     font-size: 14px;
@@ -50,9 +51,10 @@
     cursor: pointer;
     background-color: #44c9a8;
 }
-.tags-two{
+.draf{
     display: inline-block;
     line-height: 25px;
+    width: 80px;
     height: 25px;
     margin-left: 10px;
     font-size: 14px;
@@ -63,9 +65,10 @@
     background-color: #fff;
     border: 1px solid #dcdfe6;
 }
-.tags-three{
+.recycle_bin{
     display: inline-block;
     line-height: 25px;
+    width: 80px;
     height: 25px;
     margin-left: 10px;
     font-size: 14px;
@@ -99,6 +102,7 @@
     background-color: #f6f6f6;
     border-radius: 2px;
     overflow: hidden;
+    display: none;
 }
 .controll_recommend_left,
 .controll_recycle_bin_left,
@@ -225,11 +229,9 @@
 .table_img{
     display: block;
     width: nowrap;
-    text-align: center;
 }
 .table_content_img{
     width: 65px;
-    margin-left: 25px;
 }
 .table_mun{
     display: block;
@@ -250,12 +252,16 @@
 }
 .table_content_controll{
     display: block;
+    width:90px;
     margin: 0 auto;
 }
+.table_content_controll div{
+    display: none;
+}
 .table_content_controll a{
-    display: block;
-    width: 90px;
-    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
 }
 .table_th{
     height: 50px;

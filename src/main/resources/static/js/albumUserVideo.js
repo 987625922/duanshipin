@@ -32,12 +32,14 @@ var recommendContrll = document.getElementById('controll_recommend');
 var tableControllerOne = document.getElementById('table-content-controll-one');
 var tableControllerTwo = document.getElementById('table-content-controll-two');
 var tableControllerThree = document.getElementById('table-content-controll-three');
+//上线时table显示的操作栏
+tableControllerOne.style.display = 'block'
 
 // 正在选中的按钮
 var isSelectBtn = btnOnline
 btnOnline.onclick = function () {
-    btnPre(btnOnline);
     btnCommon(isSelectBtn);
+    btnPre(btnOnline);
     isSelectBtn = btnOnline;
     onlineControll.style.display = 'block'
     offlineControll.style.display = 'none'
@@ -49,8 +51,8 @@ btnOnline.onclick = function () {
 }
 //草稿的点击事件
 btnOffline.onclick = function () {
-    btnPre(btnOffline);
     btnCommon(isSelectBtn);
+    btnPre(btnOffline);
     isSelectBtn = btnOffline;
     offlineControll.style.display = 'block'
     onlineControll.style.display = 'none'
@@ -61,8 +63,8 @@ btnOffline.onclick = function () {
     tableControllerThree.style.display = 'none'
 }
 btnDel.onclick = function () {
-    btnPre(btnDel);
     btnCommon(isSelectBtn);
+    btnPre(btnDel);
     isSelectBtn = btnDel;
     offlineControll.style.display = 'none'
     onlineControll.style.display = 'none'
@@ -73,8 +75,8 @@ btnDel.onclick = function () {
     tableControllerThree.style.display = 'block'
 }
 btnRecommend.onclick = function () {
-    btnPre(btnRecommend);
     btnCommon(isSelectBtn);
+    btnPre(btnRecommend);
     isSelectBtn = btnRecommend;
     offlineControll.style.display = 'none'
     onlineControll.style.display = 'none'

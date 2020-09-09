@@ -116,243 +116,242 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="dialog_wrapper" id="dialog_loginout_wrapper" style="z-index: 2008;">
-    <div class="dialog">
-      <div class="dialog_header">
-        <span class="login-dialog-title">退出确认</span>
-      </div>
-      <div class="dialog_body">
-        <div class="dialog-form-item">
-          <span>确定要退出登录吗？</span>
+    <div class="dialog_wrapper" id="dialog_loginout_wrapper" style="z-index: 2008;">
+      <div class="dialog">
+        <div class="dialog_header">
+          <span class="login-dialog-title">退出确认</span>
         </div>
-        <div>
-          <button class="dialog-form-btn-save" id="dialog_loginout_enter">确定</button>
-          <button class="dialog-form-btn-cancel" id="dialog_loginout_cancel">取消</button>
+        <div class="dialog_body">
+          <div class="dialog-form-item">
+            <span>确定要退出登录吗？</span>
+          </div>
+          <div>
+            <button class="dialog-form-btn-save" id="dialog_loginout_enter">确定</button>
+            <button class="dialog-form-btn-cancel" id="dialog_loginout_cancel">取消</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <script>
-    var dialogOne = document.getElementById('dialog-one');
-    var dialogTwo = document.getElementById('dialog-two');
-    var tabsOne = document.getElementById('tabs_one');
-    var tabsTwo = document.getElementById('tabs_two');
-    var bar = document.getElementById('tabs-bar');
-    tabsOne.style.color = '#44c9a8';
-    dialogTwo.style.display = 'none';
-
-    // 切换到dialog的第一个内容
-    document.getElementById('tabs_one').onclick = function () {
-      dialogOne.style.display = 'block';
+    <script>
+      var dialogOne = document.getElementById('dialog-one');
+      var dialogTwo = document.getElementById('dialog-two');
+      var tabsOne = document.getElementById('tabs_one');
+      var tabsTwo = document.getElementById('tabs_two');
+      var bar = document.getElementById('tabs-bar');
       tabsOne.style.color = '#44c9a8';
-      tabsTwo.style.color = '#303133';
       dialogTwo.style.display = 'none';
-      bar.style.transform = 'translateX(20px)';
-    }
-    // 切换到dialog的第二个内容
-    document.getElementById('tabs_two').onclick = function () {
-      dialogOne.style.display = 'none';
-      tabsOne.style.color = '#303133';
-      tabsTwo.style.color = '#44c9a8';
-      dialogTwo.style.display = 'block';
-      bar.style.transform = 'translateX(98px)';
-    }
-    document.getElementById('dialog-form-btn-cancel').onclick = function () {
-      document.getElementById('dialog_userinfo_wrapper').style.display = 'none';
-    }
-    document.getElementById('dialog-form-userinfo-btn-cancel').onclick = function () {
-      document.getElementById('dialog_userinfo_wrapper').style.display = 'none';
-    }
-    document.getElementById('account').onclick = function () {
-      document.getElementById('dialog_userinfo_wrapper').style.display = 'block';
-    }
-    document.getElementById('loginout').onclick = function () {
-      document.getElementById('dialog_loginout_wrapper').style.display = 'block';
-    }
-    document.getElementById('dialog_loginout_cancel').onclick = function () {
-      document.getElementById('dialog_loginout_wrapper').style.display = 'none';
-    }
-  </script>
 
-  <div class="content">
-    <div class="main_content">
-      <div class="title">
-        <span>专辑管理</span>
-      </div>
-      <div class="title_line"></div>
-      <div class="title_bar">
-        <a href="#" class="operate_video_pool" id="operate_video_pool">运营视频池</a>
-        <a href="albumUserVideo.html" class="user_video_pool" id="user_video_pool">用户视频池
-        </a>
-      </div>
-      <div class="category">
-        <div class="online" id="online" onclick="btnOnlineClick">上线</div>
-        <div class="draf" id="draf" click="btnDrafClick">草稿</div>
-        <div class="recycle_bin" id="recycle_bin">回收站</div>
-        <div class="recommend" id="recommend">推荐</div>
-      </div>
-      <!-- 上线按钮显示的布局 -->
-      <div class="controll_bar clearfix" id="controll_online">
-        <div class="controll_online_left">
-          <span>专辑标题：</span>
-          <input type="text">
-          <span>专辑ID：</span>
-          <input type="text">
-          <button>查询</button>
-        </div>
-        <div class="fr controll_online_right">
-          <button>推荐</button>
-          <button>删除</button>
-          <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
-        </div>
-      </div>
-      <!-- 草稿按钮显示的布局 -->
-      <div class="controll_bar clearfix" id="controll_draf">
-        <button class="list_controll">
-          <a href="publishAlbum.html">发布专辑</a>
-        </button>
-        <div class="list_search">
-          <span>专辑标题：</span>
-          <input type="text" class="input_zj_title" />
-          <span>专辑ID：</span>
-          <input type="text" class="input_zj_id" />
-          <div class="btn_list_search">查询</div>
-          <div class="btn_list_search">删除</div>
-          <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
-        </div>
-      </div>
-      <!-- 回收站按钮显示的布局 -->
-      <div class="controll_bar clearfix" id="controll_recycle_bin">
-        <div class="controll_recycle_bin_left">
-          <span>专辑标题：</span>
-          <input type="text">
-          <span>专辑ID：</span>
-          <input type="text">
-          <button>查询</button>
-        </div>
-        <div class="fr controll_recycle_bin_right">
-          <button>还原专辑</button>
-          <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
-        </div>
-      </div>
-      <!-- 推荐池按钮显示的布局 -->
-      <div class="controll_bar clearfix" id="controll_recommend">
-        <div class="controll_recommend_left">
-          <span>专辑标题：</span>
-          <input type="text">
-          <span>专辑ID：</span>
-          <input type="text">
-          <button>查询</button>
-        </div>
-        <div class="fr controll_recommend_right">
-          <button>取消推荐</button>
-          <button>删除</button>
-          <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
-        </div>
-      </div>
-      <div class="table_div">
-        <table class="content_table">
-          <tr>
-            <th>
-              <input type="checkbox" name="" id="" class="table_checkbox" />
-            </th>
-            <th>
-              <span class="table_id table_th"> 专辑ID </span>
-            </th>
-            <th>
-              <span class="table_title table_th"> 专辑标题 </span>
-            </th>
-            <th>
-              <span class="table_introducation table_th"> 专辑简介 </span>
-            </th>
-            <th>
-              <span class="table_img table_th"> 缩略图 </span>
-            </th>
-            <th>
-              <span class="table_mun table_th"> 总集/已更新 </span>
-            </th>
-            <th>
-              <span class="table_time table_th"> 最后操作时间 </span>
-            </th>
-            <th>
-              <span class="table_user table_th"> 操作人 </span>
-            </th>
-            <th>
-              <span class="table_controll table_th"> 操作 </span>
-            </th>
-          </tr>
-          <tr>
-            <td>
-              <input type="checkbox" name="" id="" class="table_checkbox" />
-            </td>
-            <td>
-              <span class="table_id"> 987123 </span>
-            </td>
-            <td>
-              <span class="table_title"> 办公室爆笑锦集 </span>
-            </td>
-            <td>
-              <span class="table_introducation">
-                这是一份简介占位这是一份简介占位这是一份简介占位这是一份简介占位~
-              </span>
-            </td>
-            <td>
-              <img src="../../../static/img/tx.jpg" alt="" class="table_content_img" />
-            </td>
-            <td>
-              <span class="table_mun"> 22/30 </span>
-            </td>
-            <td>
-              <span class="table_time"> 2018-11-28 14:01:19 </span>
-            </td>
-            <td>
-              <span class="table_user"> xxx@yy-inc.cn </span>
-            </td>
-            <td>
-              <div class="table_content_controll">
-                <div id="table_controll_one">
-                  <a href="publishAlbum.html">修改专辑</a>
-                  <a href="albumVideoManager.html">视频管理</a>
-                  <a href="albumpreview.html">专辑预览</a>
-                </div>
-                <div id="table_controll_two">
-                  <a href="#">还原</a>
-                  <a href="#">预览</a>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </table>
-      </div>
-      <div class="page_select" id="page_select">
-        <div class="page_select_inner">
-          <span>共</span>
-          <span>100</span>
-          <span>条</span>
-          <span class="page_select_position_one">每页</span>
-          <input type="number" class="page_input_mun" />
-          <span>条</span>
-          <img src="../../../static/img/last_page.png" alt="" class="last_page" />
-          <ul class="page_select_ul">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>...</li>
-            <li>10</li>
-          </ul>
-          <img src="../../../static/img/next_page.png" alt="" class="last_page" />
-          <span class="page_select_position_two">前往</span>
-          <input type="number" class="page_input_to_mun" />
-          <span>页</span>
-        </div>
-      </div>
-    </div>
-    <script type="text/javascript">
-      writeLeft()
-      writeLeftTwoOfLeft()
+      // 切换到dialog的第一个内容
+      document.getElementById('tabs_one').onclick = function () {
+        dialogOne.style.display = 'block';
+        tabsOne.style.color = '#44c9a8';
+        tabsTwo.style.color = '#303133';
+        dialogTwo.style.display = 'none';
+        bar.style.transform = 'translateX(20px)';
+      }
+      // 切换到dialog的第二个内容
+      document.getElementById('tabs_two').onclick = function () {
+        dialogOne.style.display = 'none';
+        tabsOne.style.color = '#303133';
+        tabsTwo.style.color = '#44c9a8';
+        dialogTwo.style.display = 'block';
+        bar.style.transform = 'translateX(98px)';
+      }
+      document.getElementById('dialog-form-btn-cancel').onclick = function () {
+        document.getElementById('dialog_userinfo_wrapper').style.display = 'none';
+      }
+      document.getElementById('dialog-form-userinfo-btn-cancel').onclick = function () {
+        document.getElementById('dialog_userinfo_wrapper').style.display = 'none';
+      }
+      document.getElementById('account').onclick = function () {
+        document.getElementById('dialog_userinfo_wrapper').style.display = 'block';
+      }
+      document.getElementById('loginout').onclick = function () {
+        document.getElementById('dialog_loginout_wrapper').style.display = 'block';
+      }
+      document.getElementById('dialog_loginout_cancel').onclick = function () {
+        document.getElementById('dialog_loginout_wrapper').style.display = 'none';
+      }
     </script>
-  </div>
+
+    <div class="content">
+      <div class="main_content">
+        <div class="title">
+          <span>专辑管理</span>
+        </div>
+        <div class="title_line"></div>
+        <div class="title_bar">
+          <a href="#" class="operate_video_pool" id="operate_video_pool">运营视频池</a>
+          <a href="albumUserVideo.html" class="user_video_pool" id="user_video_pool">用户视频池
+          </a>
+        </div>
+        <div class="category">
+          <div class="online" id="online" onclick="btnOnlineClick">上线</div>
+          <div class="draf" id="draf" click="btnDrafClick">草稿</div>
+          <div class="recycle_bin" id="recycle_bin">回收站</div>
+          <div class="recommend" id="recommend">推荐</div>
+        </div>
+        <!-- 上线按钮显示的布局 -->
+        <div class="controll_bar clearfix" id="controll_online">
+          <div class="controll_online_left">
+            <span>专辑标题：</span>
+            <input type="text">
+            <span>专辑ID：</span>
+            <input type="text">
+            <button>查询</button>
+          </div>
+          <div class="fr controll_online_right">
+            <button>推荐</button>
+            <button>删除</button>
+            <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
+          </div>
+        </div>
+        <!-- 草稿按钮显示的布局 -->
+        <div class="controll_bar clearfix" id="controll_draf">
+          <button class="list_controll">
+            <a href="publishAlbum.html">发布专辑</a>
+          </button>
+          <div class="list_search">
+            <span>专辑标题：</span>
+            <input type="text" class="input_zj_title" />
+            <span>专辑ID：</span>
+            <input type="text" class="input_zj_id" />
+            <div class="btn_list_search">查询</div>
+            <div class="btn_list_search">删除</div>
+            <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
+          </div>
+        </div>
+        <!-- 回收站按钮显示的布局 -->
+        <div class="controll_bar clearfix" id="controll_recycle_bin">
+          <div class="controll_recycle_bin_left">
+            <span>专辑标题：</span>
+            <input type="text">
+            <span>专辑ID：</span>
+            <input type="text">
+            <button>查询</button>
+          </div>
+          <div class="fr controll_recycle_bin_right">
+            <button>还原专辑</button>
+            <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
+          </div>
+        </div>
+        <!-- 推荐池按钮显示的布局 -->
+        <div class="controll_bar clearfix" id="controll_recommend">
+          <div class="controll_recommend_left">
+            <span>专辑标题：</span>
+            <input type="text">
+            <span>专辑ID：</span>
+            <input type="text">
+            <button>查询</button>
+          </div>
+          <div class="fr controll_recommend_right">
+            <button>取消推荐</button>
+            <button>删除</button>
+            <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
+          </div>
+        </div>
+        <div class="table_div">
+          <table class="content_table">
+            <tr>
+              <th>
+                <input type="checkbox" name="" id="" class="table_checkbox" />
+              </th>
+              <th>
+                <span class="table_id table_th"> 专辑ID </span>
+              </th>
+              <th>
+                <span class="table_title table_th"> 专辑标题 </span>
+              </th>
+              <th>
+                <span class="table_introducation table_th"> 专辑简介 </span>
+              </th>
+              <th>
+                <span class="table_img table_th"> 缩略图 </span>
+              </th>
+              <th>
+                <span class="table_mun table_th"> 总集/已更新 </span>
+              </th>
+              <th>
+                <span class="table_time table_th"> 最后操作时间 </span>
+              </th>
+              <th>
+                <span class="table_user table_th"> 操作人 </span>
+              </th>
+              <th>
+                <span class="table_controll table_th"> 操作 </span>
+              </th>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox" name="" id="" class="table_checkbox" />
+              </td>
+              <td>
+                <span class="table_id"> 987123 </span>
+              </td>
+              <td>
+                <span class="table_title"> 办公室爆笑锦集 </span>
+              </td>
+              <td>
+                <span class="table_introducation">
+                  这是一份简介占位这是一份简介占位这是一份简介占位这是一份简介占位~
+                </span>
+              </td>
+              <td>
+                <img src="../../../static/img/tx.jpg" alt="" class="table_content_img" />
+              </td>
+              <td>
+                <span class="table_mun"> 22/30 </span>
+              </td>
+              <td>
+                <span class="table_time"> 2018-11-28 14:01:19 </span>
+              </td>
+              <td>
+                <span class="table_user"> xxx@yy-inc.cn </span>
+              </td>
+              <td>
+                <div class="table_content_controll">
+                  <div id="table_controll_one">
+                    <a href="publishAlbum.html">修改专辑</a>
+                    <a href="albumVideoManager.html">视频管理</a>
+                    <a href="albumpreview.html">专辑预览</a>
+                  </div>
+                  <div id="table_controll_two">
+                    <a href="#">还原</a>
+                    <a href="#">预览</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="page_select" id="page_select">
+          <div class="page_select_inner">
+            <span>共</span>
+            <span>100</span>
+            <span>条</span>
+            <span class="page_select_position_one">每页</span>
+            <input type="number" class="page_input_mun" />
+            <span>条</span>
+            <img src="../../../static/img/last_page.png" alt="" class="last_page" />
+            <ul class="page_select_ul">
+              <li>1</li>
+              <li>2</li>
+              <li>3</li>
+              <li>...</li>
+              <li>10</li>
+            </ul>
+            <img src="../../../static/img/next_page.png" alt="" class="last_page" />
+            <span class="page_select_position_two">前往</span>
+            <input type="number" class="page_input_to_mun" />
+            <span>页</span>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        writeLeft()
+        writeLeftTwoOfLeft()
+      </script>
+    </div>
   </div>
 </body>
 

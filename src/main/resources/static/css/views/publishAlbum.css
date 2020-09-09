@@ -8,7 +8,8 @@
 }
 #input-intro{
     height: 120px;
-    line-height: 1px;
+    width: 300px;
+    border-radius: 3px;
 }
 .form-btn-upload{
     height: 40px;

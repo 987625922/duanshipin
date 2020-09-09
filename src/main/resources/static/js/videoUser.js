@@ -34,8 +34,8 @@ tableControllerOne.style.display = 'block'
 // 正在选中的按钮
 var isSelectBtn = btnOnline
 btnOnline.onclick = function () {
-    btnPre(btnOnline);
     btnCommon(isSelectBtn);
+    btnPre(btnOnline);
     isSelectBtn = btnOnline;
     onlineControll.style.display = 'block'
     offlineControll.style.display = 'none'
@@ -46,8 +46,8 @@ btnOnline.onclick = function () {
 }
 //草稿的点击事件
 btnOffline.onclick = function () {
-    btnPre(btnOffline);
     btnCommon(isSelectBtn);
+    btnPre(btnOffline);
     isSelectBtn = btnOffline;
     offlineControll.style.display = 'block'
     onlineControll.style.display = 'none'
@@ -57,8 +57,8 @@ btnOffline.onclick = function () {
     tableControllerTwo.style.display = 'none'
 }
 btnDel.onclick = function () {
-    btnPre(btnDel);
     btnCommon(isSelectBtn);
+    btnPre(btnDel);
     isSelectBtn = btnDel;
     offlineControll.style.display = 'none'
     onlineControll.style.display = 'none'
@@ -68,8 +68,8 @@ btnDel.onclick = function () {
     tableControllerTwo.style.display = 'block'
 }
 btnRecommend.onclick = function () {
-    btnPre(btnRecommend);
     btnCommon(isSelectBtn);
+    btnPre(btnRecommend);
     isSelectBtn = btnRecommend;
     offlineControll.style.display = 'none'
     onlineControll.style.display = 'none'

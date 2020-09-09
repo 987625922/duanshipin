@@ -102,6 +102,7 @@
     background-color: #f6f6f6;
     border-radius: 2px;
     overflow: hidden;
+    display: none;
 }
 .controll_recommend_left,
 .controll_recycle_bin_left,
@@ -228,9 +229,11 @@
 .table_img{
     display: block;
     width: nowrap;
+    text-align: center;
 }
 .table_content_img{
     width: 65px;
+    margin-left: 25px;
 }
 .table_mun{
     display: block;
@@ -252,6 +255,7 @@
 .table_content_controll{
     display: block;
     width:90px;
+    text-align: center;
     margin: 0 auto;
 }
 .table_content_controll div{

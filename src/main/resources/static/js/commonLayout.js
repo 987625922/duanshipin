@@ -40,15 +40,15 @@ function writeLeft() {
     document.writeln("                                <span>用户</span>");
     document.writeln("                            </a>");
     document.writeln("                        </div>");
-    document.writeln("                        <div class=\'left_item left_item_three\'>");
-    document.writeln("                            <a href=\'#\'>");
+    document.writeln("                        <div class=\'left_item left_item_three\'  id=\'left_item_three\'>");
+    document.writeln("                            <a href=\'../review/firstLevelReview.html\' id=\'left_item_three_a\'>");
     document.writeln("                                <i id=\'left_item_three_img\'>");
     document.writeln("                                </i>");
     document.writeln("                                <span>审核</span>");
     document.writeln("                            </a>");
     document.writeln("                        </div>");
     document.writeln("                        <div class=\'left_item left_item_four\'>");
-    document.writeln("                            <a href=\'#\'>");
+    document.writeln("                            <a href=\'../app/adManage.html\'>");
     document.writeln("                                <i id=\'left_item_four_img\'>");
     document.writeln("                                </i>");
     document.writeln("                                <span>app</span>");

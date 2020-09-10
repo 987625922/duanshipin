@@ -84,8 +84,11 @@
     background: url('../../../static/img/msg_n.png') right top;
     background-size: 25px 25px;
 }
-
 .left_item_six i {
+    background: url('../../../static/img/customer_service_n.png') right top;
+    background-size: 25px 25px;
+}
+.left_item_seven i {
     background: url('../../../static/img/sys_n.png') right top;
     background-size: 25px 25px;
 }
@@ -124,6 +127,7 @@
 .item_style:hover {
     color: #333;
     background-color: #ebebeb;
+    cursor: pointer;
 }
 
 .item_one_one {

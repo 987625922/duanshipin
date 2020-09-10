@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 一级审核 -->
+<!-- 视频举报 -->
 
 <head>
     <meta charset="UTF-8" />
@@ -21,31 +21,18 @@
         <div class="content">
             <div class="main_content">
                 <div class="title">
-                    <span>一级审核</span>
+                    <span>视频管理</span>
                 </div>
                 <div class="title_line"></div>
                 <div class="title_bar">
                     <a href="#" class="operate_video_pool" id="operate_video_pool">待审核</a>
-                    <a href="#" class="user_video_pool" id="user_video_pool">审核拒绝
+                    <a href="videoUser.html" class="user_video_pool" id="user_video_pool">审核拒绝
                     </a>
                 </div>
-                <!-- 审核拒绝 -->
-                <div class="controll_bar clearfix" id="to-be-reviewed">
+                <!-- 上线按钮显示的布局 -->
+                <div class="controll_bar clearfix" id="controll_online">
                     <div class="controll_online_left">
-                        <span>视频ID：</span>
-                        <input type="text">
-                        <span>视频名称：</span>
-                        <input type="text">
-                        <button>查询</button>
-                    </div>
-                    <div class="fr controll_online_right">
-                        <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
-                    </div>
-                </div>
-                <!-- 待审核 -->
-                <div class="controll_bar clearfix" id="failed-review">
-                    <div class="controll_online_left">
-                        <span>视频ID：</span>
+                        <span>用户昵称：</span>
                         <input type="text">
                         <span>视频名称：</span>
                         <input type="text">
@@ -53,6 +40,21 @@
                     </div>
                     <div class="fr controll_online_right">
                         <button>批量审核</button>
+                        <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
+                    </div>
+                </div>
+                <!-- 草稿按钮显示的布局 -->
+                <div class="controll_bar clearfix" id="controll_draf">
+                    <button class="list_controll">
+                        <a href="publishVideo.html">发布视频</a>
+                    </button>
+                    <div class="list_search">
+                        <span>视频标题：</span>
+                        <input type="text" class="input_zj_title" />
+                        <span>视频ID：</span>
+                        <input type="text" class="input_zj_id" />
+                        <div class="btn_list_search">查询</div>
+                        <div class="btn_list_search">删除</div>
                         <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
                     </div>
                 </div>
@@ -75,15 +77,14 @@
                                 <span class="table_img table_th"> 缩略图 </span>
                             </th>
                             <th>
-                                <span class="table_mun table_th">所属用户</span>
-                            </th>
-                            <th id="table-review-faile-reason">
-                                <span class="table_mun table_th">拒绝理由</span>
+                                <span class="table_mun table_th">基础数据</span>
                             </th>
                             <th>
-                                <span class="table_time table_th"> 发布时间 </span>
+                                <span class="table_time table_th"> 最后操作时间 </span>
                             </th>
-
+                            <th>
+                                <span class="table_user table_th"> 操作人 </span>
+                            </th>
                             <th>
                                 <span class="table_controll table_th"> 操作 </span>
                             </th>
@@ -96,11 +97,11 @@
                                 <span class="table_id"> 987123 </span>
                             </td>
                             <td>
-                                <span class="table_title">一只视频标题</span>
+                                <span class="table_title"> 办公室爆笑锦集 </span>
                             </td>
                             <td>
                                 <span class="table_introducation">
-                                    视频简介占位，视频简介占位，视频简介占位，视频简介占位，视频简介占位，视频简介占位~
+                                    这是一份简介占位这是一份简介占位这是一份简介占位这是一份简介占位~
                                 </span>
                             </td>
                             <td>
@@ -108,21 +109,21 @@
                             </td>
                             <td>
                                 <span class="table_mun">
-                                    @Luffy
-                                </span>
-                            </td>
-                            <td id="table-review-faile-reason-td">
-                                <span class="table_mun">
-                                    格式不符
+                                    <span>播放量：12.5w</span>
+                                    <br />
+                                    <span>点赞数：123</span>
                                 </span>
                             </td>
                             <td>
                                 <span class="table_time"> 2018-11-28 14:01:19 </span>
                             </td>
                             <td>
+                                <span class="table_user"> xxx@yy-inc.cn </span>
+                            </td>
+                            <td>
                                 <div class="table_content_controll">
                                     <div id="table_controll_one">
-                                        <a>审核</a>
+                                        <a href="videopreview.html">审核</a>
                                     </div>
                                     <div id="table_controll_two">
                                         <a href="#">预览</a>
@@ -156,10 +157,27 @@
                 </div>
             </div>
             <script type="text/javascript">
-                writeLeft();
-                writeReview();
+                writeLeft()
             </script>
-
+            <div class="left_two">
+                <div class="left_two_nav">
+                    <div id="left_two_nav_item">
+                        <span>举报管理</span>
+                    </div>
+                    <a class="item_one_one item_style">
+                        <span>视频举报</span>
+                    </a>
+                    <a class="item_one_one item_style">
+                        <span>评论举报</span>
+                    </a>
+                    <div id="left_two_nav_item">
+                        <span>反馈管理</span>
+                    </div>
+                    <a class="item_one_one item_style">
+                        <span>用户反馈</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </body>

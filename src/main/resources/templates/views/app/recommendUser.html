@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 一级审核 -->
+<!-- app -> 推荐用户 -->
 
 <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
     <!-- import CSS -->
     <link rel="stylesheet" href="../../../static/css/project.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/css/views/commonLayout.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/css/views/firstLevelReview.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/recommentUser.css" type="text/css" />
     <!-- hander  -->
     <script src="../../../static/js/commonLayout.js" type="text/javascript"></script>
 </head>
@@ -21,38 +21,19 @@
         <div class="content">
             <div class="main_content">
                 <div class="title">
-                    <span>一级审核</span>
+                    <span>推荐用户</span>
                 </div>
                 <div class="title_line"></div>
-                <div class="title_bar">
-                    <a href="#" class="operate_video_pool" id="operate_video_pool">待审核</a>
-                    <a href="#" class="user_video_pool" id="user_video_pool">审核拒绝
-                    </a>
-                </div>
-                <!-- 审核拒绝 -->
-                <div class="controll_bar clearfix" id="to-be-reviewed">
+                <div class="controll_bar clearfix" id="controll_online">
                     <div class="controll_online_left">
-                        <span>视频ID：</span>
+                        <span>用户昵称：</span>
                         <input type="text">
-                        <span>视频名称：</span>
+                        <span>用户ID：</span>
                         <input type="text">
                         <button>查询</button>
                     </div>
                     <div class="fr controll_online_right">
-                        <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
-                    </div>
-                </div>
-                <!-- 待审核 -->
-                <div class="controll_bar clearfix" id="failed-review">
-                    <div class="controll_online_left">
-                        <span>视频ID：</span>
-                        <input type="text">
-                        <span>视频名称：</span>
-                        <input type="text">
-                        <button>查询</button>
-                    </div>
-                    <div class="fr controll_online_right">
-                        <button>批量审核</button>
+                        <button>选取用户</button>
                         <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
                     </div>
                 </div>
@@ -63,29 +44,23 @@
                                 <input type="checkbox" name="" id="" class="table_checkbox" />
                             </th>
                             <th>
-                                <span class="table_id table_th"> 视频ID </span>
+                                <span class="table_id table_th">用户ID</span>
                             </th>
                             <th>
-                                <span class="table_title table_th"> 视频标题 </span>
-                            </th>
-                            <th>
-                                <span class="table_introducation table_th"> 视频简介 </span>
+                                <span class="table_title table_th">用户昵称</span>
                             </th>
                             <th>
                                 <span class="table_img table_th"> 缩略图 </span>
                             </th>
-                            <th>
-                                <span class="table_mun table_th">所属用户</span>
-                            </th>
-                            <th id="table-review-faile-reason">
-                                <span class="table_mun table_th">拒绝理由</span>
-                            </th>
-                            <th>
-                                <span class="table_time table_th"> 发布时间 </span>
-                            </th>
 
                             <th>
-                                <span class="table_controll table_th"> 操作 </span>
+                                <span class="table_time table_th">推荐时间</span>
+                            </th>
+                            <th>
+                                <span class="table_user table_th">操作人</span>
+                            </th>
+                            <th id="table-control-item-th">
+                                <span class="table_controll table_th">操作</span>
                             </th>
                         </tr>
                         <tr>
@@ -93,40 +68,24 @@
                                 <input type="checkbox" name="" id="" class="table_checkbox" />
                             </td>
                             <td>
-                                <span class="table_id"> 987123 </span>
+                                <span class="table_id">987123</span>
                             </td>
                             <td>
-                                <span class="table_title">一只视频标题</span>
-                            </td>
-                            <td>
-                                <span class="table_introducation">
-                                    视频简介占位，视频简介占位，视频简介占位，视频简介占位，视频简介占位，视频简介占位~
-                                </span>
+                                <span class="table_title">@Luffy</span>
                             </td>
                             <td>
                                 <img src="../../../static/img/tx.jpg" alt="" class="table_content_img" />
                             </td>
+
                             <td>
-                                <span class="table_mun">
-                                    @Luffy
-                                </span>
-                            </td>
-                            <td id="table-review-faile-reason-td">
-                                <span class="table_mun">
-                                    格式不符
-                                </span>
+                                <span class="table_time">2018-11-28 14:01:19</span>
                             </td>
                             <td>
-                                <span class="table_time"> 2018-11-28 14:01:19 </span>
+                                <span class="table_user">xxx@yy-inc.cn</span>
                             </td>
-                            <td>
+                            <td id="table-control-item-td">
                                 <div class="table_content_controll">
-                                    <div id="table_controll_one">
-                                        <a>审核</a>
-                                    </div>
-                                    <div id="table_controll_two">
-                                        <a href="#">预览</a>
-                                    </div>
+                                    <a href="videopreview.html">移除</a>
                                 </div>
                             </td>
                         </tr>
@@ -156,13 +115,34 @@
                 </div>
             </div>
             <script type="text/javascript">
-                writeLeft();
-                writeReview();
+                writeLeft()
             </script>
 
+            <div class="left_two">
+                <div class="left_two_nav">
+                    <div id="left_two_nav_item">
+                        <span>广告页管理</span>
+                    </div>
+                    <a class="item_one_one item_style" id="left-one" href="adManage.html">
+                        <span>广告页管理</span>
+                    </a>
+                    <div id="left_two_nav_item">
+                        <span>分享页管理</span>
+                    </div>
+                    <a class="item_one_one item_style" id="left-two" href="recommendVideo.html">
+                        <span>推荐视频</span>
+                    </a>
+                    <div id="left_two_nav_item">
+                        <span>用户推荐管理</span>
+                    </div>
+                    <a class="item_one_one item_style" id="left-three" href="recommendUser.html">
+                        <span>推荐用户</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </body>
-<script src="../../../static/js/firstLevelReview.js" type="text/javascript"></script>
+<script src="../../../static/js/recommendUser.js" type="text/javascript"></script>
 
 </html>

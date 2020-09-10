@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 一级审核 -->
+<!-- 全新专辑审核 -->
 
 <head>
     <meta charset="UTF-8" />
-    <title>视频管理平台</title>
+    <title>专辑管理平台</title>
     <!-- import CSS -->
     <link rel="stylesheet" href="../../../static/css/project.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/css/views/commonLayout.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/css/views/firstLevelReview.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/newAlbumReview.css" type="text/css" />
     <!-- hander  -->
     <script src="../../../static/js/commonLayout.js" type="text/javascript"></script>
 </head>
@@ -21,20 +21,34 @@
         <div class="content">
             <div class="main_content">
                 <div class="title">
-                    <span>一级审核</span>
+                    <span>全新专辑审核</span>
                 </div>
                 <div class="title_line"></div>
                 <div class="title_bar">
-                    <a href="#" class="operate_video_pool" id="operate_video_pool">待审核</a>
-                    <a href="#" class="user_video_pool" id="user_video_pool">审核拒绝
-                    </a>
+                    <a href="#" class="operate_video_pool" id="top-second-review">待审核</a>
+                    <a href="#" class="user_video_pool" id="review-success">审核通过</a>
+                    <a href="#" class="user_video_pool" id="review-faile">审核拒绝</a>
                 </div>
-                <!-- 审核拒绝 -->
-                <div class="controll_bar clearfix" id="to-be-reviewed">
+                <!-- 待审核 -->
+                <div class="controll_bar clearfix" id="top-second-review-control">
                     <div class="controll_online_left">
-                        <span>视频ID：</span>
+                        <span>专辑ID：</span>
                         <input type="text">
-                        <span>视频名称：</span>
+                        <span>专辑名称：</span>
+                        <input type="text">
+                        <button>查询</button>
+                    </div>
+                    <div class="fr controll_online_right">
+                        <button>批量审核</button>
+                        <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
+                    </div>
+                </div>
+                <!-- 审核通过 -->
+                <div class="controll_bar clearfix" id="review-success-control">
+                    <div class="controll_online_left">
+                        <span>专辑ID：</span>
+                        <input type="text">
+                        <span>专辑名称：</span>
                         <input type="text">
                         <button>查询</button>
                     </div>
@@ -42,17 +56,16 @@
                         <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
                     </div>
                 </div>
-                <!-- 待审核 -->
-                <div class="controll_bar clearfix" id="failed-review">
+                <!-- 审核拒绝 -->
+                <div class="controll_bar clearfix" id="review-faile-control">
                     <div class="controll_online_left">
-                        <span>视频ID：</span>
+                        <span>专辑ID：</span>
                         <input type="text">
-                        <span>视频名称：</span>
+                        <span>专辑名称：</span>
                         <input type="text">
                         <button>查询</button>
                     </div>
                     <div class="fr controll_online_right">
-                        <button>批量审核</button>
                         <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
                     </div>
                 </div>
@@ -63,13 +76,13 @@
                                 <input type="checkbox" name="" id="" class="table_checkbox" />
                             </th>
                             <th>
-                                <span class="table_id table_th"> 视频ID </span>
+                                <span class="table_id table_th"> 专辑ID </span>
                             </th>
                             <th>
-                                <span class="table_title table_th"> 视频标题 </span>
+                                <span class="table_title table_th"> 专辑标题 </span>
                             </th>
                             <th>
-                                <span class="table_introducation table_th"> 视频简介 </span>
+                                <span class="table_introducation table_th"> 专辑简介 </span>
                             </th>
                             <th>
                                 <span class="table_img table_th"> 缩略图 </span>
@@ -77,13 +90,20 @@
                             <th>
                                 <span class="table_mun table_th">所属用户</span>
                             </th>
+
+                            <th>
+                                <span class="table_mun table_th">总集/已更新</span>
+                            </th>
+
+                            <th>
+                                <span class="table_time table_th"> 发布时间 </span>
+                            </th>
                             <th id="table-review-faile-reason">
                                 <span class="table_mun table_th">拒绝理由</span>
                             </th>
                             <th>
-                                <span class="table_time table_th"> 发布时间 </span>
+                                <span class="table_mun table_th">审核人</span>
                             </th>
-
                             <th>
                                 <span class="table_controll table_th"> 操作 </span>
                             </th>
@@ -96,11 +116,11 @@
                                 <span class="table_id"> 987123 </span>
                             </td>
                             <td>
-                                <span class="table_title">一只视频标题</span>
+                                <span class="table_title">一只专辑标题</span>
                             </td>
                             <td>
                                 <span class="table_introducation">
-                                    视频简介占位，视频简介占位，视频简介占位，视频简介占位，视频简介占位，视频简介占位~
+                                    专辑简介占位，专辑简介占位，专辑简介占位，专辑简介占位，专辑简介占位，专辑简介占位~
                                 </span>
                             </td>
                             <td>
@@ -111,13 +131,24 @@
                                     @Luffy
                                 </span>
                             </td>
+                            <td>
+                                <span class="table_mun">
+                                    30/12
+                                </span>
+                            </td>
+
+                            <td>
+                                <span class="table_time"> 2018-11-28 14:01:19 </span>
+                            </td>
                             <td id="table-review-faile-reason-td">
                                 <span class="table_mun">
                                     格式不符
                                 </span>
                             </td>
                             <td>
-                                <span class="table_time"> 2018-11-28 14:01:19 </span>
+                                <span class="table_mun">
+                                    一审人：xxx@yy-inc.cn
+                                </span>
                             </td>
                             <td>
                                 <div class="table_content_controll">
@@ -125,6 +156,10 @@
                                         <a>审核</a>
                                     </div>
                                     <div id="table_controll_two">
+                                        <a href="#">预览</a>
+                                        <a href="#">下线</a>
+                                    </div>
+                                    <div id="table_controll_three">
                                         <a href="#">预览</a>
                                     </div>
                                 </div>
@@ -159,10 +194,9 @@
                 writeLeft();
                 writeReview();
             </script>
-
         </div>
     </div>
 </body>
-<script src="../../../static/js/firstLevelReview.js" type="text/javascript"></script>
+<script src="../../../static/js/newAlbumReview.js" type="text/javascript"></script>
 
 </html>

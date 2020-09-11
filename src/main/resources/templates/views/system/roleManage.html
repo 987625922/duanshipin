@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- 管理员 -->
+<!-- 角色管理 -->
 
 <head>
     <meta charset="UTF-8" />
@@ -8,7 +8,7 @@
     <!-- import CSS -->
     <link rel="stylesheet" href="../../../static/css/project.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/css/views/commonLayout.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/css/views/adminManage.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/roleManage.css" type="text/css" />
     <!-- hander  -->
     <script src="../../../static/js/commonLayout.js" type="text/javascript"></script>
 </head>
@@ -21,31 +21,14 @@
         <div class="content">
             <div class="main_content">
                 <div class="title">
-                    <span>管理员</span>
+                    <span>角色管理</span>
                 </div>
                 <div class="title_line"></div>
                 <div class="controll_bar clearfix" style="display: block;">
                     <button class="list_controll">
-                        <a href="publishAlbum.html">新增管理员</a>
+                        <a href="publishAlbum.html">新增角色</a>
                     </button>
                     <div class="list_search">
-                        <span>角色：</span>
-                        <select>
-                            <option value="volvo">全部</option>
-                            <option value="saab">封禁</option>
-                            <option value="opel">正常</option>
-                            <option value="audi">忽略</option>
-                        </select>
-                        <span>状态：</span>
-                        <select>
-                            <option value="volvo">全部</option>
-                            <option value="saab">封禁</option>
-                            <option value="opel">正常</option>
-                            <option value="audi">忽略</option>
-                        </select>
-                        <span>用户名：</span>
-                        <input type="text" class="input_zj_id" />
-                        <div class="btn_list_search">查询</div>
                         <img src="../../../static/img/img_fresh.png" alt="" class="fresh" />
                     </div>
                 </div>
@@ -56,19 +39,13 @@
                                 <span class="table_id table_th">ID</span>
                             </th>
                             <th>
-                                <span class="table_title table_th">用户名</span>
+                                <span class="table_title table_th">角色名称</span>
                             </th>
                             <th>
-                                <span class="table_introducation table_th">真实姓名</span>
+                                <span class="table_introducation table_th">管理员数量</span>
                             </th>
                             <th>
-                                <span class="table_img table_th">手机号</span>
-                            </th>
-                            <th>
-                                <span class="table_mun table_th">角色</span>
-                            </th>
-                            <th>
-                                <span class="table_time table_th">状态</span>
+                                <span class="table_img table_th">备注</span>
                             </th>
                             <th>
                                 <span class="table_user table_th">最后操作时间</span>
@@ -85,26 +62,16 @@
                                 <span class="table_id">987123</span>
                             </td>
                             <td>
-                                <span class="table_title">zhenyancheng@yy-inc.cn</span>
+                                <span class="table_title">运营</span>
                             </td>
                             <td>
                                 <span class="table_title">
-                                    郑连山
+                                    2
                                 </span>
                             </td>
                             <td>
                                 <span class="table_title">
-                                    13552699862
-                                </span>
-                            </td>
-                            <td>
-                                <span class="table_title">
-                                    运营
-                                </span>
-                            </td>
-                            <td>
-                                <span class="table_title">
-                                    启用
+                                    无
                                 </span>
                             </td>
                             <td>
@@ -184,6 +151,6 @@
         </div>
     </div>
 </body>
-<script src="../../../static/js/adminManage.js" type="text/javascript"></script>
+<script src="../../../static/js/roleManage.js" type="text/javascript"></script>
 
 </html>

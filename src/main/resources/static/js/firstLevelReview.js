@@ -42,8 +42,8 @@ videoPoolDom.onclick = function () {
     tobereview.style.display = 'block';
     failedReview.style.display = 'none';
 
-    tableControllerOne.style.display = 'block';
-    tableControllerTwo.style.display = 'none';
+    tableControllerOne.style.display = 'none';
+    tableControllerTwo.style.display = 'block';
 
 
     tableReviewFaileReason.style.display = 'block'
@@ -55,8 +55,8 @@ userVideoPoolDom.onclick = function () {
     tobereview.style.display = 'none';
     failedReview.style.display = 'block';
 
-    tableControllerOne.style.display = 'none';
-    tableControllerTwo.style.display = 'block';
+    tableControllerOne.style.display = 'block';
+    tableControllerTwo.style.display = 'none';
 
     tableReviewFaileReason.style.display = 'none'
     tableReviewFaileReasonTd.style.display = 'none'

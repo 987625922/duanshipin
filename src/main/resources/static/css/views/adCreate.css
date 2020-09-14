@@ -1,0 +1,39 @@
+.form{
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+.from-item-publish-content{
+    width: 400px;
+}
+#input-intro{
+    height: 120px;
+    width: 300px;
+    border-radius: 3px;
+}
+.form-btn-upload{
+    height: 40px;
+    display: inline-block;
+}
+.form-img-upload{
+    width: 100px;
+    display: inline-block;
+}
+.form-img-upload{
+    width: 150px;
+    height: 150px;
+}
+#form-input-isEnd{
+    width: 20px;
+    height: 15px;
+}
+.form-input-isEnd-span{
+    margin-right: 20px;
+}
+#from-item-content-input-w200{
+    width: 200px;
+}
+.select_auth_user{
+    height: 40px;
+    width: 200px;
+}

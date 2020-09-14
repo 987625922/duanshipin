@@ -61,14 +61,6 @@
 .div-video-content-position{
     margin-bottom: 15px;
 }
-.div-video-content-item{
-    display: inline-block;
-    margin-right: 15px;
-    height: 100px;
-    width: 150px;
-    border-radius: 5px;
-    background-color: burlywood;
-}
 .div-video-content-item img{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;

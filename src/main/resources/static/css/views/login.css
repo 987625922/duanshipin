@@ -48,9 +48,6 @@ body{
     height: 150px;
     width: 350px;
 }
-.from-login{
-    line-height: 0px;
-}
 .div-login-form-u1{
     position: relative;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 1px;
@@ -58,12 +55,6 @@ body{
     height: 100px;
     width: 300px;
     left: 25px;
-}
-/* 选中账号密码时的样式 */
-.div-login-u3-form-sel:focus{
-    border-style: solid;
-    border-color: #44c9a8;
-    border-width: 1px;
 }
 
 #input-form-login-accpw{

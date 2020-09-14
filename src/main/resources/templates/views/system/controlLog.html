@@ -8,7 +8,7 @@
     <!-- import CSS -->
     <link rel="stylesheet" href="../../../static/css/project.css" type="text/css" />
     <link rel="stylesheet" href="../../../static/css/views/commonLayout.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/css/views/loginLog.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/controlLog.css" type="text/css" />
     <!-- hander  -->
     <script src="../../../static/js/commonLayout.js" type="text/javascript"></script>
 </head>
@@ -26,6 +26,11 @@
                 <div class="title_line"></div>
                 <div class="controll_bar clearfix" style="display: block;">
                     操作时间段：
+                    <img class="calender-img" src="../../../static/img/ic_calender.png" />
+                    <input type="text" class="input_zj_id" />
+                    至
+                    <img class="calender-img" src="../../../static/img/ic_calender.png" />
+                    <input type="text" class="input_zj_id" />
                     <div class="list_search">
                         <span>操作描述：</span>
                         <input type="text" class="input_zj_id" />
@@ -110,41 +115,11 @@
             </div>
             <script type="text/javascript">
                 writeLeft()
+                writeSystemLeft()
             </script>
-            <div class="left_two">
-                <div class="left_two_nav">
-                    <div id="left_two_nav_item">
-                        <span>权限管理</span>
-                    </div>
-                    <a class="item_one_one item_style" href="adminManage.html" id="left-one">
-                        <span>管理员</span>
-                    </a>
-                    <a class="item_one_one item_style" href="roleManage.html" id="left-two">
-                        <span>角色管理</span>
-                    </a>
-                    <a class="item_one_one item_style" href="permissionManage.html" id="left-three">
-                        <span>权限管理</span>
-                    </a>
-                    <div id="left_two_nav_item">
-                        <span>机器人管理</span>
-                    </div>
-                    <a class="item_one_one item_style" href="robotManage.html" id="left-four">
-                        <span>机器人管理</span>
-                    </a>
-                    <div id="left_two_nav_item">
-                        <span>日志管理</span>
-                    </div>
-                    <a class="item_one_one item_style" href="loginLog.html" id="left-five">
-                        <span>登录日志</span>
-                    </a>
-                    <a class="item_one_one item_style" href="controlLog.html" id="left-six">
-                        <span>操作日志</span>
-                    </a>
-                </div>
-            </div>
         </div>
     </div>
 </body>
-<script src="../../../static/js/loginLog.js" type="text/javascript"></script>
+<script src="../../../static/js/controlLog.js" type="text/javascript"></script>
 
 </html>

@@ -347,3 +347,29 @@
     margin: 0;
     color: #303133;
 }
+.expanded{
+    width: 15px;
+    height: 15px;
+}
+.tree-node-label{
+    font-size: 14px;
+}
+.tree-treeitem{
+   
+}
+.tree-two-group{
+    padding-left: 18px;
+}
+.tree-three-group{
+    padding-left: 36px;
+}
+.content-tree{
+    margin-left: 15px;
+}
+.edit-item{
+    display: inline-block;
+    margin-left: 25px;
+}
+.edit-item span{
+    margin-left: 10px;
+}

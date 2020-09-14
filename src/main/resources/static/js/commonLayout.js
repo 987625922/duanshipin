@@ -180,6 +180,39 @@ function writeCustomerControl() {
     document.writeln("                </div>");
     document.writeln("            </div>");
 }
+function writeSystemLeft() {
+    document.writeln("<div class=\'left_two\'>");
+    document.writeln("                <div class=\'left_two_nav\'>");
+    document.writeln("                    <div id=\'left_two_nav_item\'>");
+    document.writeln("                        <span>权限管理</span>");
+    document.writeln("                    </div>");
+    document.writeln("                    <a class=\'item_one_one item_style\' href=\'adminManage.html\' id=\'left-one\'>");
+    document.writeln("                        <span>管理员</span>");
+    document.writeln("                    </a>");
+    document.writeln("                    <a class=\'item_one_one item_style\' href=\'roleManage.html\' id=\'left-two\'>");
+    document.writeln("                        <span>角色管理</span>");
+    document.writeln("                    </a>");
+    document.writeln("                    <a class=\'item_one_one item_style\' href=\'permissionManage.html\' id=\'left-three\'>");
+    document.writeln("                        <span>权限管理</span>");
+    document.writeln("                    </a>");
+    document.writeln("                    <div id=\'left_two_nav_item\'>");
+    document.writeln("                        <span>机器人管理</span>");
+    document.writeln("                    </div>");
+    document.writeln("                    <a class=\'item_one_one item_style\' href=\'robotManage.html\' id=\'left-four\'>");
+    document.writeln("                        <span>机器人管理</span>");
+    document.writeln("                    </a>");
+    document.writeln("                    <div id=\'left_two_nav_item\'>");
+    document.writeln("                        <span>日志管理</span>");
+    document.writeln("                    </div>");
+    document.writeln("                    <a class=\'item_one_one item_style\' href=\'loginLog.html\' id=\'left-five\'>");
+    document.writeln("                        <span>登录日志</span>");
+    document.writeln("                    </a>");
+    document.writeln("                    <a class=\'item_one_one item_style\' href=\'controlLog.html\' id=\'left-six\'>");
+    document.writeln("                        <span>操作日志</span>");
+    document.writeln("                    </a>");
+    document.writeln("                </div>");
+    document.writeln("            </div>");
+}
 // 输出内容页的html代码
 function writeContent() {
     document.writeln("<div class=\'content\'>");

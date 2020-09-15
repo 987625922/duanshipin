@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- app -> 推荐视频选取 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>视频管理平台</title>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="../../../static/css/project.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/commonLayout.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/selectRecommendVideo.css" type="text/css" />
+    <!-- hander  -->
+    <script src="../../../static/js/commonLayout.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="body">
+        <script type="text/javascript">
+            writeHander()
+        </script>
+        <div class="content">
+            <div class="main_content">
+                <div class="title">
+                    <span>推荐视频选取</span>
+                </div>
+                <div class="title_line"></div>
+                <div class="item-left">
+                    <div class="item-title">
+                        <span>影视列表</span>
+                    </div>
+                    <div class="item-left-search">
+                        <span>视频ID：</span>
+                        <input type="text" />
+                        <span style="margin-left: 15px;">视频标题：</span>
+                        <input type="text" />
+                        <button>查询</button>
+                    </div>
+                    <table class="content_table">
+                        <tr>
+                            <th class="table_th">
+                                <div>全选</div>
+                            </th>
+                            <th class="table_th">
+                                <div>视频ID</div>
+                            </th>
+                            <th class="table_th">
+                                <div>视频标题</div>
+                            </th>
+                            <th class="table_th table-img">
+                                <div>缩略图</div>
+                            </th>
+                            <th class="table_th">
+                                <div>批量添加</div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="" id="" class="table_checkbox" />
+                            </td>
+                            <td>
+                                <div>987123</div>
+                            </td>
+                            <td>
+                                <div>办公室爆笑锦集</div>
+                            </td>
+                            <td class="table-img">
+                                <div>
+                                    <img src="../../../static/img/tx.jpg" alt="" class="table_content_img" />
+                                </div>
+                            </td>
+                            <td>
+                                <a href="#">添加</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="page_select" id="page_select">
+                        <div class="page_select_inner">
+                            <span>共</span>
+                            <span>100</span>
+                            <span>条</span>
+                            <span class="page_select_position_one">每页</span>
+                            <input type="number" class="page_input_mun" />
+                            <span>条</span>
+                            <img src="../../../static/img/last_page.png" alt="" class="last_page" />
+                            <ul class="page_select_ul">
+                                <li>1</li>
+                                <li>2</li>
+                                <li>3</li>
+                                <li>...</li>
+                                <li>10</li>
+                            </ul>
+                            <img src="../../../static/img/next_page.png" alt="" class="last_page" />
+                            <span class="page_select_position_two">前往</span>
+                            <input type="number" class="page_input_to_mun" />
+                            <span>页</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="item-center">
+                    <div></div>
+                    <div></div>
+                </div>
+                <div class="item-right">
+                    <div class="item-title">
+                        <span>影视列表</span>
+                    </div>
+                    <table class="content_table">
+                        <tr>
+                            <th class="table_th">
+                                <div>全选</div>
+                            </th>
+                            <th class="table_th">
+                                <div>视频ID</div>
+                            </th>
+                            <th class="table_th">
+                                <div>视频标题</div>
+                            </th>
+                            <th class="table_th">
+                                <div>移除</div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="" id="" class="table_checkbox" />
+                            </td>
+                            <td>
+                                <div>987123</div>
+                            </td>
+                            <td>
+                                <div>办公室爆笑锦集</div>
+                            </td>
+                            <td id="table-control-item-td">
+                                <a href="#">移除</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="item-right-bottom">
+                        <button>保存</button>
+                        <button>取消</button>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+                writeLeft();
+                writeAppLeftControl();
+            </script>
+        </div>
+    </div>
+</body>
+</script>
+
+</html>

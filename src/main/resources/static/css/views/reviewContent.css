@@ -85,3 +85,10 @@
     text-align: center;
     overflow: hidden;
 }
+.div-title-bar-right{
+    float: right;
+    margin-right: 35px;
+}
+.div-title-bar-right button{
+    height: 35px;
+}

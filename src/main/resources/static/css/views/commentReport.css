@@ -347,3 +347,16 @@
     margin: 0;
     color: #303133;
 }
+.search-select-span{
+    font-size: 14px;
+    color: #333;
+    margin-left: 15px;
+    vertical-align: middle;
+}
+.search-select{
+    height: 25px;
+    width: 100px;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}

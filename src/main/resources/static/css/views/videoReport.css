@@ -155,8 +155,18 @@
     display: inline-block;
     margin-left: 25px;
 }
-.list_controll a{
- 
+.search-select{
+    height: 25px;
+    width: 100px;
+    display: inline-block;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+.search-select-span{
+    font-size: 14px;
+    color: #333;
+    margin-left: 15px;
+    vertical-align: middle;
 }
 .list_search{
     display: inline-block;

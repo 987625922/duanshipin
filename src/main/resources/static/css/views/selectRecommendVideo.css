@@ -351,11 +351,13 @@
     margin-left: 15px;
     width: 550px;
     margin-top: 20px;
+    display: inline-block;
 }
 .item-right{
-    margin-left: 25px;
     width: 550px;
     margin-top: 20px;
+    display: inline-block;
+    position: absolute;
 }
 .item-title{
     height: 30px;
@@ -391,7 +393,7 @@
 .item-center{
     margin-left: 15px;
     margin-right: 15px;
-    position: absoult;
+    display: inline-block;
 }
 .item-center div{
     width: 15px;

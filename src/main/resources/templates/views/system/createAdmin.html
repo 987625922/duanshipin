@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 创建管理员 -->
+
+<head>
+    <meta charset="UTF-8" />
+    <title>视频管理平台</title>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="../../../static/css/project.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/commonLayout.css" type="text/css" />
+    <link rel="stylesheet" href="../../../static/css/views/createAdmin.css" type="text/css" />
+    <!-- hander  -->
+    <script src="../../../static/js/commonLayout.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="body">
+        <script type="text/javascript">
+            writeHander()
+        </script>
+        <div class="content">
+            <div class="main_content">
+                <div class="full-content" style="height:100%;overflow-y:scroll; overflow-x:hidden;">
+                    <div class="title">
+                        <span>创建管理员</span>
+                    </div>
+                    <div class="title_line"></div>
+                    <form action="" class="form">
+                        <div class="dialog-form-item">
+                            <label for="">
+                                用户名：
+                            </label>
+                            <div class="from-item-content from-item-publish-content">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="dialog-form-item">
+                            <label for="">
+                                密码：
+                            </label>
+                            <div class="from-item-content from-item-publish-content">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="dialog-form-item">
+                            <label for="">
+                                确认密码：
+                            </label>
+                            <div class="from-item-content from-item-publish-content">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="dialog-form-item">
+                            <label for="">
+                                真实姓名：
+                            </label>
+                            <div class="from-item-content from-item-publish-content">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="dialog-form-item">
+                            <label for="">
+                                联系方式：
+                            </label>
+                            <div class="from-item-content from-item-publish-content">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <div class="dialog-form-item">
+                            <label for="">
+                                角色选取：
+                            </label>
+                            <div class="from-item-content from-item-publish-content">
+                                <select class="role-select">
+                                    <option value="volvo">全部</option>
+                                    <option value="saab">封禁</option>
+                                    <option value="opel">正常</option>
+                                    <option value="audi">忽略</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="dialog-form-item">
+                            <label>账号状态：</label>
+                            <div class="from-item-content">
+                                <input type="radio" name="isState" value="noEnd" id="form-input-isEnd">
+                                <span class="form-input-isEnd-span">启用</span>
+                                <input type="radio" name="isState" value="isEnd" checked="checked"
+                                    id="form-input-isEnd">
+                                <span class="form-input-isEnd-span">禁用</span>
+
+                            </div>
+                        </div>
+                        <div class="dialog-form-item">
+                            <div class="from-item-content">
+                                <button class="form-btn-upload">保存</button>
+                                <button class="form-btn-upload">取消</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <script type="text/javascript">
+                writeLeft()
+                writeSystemLeft()
+            </script>
+        </div>
+    </div>
+</body>
+
+
+</html>

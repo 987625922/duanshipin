@@ -48,6 +48,14 @@ reviewControl.style.display = 'none';
 handleControl.style.display = 'none';
 ignoreControl.style.display = 'none';
 
+fksjItemTd.style.display = 'table-cell';
+fksjItemTh.style.display = 'table-cell';
+
+tableControlOne.style.display = 'block';
+tableControlTwo.style.display = 'none';
+tableControlThree.style.display = 'none';
+tableControlFour.style.display = 'none';
+
 czsjItemTh.style.display = 'none';
 czsjItemTd.style.display = 'none';
 czrItemTh.style.display = 'none';

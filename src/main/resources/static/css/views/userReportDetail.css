@@ -347,30 +347,67 @@
     margin: 0;
     color: #303133;
 }
-.expanded{
-    width: 15px;
-    height: 15px;
-}
-.tree-node-label{
+.center{
+    }
+.div-item-one{
+    height: 50px;
+    line-height: 50px;
     font-size: 14px;
+    color: #333;
 }
-.tree-treeitem{
-   
+.div-item-two{
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #333;
 }
-.tree-two-group{
-    padding-left: 18px;
-}
-.tree-three-group{
-    padding-left: 36px;
-}
-.content-tree{
-    margin-left: 15px;
-    margin-top: 15px;
-}
-.edit-item{
+.div-item-info{
     display: inline-block;
-    margin-left: 25px;
 }
-.edit-item span{
-    margin-left: 10px;
+.div-item-info-left{
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+.div-item-info-right{
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+}
+.div-item{
+}
+.user-report-content{
+    margin-left: 15px;
+    padding-bottom: 15px;
+    margin-top: 25px;
+}
+.div-report-content{
+    width: 450px;
+    font-size: 14px;
+    color: #333;
+    display: inline-block;
+    vertical-align: top;
+}
+.div-report-line{
+    display: inline-block;
+    width: 1px;
+    height: 150px;
+    background-color: #666;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+.div-report-img{
+    display: inline-block;
+}
+.div-report-img img{
+    width: 130px;
+    height: 200px;
+    margin-left: 15px;
+}
+.div-report-content-title span{
+    font-size: 18px;
+    color: #333;
+}
+.div-report-content-detail{
+    margin-top: 15px;
 }

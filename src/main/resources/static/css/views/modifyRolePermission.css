@@ -361,11 +361,12 @@
     padding-left: 18px;
 }
 .tree-three-group{
-    padding-left: 36px;
+    padding-left: 16px;
 }
 .content-tree{
     margin-left: 15px;
     margin-top: 15px;
+    margin-bottom: 15px;
 }
 .edit-item{
     display: inline-block;

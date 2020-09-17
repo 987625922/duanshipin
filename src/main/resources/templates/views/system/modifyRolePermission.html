@@ -34,30 +34,47 @@
                     <div class="tree-treeitem">
                         <div class="tree-node">
                             <div class="tree-group">
-                                <img src="../../../static/img/ic_arrow_down.png" class="expanded" />
+                                <img src="../../../static/img/ic_arrow_down.png" class="expanded" id="tree-one" />
+                                <input type="checkbox" />
                                 <span class="tree-node-label">一级 1</span>
                                 <div class="edit-item">
-                                    <span>新增子级</span>
-                                    <span>编辑</span>
+
                                 </div>
-                            </div>
-                            <div class="tree-group tree-two-group">
-                                <img src="../../../static/img/ic_arrow_down.png" class="expanded" />
-                                <span class="tree-node-label">二级 1</span>
-                                <div class="edit-item">
-                                    <span>新增子级</span>
-                                    <span>编辑</span>
+                                <div id="tree-one-one">
+                                    <div class="tree-group tree-two-group">
+                                        <img src="../../../static/img/ic_arrow_down.png" class="expanded" />
+                                        <input type="checkbox" />
+                                        <span class="tree-node-label">二级 1</span>
+                                        <div class="edit-item">
+
+                                        </div>
+                                        <div id="tree-one-one-one">
+                                            <div class="tree-group tree-three-group">
+                                                <img src="../../../static/img/ic_arrow_down.png" class="expanded" />
+                                                <input type="checkbox" />
+                                                <span class="tree-node-label">三级 1</span>
+                                                <div class="edit-item">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                <script type="text/javascript">
+                                    var treeOne = document.getElementById("tree-one")
+                                    var treeOneOne = document.getElementById("tree-one-one")
+                                    var treeOneOneOne = document.getElementById("tree-one-one-one")
+                                    treeOneOne.style.display = 'none'
+                                    treeOneOneOne.style.display = 'none'
+                                    treeOne.onclick = function () {
+                                        treeOneOne.style.display = 'block'
+                                    }
+                                    treeOneOne.onclick = function () {
+                                        treeOneOneOne.style.display = 'block'
+                                    }
+                                </script>
                             </div>
 
-                            <div class="tree-group tree-three-group">
-                                <img src="../../../static/img/ic_arrow_down.png" class="expanded" />
-                                <span class="tree-node-label">三级 1</span>
-                                <div class="edit-item">
-                                    <span>新增子级</span>
-                                    <span>编辑</span>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>

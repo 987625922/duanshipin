@@ -22,7 +22,7 @@
             </div>
             <!-- 登录框 -->
             <div class="div-login-u3">
-                <form action="" method="post" class="form-login">
+                <form>
                     <div class="div-form">
                         <div class="div-login-form-u1" id="div-login-form-u1">
                             <input type="text" id="input-form-login-accpw" onblur="inputLoseFocuse()"
@@ -43,11 +43,11 @@
                         <div class="div-login-form-u4" id="div-login-form-u4">
                             <span>用户名或密码不正确</span>
                         </div>
-                        <button class="btn-login" id="login" onclick="login()">
-                            登录
-                        </button>
                     </div>
                 </form>
+                <button class="btn-login" onclick="login('${apphost}')">
+                    登录
+                </button>
             </div>
         </div>
     </div>

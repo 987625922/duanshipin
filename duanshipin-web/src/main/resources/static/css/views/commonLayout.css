@@ -61,35 +61,35 @@
 }
 
 .left_item_one i {
-    background: url('../.._content_n.png') right top;
+    background: url('/img/content_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_two i {
-    background: url('../...png') right top;
+    background: url('/img/per_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_three i {
-    background: url('../..png') right top;
+    background: url('/img/ev_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_four i {
-    background: url('../...png') right top;
+    background: url('/img/app_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_five i {
-    background: url('../...png') right top;
+    background: url('/img/customer_service_n.png') right top;
     background-size: 25px 25px;
 }
 .left_item_six i {
-    background: url('../..mer_service_n.png') right top;
+    background: url('/img/sys_n.png') right top;
     background-size: 25px 25px;
 }
 .left_item_seven i {
-    background: url('../...png') right top;
+    background: url('/img/sys_n.png') right top;
     background-size: 25px 25px;
 }
 

@@ -32,4 +32,12 @@ public class ViewController {
     public String login() {
         return "views/login";
     }
+
+    /**
+     * 运营专辑管理
+     */
+    @RequestMapping("/content/albumManage")
+    public String albumManage(){
+        return "views/content/albumOperationVideo";
+    }
 }

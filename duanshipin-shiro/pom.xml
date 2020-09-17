@@ -9,9 +9,14 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>common</artifactId>
+    <artifactId>duanshipin-shiro</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.ljf</groupId>
+            <artifactId>duanshipin-service</artifactId>
+            <version>0.0.1</version>
+        </dependency>
     </dependencies>
 
 </project>

@@ -13,12 +13,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Slf4j
 public class ViewController {
-
+    /**
+     * 首页
+     *
+     * @return
+     */
     @RequestMapping("/")
     public String index() {
         return "index";
     }
 
+    /**
+     * 登录界面
+     *
+     * @return
+     */
     @RequestMapping("/login")
     public String login() {
         return "views/login";

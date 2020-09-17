@@ -31,7 +31,6 @@ public class FreeMarkerConfig {
     @Value("${freemarker.host}")
     private String host;
 
-
     @PostConstruct
     public void setConfigure() throws Exception {
         //设置全局的freemarker参数

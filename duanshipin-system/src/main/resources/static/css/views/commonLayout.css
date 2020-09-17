@@ -61,35 +61,35 @@
 }
 
 .left_item_one i {
-    background: url('../../../static/img/video_content_n.png') right top;
+    background: url('../.._content_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_two i {
-    background: url('../../../static/img/per_n.png') right top;
+    background: url('../...png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_three i {
-    background: url('../../../static/img/ev_n.png') right top;
+    background: url('../..png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_four i {
-    background: url('../../../static/img/app_n.png') right top;
+    background: url('../...png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_five i {
-    background: url('../../../static/img/msg_n.png') right top;
+    background: url('../...png') right top;
     background-size: 25px 25px;
 }
 .left_item_six i {
-    background: url('../../../static/img/customer_service_n.png') right top;
+    background: url('../..mer_service_n.png') right top;
     background-size: 25px 25px;
 }
 .left_item_seven i {
-    background: url('../../../static/img/sys_n.png') right top;
+    background: url('../...png') right top;
     background-size: 25px 25px;
 }
 

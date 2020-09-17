@@ -1,6 +1,5 @@
 package com.ljf.duanshipin;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -11,10 +10,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 @SpringBootApplication
 public class DuanShipinApplication {
 
-	public static void main(String[] args) {
-		new SpringApplicationBuilder(DuanShipinApplication.class)
-				.web(WebApplicationType.SERVLET)
-				.run(args);
-	}
+    public static void main(String[] args) {
+        new SpringApplicationBuilder(DuanShipinApplication.class)
+                .web(WebApplicationType.SERVLET)
+                .run(args);
+    }
 
 }

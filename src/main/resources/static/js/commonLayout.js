@@ -3,11 +3,11 @@ function writeHander() {
     document.writeln("<div class=\'hander\'>");
     document.writeln("            <div class=\'logo\'>");
     document.writeln("                    <a href=\'#\'>");
-    document.writeln("                <img src=\'../../../static/img/logo-white.png\' alt=\'\' class=\'logo_img\'/>");
+    document.writeln("                <img src=\'/img/logo-white.png\' alt=\'\' class=\'logo_img\'/>");
     document.writeln("                    </a>");
     document.writeln("            </div>");
     document.writeln("                    <a href=\'#\'>");
-    document.writeln("                <img src=\'../../../static/img/tx.jpg\' alt=\'\' class=\'hander_per_icon\'/>");
+    document.writeln("                <img src=\'/img/tx.jpg\' alt=\'\' class=\'hander_per_icon\'/>");
     document.writeln("                <span class=\'hander_per_name\'>吴彦祖</span>");
     document.writeln("                    </a>");
     document.writeln("            <div class=\'account_controll\'>");

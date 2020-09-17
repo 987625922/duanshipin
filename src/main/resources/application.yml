@@ -5,7 +5,7 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: dev #使用application-dev配置
   freemarker: #freemarker引擎整合
     request-context-attribute: req  #req访问request
     suffix: .html  #后缀名

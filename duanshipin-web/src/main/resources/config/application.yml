@@ -1,4 +1,7 @@
-#server:
-#  port: 8080
-#  tomcat:
-#    uri-encoding: utf-8
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+spring:
+  profiles:
+    active: dev #使用application-dev配置

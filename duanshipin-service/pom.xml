@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>com.ljf</groupId>
-            <artifactId>duanshipin-service</artifactId>
+            <artifactId>duanshipin-dao</artifactId>
             <version>0.0.1</version>
         </dependency>
     </dependencies>

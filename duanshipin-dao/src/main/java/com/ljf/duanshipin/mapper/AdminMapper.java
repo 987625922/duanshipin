@@ -3,6 +3,8 @@ package com.ljf.duanshipin.mapper;
 import com.ljf.duanshipin.domain.Admin;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
+import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 /**
  * @Author: LL
@@ -20,5 +22,12 @@ public interface AdminMapper {
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(Admin admin);
 
-
+    /**
+     * 根据用户名获取admin
+     *
+     * @param userName
+     * @return
+     */
+    @Select("SELECT * FROM admin WHERE user_name = #{userName}")
+    Admin findByUser(@Param("userName") String userName);
 }

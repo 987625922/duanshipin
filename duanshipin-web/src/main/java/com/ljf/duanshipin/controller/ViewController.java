@@ -3,24 +3,28 @@ package com.ljf.duanshipin.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Author: LL
  * @Description:页面的控制器
  * @Date:Create：in 2020/8/14 10:50
  */
-@RequestMapping("/view")
+@RequestMapping("/views")
 @Controller
 @Slf4j
 public class ViewController {
+
     /**
      * 首页
      *
      * @return
      */
     @RequestMapping("/")
-    public String index() {
-        return "index";
+    public Object index() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("index");
+        return mav;
     }
 
     /**
@@ -29,15 +33,19 @@ public class ViewController {
      * @return
      */
     @RequestMapping("/login")
-    public String login() {
-        return "views/login";
+    public Object login() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/login");
+        return mav;
     }
 
     /**
      * 运营专辑管理
      */
     @RequestMapping("/content/albumManage")
-    public String albumManage(){
-        return "views/content/albumOperationVideo";
+    public Object albumManage(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/albumOperationVideo");
+        return mav;
     }
 }

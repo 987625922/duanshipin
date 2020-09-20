@@ -1,6 +1,6 @@
 package com.ljf.duanshipin.common.utils;
 
-//import org.apache.shiro.crypto.hash.SimpleHash;
+import org.apache.shiro.crypto.hash.SimpleHash;
 
 /**
  * @Author: LL
@@ -24,8 +24,7 @@ public class Md5Util {
         if (password.isEmpty()) {
             return null;
         }
-//        return new SimpleHash("md5", password,
-//                salt.getBytes(), HASH_ITERATIONS).toHex();
-        return null;
+        return new SimpleHash("md5", password,
+                salt.getBytes(), HASH_ITERATIONS).toHex();
     }
 }

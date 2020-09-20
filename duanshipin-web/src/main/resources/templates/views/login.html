@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>登录界面</title>
     <!-- import CSS -->
-    <link rel="stylesheet" href="/css/views/login.css" type="text/css">
-    <link rel="stylesheet" href="/css/project.css" type="text/css">
-    <script src="/js/login.js"></script>
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/login.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/project.css}" media="all">
+    <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/login.js}"></script>
 </head>
 <body>
 <div class="div-body">
@@ -45,7 +46,7 @@
                         </div>
                     </div>
                 </form>
-                <button class="btn-login" onclick="login('${apphost}')">
+                <button class="btn-login" onclick="login()">
                     登录
                 </button>
             </div>

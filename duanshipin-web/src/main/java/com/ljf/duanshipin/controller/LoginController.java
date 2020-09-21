@@ -1,16 +1,11 @@
 package com.ljf.duanshipin.controller;
 
-import com.ljf.duanshipin.common.utils.Md5Util;
+import com.ljf.duanshipin.common.dto.JsonResult;
+import com.ljf.duanshipin.service.Impl.ValidateCodeService;
 import lombok.extern.slf4j.Slf4j;
-//import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: LL
@@ -19,18 +14,28 @@ import javax.servlet.http.HttpSession;
  */
 @Slf4j
 @RestController
+@RequestMapping("/api")
 public class LoginController extends BaseController {
 
+    /**
+     * 登录验证码的service
+     */
+    @Autowired
+    private ValidateCodeService validateCodeService;
+
     @PostMapping("/login")
-    public Object login(@RequestParam(required = false) String username,
-                      @RequestParam(required = false) String password,
-                      @RequestParam(required = false) String verifyCode,
-                      @RequestParam(required = false) boolean rememberMe,
-                      @RequestParam(required = false) HttpServletRequest request) {
-        log.info(username+" "+password);
-        password = Md5Util.encrypt(username.toLowerCase(), password);
-        UsernamePasswordToken token = new UsernamePasswordToken(username, password, rememberMe);
+    public Object login(String account, String password,
+                        @RequestParam(required = false) String verifyCode,
+                        @RequestParam(required = false) boolean rememberMe) {
+        UsernamePasswordToken token = new UsernamePasswordToken(account, password,
+                rememberMe);
+
         super.login(token);
-        return "login test";
+        return JsonResult.buildSuccess();
+    }
+
+    @GetMapping("/captcha")
+    public Object captcha(){
+        return JsonResult.buildSuccess(validateCodeService.create());
     }
 }

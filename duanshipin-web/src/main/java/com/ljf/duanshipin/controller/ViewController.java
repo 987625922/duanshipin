@@ -2,6 +2,7 @@ package com.ljf.duanshipin.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -20,7 +21,7 @@ public class ViewController {
      *
      * @return
      */
-    @RequestMapping("/")
+    @RequestMapping({"/","/index"})
     public Object index() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
@@ -32,7 +33,7 @@ public class ViewController {
      *
      * @return
      */
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public Object login() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("views/login");

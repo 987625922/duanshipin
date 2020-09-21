@@ -2,6 +2,7 @@
 function inputGetFocuse() {
     document.getElementById("div-login-form-u1").style.border = 'solid 1px #44c9a8'
 }
+
 // 账号密码框失去了焦点
 function inputLoseFocuse() {
     document.getElementById("div-login-form-u1").style.border = 'solid 0px #44c9a8'
@@ -17,22 +18,34 @@ function vcodeLoseFocuse() {
 }
 
 function login() {
+    var accountDom = document.getElementById('inputAccount');
+    var passwordDom = document.getElementById('inputPassword');
+    var vCodeDom = document.getElementById('inputVcode');
+
     ajax({
-        url:"/login",
-        type:'post',
-        data:{
-            username:'Admin',
-            password:'123456'
+        url: "/api/login",
+        type: 'post',
+        data: {
+            account: accountDom.value,
+            password: passwordDom.value,
+            verifyCode: vCodeDom.value,
+            rememberMe:true
         },
-        dataType:'json',
-        timeout:10000,
-        contentType:"application/json",
-        success:function(data){
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data)
+            if (json.code === 200) {
+                self.location.href = '/views/index';
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000)
+            }
         },
         //异常处理
-        error:function(e){
+        error: function (e) {
             console.log(e);
         }
     })
-    // self.location.href = '/view/content/albumManage';
 }

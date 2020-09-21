@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/duanshipin/css/views/login.css}" media="all">
     <link rel="stylesheet" th:href="@{/duanshipin/css/project.css}" media="all">
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/login.js}"></script>
 </head>
 <body>
@@ -14,7 +15,7 @@
     <div class="div-vertical-center">
         <div class="div-login-back">
             <div class="div-logo">
-                <img src="/img/logo.png" class="img-logo">
+                <img src="/duanshipin/img/logo.png" class="img-logo">
             </div>
             <div class="div-login-u2">
                 <p>
@@ -23,17 +24,17 @@
             </div>
             <!-- 登录框 -->
             <div class="div-login-u3">
-                <form>
+                <form action="" method="post">
                     <div class="div-form">
                         <div class="div-login-form-u1" id="div-login-form-u1">
-                            <input type="text" id="input-form-login-accpw" onblur="inputLoseFocuse()"
+                            <input type="text" class="input-form-login-accpw" id="inputAccount" value="Admin" onblur="inputLoseFocuse()"
                                    onfocus="inputGetFocuse()" placeholder="请输入用户名">
-                            <input type="text" id="input-form-login-accpw" onblur="inputLoseFocuse()"
+                            <input type="password" class="input-form-login-accpw" id="inputPassword" value="123456" onblur="inputLoseFocuse()"
                                    onfocus="inputGetFocuse()" placeholder="请输入密码">
                         </div>
                         <!-- 验证码框 -->
                         <div class="div-login-form-u2">
-                            <input type="text" class="input-form-login-vcode" id="input-form-login-vcode"
+                            <input type="text" class="input-form-login-vcode" id="inputVcode"
                                    onblur="vcodeLoseFocuse()" onfocus="vcodeGetFocuse()" placeholder="请输入验证码">
                             <img class="img-vcode" src=""/>
                         </div>

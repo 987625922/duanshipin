@@ -31,12 +31,6 @@ public class ShiroConfig {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         // 设置 securityManager
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        // 登录的 url
-        shiroFilterFactoryBean.setLoginUrl(duanshipinProperties.getShiro().getLoginUrl());
-        // 登录成功后跳转的 url
-        shiroFilterFactoryBean.setSuccessUrl(duanshipinProperties.getShiro().getSuccessUrl());
-        // 未授权 url
-        shiroFilterFactoryBean.setUnauthorizedUrl(duanshipinProperties.getShiro().getUnauthorizedUrl());
 
         LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
         // 设置免认证 url
@@ -46,9 +40,15 @@ public class ShiroConfig {
         }
         // 配置退出过滤器，其中具体的退出代码 Shiro已经替我们实现了
         filterChainDefinitionMap.put(duanshipinProperties.getShiro().getLogoutUrl(), "logout");
-
-        // 除上以外所有 url都必须认证通过才可以访问，未通过认证自动访问 LoginUrl
+        ///<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最为下边 -->:这是一个坑呢，一不小心代码就不好使了;
+        //<!-- authc:所有url都必须认证通过才可以访问; anon:所有url都都可以匿名访问-->
         filterChainDefinitionMap.put("/**", "authc");
+        // 登录的 url
+        shiroFilterFactoryBean.setLoginUrl(duanshipinProperties.getShiro().getLoginUrl());
+        // 登录成功后跳转的 url
+        shiroFilterFactoryBean.setSuccessUrl(duanshipinProperties.getShiro().getSuccessUrl());
+        // 未授权 url
+        shiroFilterFactoryBean.setUnauthorizedUrl(duanshipinProperties.getShiro().getUnauthorizedUrl());
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;

@@ -57,7 +57,7 @@ body{
     left: 25px;
 }
 
-#input-form-login-accpw{
+.input-form-login-accpw{
     position: relative;
     width: 280px;
     height: 45px;

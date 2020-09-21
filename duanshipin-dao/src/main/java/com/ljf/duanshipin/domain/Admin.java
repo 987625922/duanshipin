@@ -20,6 +20,7 @@ public class Admin {
     private Integer status;
     private Date lastUpdateTime;
     private Date createTime;
+    private String account;
     /**
      * 上一次操作该管理员的管理员id
      */

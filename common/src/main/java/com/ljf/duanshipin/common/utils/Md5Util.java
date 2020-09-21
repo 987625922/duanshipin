@@ -24,7 +24,6 @@ public class Md5Util {
         if (password.isEmpty()) {
             return null;
         }
-        return new SimpleHash("md5", password,
-                salt.getBytes(), HASH_ITERATIONS).toHex();
+        return new SimpleHash("md5", password, null, HASH_ITERATIONS).toHex();
     }
 }

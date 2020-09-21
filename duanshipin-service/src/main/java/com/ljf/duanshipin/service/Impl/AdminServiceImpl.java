@@ -1,6 +1,5 @@
 package com.ljf.duanshipin.service.Impl;
 
-import com.ljf.duanshipin.common.utils.Md5Util;
 import com.ljf.duanshipin.domain.Admin;
 import com.ljf.duanshipin.mapper.AdminMapper;
 import com.ljf.duanshipin.service.AdminService;
@@ -24,7 +23,12 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Object findByUsername(String userName) {
-        return adminMapper.findByUser(userName);
+    public Object findUsernameByUser(String userName) {
+        return adminMapper.findUsernameByUser(userName);
+    }
+
+    @Override
+    public Object findAccountByUser(String account) {
+        return adminMapper.findAccountByUser(account);
     }
 }

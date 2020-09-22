@@ -3,6 +3,7 @@ package com.ljf.duanshipin.domain;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -12,7 +13,10 @@ import java.util.Date;
  */
 @Accessors(chain = true)
 @Data
-public class Admin {
+public class Admin implements Serializable {
+    
+    private static final long serialVersionUID = -6894575627133924440L;
+
     private Long id;
     private String userName;
     private String realName;

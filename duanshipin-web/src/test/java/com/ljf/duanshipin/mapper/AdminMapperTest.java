@@ -34,4 +34,10 @@ public class AdminMapperTest {
                 .setRoleId(1L).setRealName("");
         adminMapper.insert(admin);
     }
+
+    @Test
+    public void findByAccount(){
+        Admin admin = adminMapper.findAdminByAccount("Admin");
+        log.info(admin.toString());
+    }
 }

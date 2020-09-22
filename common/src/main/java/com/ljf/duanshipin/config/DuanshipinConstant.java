@@ -2,7 +2,7 @@ package com.ljf.duanshipin.config;
 
 /**
  * @Author: LL
- * @Description:
+ * @Description: 此项目的常量
  * @Date:Create：in 2020/9/21 18:09
  */
 public class DuanshipinConstant {

@@ -28,8 +28,11 @@ public interface AdminMapper {
      * @param userName
      * @return
      */
-    @Select("SELECT * FROM admin WHERE user_name = #{userName}")
-    Admin findUsernameByUser(@Param("userName") String userName);
+    @Select("SELECT id,user_name as userName,real_name as realName" +
+            ",phone,status,last_update_time as lastUpdateTime,create_time as " +
+            "createTime,account,last_control_admin_id as lastControlAdminId" +
+            ",role_id as roleId,password FROM admin WHERE user_name = #{userName}")
+    Admin findAdminByUsername(@Param("userName") String userName);
 
     /**
      * 根据账号获取admin
@@ -38,6 +41,5 @@ public interface AdminMapper {
      * @return
      */
     @Select("SELECT * FROM admin WHERE account = #{account}")
-    Admin findAccountByUser(@Param("account") String account);
-
+    Admin findAdminByAccount(@Param("account") String account);
 }

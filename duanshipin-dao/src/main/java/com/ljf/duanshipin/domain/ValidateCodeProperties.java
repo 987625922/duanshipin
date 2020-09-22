@@ -2,13 +2,17 @@ package com.ljf.duanshipin.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * @Description: 验证码配置类
  * @author LL
  */
 @Data
-public class ValidateCodeProperties {
+public class ValidateCodeProperties implements Serializable {
 
+    private static final long serialVersionUID = -7594946283601466691L;
+    
     /**
      * 验证码有效时间，单位秒
      */

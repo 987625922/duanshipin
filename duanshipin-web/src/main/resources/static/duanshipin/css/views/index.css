@@ -20,6 +20,7 @@
     float: left;
     margin-top: 20px;
     border: 1px solid #EBEBEB;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 .person_bar{
     margin-top: 10px;
@@ -61,6 +62,7 @@
     margin-top: 20px;
     margin-left: 10px;
     border: 1px solid #EBEBEB;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
 }
 .tips_bar{
     margin-top: 10px;

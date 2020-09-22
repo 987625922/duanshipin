@@ -3,7 +3,10 @@ package com.ljf.duanshipin.config;
 import lombok.Data;
 
 /**
- * @author MrBird
+ * @Author: 98762
+ * @Date: 2020/9/20 15:17
+ * @Description: 此项目的shiro的Properties
+ * @备注： 1.
  */
 @Data
 public class ShiroProperties {

@@ -8,7 +8,7 @@ import org.springframework.context.annotation.PropertySource;
 /**
  * @Author: 98762
  * @Date: 2020/9/20 15:17
- * @Description:
+ * @Description: 此项目的Properties
  * @备注： 1.
  */
 @Data
@@ -18,6 +18,5 @@ import org.springframework.context.annotation.PropertySource;
 public class DuanshipinProperties {
 
     private ShiroProperties shiro = new ShiroProperties();
-
 
 }

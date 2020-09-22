@@ -9,6 +9,6 @@ import com.ljf.duanshipin.domain.Admin;
  */
 public interface AdminService {
     void addAdmin(Admin admin);
-    Object findUsernameByUser(String userName);
-    Object findAccountByUser(String account);
+    Object findAdminByUsername(String userName);
+    Object findAdminByAccount(String account);
 }

@@ -24,18 +24,18 @@ public class LoginController extends BaseController {
     private ValidateCodeService validateCodeService;
 
     @PostMapping("/login")
-    public Object login(String account, String password,
-                        @RequestParam(required = false) String verifyCode,
+    public Object login(String account, String password, String verifyCode,
+                        String verifyKey,
                         @RequestParam(required = false) boolean rememberMe) {
+        validateCodeService.check(verifyKey, verifyCode);
         UsernamePasswordToken token = new UsernamePasswordToken(account, password,
                 rememberMe);
-
         super.login(token);
         return JsonResult.buildSuccess();
     }
 
     @GetMapping("/captcha")
-    public Object captcha(){
+    public Object captcha() {
         return JsonResult.buildSuccess(validateCodeService.create());
     }
 }

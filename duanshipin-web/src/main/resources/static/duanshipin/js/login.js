@@ -13,11 +13,11 @@ function inputLoseFocuse() {
 
 // 验证码框获取到焦点
 function vcodeGetFocuse() {
-    document.getElementById("input-form-login-vcode").style.border = 'solid 1px #999'
+    document.getElementById("inputVcode").style.border = 'solid 1px #999'
 }
 
 function vcodeLoseFocuse() {
-    document.getElementById("input-form-login-vcode").style.border = 'solid 1px #d9d9d9'
+    document.getElementById("inputVcode").style.border = 'solid 1px #d9d9d9'
 }
 function captcha() {
     var imgCaptcha = document.getElementById('img-captcha')

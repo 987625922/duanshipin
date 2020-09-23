@@ -7,7 +7,7 @@ function writeHander() {
     document.writeln("                    </a>");
     document.writeln("            </div>");
     document.writeln("                    <a href=\'#\'>");
-    document.writeln("                <img src=\'/img/tx.jpg\' alt=\'\' class=\'hander_per_icon\'/>");
+    document.writeln("                <img src=\'/duanshipin/img/tx.jpg\' alt=\'\' class=\'hander_per_icon\'/>");
     document.writeln("                <span class=\'hander_per_name\'>吴彦祖</span>");
     document.writeln("                    </a>");
     document.writeln("            <div class=\'account_controll\'>");

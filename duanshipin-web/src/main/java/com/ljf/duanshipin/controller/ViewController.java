@@ -1,6 +1,10 @@
 package com.ljf.duanshipin.controller;
 
+import com.ljf.duanshipin.domain.Admin;
+import com.ljf.duanshipin.mapper.RoleMapper;
+import com.ljf.duanshipin.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +18,10 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/views")
 @Controller
 @Slf4j
-public class ViewController {
+public class ViewController extends BaseController {
+
+    @Autowired
+    private RoleService roleService;
 
     /**
      * 首页
@@ -23,8 +30,12 @@ public class ViewController {
      */
     @RequestMapping({"/","/index"})
     public Object index() {
+        Admin admin = getCurrentAdmin();
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
+        mav.addObject("userName",admin.getUserName());
+        mav.addObject("role",roleService.findById(admin.getRoleId()).getDescription());
+        
         return mav;
     }
 

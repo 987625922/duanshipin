@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -16,8 +16,8 @@
 <script type="text/javascript">
     writeHander()
 </script>
-<div class="content" style="padding-left: 0px">
-    <div class="inner_c">
+<div class="content">
+    <div class="main_content">
         <div class="idnex-title">
             <span>欢迎进入视频后台管理系统</span>
         </div>
@@ -29,8 +29,8 @@
                 <img src="/duanshipin/img/logo.png" alt="" class="content_img">
                 <div class="content_ul_div">
                     <ul>
-                        <li><span>姓名：</span>吴彦祖</span></li>
-                        <li><span>部门：</span><span>产品部</span></li>
+                        <li><span>姓名：</span><span th:text="${userName}"></span></li>
+                        <li><span>部门：</span><span th:text="${role}">产品部</span></li>
                         <li><span>最近登录：</span><span>2018-09-21 13:59</span></li>
                         <li><span>登录次数：</span><span>555次</span></li>
                     </ul>
@@ -59,6 +59,9 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        writeLeft()
+    </script>
 </div>
 </body>
 </html>

@@ -68,7 +68,7 @@ public class RoleMapperTest {
 
     @Test
     public void testRelationRolePermission(){
-        roleMapper.addPermissionToRoleBaseOnRoleIdAndPermissionId(4L,1L);
+        roleMapper.addPermissionToRoleBaseOnRoleIdAndPermissionId(7L,2L);
     }
 
 }

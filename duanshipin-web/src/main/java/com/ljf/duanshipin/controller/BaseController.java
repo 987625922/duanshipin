@@ -15,7 +15,7 @@ public class BaseController {
         return SecurityUtils.getSubject();
     }
 
-    protected Admin getCurrentUser() {
+    protected Admin getCurrentAdmin() {
         return (Admin) getSubject().getPrincipal();
     }
 

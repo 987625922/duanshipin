@@ -29,7 +29,7 @@ public class AdminServiceTest {
     public void insert() {
 //        log.info("11");
         Admin admin = new Admin();
-        admin.setUserName("Admin").setStatus(1).setAccount("Admin1")
+        admin.setUserName("Admin").setStatus(1).setAccount("Admin")
                 .setCreateTime(new Date()).setLastControlAdminId(1L)
                 .setLastUpdateTime(new Date()).setPassword(Md5Util.encrypt("Admin","123456"))
                 .setRoleId(1L).setRealName("");

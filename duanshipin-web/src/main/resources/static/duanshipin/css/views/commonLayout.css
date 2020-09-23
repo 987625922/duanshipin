@@ -61,35 +61,35 @@
 }
 
 .left_item_one i {
-    background: url('/img/content_n.png') right top;
+    background: url('/duanshipin/img/video_content_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_two i {
-    background: url('/img/per_n.png') right top;
+    background: url('/duanshipin/img/per_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_three i {
-    background: url('/img/ev_n.png') right top;
+    background: url('/duanshipin/img/ev_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_four i {
-    background: url('/img/app_n.png') right top;
+    background: url('/duanshipin/img/app_n.png') right top;
     background-size: 25px 25px;
 }
 
 .left_item_five i {
-    background: url('/img/customer_service_n.png') right top;
+    background: url('/duanshipin/img/customer_service_n.png') right top;
     background-size: 25px 25px;
 }
 .left_item_six i {
-    background: url('/img/sys_n.png') right top;
+    background: url('/duanshipin/img/sys_n.png') right top;
     background-size: 25px 25px;
 }
 .left_item_seven i {
-    background: url('/img/sys_n.png') right top;
+    background: url('/duanshipin/img/sys_n.png') right top;
     background-size: 25px 25px;
 }
 
@@ -163,7 +163,6 @@
 .main_content {
     margin-top: 5px;
     border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 10px;
     float: left;
     width: 100%;
     background: #fff;

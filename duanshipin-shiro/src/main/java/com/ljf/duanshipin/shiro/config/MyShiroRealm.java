@@ -2,9 +2,14 @@ package com.ljf.duanshipin.shiro.config;
 
 import com.ljf.duanshipin.common.utils.Md5Util;
 import com.ljf.duanshipin.domain.Admin;
+import com.ljf.duanshipin.domain.Permission;
+import com.ljf.duanshipin.domain.Role;
+import com.ljf.duanshipin.mapper.PermissionMapper;
+import com.ljf.duanshipin.mapper.RoleMapper;
 import com.ljf.duanshipin.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -13,7 +18,9 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @Author: LL
@@ -25,14 +32,22 @@ public class MyShiroRealm extends AuthorizingRealm {
 
     @Autowired
     private AdminService adminService;
+    @Autowired
+    private RoleMapper roleMapper;
+    @Autowired
+    private PermissionMapper permissionMapper;
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        System.out.println("权限配置-->MyShiroRealm.doGetAuthorizationInfo()");
+        Admin admin = (Admin) SecurityUtils.getSubject().getPrincipal();
+
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        Role role = roleMapper.findById(admin.getRoleId());
+        List<Permission> permissionList = permissionMapper.findByPermissionListByRoleId(role.getId());
         Set<String> roleSet = new HashSet<>();
+        roleSet.add(role.getRole());
         authorizationInfo.setRoles(roleSet);
-        Set<String> permissionSet = new HashSet<>();
+        Set<String> permissionSet = permissionList.stream().map(Permission::getUrl).collect(Collectors.toSet());
         authorizationInfo.setStringPermissions(permissionSet);
         return authorizationInfo;
     }

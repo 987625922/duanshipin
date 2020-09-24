@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Update;
  */
 public interface LoginLogMapper {
 
-    @Insert("INSERT INTO addmin_id,create_time,last_time,login_mun VALUES(#{adminId}" +
+    @Insert("INSERT INTO login_log(admin_id,create_time,last_time,login_mun) VALUES(#{adminId}" +
             ",#{createTime},#{lastTime},#{loginMun})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     void insert(LoginLog loginLog);
@@ -21,6 +21,5 @@ public interface LoginLogMapper {
     @Select("SELECT * FROM login_log WHERE admin_id = #{adminId}")
     LoginLog findByAdminId(Long adminId);
 
-    @Update("UPDATE login_log ")
-    void update(LoginLog loginLog);
+    void updateByAdminId(LoginLog loginLog);
 }

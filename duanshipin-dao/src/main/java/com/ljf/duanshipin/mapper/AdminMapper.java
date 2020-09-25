@@ -1,10 +1,7 @@
 package com.ljf.duanshipin.mapper;
 
 import com.ljf.duanshipin.domain.Admin;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
 
 /**
  * @Author: LL

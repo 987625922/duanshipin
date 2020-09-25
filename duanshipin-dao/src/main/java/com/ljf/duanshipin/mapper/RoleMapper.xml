@@ -15,23 +15,26 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        name,is_catalog,url,the_last_level_catalog_id,
-            create_time,update_time,last_control_admin_id
+        role,munber,remarks,create_time,last_time,
+            last_control_admin_id,is_available,description
     </sql>
 
-    <insert id="insert" parameterType="com.ljf.duanshipin.domain.Permission">
+    <insert id="insert" parameterType="com.ljf.duanshipin.domain.Role">
     INSERT INTO role(role,munber,remarks,create_time,last_time,
             last_control_admin_id,is_available,description) VALUES(
             #{role},#{munber},#{remarks},#{createTime},#{lastTime},
             #{lastControlAdminId},#{isAvailable},#{description})
     </insert>
 
-    <select id="findByPermissionListByRoleId" resultMap="BaseResultMap"
+    <select id="findById" resultMap="BaseResultMap"
             parameterType="java.lang.Long">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM permission LEFT JOIN role_permission ON
-        role_permission.permission_id = permission.id AND
-        role_permission.role_id = #{roleId}
+        FROM role WHERE id = #{id}
     </select>
+
+    <insert id="addPermissionToRoleBaseOnRoleIdAndPermissionId">
+    INSERT INTO role_permission(role_id,permission_id)
+            VALUES(#{roleId},#{permissionId})
+    </insert>
 </mapper>

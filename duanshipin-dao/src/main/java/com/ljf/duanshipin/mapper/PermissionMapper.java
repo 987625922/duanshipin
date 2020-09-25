@@ -1,8 +1,6 @@
 package com.ljf.duanshipin.mapper;
 
 import com.ljf.duanshipin.domain.Permission;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

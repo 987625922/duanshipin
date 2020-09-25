@@ -16,10 +16,6 @@ public interface RoleMapper {
      *
      * @param role
      */
-    @Insert("INSERT INTO role(role,munber,remarks,create_time,last_time," +
-            "last_control_admin_id,is_available,description) VALUES(" +
-            "#{role},#{munber},#{remarks},#{createTime},#{lastTime}," +
-            "#{lastControlAdminId},#{isAvailable},#{description})")
     void insert(Role role);
 
     /**
@@ -28,9 +24,6 @@ public interface RoleMapper {
      * @param id
      * @return
      */
-    @Select("SELECT id,role,munber,remarks,create_time as createTime" +
-            ",last_time as lastTime,last_control_admin_id as lastControlAdminId" +
-            ",is_available as isAvailable,description FROM role WHERE id = #{id}")
     Role findById(Long id);
 
     /**
@@ -39,7 +32,5 @@ public interface RoleMapper {
      * @param roleId
      * @param permissionId
      */
-    @Insert("INSERT INTO role_permission(role_id,permission_id)" +
-            " VALUES(#{roleId},#{permissionId})")
     void addPermissionToRoleBaseOnRoleIdAndPermissionId(Long roleId, Long permissionId);
 }

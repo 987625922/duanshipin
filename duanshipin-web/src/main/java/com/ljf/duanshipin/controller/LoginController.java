@@ -1,7 +1,9 @@
 package com.ljf.duanshipin.controller;
 
 import com.ljf.duanshipin.common.dto.JsonResult;
+import com.ljf.duanshipin.domain.LoginLog;
 import com.ljf.duanshipin.service.Impl.ValidateCodeService;
+import com.ljf.duanshipin.service.LoginLogService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,8 @@ public class LoginController extends BaseController {
      */
     @Autowired
     private ValidateCodeService validateCodeService;
+    @Autowired
+    private LoginLogService loginLogService;
 
     @PostMapping("/login")
     public Object login(String account, String password, String verifyCode,
@@ -31,6 +35,7 @@ public class LoginController extends BaseController {
         UsernamePasswordToken token = new UsernamePasswordToken(account, password,
                 rememberMe);
         super.login(token);
+        loginLogService.updateOrInsertByAdminId(getCurrentAdmin().getId());
         return JsonResult.buildSuccess();
     }
 

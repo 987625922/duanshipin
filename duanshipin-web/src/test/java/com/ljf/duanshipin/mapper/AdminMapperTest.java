@@ -31,13 +31,13 @@ public class AdminMapperTest {
         admin.setUserName("ljf@qq.com").setStatus(1)
                 .setCreateTime(new Date()).setLastControlAdminId(1L)
                 .setLastUpdateTime(new Date()).setPassword("123456")
-                .setRoleId(1L).setRealName("");
+                .setRoleId(1L).setRealName("").setAccount("admin2");
         adminMapper.insert(admin);
     }
 
     @Test
     public void findByAccount(){
-        Admin admin = adminMapper.findAdminByAccount("Admin");
+        Admin admin = adminMapper.findAdminByAccount("admin2");
         log.info(admin.toString());
     }
 }

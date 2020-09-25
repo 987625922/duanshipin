@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ljf.duanshipin.mapper.LoginLogMapper">
+    <resultMap id="BaseResultMap" type="com.ljf.duanshipin.domain.LoginLog">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="admin_id" property="adminId" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="last_time" property="lastTime" javaType="DATE"/>
+        <result column="login_mun" property="loginMun" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id, admin_id, create_time, last_time, login_mun
+    </sql>
+
+    <insert id="insert" parameterType="com.ljf.duanshipin.domain.LoginLog">
+    INSERT INTO login_log(admin_id,create_time,last_time,login_mun)
+    VALUES (#{adminId},#{createTime},#{lastTime},#{loginMun})
+    </insert>
+
+    <select id="findByAdminId" resultMap="BaseResultMap"
+            parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from login_log
+        where admin_id = #{adminId}
+    </select>
+
+    <update id="updateByAdminId"
+            parameterType="com.ljf.duanshipin.domain.LoginLog">
+        update login_log
+        <set>
+            <if test="lastTime != null">
+                last_time = #{lastTime},
+            </if>
+            <if test="loginMun != null">
+                login_mun = #{loginMun},
+            </if>
+        </set>
+        where admin_id = #{adminId}
+    </update>
+
+</mapper>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ljf.duanshipin.mapper.PermissionMapper">
+
+    <resultMap id="BaseResultMap" type="com.ljf.duanshipin.domain.Permission">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="is_catalog" property="isCatalog" jdbcType="INTEGER"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+        <result column="the_last_level_catalog_id" property="theLastLevelCatalogId"
+                jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="update_time" property="updateTime" javaType="DATE"/>
+        <result column="last_control_admin_id" property="lastControlAdminId" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        name,is_catalog,url,the_last_level_catalog_id,
+            create_time,update_time,last_control_admin_id
+    </sql>
+
+    <insert id="insert" parameterType="com.ljf.duanshipin.domain.Permission">
+    INSERT INTO permission(name,is_catalog,url,the_last_level_catalog_id,
+            create_time,update_time,last_control_admin_id)
+    VALUES(#{name},#{isCatalog},#{url},#{theLastLevelCatalogId},#{createTime},
+            #{updateTime},#{lastControlAdminId})
+    </insert>
+
+    <select id="findByPermissionListByRoleId" resultMap="BaseResultMap"
+            parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM permission LEFT JOIN role_permission ON
+        role_permission.permission_id = permission.id AND
+        role_permission.role_id = #{roleId}
+    </select>
+</mapper>

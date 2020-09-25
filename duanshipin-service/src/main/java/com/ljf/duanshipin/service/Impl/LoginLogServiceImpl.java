@@ -20,11 +20,12 @@ public class LoginLogServiceImpl implements LoginLogService {
 
     @Override
     public LoginLog findByAdminId(Long adminId) {
-        return loginLogMapper.findByAdminId(adminId);
+//        return loginLogMapper.findByAdminId(adminId);
+        return null;
     }
 
     @Override
     public void addLoginLog(LoginLog loginLog) {
-        loginLogMapper.insert(loginLog);
+//        loginLogMapper.insert(loginLog);
     }
 }

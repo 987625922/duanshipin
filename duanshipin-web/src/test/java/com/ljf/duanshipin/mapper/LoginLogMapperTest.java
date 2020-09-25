@@ -43,6 +43,7 @@ public class LoginLogMapperTest {
         LoginLog loginLog = new LoginLog();
         loginLog.setAdminId(9L);
         loginLog.setLastTime(new Date());
+//        loginLog.setLoginMun(1L);
         loginLogMapper.updateByAdminId(loginLog);
     }
 }

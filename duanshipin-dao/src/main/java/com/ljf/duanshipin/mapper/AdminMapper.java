@@ -16,10 +16,6 @@ public interface AdminMapper {
     /**
      * 添加user
      */
-    @Insert("INSERT INTO admin(user_name,real_name,phone,status,create_time,last_update_time" +
-            ",role_id,last_control_admin_id,password,account) VALUES(#{userName},#{realName},#{phone},#{status},#{createTime}" +
-            ",#{lastUpdateTime},#{roleId},#{lastControlAdminId},#{password},#{account})")
-    @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
     int insert(Admin admin);
 
     /**
@@ -28,10 +24,6 @@ public interface AdminMapper {
      * @param userName
      * @return
      */
-    @Select("SELECT id,user_name as userName,real_name as realName" +
-            ",phone,status,last_update_time as lastUpdateTime,create_time as " +
-            "createTime,account,last_control_admin_id as lastControlAdminId" +
-            ",role_id as roleId,password FROM admin WHERE user_name = #{userName}")
     Admin findAdminByUsername(@Param("userName") String userName);
 
     /**
@@ -40,6 +32,5 @@ public interface AdminMapper {
      * @param account
      * @return
      */
-    @Select("SELECT * FROM admin WHERE account = #{account}")
     Admin findAdminByAccount(@Param("account") String account);
 }

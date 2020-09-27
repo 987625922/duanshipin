@@ -84,10 +84,12 @@
     background: url('/duanshipin/img/customer_service_n.png') right top;
     background-size: 25px 25px;
 }
+
 .left_item_six i {
     background: url('/duanshipin/img/sys_n.png') right top;
     background-size: 25px 25px;
 }
+
 .left_item_seven i {
     background: url('/duanshipin/img/sys_n.png') right top;
     background-size: 25px 25px;
@@ -280,7 +282,6 @@
     border-color: #44c9a8;
     padding: 12px 20px;
 }
-
 .dialog-form-btn-cancel {
     margin-left: 50px;
     padding: 12px 20px;

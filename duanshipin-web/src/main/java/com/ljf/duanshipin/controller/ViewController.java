@@ -2,6 +2,7 @@ package com.ljf.duanshipin.controller;
 
 import com.ljf.duanshipin.domain.Admin;
 import com.ljf.duanshipin.mapper.RoleMapper;
+import com.ljf.duanshipin.service.LoginLogService;
 import com.ljf.duanshipin.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,8 @@ public class ViewController extends BaseController {
 
     @Autowired
     private RoleService roleService;
-
+    @Autowired
+    private LoginLogService loginLogService;
     /**
      * 首页
      *
@@ -35,7 +37,7 @@ public class ViewController extends BaseController {
         mav.setViewName("index");
         mav.addObject("userName",admin.getUserName());
         mav.addObject("role",roleService.findById(admin.getRoleId()).getDescription());
-        
+        mav.addObject("loginMun",loginLogService.findByAdminId(admin.getId()).getLoginMun());
         return mav;
     }
 

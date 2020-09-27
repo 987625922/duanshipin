@@ -17,7 +17,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    user_name,real_name,phone,status,create_time,last_update_time
+    id,user_name,real_name,phone,status,create_time,last_update_time
             ,role_id,last_control_admin_id,password,account
     </sql>
 
@@ -41,4 +41,41 @@
         <include refid="Base_Column_List"/>
         FROM admin WHERE account = #{account}
     </select>
+
+    <update id="updateById" parameterType="com.ljf.duanshipin.domain.Admin">
+        UPDATE admin
+        <set>
+            <if test="userName != null">
+                user_name = #{userName}
+            </if>
+            <if test="realName != null">
+                real_name = #{realName}
+            </if>
+            <if test="phone != null">
+                phone = #{phone}
+            </if>
+            <if test="status != null">
+                status = #{status}
+            </if>
+            <if test="lastUpdateTime != null">
+                last_update_time = #{lastUpdateTime}
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime}
+            </if>
+            <if test="account != null">
+                account = #{account}
+            </if>
+            <if test="lastControlAdminId != null">
+                last_control_admin_id = #{lastControlAdminId}
+            </if>
+            <if test="roleId != null">
+                role_id = #{roleId}
+            </if>
+            <if test="password != null">
+                password = #{password}
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
 </mapper>

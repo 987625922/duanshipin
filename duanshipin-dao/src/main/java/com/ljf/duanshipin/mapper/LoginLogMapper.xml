@@ -10,7 +10,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-    id, admin_id, create_time, last_time, login_mun
+    id, admin_id, create_time, last_last_time,last_time, login_mun
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.LoginLog">
@@ -32,6 +32,9 @@
         <set>
             <if test="lastTime != null">
                 last_time = #{lastTime},
+            </if>
+            <if test="lastLastTime != null">
+                last_last_time = #{lastLastTime},
             </if>
             <if test="loginMun != null">
                 login_mun = #{loginMun},

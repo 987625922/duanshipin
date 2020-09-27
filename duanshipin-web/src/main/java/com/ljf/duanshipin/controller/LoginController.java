@@ -1,7 +1,6 @@
 package com.ljf.duanshipin.controller;
 
 import com.ljf.duanshipin.common.dto.JsonResult;
-import com.ljf.duanshipin.domain.LoginLog;
 import com.ljf.duanshipin.service.Impl.ValidateCodeService;
 import com.ljf.duanshipin.service.LoginLogService;
 import lombok.extern.slf4j.Slf4j;
@@ -42,5 +41,11 @@ public class LoginController extends BaseController {
     @GetMapping("/captcha")
     public Object captcha() {
         return JsonResult.buildSuccess(validateCodeService.create());
+    }
+
+    @GetMapping("/changePassword")
+    public Object changePassword() {
+
+        return JsonResult.buildSuccess();
     }
 }

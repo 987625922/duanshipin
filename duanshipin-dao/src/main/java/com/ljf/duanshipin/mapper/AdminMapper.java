@@ -1,7 +1,6 @@
 package com.ljf.duanshipin.mapper;
 
 import com.ljf.duanshipin.domain.Admin;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * @Author: LL
@@ -21,7 +20,7 @@ public interface AdminMapper {
      * @param userName
      * @return
      */
-    Admin findAdminByUsername(@Param("userName") String userName);
+    Admin findAdminByUsername(String userName);
 
     /**
      * 根据账号获取admin
@@ -29,5 +28,7 @@ public interface AdminMapper {
      * @param account
      * @return
      */
-    Admin findAdminByAccount(@Param("account") String account);
+    Admin findAdminByAccount(String account);
+
+    void updateById(Admin admin);
 }

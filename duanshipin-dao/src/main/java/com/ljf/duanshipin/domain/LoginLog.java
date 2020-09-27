@@ -18,5 +18,6 @@ public class LoginLog {
     private Long adminId;
     private Date createTime;
     private Date lastTime;
+    private Date lastLastTime;
     private Long loginMun;
 }

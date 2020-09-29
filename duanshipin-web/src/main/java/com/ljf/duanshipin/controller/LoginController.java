@@ -42,10 +42,4 @@ public class LoginController extends BaseController {
     public Object captcha() {
         return JsonResult.buildSuccess(validateCodeService.create());
     }
-
-    @GetMapping("/changePassword")
-    public Object changePassword() {
-
-        return JsonResult.buildSuccess();
-    }
 }

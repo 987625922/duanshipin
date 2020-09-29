@@ -59,12 +59,42 @@ public class ViewController extends BaseController {
     }
 
     /**
-     * 运营专辑管理
+     *内容 -》 专辑管理
      */
-    @RequestMapping("/content/albumManage")
+    @RequestMapping("/content/albumOperationVideo")
     public Object albumManage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("views/content/albumOperationVideo");
+        return mav;
+    }
+
+    /**
+     * 内容 -》 影视管理
+     */
+    @RequestMapping("/content/videoOperation")
+    public Object videoOperation(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/videoOperation");
+        return mav;
+    }
+
+    /**
+     * 内容 -》 标签管理
+     */
+    @RequestMapping("/content/tags")
+    public Object tags(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/tags");
+        return mav;
+    }
+
+    /**
+     *内容 -》 专辑管理 -》 用户视频池
+     */
+    @RequestMapping("/content/albumUserVideo")
+    public Object albumUserVideo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/albumUserVideo");
         return mav;
     }
 }

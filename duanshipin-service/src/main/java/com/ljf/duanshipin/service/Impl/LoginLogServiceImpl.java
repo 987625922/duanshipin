@@ -40,7 +40,8 @@ public class LoginLogServiceImpl implements LoginLogService {
         Date date = new Date();
         LoginLog loginLog = findByAdminId(adminId);
         if (loginLog != null) {
-            loginLog.setLastTime(date)
+            loginLog.setLastLastTime(loginLog.getLastTime())
+                    .setLastTime(date)
                     .setAdminId(adminId)
                     .setLoginMun(loginLog.getLoginMun() + 1);
             updateByAdminId(loginLog);
@@ -49,6 +50,7 @@ public class LoginLogServiceImpl implements LoginLogService {
             loginLog.setCreateTime(date)
                     .setAdminId(adminId)
                     .setLastTime(date)
+                    .setLastLastTime(date)
                     .setLoginMun(0L);
             addLoginLog(loginLog);
         }

@@ -1,7 +1,8 @@
 package com.ljf.duanshipin.controller;
 
 import com.ljf.duanshipin.domain.Admin;
-import com.ljf.duanshipin.mapper.RoleMapper;
+import com.ljf.duanshipin.domain.LoginLog;
+import com.ljf.duanshipin.domain.Role;
 import com.ljf.duanshipin.service.LoginLogService;
 import com.ljf.duanshipin.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
@@ -25,19 +26,23 @@ public class ViewController extends BaseController {
     private RoleService roleService;
     @Autowired
     private LoginLogService loginLogService;
+
     /**
      * 首页
      *
      * @return
      */
-    @RequestMapping({"/","/index"})
+    @RequestMapping({"/", "/index"})
     public Object index() {
         Admin admin = getCurrentAdmin();
+        Role role = roleService.findById(admin.getRoleId());
+        LoginLog loginLog = loginLogService.findByAdminId(admin.getId());
         ModelAndView mav = new ModelAndView();
         mav.setViewName("index");
-        mav.addObject("userName",admin.getUserName());
-        mav.addObject("role",roleService.findById(admin.getRoleId()).getDescription());
-        mav.addObject("loginMun",loginLogService.findByAdminId(admin.getId()).getLoginMun());
+        mav.addObject("userName", admin.getUserName());
+        mav.addObject("role", role.getDescription());
+        mav.addObject("lastLoginTime", loginLog.getLastLastTime());
+        mav.addObject("loginMun", loginLog.getLoginMun());
         return mav;
     }
 
@@ -57,7 +62,7 @@ public class ViewController extends BaseController {
      * 运营专辑管理
      */
     @RequestMapping("/content/albumManage")
-    public Object albumManage(){
+    public Object albumManage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("views/content/albumOperationVideo");
         return mav;

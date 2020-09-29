@@ -30,7 +30,7 @@ public class LoginController extends BaseController {
     public Object login(String account, String password, String verifyCode,
                         String verifyKey,
                         @RequestParam(required = false) boolean rememberMe) {
-        validateCodeService.check(verifyKey, verifyCode);
+//        validateCodeService.check(verifyKey, verifyCode);
         UsernamePasswordToken token = new UsernamePasswordToken(account, password,
                 rememberMe);
         super.login(token);

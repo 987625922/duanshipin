@@ -30,5 +30,9 @@ public interface AdminMapper {
      */
     Admin findAdminByAccount(String account);
 
+    /**
+     * 更新
+     * @param admin
+     */
     void updateById(Admin admin);
 }

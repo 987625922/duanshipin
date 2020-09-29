@@ -1,5 +1,6 @@
 package com.ljf.duanshipin.service.Impl;
 
+import com.ljf.duanshipin.common.utils.Md5Util;
 import com.ljf.duanshipin.domain.Admin;
 import com.ljf.duanshipin.mapper.AdminMapper;
 import com.ljf.duanshipin.service.AdminService;
@@ -34,4 +35,27 @@ public class AdminServiceImpl implements AdminService {
     public Object findAdminByAccount(String account) {
         return adminMapper.findAdminByAccount(account);
     }
+
+    @Override
+    public void updateById(Admin admin) {
+        adminMapper.updateById(admin);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void updatePassword(Long id, String account, String password) {
+        Admin admin = new Admin();
+        admin.setId(id).setPassword(Md5Util.encrypt(account, password));
+        adminMapper.updateById(admin);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void update(Admin admin) {
+        admin.setAccount(null);
+        admin.setPassword(null);
+        adminMapper.updateById(admin);
+    }
+
+
 }

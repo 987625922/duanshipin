@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns:th="http://www.thymeleaf.org">
 <!-- 发布视频 -->
 
 <head>
     <meta charset="UTF-8" />
     <title>视频管理平台</title>
     <!-- import CSS -->
-    <link rel="stylesheet" href="../../../static/duanshipin/css/project.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/commonLayout.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/publishVideo.css" type="text/css" />
+    <link rel="stylesheet" th:href="@{/duanshipin/css/project.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/commonLayout.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/publishVideo.css}" media="all">
     <!-- hander  -->
-    <script src="../../../static/duanshipin/js/commonLayout.js" type="text/javascript"></script>
+    <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
+    <script th:src="@{/duanshipin/js/common.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
 </head>
 
 <body>
@@ -54,7 +56,7 @@
                                     <button class="form-btn-upload">选择文件</button>
                                 </div>
                                 <div style="display: inline-block;">
-                                    <img class="form-img-upload" src="../../../static/duanshipin/img/tx.jpg" alt="">
+                                    <img class="form-img-upload" src="/duanshipin/img/tx.jpg" alt="">
                                 </div>
                             </div>
                         </div>
@@ -109,7 +111,7 @@
                                 </div>
                                 <div style="display: inline-block;">
                                     视频文件
-                                    <img class="form-img-upload" src="../../../static/duanshipin/img/tx.jpg" alt="">
+                                    <img class="form-img-upload" src="/duanshipin/img/tx.jpg" alt="">
                                 </div>
                             </div>
                         </div>

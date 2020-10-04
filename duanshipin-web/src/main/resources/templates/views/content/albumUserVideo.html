@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  xmlns:th="http://www.thymeleaf.org">
 <!-- 用户池专辑管理 -->
 
 <head>
     <meta charset="UTF-8" />
     <title>视频管理平台</title>
     <!-- import CSS -->
-    <link rel="stylesheet" href="../../../static/duanshipin/css/project.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/albumOperationVideo.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/albumUserVideo.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/commonLayout.css" type="text/css" />
+    <link rel="stylesheet" th:href="@{/duanshipin/css/project.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/albumOperationVideo.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/albumUserVideo.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/commonLayout.css}" media="all">
     <!-- hander  -->
-    <script src="../../../static/duanshipin/js/commonLayout.js" type="text/javascript"></script>
+    <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
+    <script th:src="@{/duanshipin/js/common.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
 </head>
 
 <body>
@@ -26,7 +28,7 @@
                 </div>
                 <div class="title_line"></div>
                 <div class="title_bar">
-                    <a href="albumOperationVideo.html" class="operate_video_pool" id="operate_video_pool">运营视频池</a>
+                    <a href="/views/content/albumOperationVideo" class="operate_video_pool" id="operate_video_pool">运营视频池</a>
                     <a href="#" class="user_video_pool" id="user_video_pool">用户视频池</a>
                 </div>
                 <div class="category">
@@ -56,7 +58,7 @@
                         <div class="fr controll-operation-two-fr">
                             <button class="btn-search">推荐</button>
                             <button class="btn-search">下线</button>
-                            <img src="../../../static/duanshipin/img/img_fresh.png" alt="" class="fresh" />
+                            <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" />
                         </div>
                     </div>
                 </div>
@@ -70,12 +72,12 @@
                     </div>
                     <div class="fr controll_recycle_bin_right">
                         <button>还原</button>
-                        <img src="../../../static/duanshipin/img/img_fresh.png" alt="" class="fresh" />
+                        <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" />
                     </div>
                 </div>
                 <div class="controll_bar" id="controll_del">
                     <div class="fr controll_recycle_bin_right">
-                        <img src="../../../static/duanshipin/img/img_fresh.png" alt="" class="fresh" />
+                        <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" />
                     </div>
                 </div>
                 <div class="controll_operation" id="controll_recommend">
@@ -99,7 +101,7 @@
                         <div class="fr controll-operation-two-fr">
                             <button class="btn-search">取消推荐</button>
                             <button class="btn-search">下线</button>
-                            <img src="../../../static/duanshipin/img/img_fresh.png" alt="" class="fresh" />
+                            <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" />
                         </div>
                     </div>
                 </div>
@@ -150,7 +152,7 @@
                                 </span>
                             </td>
                             <td>
-                                <img src="../../../static/duanshipin/img/tx.jpg" alt="" class="table_content_img" />
+                                <img src="/duanshipin/img/tx.jpg" alt="" class="table_content_img" />
                             </td>
                             <td>
                                 <span class="table_mun"> 22/30 </span>
@@ -164,15 +166,15 @@
                             <td>
                                 <div class="table_content_controll">
                                     <div id="table-content-controll-one">
-                                        <a href="albumVideoManager.html">视频管理</a>
-                                        <a href="albumpreview.html">专辑预览</a>
+                                        <a href="/views/content/albumVideoManager">视频管理</a>
+                                        <a href="/views/content/lbumpreview">专辑预览</a>
                                     </div>
                                     <div id="table-content-controll-two">
-                                        <a href="albumpreview.html">预览</a>
+                                        <a href="/views/content/albumpreview">预览</a>
                                         <a href="#">还原</a>
                                     </div>
                                     <div id="table-content-controll-three">
-                                        <a href="albumpreview.html">预览</a>
+                                        <a href="/views/content/albumpreview">预览</a>
                                     </div>
                                 </div>
                             </td>
@@ -187,7 +189,7 @@
                         <span class="page_select_position_one">每页</span>
                         <input type="number" class="page_input_mun" />
                         <span>条</span>
-                        <img src="../../../static/duanshipin/img/last_page.png" alt="" class="last_page" />
+                        <img src="/duanshipin/img/last_page.png" alt="" class="last_page" />
                         <ul class="page_select_ul">
                             <li>1</li>
                             <li>2</li>
@@ -195,7 +197,7 @@
                             <li>...</li>
                             <li>10</li>
                         </ul>
-                        <img src="../../../static/duanshipin/img/next_page.png" alt="" class="last_page" />
+                        <img src="/duanshipin/img/next_page.png" alt="" class="last_page" />
                         <span class="page_select_position_two">前往</span>
                         <input type="number" class="page_input_to_mun" />
                         <span>页</span>
@@ -210,6 +212,6 @@
     </div>
 </body>
 
-<script src="../../../static/duanshipin/js/albumUserVideo.js" type="text/javascript"></script>
+<script th:src="@{/duanshipin/js/albumUserVideo.js}"></script>
 
 </html>

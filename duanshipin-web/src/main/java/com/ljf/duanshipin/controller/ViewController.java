@@ -97,4 +97,58 @@ public class ViewController extends BaseController {
         mav.setViewName("views/content/albumUserVideo");
         return mav;
     }
+
+    /**
+     *内容 -》 专辑管理 -》 用户视频池
+     */
+    @RequestMapping("/content/videoUser")
+    public Object videoUser(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/videoUser");
+        return mav;
+    }
+    /**
+     *内容 -》 专辑管理 -》 用户视频池
+     */
+    @RequestMapping("/content/publishAlbum")
+    public Object publishAlbum(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/publishAlbum");
+        return mav;
+    }
+
+    @RequestMapping("/content/albumVideoManager")
+    public Object albumVideoManager(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/albumVideoManager");
+        return mav;
+    }
+
+    @RequestMapping("/content/albumpreview")
+    public Object albumpreview(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/albumpreview");
+        return mav;
+    }
+
+    @RequestMapping("/content/videopreview")
+    public Object videopreview(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/videopreview");
+        return mav;
+    }
+
+    @RequestMapping("/content/publishVideo")
+    public Object publishVideo(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/publishVideo");
+        return mav;
+    }
+
+    @RequestMapping("/content/commentManager")
+    public Object commentManager(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/commentManager");
+        return mav;
+    }
 }

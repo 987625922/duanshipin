@@ -1,7 +1,7 @@
 // 把页面所在左边的item设置为选中
 document.getElementById('left_item_three').style.backgroundColor = '#191d26';
 document.getElementById('left_item_three_a').style.color = '#fff';
-document.getElementById('left_item_three_img').style.backgroundImage = "url('../../../static/img/ev_h.png')";
+document.getElementById('left_item_three_img').style.backgroundImage = "url('/duanshipin/img/ev_h.png')";
 document.getElementById('left-five').style.borderLeft = '3px solid #44c9a8';
 // 各个按钮显示的controller
 var topSecondReview = document.getElementById('top-second-review');

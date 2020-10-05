@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ljf.duanshipin.mapper.AlbumMapper">
+
+    <resultMap id="BaseResultMap" type="com.ljf.duanshipin.domain.Admin">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
+        <result column="imgSrc" property="imgSrc" jdbcType="VARCHAR"/>
+        <result column="total_mun" property="totalMun" jdbcType="INTEGER"/>
+        <result column="current_mun" property="currentMun" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="update_time" property="updateTime" javaType="DATE"/>
+        <result column="update_admin_id" property="updateAdminId" jdbcType="BIGINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+    id,title,introduction,imgSrc,total_mun,current_mun,create_time,update_time
+            ,update_admin_id
+    </sql>
+
+    <insert id="insert" parameterType="com.ljf.duanshipin.domain.Album">
+        INSERT INTO album(title,introduction,img_src,total_mun,current_mun,create_time,update_time
+            ,update_admin_id)
+            VALUES(#{title},#{introduction},#{imgSrc},#{totalMun},#{currentMun},#{createTime}
+        ,#{updateTime},#{updateAdminId})
+    </insert>
+</mapper>

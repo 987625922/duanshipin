@@ -1,5 +1,7 @@
 package com.ljf.duanshipin.service.Impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.ljf.duanshipin.domain.Album;
 import com.ljf.duanshipin.mapper.AlbumMapper;
 import com.ljf.duanshipin.service.AlbumService;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: 98762
@@ -29,5 +32,13 @@ public class AlbumServiceImpl implements AlbumService {
         album.setUpdateTime(date).setCreateTime(date)
                 .setCurrentMun(0);
         albumMapper.insert(album);
+    }
+
+    @Override
+    public PageInfo<Album> getAlbumForPage(Integer pageIndex, Integer pageSize) {
+        PageHelper.startPage(pageIndex,pageSize);
+        List<Album> albumList = albumMapper.getAlbumList();
+        PageInfo<Album> pageInfo = new PageInfo<>(albumList);
+        return pageInfo;
     }
 }

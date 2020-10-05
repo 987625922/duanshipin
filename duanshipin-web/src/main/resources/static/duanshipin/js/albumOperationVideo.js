@@ -90,3 +90,29 @@ function btnCommon(dom) {
     dom.style.backgroundColor = '#fff'
     dom.style.color = '#333'
 }
+function getAlbumList() {
+    ajax({
+        url: "/api/album/list",
+        type: 'post',
+        data: {
+            pageIndex: 1,
+            pageSize: 10,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data)
+            if (json.code === 200) {
+
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000)
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}

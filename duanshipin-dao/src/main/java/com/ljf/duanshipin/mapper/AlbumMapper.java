@@ -12,5 +12,5 @@ import java.util.List;
 public interface AlbumMapper {
     int insert(Album album);
 
-//    List<Album> getAlbumList();
+    List<Album> getAlbumList();
 }

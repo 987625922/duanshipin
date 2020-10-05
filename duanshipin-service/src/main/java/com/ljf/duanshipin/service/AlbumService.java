@@ -1,5 +1,6 @@
 package com.ljf.duanshipin.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ljf.duanshipin.domain.Album;
 
 /**
@@ -7,4 +8,5 @@ import com.ljf.duanshipin.domain.Album;
  */
 public interface AlbumService {
     void add(Album album);
+    PageInfo<Album> getAlbumForPage(Integer pageIndex,Integer pageSize);
 }

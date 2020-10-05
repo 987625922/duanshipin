@@ -26,7 +26,12 @@ public class AlbumServiceTest {
     @Test
     public void add(){
         Album album = new Album();
-        album.setTitle("测试的专辑标题").setUpdateAdminId(9L);
+        album.setTitle("测试的专辑标题").setUpdateAdminId(9L).setTotalMun(30);
+        albumService.add(album);
     }
 
+    @Test
+    public void getAlbumList(){
+        log.info(albumService.getAlbumForPage(1,10).toString());
+    }
 }

@@ -3,6 +3,7 @@ package com.ljf.duanshipin.controller;
 import com.ljf.duanshipin.domain.Admin;
 import com.ljf.duanshipin.domain.LoginLog;
 import com.ljf.duanshipin.domain.Role;
+import com.ljf.duanshipin.service.AlbumService;
 import com.ljf.duanshipin.service.LoginLogService;
 import com.ljf.duanshipin.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +27,8 @@ public class ViewController extends BaseController {
     private RoleService roleService;
     @Autowired
     private LoginLogService loginLogService;
+    @Autowired
+    private AlbumService albumService;
 
     /**
      * 首页
@@ -65,6 +68,7 @@ public class ViewController extends BaseController {
     public Object albumManage() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("views/content/albumOperationVideo");
+        mav.addObject("list",albumService.getAlbumForPage(1,10));
         return mav;
     }
 

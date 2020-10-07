@@ -104,7 +104,7 @@ function getAlbumList() {
         success: function (data) {
             let json = JSON.parse(data)
             if (json.code === 200) {
-
+            console.log(json)
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000)

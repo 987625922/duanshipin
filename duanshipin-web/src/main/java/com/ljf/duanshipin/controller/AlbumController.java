@@ -31,9 +31,9 @@ public class AlbumController {
 
     @RequestMapping("/list")
     @ResponseBody
-    public PageInfo<Album> list(@RequestParam(value="pageIndex",defaultValue="1")int pageIndex,
+    public Object list(@RequestParam(value="pageIndex",defaultValue="1")int pageIndex,
                                 @RequestParam(value="pageSize",defaultValue="10")int pageSize) {
         PageInfo<Album> page = albumService.getAlbumForPage(pageIndex,pageSize);
-        return  page;
+        return  JsonResult.buildSuccess(page);
     }
 }

@@ -130,8 +130,9 @@
                             <span class="table_controll table_th"> 操作 </span>
                         </th>
                     </tr>
-                    <tr>
-                        <td>
+
+                    <tr th:each="item:${list}">
+                        <td th:text="${list.id}">
                             <input type="checkbox" name="" id="" class="table_checkbox"/>
                         </td>
                         <td>

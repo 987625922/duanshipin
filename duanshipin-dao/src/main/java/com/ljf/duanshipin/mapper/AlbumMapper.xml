@@ -12,22 +12,23 @@
         <result column="create_time" property="createTime" jdbcType="DATE"/>
         <result column="update_time" property="updateTime" javaType="DATE"/>
         <result column="update_admin_id" property="updateAdminId" jdbcType="BIGINT"/>
+        <result column="update_admin_name" property="updateAdminName" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
     id,title,introduction,img_src,total_mun,current_mun,create_time,update_time
-            ,update_admin_id
+            ,update_admin_id,update_admin_name
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Album">
         INSERT INTO album(title,introduction,img_src,total_mun,current_mun,create_time,update_time
-            ,update_admin_id)
+            ,update_admin_id,update_admin_name)
             VALUES(#{title},#{introduction},#{imgSrc},#{totalMun},#{currentMun},#{createTime}
-        ,#{updateTime},#{updateAdminId})
+        ,#{updateTime},#{updateAdminId},#{updateAdminName})
     </insert>
-    <select id="getAlbumList" resultMap="BaseResultMap"   >
+    <select id="getAlbumList" parameterType="int" resultMap="BaseResultMap">
         select
-        <include refid="Base_Column_List" />
-        from album
+        <include refid="Base_Column_List"/>
+        from album where type = #{type}
     </select>
 </mapper>

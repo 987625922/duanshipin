@@ -156,7 +156,7 @@
     margin-left: 25px;
 }
 .list_controll a{
- 
+
 }
 .list_search{
     display: inline-block;
@@ -237,19 +237,19 @@
 }
 .table_mun{
     display: block;
-    width: nowrap;  
+    width: nowrap;
 }
 .table_time{
     display: block;
-    width: nowrap;  
+    width: nowrap;
 }
 .table_user{
     display: block;
-    width: nowrap;  
+    width: nowrap;
 }
 .table_controll{
     display: block;
-    width: 90px;  
+    width: 90px;
     text-align: center;
 }
 .table_content_controll{
@@ -339,12 +339,4 @@
     margin-right: 5px;
     font-size: 14px;
     color: #333;
-}
-.btn_last_page{
-    background: 50% no-repeat;
-    background-size: 16px;
-    background-color: #fff;
-    cursor: pointer;
-    margin: 0;
-    color: #303133;
 }

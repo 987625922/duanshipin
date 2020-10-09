@@ -1,6 +1,7 @@
 package com.ljf.duanshipin.service;
 
 import com.ljf.duanshipin.DuanShipinApplication;
+import com.ljf.duanshipin.domain.Admin;
 import com.ljf.duanshipin.domain.Album;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -23,15 +24,20 @@ public class AlbumServiceTest {
     @Autowired
     private AlbumService albumService;
 
+    @Autowired
+    private AdminService adminService;
+
     @Test
-    public void add(){
+    public void add() {
+        Admin admin = (Admin) adminService.findAdminByAccount("Admin");
         Album album = new Album();
-        album.setTitle("测试的专辑标题").setUpdateAdminId(9L).setTotalMun(30);
+        album.setTitle("测试的专辑标题").setUpdateAdminId(admin.getId())
+                .setUpdateAdminName(admin.getUserName()).setTotalMun(30);
         albumService.add(album);
     }
 
     @Test
-    public void getAlbumList(){
-        log.info(albumService.getAlbumForPage(1,10).toString());
+    public void getAlbumList() {
+        log.info(albumService.getAlbumForPage(1, 10,2).toString());
     }
 }

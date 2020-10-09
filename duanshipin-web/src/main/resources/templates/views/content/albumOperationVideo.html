@@ -14,6 +14,7 @@
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
 </head>
 
 <body>
@@ -52,7 +53,7 @@
                 <div class="fr controll_online_right">
                     <button>推荐</button>
                     <button>删除</button>
-                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh"/>
+                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" id="online-fresh"/>
                 </div>
             </div>
             <!-- 草稿按钮显示的布局 -->
@@ -100,78 +101,76 @@
                 </div>
             </div>
             <div class="table_div">
-                <table class="content_table">
-                    <tr>
-                        <th>
-                            <input type="checkbox" name="" id="" class="table_checkbox"/>
-                        </th>
-                        <th>
-                            <span class="table_id table_th"> 专辑ID </span>
-                        </th>
-                        <th>
-                            <span class="table_title table_th"> 专辑标题 </span>
-                        </th>
-                        <th>
-                            <span class="table_introducation table_th"> 专辑简介 </span>
-                        </th>
-                        <th>
-                            <span class="table_img table_th"> 缩略图 </span>
-                        </th>
-                        <th>
-                            <span class="table_mun table_th"> 总集/已更新 </span>
-                        </th>
-                        <th>
-                            <span class="table_time table_th"> 最后操作时间 </span>
-                        </th>
-                        <th>
-                            <span class="table_user table_th"> 操作人 </span>
-                        </th>
-                        <th>
-                            <span class="table_controll table_th"> 操作 </span>
-                        </th>
-                    </tr>
-
-                    <tr th:each="item:${list}">
-                        <td th:text="${list.id}">
-                            <input type="checkbox" name="" id="" class="table_checkbox"/>
-                        </td>
-                        <td>
-                            <span class="table_id"> 987123 </span>
-                        </td>
-                        <td>
-                            <span class="table_title"> 办公室爆笑锦集 </span>
-                        </td>
-                        <td>
-                <span class="table_introducation">
-                  这是一份简介占位这是一份简介占位这是一份简介占位这是一份简介占位~
-                </span>
-                        </td>
-                        <td>
-                            <img src="/duanshipin/img/tx.jpg" alt="" class="table_content_img"/>
-                        </td>
-                        <td>
-                            <span class="table_mun"> 22/30 </span>
-                        </td>
-                        <td>
-                            <span class="table_time"> 2018-11-28 14:01:19 </span>
-                        </td>
-                        <td>
-                            <span class="table_user"> xxx@yy-inc.cn </span>
-                        </td>
-                        <td>
-                            <div class="table_content_controll">
-                                <div id="table_controll_one">
-                                    <a href="/views/content/publishAlbum">修改专辑</a>
-                                    <a href="/views/content/albumVideoManager">视频管理</a>
-                                    <a href="/views/content/albumpreview">专辑预览</a>
-                                </div>
-                                <div id="table_controll_two">
-                                    <a href="#">还原</a>
-                                    <a href="#">预览</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                <table class="content_table" id="table-content">
+                    <!--<tr>-->
+                        <!--<th>-->
+                            <!--<input type="checkbox" name="" id="" class="table_checkbox"/>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_id table_th"> 专辑ID </span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_title table_th"> 专辑标题 </span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_introducation table_th"> 专辑简介 </span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_img table_th"> 缩略图 </span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_mun table_th"> 总集/已更新 </span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_time table_th"> 最后操作时间 </span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_user table_th"> 操作人 </span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_controll table_th"> 操作 </span>-->
+                        <!--</th>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--<input type="checkbox" name="" id="" class="table_checkbox"/>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<span class="table_id"></span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<span class="table_title"></span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                        <!--<span class="table_introducation">-->
+                        <!--</span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<img alt="" class="table_content_img"/>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<span></span><span>/</span><span></span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<span class="table_time"></span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<span class="table_user"></span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<div class="table_content_controll">-->
+                                <!--<div name="table_controll_one">-->
+                                    <!--<a href="/views/content/publishAlbum">修改专辑</a>-->
+                                    <!--<a href="/views/content/albumVideoManager">视频管理</a>-->
+                                    <!--<a href="/views/content/albumpreview">专辑预览</a>-->
+                                <!--</div>-->
+                                <!--<div name="table_controll_two">-->
+                                    <!--<a href="#">还原</a>-->
+                                    <!--<a href="#">预览</a>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                    <!--</tr>-->
                 </table>
             </div>
             <div class="page_select" id="page_select">

@@ -24,16 +24,17 @@ public class AlbumController {
     private AlbumService albumService;
 
     @RequestMapping("/add")
-    public Object add(Album album){
+    public Object add(Album album) {
         albumService.add(album);
         return JsonResult.buildSuccess();
     }
 
     @RequestMapping("/list")
     @ResponseBody
-    public Object list(@RequestParam(value="pageIndex",defaultValue="1")int pageIndex,
-                                @RequestParam(value="pageSize",defaultValue="10")int pageSize) {
-        PageInfo<Album> page = albumService.getAlbumForPage(pageIndex,pageSize);
-        return  JsonResult.buildSuccess(page);
+    public Object list(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
+                       @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize
+            , @RequestParam(value = "type", defaultValue = "2") Integer type) {
+        PageInfo<Album> page = albumService.getAlbumForPage(pageIndex, pageSize, type);
+        return JsonResult.buildSuccess(page);
     }
 }

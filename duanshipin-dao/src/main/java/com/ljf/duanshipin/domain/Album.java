@@ -23,4 +23,5 @@ public class Album {
     private Date createTime;
     private Date updateTime;
     private Long updateAdminId;
+    private String updateAdminName;
 }

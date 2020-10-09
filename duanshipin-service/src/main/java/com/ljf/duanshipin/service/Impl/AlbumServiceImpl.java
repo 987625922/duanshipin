@@ -35,9 +35,9 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public PageInfo<Album> getAlbumForPage(Integer pageIndex, Integer pageSize) {
-        PageHelper.startPage(pageIndex,pageSize);
-        List<Album> albumList = albumMapper.getAlbumList();
+    public PageInfo<Album> getAlbumForPage(Integer pageIndex, Integer pageSize, Integer type) {
+        PageHelper.startPage(pageIndex, pageSize);
+        List<Album> albumList = albumMapper.getAlbumList(type);
         PageInfo<Album> pageInfo = new PageInfo<>(albumList);
         return pageInfo;
     }

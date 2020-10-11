@@ -23,12 +23,24 @@ public class AlbumController {
     @Autowired
     private AlbumService albumService;
 
+    /**
+     * 添加专辑
+     * @param album
+     * @return
+     */
     @RequestMapping("/add")
     public Object add(Album album) {
         albumService.add(album);
         return JsonResult.buildSuccess();
     }
 
+    /**
+     * 专辑列表
+     * @param pageIndex
+     * @param pageSize
+     * @param type
+     * @return
+     */
     @RequestMapping("/list")
     @ResponseBody
     public Object list(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
@@ -36,5 +48,17 @@ public class AlbumController {
             , @RequestParam(value = "type", defaultValue = "2") Integer type) {
         PageInfo<Album> page = albumService.getAlbumForPage(pageIndex, pageSize, type);
         return JsonResult.buildSuccess(page);
+    }
+
+    /**
+     * 专辑改成上线
+     * @param albumIds
+     * @return
+     */
+    @RequestMapping("/albumOnline")
+    @ResponseBody
+    public Object albumOnline(String albumIds){
+
+        return JsonResult.buildSuccess();
     }
 }

@@ -57,5 +57,11 @@ public class AdminServiceImpl implements AdminService {
         adminMapper.updateById(admin);
     }
 
+    @Override
+    public void toOnline(String albumIds) {
+        String[] menuIdsArray = albumIds.split(",");
+
+    }
+
 
 }

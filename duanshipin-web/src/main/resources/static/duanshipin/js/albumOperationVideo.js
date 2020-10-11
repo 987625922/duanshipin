@@ -1,80 +1,107 @@
 //请求的类型
-var type = 2;
+var type = 1;
 //每一页显示的条目
 var pageSize = 10;
-
-// 把页面所在左边的item设置为选中
-document.getElementById('left_item_one').style.backgroundColor = '#191d26';
-document.getElementById('left_item_one_a').style.color = '#fff';
-document.getElementById('left_item_one_img').style.backgroundImage = "url('/duanshipin/img/video_content_h.png')";
-document.getElementById('item_one_one').style.borderLeft = '3px solid #44c9a8';
-//运营池或者用户池的按钮
-var videoPoolDom = document.getElementById('user_video_pool');
-videoPoolDom.style.backgroundColor = '#fff'
-videoPoolDom.style.color = '#333'
-videoPoolDom.style.border = '1px solid #dcdfe6'
-var userVideoPoolDom = document.getElementById('operate_video_pool');
-userVideoPoolDom.style.backgroundColor = '#44c9a8';
-userVideoPoolDom.style.color = '#fff';
-userVideoPoolDom.style.borderWidth = '0px';
-//页码选择器
-var pageSelect = document.getElementById('page_select');
-pageSelect.style.display = 'none';
-// 一进入界面显示上线的按钮的controller
-document.getElementById('controll_online').style.display = 'block';
-// 上线的点击事件
-var btnOnline = document.getElementById('online');
-var btnDraf = document.getElementById('draf');
-var btnRecycleBin = document.getElementById('recycle_bin');
-var btnRecommend = document.getElementById('recommend');
-// 各个按钮显示的controller
-var drafcontroll = document.getElementById('controll_draf');
-var onlineControll = document.getElementById('controll_online');
-var recycleControll = document.getElementById('controll_recycle_bin');
-var recommendContrll = document.getElementById('controll_recommend');
-//刷新按钮
-var onlineFresh = document.getElementById('online-fresh');
 // 正在选中的按钮
-var isSelectBtn = btnOnline;
-btnOnline.onclick = function () {
-    btnCommon(isSelectBtn);
-    btnPre(btnOnline);
+var isSelectBtn;
+
+//初始化
+function init() {
+    // 把页面所在左边的item设置为选中
+    document.getElementById('left_item_one').style.backgroundColor = '#191d26';
+    document.getElementById('left_item_one_a').style.color = '#fff';
+    document.getElementById('left_item_one_img').style.backgroundImage = "url('/duanshipin/img/video_content_h.png')";
+    document.getElementById('item_one_one').style.borderLeft = '3px solid #44c9a8';
+    //运营池或者用户池的按钮
+    var videoPoolDom = document.getElementById('user_video_pool');
+    videoPoolDom.style.backgroundColor = '#fff'
+    videoPoolDom.style.color = '#333'
+    videoPoolDom.style.border = '1px solid #dcdfe6'
+    var userVideoPoolDom = document.getElementById('operate_video_pool');
+    userVideoPoolDom.style.backgroundColor = '#44c9a8';
+    userVideoPoolDom.style.color = '#fff';
+    userVideoPoolDom.style.borderWidth = '0px';
+
+
+// 一进入界面显示上线的按钮的controller
+    document.getElementById('controll_online').style.display = 'block';
+
+
+// 上线的点击事件
+    var btnOnline = document.getElementById('online');
+    var btnDraf = document.getElementById('draf');
+    var btnRecycleBin = document.getElementById('recycle_bin');
+    var btnRecommend = document.getElementById('recommend');
+// 各个按钮显示的controller
+    var drafcontroll = document.getElementById('controll_draf');
+    var onlineControll = document.getElementById('controll_online');
+    var recycleControll = document.getElementById('controll_recycle_bin');
+    var recommendContrll = document.getElementById('controll_recommend');
+//刷新按钮
+    var onlineFresh = document.getElementById('online-fresh');
     isSelectBtn = btnOnline;
-    onlineControll.style.display = 'block';
-    drafcontroll.style.display = 'none';
-    recycleControll.style.display = 'none';
-    recommendContrll.style.display = 'none';
-}
+    btnOnline.onclick = function () {
+        btnCommon(isSelectBtn);
+        btnPre(btnOnline);
+        isSelectBtn = btnOnline;
+        onlineControll.style.display = 'block';
+        drafcontroll.style.display = 'none';
+        recycleControll.style.display = 'none';
+        recommendContrll.style.display = 'none';
+        type = 1;
+        getAlbumList();
+    };
 //草稿的点击事件
-btnDraf.onclick = function () {
-    btnCommon(isSelectBtn);
-    btnPre(btnDraf);
-    isSelectBtn = btnDraf;
-    drafcontroll.style.display = 'block';
-    onlineControll.style.display = 'none';
-    recycleControll.style.display = 'none';
-    recommendContrll.style.display = 'none';
-};
-btnRecycleBin.onclick = function () {
-    btnCommon(isSelectBtn);
-    btnPre(btnRecycleBin);
-    isSelectBtn = btnRecycleBin;
-    drafcontroll.style.display = 'none';
-    onlineControll.style.display = 'none';
-    recycleControll.style.display = 'block';
-    recommendContrll.style.display = 'none';
-};
-btnRecommend.onclick = function () {
-    btnCommon(isSelectBtn);
-    btnPre(btnRecommend);
-    isSelectBtn = btnRecommend;
-    drafcontroll.style.display = 'none';
-    onlineControll.style.display = 'none';
-    recycleControll.style.display = 'none';
-    recommendContrll.style.display = 'block';
-};
-onlineFresh.onclick = function () {
-    getAlbumList();
+    btnDraf.onclick = function () {
+        btnCommon(isSelectBtn);
+        btnPre(btnDraf);
+        isSelectBtn = btnDraf;
+        drafcontroll.style.display = 'block';
+        onlineControll.style.display = 'none';
+        recycleControll.style.display = 'none';
+        recommendContrll.style.display = 'none';
+        type = 2;
+        getAlbumList();
+    };
+    btnRecycleBin.onclick = function () {
+        btnCommon(isSelectBtn);
+        btnPre(btnRecycleBin);
+        isSelectBtn = btnRecycleBin;
+        drafcontroll.style.display = 'none';
+        onlineControll.style.display = 'none';
+        recycleControll.style.display = 'block';
+        recommendContrll.style.display = 'none';
+        type = 3;
+        getAlbumList();
+    };
+    btnRecommend.onclick = function () {
+        btnCommon(isSelectBtn);
+        btnPre(btnRecommend);
+        isSelectBtn = btnRecommend;
+        drafcontroll.style.display = 'none';
+        onlineControll.style.display = 'none';
+        recycleControll.style.display = 'none';
+        recommendContrll.style.display = 'block';
+        type = 4;
+        getAlbumList();
+    };
+    onlineFresh.onclick = function () {
+        getAlbumList();
+    };
+    $('#draf-controll-online').click(function () {
+        var selectStr = '';
+        var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+            return $(elem).val();
+        });
+        for (let i = 0; i < selectGroup.length; i++) {
+            if (i == 0){
+               selectStr += selectGroup[i];
+            }else {
+                selectStr += ','+selectGroup[i];
+            }
+        }
+
+    });
 }
 
 //把view改成按下按钮的颜色
@@ -97,7 +124,7 @@ function getAlbumList() {
         type: 'post',
         data: {
             pageIndex: 1,
-            pageSize: 10,
+            pageSize: pageSize,
             type: type
         },
         dataType: 'json',
@@ -137,17 +164,17 @@ function getAlbumList() {
                     '                        </th>' +
                     '                    </tr></thead>';
 
-                if (json.data.list.length > 6){
+                if (json.data.list.length > 6) {
                     htmlStr += '<tbody style="display: block;height: 430px;overflow-y: scroll;">';
                 } else {
-                    htmlStr += '<tbody style="display: block;height: 5px;">';
+                    htmlStr += '<tbody style="height: 5px;">';
                 }
                 for (let i = 0; i < json.data.list.length; i++) {
                     let bean = json.data.list[i];
                     let updateTime = new Date(Date.parse(bean.updateTime));
                     let formatTime = dateFormat("YYYY-mm-dd HH:MM", updateTime);
                     htmlStr += '<tr><td>' +
-                        ' <input type="checkbox" class="table_checkbox"/>' +
+                        ' <input type="checkbox" class="table_checkbox" name="id-select-group" value="' + bean.id + '"/>' +
                         '                        </td>' +
                         '                        <td>' +
                         '                        <span class="table_id">' + bean.id + '</span>' +
@@ -192,10 +219,12 @@ function getAlbumList() {
                 }
                 htmlStr += '</tbody></table>';
                 $('#table-content').html(htmlStr);
-                if (json.data.hasNextPage){
-                    pageSelect.style.display = 'block';
-                }else {
-                    pageSelect.style.display = 'none';
+                if (json.data.hasNextPage) {
+                    $('#page_select').show();
+                    $("#page-total-mun").html(json.data.total)
+                    $("#page-size").html(pageSize)
+                } else {
+                    $('#page_select').hide();
                 }
             } else {
                 console.log(json.msg);

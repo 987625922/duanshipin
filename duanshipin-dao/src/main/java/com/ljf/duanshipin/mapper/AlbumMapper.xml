@@ -26,9 +26,13 @@
             VALUES(#{title},#{introduction},#{imgSrc},#{totalMun},#{currentMun},#{createTime}
         ,#{updateTime},#{updateAdminId},#{updateAdminName})
     </insert>
+
     <select id="getAlbumList" parameterType="int" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
         from album where type = #{type}
     </select>
+
+    <update id="updateById" parameterType="com.ljf.duanshipin.domain.Album">
+    </update>
 </mapper>

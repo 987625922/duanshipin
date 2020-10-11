@@ -19,4 +19,6 @@ public interface AdminService {
     void updatePassword(Long id,String account,String password);
 
     void update(Admin admin);
+
+    void toOnline(String albumIds);
 }

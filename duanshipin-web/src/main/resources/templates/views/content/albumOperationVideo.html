@@ -60,6 +60,9 @@
                 <button class="list_controll">
                     <a href="publishAlbum.html">发布专辑</a>
                 </button>
+                <button class="list_controll" id="draf-controll-online">
+                    上线
+                </button>
                 <div class="list_search">
                     <span>专辑标题：</span>
                     <input type="text" class="input_zj_title"/>
@@ -104,10 +107,10 @@
             <div class="page_select" id="page_select">
                 <div class="page_select_inner">
                     <span>共</span>
-                    <span>100</span>
+                    <span id="page-total-mun"></span>
                     <span>条</span>
                     <span class="page_select_position_one">每页</span>
-                    <input type="number" class="page_input_mun"/>
+                    <span id="page-size" class="page_input_mun"></span>
                     <span>条</span>
                     <img src="/duanshipin/img/last_page.png" alt="" class="last_page"/>
                     <ul class="page_select_ul">
@@ -118,9 +121,6 @@
                         <li>10</li>
                     </ul>
                     <img src="/duanshipin/img/next_page.png" alt="" class="last_page"/>
-                    <span class="page_select_position_two">前往</span>
-                    <input type="number" class="page_input_to_mun"/>
-                    <span>页</span>
                 </div>
             </div>
         </div>
@@ -133,6 +133,7 @@
 </body>
 <script th:src="@{/duanshipin/js/albumOperationVideo.js}"></script>
 <script type="text/javascript">
-    getAlbumList()
+    getAlbumList();
+    init();
 </script>
 </html>

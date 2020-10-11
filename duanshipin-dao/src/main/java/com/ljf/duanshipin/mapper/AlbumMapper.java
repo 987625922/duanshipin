@@ -13,4 +13,6 @@ public interface AlbumMapper {
     int insert(Album album);
 
     List<Album> getAlbumList(Integer type);
+
+    void toOnline(List<String> ids);
 }

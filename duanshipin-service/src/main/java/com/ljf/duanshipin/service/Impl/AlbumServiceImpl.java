@@ -41,4 +41,10 @@ public class AlbumServiceImpl implements AlbumService {
         PageInfo<Album> pageInfo = new PageInfo<>(albumList);
         return pageInfo;
     }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void toOnline(String ids) {
+        albumMapper.toOnline(ids);
+    }
 }

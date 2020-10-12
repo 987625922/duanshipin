@@ -1,9 +1,13 @@
 //请求的类型
 var type = 1;
+//显示的页面下标
+var pageIndex = 1;
 //每一页显示的条目
 var pageSize = 10;
 // 正在选中的按钮
 var isSelectBtn;
+//是否有下一页
+var hasNextPage;
 
 //初始化
 function init() {
@@ -94,12 +98,35 @@ function init() {
             return $(elem).val();
         });
         for (let i = 0; i < selectGroup.length; i++) {
-            if (i == 0){
-               selectStr += selectGroup[i];
-            }else {
-                selectStr += ','+selectGroup[i];
+            if (i == 0) {
+                selectStr += selectGroup[i];
+            } else {
+                selectStr += ',' + selectGroup[i];
             }
         }
+        ajax({
+            url: "/api/album/toOnline",
+            type: 'get',
+            data: {
+                ids: selectStr,
+            },
+            dataType: 'json',
+            timeout: 10000,
+            contentType: "application/json",
+            success: function (data) {
+                let json = JSON.parse(data);
+                if (json.code == 200) {
+                    getAlbumList()
+                } else {
+                    console.log(json.msg);
+                    Toast(json.msg, 1000);
+                }
+            },
+            //异常处理
+            error: function (e) {
+                console.log(e);
+            }
+        })
 
     });
 }
@@ -123,7 +150,7 @@ function getAlbumList() {
         url: "/api/album/list",
         type: 'post',
         data: {
-            pageIndex: 1,
+            pageIndex: pageIndex,
             pageSize: pageSize,
             type: type
         },
@@ -166,6 +193,8 @@ function getAlbumList() {
 
                 if (json.data.list.length > 6) {
                     htmlStr += '<tbody style="display: block;height: 430px;overflow-y: scroll;">';
+                } else if (json.data.list.length == 0) {
+                    htmlStr += '<tbody style="display:block;height: 5px;">';
                 } else {
                     htmlStr += '<tbody style="height: 5px;">';
                 }
@@ -219,10 +248,50 @@ function getAlbumList() {
                 }
                 htmlStr += '</tbody></table>';
                 $('#table-content').html(htmlStr);
-                if (json.data.hasNextPage) {
+                hasNextPage = json.data.hasNextPage;
+                if (json.data.pages > 1) {
                     $('#page_select').show();
-                    $("#page-total-mun").html(json.data.total)
-                    $("#page-size").html(pageSize)
+                    $("#page-total-mun").html(json.data.total);
+                    $("#page-size").html(pageSize);
+                    var liStr = '';
+                    if (json.data.pages <= 7) {
+                        for (var i = 0; i < json.data.navigatepageNums.length; i++) {
+                            if (i == json.data.prePage) {
+                                liStr += '<li style="background-color:#44c9a8;color: #fff;">' + json.data.navigatepageNums[i] + '</li>'
+                            } else {
+                                liStr += '<li onclick="getSpecialAlbumList(type,' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
+                            }
+                        }
+                    } else {
+                        if (json.data.prePage == 0 || json.data.prePage == 1 || json.data.prePage == 2) {
+                            for (var i = 0; i < json.data.navigatepageNums.length; i++) {
+                                if (i <= 3) {
+                                    if (i == json.data.prePage) {
+                                        liStr += '<li style="background-color:#44c9a8;color: #fff;">' + json.data.navigatepageNums[i] + '</li>'
+                                    } else {
+                                        liStr += '<li onclick="getSpecialAlbumList(type,' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
+                                    }
+                                }
+                            }
+                            liStr += '<li>...</li>'
+                            liStr += '<li onclick="getSpecialAlbumList(type,' + json.data.navigateLastPage + ',pageSize)">' + json.data.navigateLastPage + '</li>'
+                        } else {
+                            liStr += '<li>1</li>'
+                            liStr += '<li>...</li>'
+                            liStr += '<li onclick="getSpecialAlbumList(type,' + json.data.prePage + ',pageSize)">' + json.data.prePage + '</li>'
+                            if (json.data.pages - (json.data.prePage + 2) >= 3) {
+                                liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
+                                liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.prePage + 2) + ',pageSize)">' + (json.data.prePage + 2) + '</li>'
+                                liStr += '<li>...</li>'
+                                liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages) + ',pageSize)">' + (json.data.pages) + '</li>'
+                            } else {
+                                for(var i = 4;i > 0;i--){
+                                    liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
+                                }
+                            }
+                        }
+                    }
+                    $('#page_select_ul').html(liStr);
                 } else {
                     $('#page_select').hide();
                 }
@@ -236,4 +305,11 @@ function getAlbumList() {
             console.log(e);
         }
     })
+}
+
+function getSpecialAlbumList(_type, _pageIndex, _pageSize) {
+    type = _type;
+    pageIndex = _pageIndex;
+    pageSize = _pageSize;
+    getAlbumList();
 }

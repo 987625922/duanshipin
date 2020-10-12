@@ -25,6 +25,7 @@ public class AlbumController {
 
     /**
      * 添加专辑
+     *
      * @param album
      * @return
      */
@@ -36,6 +37,7 @@ public class AlbumController {
 
     /**
      * 专辑列表
+     *
      * @param pageIndex
      * @param pageSize
      * @param type
@@ -52,13 +54,14 @@ public class AlbumController {
 
     /**
      * 专辑改成上线
-     * @param albumIds
+     *
+     * @param ids
      * @return
      */
-    @RequestMapping("/albumOnline")
+    @RequestMapping("/toOnline")
     @ResponseBody
-    public Object albumOnline(String albumIds){
-
+    public Object albumOnline(String ids) {
+        albumService.toOnline(ids);
         return JsonResult.buildSuccess();
     }
 }

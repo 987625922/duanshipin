@@ -33,6 +33,7 @@
         from album where type = #{type}
     </select>
 
-    <update id="updateById" parameterType="com.ljf.duanshipin.domain.Album">
+    <update id="toOnline" parameterType="String">
+        update album set album.type = 1 where id in (#{ids})
     </update>
 </mapper>

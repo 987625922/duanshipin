@@ -14,5 +14,5 @@ public interface AlbumMapper {
 
     List<Album> getAlbumList(Integer type);
 
-    void toOnline(List<String> ids);
+    void toOnline(String ids);
 }

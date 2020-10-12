@@ -29,7 +29,7 @@ public class AlbumServiceTest {
 
     @Test
     public void add() {
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 100; i++) {
             Admin admin = (Admin) adminService.findAdminByAccount("Admin");
             Album album = new Album();
             album.setTitle("测试的专辑标题").setUpdateAdminId(admin.getId())

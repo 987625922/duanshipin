@@ -44,7 +44,33 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public void toOnline(String ids) {
+    public void onlineForids(String ids) {
         albumMapper.toOnline(ids);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void recommendForids(String ids) {
+        albumMapper.toRecommend(ids);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void deleteForids(String ids) {
+        albumMapper.deleteForids(ids);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void recyclerForids(String ids) {
+        albumMapper.toRecycler(ids);
+    }
+
+    @Override
+    public PageInfo<Album> selectForPage(Long id, String title, Integer pageIndex, Integer pageSize, Integer type) {
+        PageHelper.startPage(pageIndex, pageSize);
+        List<Album> albumList = albumMapper.selectForPage(id, title, type);
+        PageInfo<Album> pageInfo = new PageInfo<>(albumList);
+        return pageInfo;
     }
 }

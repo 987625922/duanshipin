@@ -35,24 +35,24 @@
                 </a>
             </div>
             <div class="category">
-                <div class="online" id="online" onclick="btnOnlineClick">上线</div>
-                <div class="draf" id="draf" click="btnDrafClick">草稿</div>
-                <div class="recycle_bin" id="recycle_bin">回收站</div>
-                <div class="recommend" id="recommend">推荐</div>
+                <div class="online" id="online" onclick="btnToOnline()">上线</div>
+                <div class="draf" id="draf" click="btnDrafClick" onclick="btnToDraf()">草稿</div>
+                <div class="recycle_bin" id="recycle_bin" onclick="btnToRecycleBin()">回收站</div>
+                <div class="recommend" id="recommend" onclick="btnToRecommend()">推荐</div>
             </div>
             <!-- 上线按钮显示的布局 -->
             <div class="controll_bar clearfix" id="controll_online">
                 <div class="controll_online_left">
                     <span>专辑标题：</span>
-                    <input type="text">
+                    <input type="text" id="online-select-title">
                     <span>专辑ID：</span>
-                    <input type="text">
-                    <button>查询</button>
+                    <input type="text" id="online-select-id">
+                    <button onclick="select()">查询</button>
                 </div>
                 <div class="fr controll_online_right">
-                    <button>推荐</button>
-                    <button>删除</button>
-                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" id="online-fresh"/>
+                    <button onclick="toRecommend()">推荐</button>
+                    <button onclick="toRecycler()">删除</button>
+                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" id="online-fresh" onclick="getAlbumList()"/>
                 </div>
             </div>
             <!-- 草稿按钮显示的布局 -->
@@ -60,46 +60,46 @@
                 <button class="list_controll">
                     <a href="publishAlbum.html">发布专辑</a>
                 </button>
-                <button class="list_controll" id="draf-controll-online">
+                <button class="list_controll" id="draf-controll-online" onclick="toOnline()">
                     上线
                 </button>
                 <div class="list_search">
                     <span>专辑标题：</span>
-                    <input type="text" class="input_zj_title"/>
+                    <input type="text" class="input_zj_title" id="draf-select-title"/>
                     <span>专辑ID：</span>
-                    <input type="text" class="input_zj_id"/>
-                    <div class="btn_list_search">查询</div>
-                    <div class="btn_list_search">删除</div>
-                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh"/>
+                    <input type="text" class="input_zj_id" id="draf-select-id"/>
+                    <div class="btn_list_search" onclick="select()">查询</div>
+                    <div class="btn_list_search" onclick="toRecycler()">删除</div>
+                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getAlbumList()"/>
                 </div>
             </div>
             <!-- 回收站按钮显示的布局 -->
             <div class="controll_bar clearfix" id="controll_recycle_bin">
                 <div class="controll_recycle_bin_left">
                     <span>专辑标题：</span>
-                    <input type="text">
+                    <input type="text" id="recycle-select-title">
                     <span>专辑ID：</span>
-                    <input type="text">
-                    <button>查询</button>
+                    <input type="text" id="recycle-select-id">
+                    <button onclick="select()">查询</button>
                 </div>
                 <div class="fr controll_recycle_bin_right">
-                    <button>还原专辑</button>
-                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh"/>
+                    <button onclick="toOnline()">还原专辑</button>
+                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getAlbumList()"/>
                 </div>
             </div>
             <!-- 推荐池按钮显示的布局 -->
             <div class="controll_bar clearfix" id="controll_recommend">
                 <div class="controll_recommend_left">
                     <span>专辑标题：</span>
-                    <input type="text">
+                    <input type="text" id="recommend-select-title">
                     <span>专辑ID：</span>
-                    <input type="text">
-                    <button>查询</button>
+                    <input type="text" id="recommend-select-id">
+                    <button onclick="select()">查询</button>
                 </div>
                 <div class="fr controll_recommend_right">
-                    <button>取消推荐</button>
-                    <button>删除</button>
-                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh"/>
+                    <button onclick="toOnline()">取消推荐</button>
+                    <button onclick="toRecycler()">删除</button>
+                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getAlbumList()"/>
                 </div>
             </div>
             <div class="table_div" id="table-content">
@@ -112,11 +112,10 @@
                     <span class="page_select_position_one">每页</span>
                     <span id="page-size" class="page_input_mun"></span>
                     <span>条</span>
-                    <img src="/duanshipin/img/last_page.png" alt="" class="last_page"/>
+                    <img src="/duanshipin/img/last_page.png" alt="" class="last_page" onclick="previousPage()"/>
                     <ul class="page_select_ul" id="page_select_ul">
-
                     </ul>
-                    <img src="/duanshipin/img/next_page.png" alt="" class="last_page"/>
+                    <img src="/duanshipin/img/next_page.png" alt="" class="last_page" onclick="nextPage()"/>
                 </div>
             </div>
         </div>

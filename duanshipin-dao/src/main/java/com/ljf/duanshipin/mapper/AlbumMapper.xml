@@ -36,4 +36,28 @@
     <update id="toOnline" parameterType="String">
         update album set album.type = 1 where id in (#{ids})
     </update>
+
+    <update id="toRecommend" parameterType="String">
+        update album set album.type = 4 where id in (#{ids})
+    </update>
+
+    <update id="toRecycler" parameterType="String">
+        update album set album.type = 3 where id in (#{ids})
+    </update>
+
+    <delete id="deleteForids" parameterType="String">
+      DELETE from album WHERE id in (#{ids})
+    </delete>
+
+    <select id="selectForPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from album where album.type = #{type}
+            <if test="title != null and title != '' ">
+                and title = #{title}
+            </if>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+    </select>
 </mapper>

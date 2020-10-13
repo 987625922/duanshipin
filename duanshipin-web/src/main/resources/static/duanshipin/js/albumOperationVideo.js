@@ -8,127 +8,247 @@ var pageSize = 10;
 var isSelectBtn;
 //是否有下一页
 var hasNextPage;
+//是否有上一页
+var hasPreviousPage;
+
+// 上线的点击事件
+let btnOnline = document.getElementById('online');
+let btnDraf = document.getElementById('draf');
+let btnRecycleBin = document.getElementById('recycle_bin');
+let btnRecommend = document.getElementById('recommend');
+// 各个按钮显示的controller
+let drafcontroll = document.getElementById('controll_draf');
+let onlineControll = document.getElementById('controll_online');
+let recycleControll = document.getElementById('controll_recycle_bin');
+let recommendContrll = document.getElementById('controll_recommend');
+
+isSelectBtn = btnOnline;
+
 
 //初始化
 function init() {
     // 把页面所在左边的item设置为选中
-    document.getElementById('left_item_one').style.backgroundColor = '#191d26';
-    document.getElementById('left_item_one_a').style.color = '#fff';
-    document.getElementById('left_item_one_img').style.backgroundImage = "url('/duanshipin/img/video_content_h.png')";
-    document.getElementById('item_one_one').style.borderLeft = '3px solid #44c9a8';
+    $('#left_item_one').css('backgroundColor', '#191d26');
+    $('#left_item_one_a').css('color', '#fff');
+    $('#item_one_one').css('borderLeft', '3px solid #44c9a8');
+    $('#left_item_one_img').css('backgroundImage', "url('/duanshipin/img/video_content_h.png')");
     //运营池或者用户池的按钮
-    var videoPoolDom = document.getElementById('user_video_pool');
-    videoPoolDom.style.backgroundColor = '#fff'
-    videoPoolDom.style.color = '#333'
-    videoPoolDom.style.border = '1px solid #dcdfe6'
-    var userVideoPoolDom = document.getElementById('operate_video_pool');
-    userVideoPoolDom.style.backgroundColor = '#44c9a8';
-    userVideoPoolDom.style.color = '#fff';
-    userVideoPoolDom.style.borderWidth = '0px';
+    $('#user_video_pool').css({'backgroundColor': '#fff', 'color': '#333', 'border': '1px solid #dcdfe6'});
+    $('#operate_video_pool').css({'backgroundColor': '#44c9a8', 'color': '#fff', 'borderWidth': '0px'});
 
+    // 一进入界面显示上线的按钮的controller
+    $('#controll_online').show();
 
-// 一进入界面显示上线的按钮的controller
-    document.getElementById('controll_online').style.display = 'block';
+}
 
-
-// 上线的点击事件
-    var btnOnline = document.getElementById('online');
-    var btnDraf = document.getElementById('draf');
-    var btnRecycleBin = document.getElementById('recycle_bin');
-    var btnRecommend = document.getElementById('recommend');
-// 各个按钮显示的controller
-    var drafcontroll = document.getElementById('controll_draf');
-    var onlineControll = document.getElementById('controll_online');
-    var recycleControll = document.getElementById('controll_recycle_bin');
-    var recommendContrll = document.getElementById('controll_recommend');
-//刷新按钮
-    var onlineFresh = document.getElementById('online-fresh');
+function btnToOnline() {
+    btnCommon(isSelectBtn);
+    btnPre(btnOnline);
     isSelectBtn = btnOnline;
-    btnOnline.onclick = function () {
-        btnCommon(isSelectBtn);
-        btnPre(btnOnline);
-        isSelectBtn = btnOnline;
-        onlineControll.style.display = 'block';
-        drafcontroll.style.display = 'none';
-        recycleControll.style.display = 'none';
-        recommendContrll.style.display = 'none';
-        type = 1;
-        getAlbumList();
-    };
-//草稿的点击事件
-    btnDraf.onclick = function () {
-        btnCommon(isSelectBtn);
-        btnPre(btnDraf);
-        isSelectBtn = btnDraf;
-        drafcontroll.style.display = 'block';
-        onlineControll.style.display = 'none';
-        recycleControll.style.display = 'none';
-        recommendContrll.style.display = 'none';
-        type = 2;
-        getAlbumList();
-    };
-    btnRecycleBin.onclick = function () {
-        btnCommon(isSelectBtn);
-        btnPre(btnRecycleBin);
-        isSelectBtn = btnRecycleBin;
-        drafcontroll.style.display = 'none';
-        onlineControll.style.display = 'none';
-        recycleControll.style.display = 'block';
-        recommendContrll.style.display = 'none';
-        type = 3;
-        getAlbumList();
-    };
-    btnRecommend.onclick = function () {
-        btnCommon(isSelectBtn);
-        btnPre(btnRecommend);
-        isSelectBtn = btnRecommend;
-        drafcontroll.style.display = 'none';
-        onlineControll.style.display = 'none';
-        recycleControll.style.display = 'none';
-        recommendContrll.style.display = 'block';
-        type = 4;
-        getAlbumList();
-    };
-    onlineFresh.onclick = function () {
-        getAlbumList();
-    };
-    $('#draf-controll-online').click(function () {
-        var selectStr = '';
-        var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
-            return $(elem).val();
-        });
-        for (let i = 0; i < selectGroup.length; i++) {
-            if (i == 0) {
-                selectStr += selectGroup[i];
-            } else {
-                selectStr += ',' + selectGroup[i];
-            }
-        }
-        ajax({
-            url: "/api/album/toOnline",
-            type: 'get',
-            data: {
-                ids: selectStr,
-            },
-            dataType: 'json',
-            timeout: 10000,
-            contentType: "application/json",
-            success: function (data) {
-                let json = JSON.parse(data);
-                if (json.code == 200) {
-                    getAlbumList()
-                } else {
-                    console.log(json.msg);
-                    Toast(json.msg, 1000);
-                }
-            },
-            //异常处理
-            error: function (e) {
-                console.log(e);
-            }
-        })
+    onlineControll.style.display = 'block';
+    drafcontroll.style.display = 'none';
+    recycleControll.style.display = 'none';
+    recommendContrll.style.display = 'none';
+    type = 1;
+    getAlbumList();
+}
 
+//草稿的点击事件
+function btnToDraf() {
+    btnCommon(isSelectBtn);
+    btnPre(btnDraf);
+    isSelectBtn = btnDraf;
+    drafcontroll.style.display = 'block';
+    onlineControll.style.display = 'none';
+    recycleControll.style.display = 'none';
+    recommendContrll.style.display = 'none';
+    type = 2;
+    getAlbumList();
+}
+
+function btnToRecycleBin() {
+    btnCommon(isSelectBtn);
+    btnPre(btnRecycleBin);
+    isSelectBtn = btnRecycleBin;
+    drafcontroll.style.display = 'none';
+    onlineControll.style.display = 'none';
+    recycleControll.style.display = 'block';
+    recommendContrll.style.display = 'none';
+    type = 3;
+    getAlbumList();
+}
+
+function btnToRecommend() {
+    btnCommon(isSelectBtn);
+    btnPre(btnRecommend);
+    isSelectBtn = btnRecommend;
+    drafcontroll.style.display = 'none';
+    onlineControll.style.display = 'none';
+    recycleControll.style.display = 'none';
+    recommendContrll.style.display = 'block';
+    type = 4;
+    getAlbumList();
+}
+
+function toRecommend() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+        return $(elem).val();
     });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr += ',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/album/recommendForids",
+        type: 'get',
+        data: {
+            ids: selectStr,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getAlbumList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+
+}
+
+function toOnline() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+        return $(elem).val();
+    });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr += ',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/album/onlineForids",
+        type: 'get',
+        data: {
+            ids: selectStr,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getAlbumList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function toRecycler() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+        return $(elem).val();
+    });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr += ',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/album/recyclerForids",
+        type: 'get',
+        data: {
+            ids: selectStr,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getAlbumList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function select() {
+    var selectTitle;
+    var selectId;
+    if (type == 1) {
+        selectTitle = $('#online-select-title').val()
+        selectId = $('#online-select-id').val()
+    } else if (type == 2) {
+        selectTitle = $('#draf-select-title').val()
+        selectId = $('#draf-select-id').val()
+    } else if (type == 3) {
+        selectTitle = $('#recycle-select-title').val()
+        selectId = $('#recycle-select-id').val()
+    } else if (type == 4) {
+        selectTitle = $('#recommend-select-title').val()
+        selectId = $('#recommend-select-id').val()
+    }
+    if (selectTitle == null && selectId == null) {
+        Toast('搜索条件不能为空', 1000);
+        return
+    }
+    pageIndex = 1;
+    ajax({
+        url: "/api/album/select",
+        type: 'get',
+        data: {
+            title: selectTitle,
+            id: selectId,
+            pageIndex:pageIndex,
+            pageSize:pageSize,
+            type:type
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
 }
 
 //把view改成按下按钮的颜色
@@ -249,6 +369,7 @@ function getAlbumList() {
                 htmlStr += '</tbody></table>';
                 $('#table-content').html(htmlStr);
                 hasNextPage = json.data.hasNextPage;
+                hasPreviousPage = json.data.hasPreviousPage;
                 if (json.data.pages > 1) {
                     $('#page_select').show();
                     $("#page-total-mun").html(json.data.total);
@@ -285,7 +406,7 @@ function getAlbumList() {
                                 liStr += '<li>...</li>'
                                 liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages) + ',pageSize)">' + (json.data.pages) + '</li>'
                             } else {
-                                for(var i = 4;i > 0;i--){
+                                for (var i = 4; i > 0; i--) {
                                     liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
                                 }
                             }
@@ -312,4 +433,22 @@ function getSpecialAlbumList(_type, _pageIndex, _pageSize) {
     pageIndex = _pageIndex;
     pageSize = _pageSize;
     getAlbumList();
+}
+
+function previousPage() {
+    if (hasPreviousPage == true) {
+        pageIndex = pageIndex - 1;
+        getAlbumList();
+    } else {
+        Toast('没有上一页', 1000);
+    }
+}
+
+function nextPage() {
+    if (hasNextPage == true) {
+        pageIndex = pageIndex + 1;
+        getAlbumList();
+    } else {
+        Toast('没有下一页', 1000);
+    }
 }

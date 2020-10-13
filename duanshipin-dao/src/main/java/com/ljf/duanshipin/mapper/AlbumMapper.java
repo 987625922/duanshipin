@@ -15,4 +15,12 @@ public interface AlbumMapper {
     List<Album> getAlbumList(Integer type);
 
     void toOnline(String ids);
+
+    void toRecommend(String ids);
+
+    void toRecycler(String ids);
+
+    void deleteForids(String ids);
+
+    List<Album> selectForPage(Long id,String title,Integer type);
 }

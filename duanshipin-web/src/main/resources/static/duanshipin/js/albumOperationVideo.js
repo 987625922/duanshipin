@@ -395,19 +395,23 @@ function getAlbumList() {
                                 }
                             }
                             liStr += '<li>...</li>'
-                            liStr += '<li onclick="getSpecialAlbumList(type,' + json.data.navigateLastPage + ',pageSize)">' + json.data.navigateLastPage + '</li>'
+                            liStr += '<li onclick="getSpecialAlbumList(type,' + json.data.pages + ',pageSize)">' + json.data.pages + '</li>'
                         } else {
-                            liStr += '<li>1</li>'
+                            liStr += '<li onclick="getSpecialAlbumList(type,1,pageSize)">1</li>'
                             liStr += '<li>...</li>'
-                            liStr += '<li onclick="getSpecialAlbumList(type,' + json.data.prePage + ',pageSize)">' + json.data.prePage + '</li>'
                             if (json.data.pages - (json.data.prePage + 2) >= 3) {
+                                liStr += '<li onclick="getSpecialAlbumList(type,' + json.data.prePage + ',pageSize)">' + json.data.prePage + '</li>'
                                 liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
                                 liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.prePage + 2) + ',pageSize)">' + (json.data.prePage + 2) + '</li>'
                                 liStr += '<li>...</li>'
                                 liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages) + ',pageSize)">' + (json.data.pages) + '</li>'
                             } else {
-                                for (var i = 4; i > 0; i--) {
-                                    liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
+                                for (var i = 4; i >= 0; i--) {
+                                    if ((json.data.pages - i) == (json.data.prePage + 1)) {
+                                        liStr += '<li style="background-color:#44c9a8;color: #fff;">' +(json.data.prePage + 1) + '</li>'
+                                    } else {
+                                        liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
+                                    }
                                 }
                             }
                         }

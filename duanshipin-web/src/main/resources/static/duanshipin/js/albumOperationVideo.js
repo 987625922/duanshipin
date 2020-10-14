@@ -99,7 +99,7 @@ function toRecommend() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr += ',' + selectGroup[i];
+            selectStr = selectStr+',' + selectGroup[i];
         }
     }
     ajax({
@@ -137,7 +137,7 @@ function toOnline() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr += ',' + selectGroup[i];
+            selectStr = selectStr+',' + selectGroup[i];
         }
     }
     ajax({
@@ -174,7 +174,7 @@ function toRecycler() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr += ',' + selectGroup[i];
+            selectStr = selectStr+',' + selectGroup[i];
         }
     }
     ajax({

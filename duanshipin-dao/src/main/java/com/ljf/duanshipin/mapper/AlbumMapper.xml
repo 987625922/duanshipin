@@ -33,20 +33,32 @@
         from album where type = #{type}
     </select>
 
-    <update id="toOnline" parameterType="String">
-        update album set album.type = 1 where id in (#{ids})
+    <update id="toOnline" parameterType="java.util.List">
+        update album set album.type = 1 where id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </update>
 
-    <update id="toRecommend" parameterType="String">
-        update album set album.type = 4 where id in (#{ids})
+    <update id="toRecommend" parameterType="java.util.List">
+        update album set album.type = 4 where id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </update>
 
-    <update id="toRecycler" parameterType="String">
-        update album set album.type = 3 where id in (#{ids})
+    <update id="toRecycler" parameterType="java.util.List">
+        update album set album.type = 3 where id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </update>
 
-    <delete id="deleteForids" parameterType="String">
-      DELETE from album WHERE id in (#{ids})
+    <delete id="deleteForids" parameterType="java.util.List">
+      DELETE from album WHERE id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </delete>
 
     <select id="selectForPage" resultMap="BaseResultMap">

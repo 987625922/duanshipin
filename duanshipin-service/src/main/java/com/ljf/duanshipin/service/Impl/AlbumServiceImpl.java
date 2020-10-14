@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -45,25 +46,29 @@ public class AlbumServiceImpl implements AlbumService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void onlineForids(String ids) {
-        albumMapper.toOnline(ids);
+        List<String> idList = Arrays.asList(ids.split(","));
+        albumMapper.toOnline(idList);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void recommendForids(String ids) {
-        albumMapper.toRecommend(ids);
+        List<String> idList = Arrays.asList(ids.split(","));
+        albumMapper.toRecommend(idList);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void deleteForids(String ids) {
-        albumMapper.deleteForids(ids);
+        List<String> idList = Arrays.asList(ids.split(","));
+        albumMapper.deleteForids(idList);
     }
 
     @Override
     @Transactional(rollbackFor = Exception.class)
     public void recyclerForids(String ids) {
-        albumMapper.toRecycler(ids);
+        List<String> idList = Arrays.asList(ids.split(","));
+        albumMapper.toRecycler(idList);
     }
 
     @Override

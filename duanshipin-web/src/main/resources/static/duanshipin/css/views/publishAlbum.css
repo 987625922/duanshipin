@@ -9,7 +9,7 @@
 #input-intro{
     height: 120px;
     width: 300px;
-    border-radius: 3px;
+    border: 1px solid #DCDFE6;
 }
 .form-btn-upload{
     height: 40px;

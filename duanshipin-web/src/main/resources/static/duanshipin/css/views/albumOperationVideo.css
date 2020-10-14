@@ -219,6 +219,7 @@
     border-radius: 3px;
     border: 1px solid #dcdfe6;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .table_div {

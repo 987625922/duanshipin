@@ -111,8 +111,9 @@ public class ViewController extends BaseController {
         return mav;
     }
 
+
     /**
-     * 内容 -》 专辑管理 -》 用户视频池
+     * 内容 -》 专辑管理 -》 发布专辑
      */
     @RequestMapping("/content/publishAlbum")
     public Object publishAlbum() {

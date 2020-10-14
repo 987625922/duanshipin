@@ -339,3 +339,12 @@
     margin: 0;
     color: #303133;
 }
+.select_label{
+    height: 35px;
+    width: 200px;
+    border: 1px solid #dcdfe6;
+    padding-left: 15px;
+}
+.select_font{
+    font-size: 15px;
+}

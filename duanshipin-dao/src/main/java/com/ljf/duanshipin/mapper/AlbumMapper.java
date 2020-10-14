@@ -14,13 +14,13 @@ public interface AlbumMapper {
 
     List<Album> getAlbumList(Integer type);
 
-    void toOnline(String ids);
+    void toOnline(List<String> list);
 
-    void toRecommend(String ids);
+    void toRecommend(List<String> list);
 
-    void toRecycler(String ids);
+    void toRecycler(List<String> list);
 
-    void deleteForids(String ids);
+    void deleteForids(List<String> list);
 
     List<Album> selectForPage(Long id,String title,Integer type);
 }

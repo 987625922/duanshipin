@@ -11,6 +11,7 @@
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
 </head>
 
 <body>
@@ -129,7 +130,17 @@
         </div>
         <div class="dialog_body">
             <div class="dialog-form-item">
-                <label for="" id="dialog-content" style="width:120px">
+                <label style="width:120px">
+                    父标签：
+                </label>
+                <div class="from-item-content" style="margin-left:120px">
+                    <select class="select_label select_font" id="dialog_select">
+
+                    </select>
+                </div>
+            </div>
+            <div class="dialog-form-item">
+                <label id="dialog-content" style="width:120px">
                     标签名称：
                 </label>
                 <div class="from-item-content" style="margin-left:120px">
@@ -147,22 +158,9 @@
         </div>
     </div>
 </div>
-<script>
-    function showAddDialog() {
-        if (getSelectIndex() == 1) {
-            document.getElementById('dialog-content').innerText = '一级标签名称：'
-        } else if (getSelectIndex() == 2) {
-            document.getElementById('dialog-content').innerText = '二级标签名称：'
-        } else if (getSelectIndex() == 3) {
-            document.getElementById('dialog-content').innerText = '三级标签名称：'
-        }
-        document.getElementById('dialog_loginout_wrapper').style.display = 'block';
-    }
-
-    function addDialogCancel() {
-        document.getElementById('dialog_loginout_wrapper').style.display = 'none';
-    }
-</script>
 </body>
 <script th:src="@{/duanshipin/js/tags.js}"></script>
+<script type="text/javascript">
+    initView()
+</script>
 </html>

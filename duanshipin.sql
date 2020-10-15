@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 09/10/2020 17:44:19
+ Date: 15/10/2020 17:46:10
 */
 
 SET NAMES utf8mb4;
@@ -61,13 +61,133 @@ CREATE TABLE `album`  (
   `update_admin_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '',
   `type` int(1) NOT NULL DEFAULT 2 COMMENT '1.上线 2.草稿 3.回收站 4.推荐',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 125 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of album
 -- ----------------------------
-INSERT INTO `album` VALUES (2, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-09 11:08:27', '2020-10-09 11:08:27', 9, 'Admin', 2);
-INSERT INTO `album` VALUES (3, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-09 11:19:26', '2020-10-09 11:19:26', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (2, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-09 11:08:27', '2020-10-09 11:08:27', 9, 'Admin', 4);
+INSERT INTO `album` VALUES (3, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-09 11:19:26', '2020-10-09 11:19:26', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (5, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:48', '2020-10-10 10:47:48', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (6, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (7, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (8, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (9, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (10, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (11, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (12, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (13, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (14, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:47:49', '2020-10-10 10:47:49', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (15, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (16, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (17, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (18, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (19, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (20, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (21, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 1);
+INSERT INTO `album` VALUES (22, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (23, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (24, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-10 10:48:30', '2020-10-10 10:48:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (25, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (26, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (27, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (28, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (29, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (30, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (31, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (32, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (33, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (34, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (35, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (36, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (37, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (38, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:29', '2020-10-12 11:09:29', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (39, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (40, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (41, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (42, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (43, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 3);
+INSERT INTO `album` VALUES (44, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (45, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (46, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (47, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (48, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (49, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (50, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (51, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (52, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (53, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (54, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (55, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:30', '2020-10-12 11:09:30', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (56, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (57, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (58, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (59, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (60, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (61, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (62, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (63, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (64, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (65, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (66, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (67, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (68, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (69, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (70, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (71, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:31', '2020-10-12 11:09:31', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (72, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:32', '2020-10-12 11:09:32', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (73, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:32', '2020-10-12 11:09:32', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (74, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:09:32', '2020-10-12 11:09:32', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (75, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (76, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (77, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (78, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (79, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (80, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (81, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (82, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (83, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (84, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (85, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (86, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (87, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (88, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (89, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:17', '2020-10-12 11:29:17', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (90, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (91, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (92, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (93, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (94, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (95, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (96, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (97, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (98, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (99, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (100, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (101, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (102, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (103, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (104, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:18', '2020-10-12 11:29:18', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (105, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (106, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (107, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (108, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (109, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (110, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (111, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (112, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (113, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (114, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (115, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (116, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (117, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:19', '2020-10-12 11:29:19', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (118, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:20', '2020-10-12 11:29:20', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (119, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:20', '2020-10-12 11:29:20', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (120, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:20', '2020-10-12 11:29:20', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (121, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:20', '2020-10-12 11:29:20', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (122, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:20', '2020-10-12 11:29:20', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (123, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:20', '2020-10-12 11:29:20', 9, 'Admin', 2);
+INSERT INTO `album` VALUES (124, '测试的专辑标题', NULL, NULL, '30', '0', '2020-10-12 11:29:20', '2020-10-12 11:29:20', 9, 'Admin', 2);
 
 -- ----------------------------
 -- Table structure for login_log
@@ -88,7 +208,7 @@ CREATE TABLE `login_log`  (
 -- ----------------------------
 -- Records of login_log
 -- ----------------------------
-INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-10-09 17:38:22', 50, '2020-10-09 17:36:17');
+INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-10-15 17:30:20', 117, '2020-10-15 17:28:58');
 
 -- ----------------------------
 -- Table structure for permission
@@ -104,7 +224,7 @@ CREATE TABLE `permission`  (
   `update_time` datetime(0) NULL DEFAULT NULL,
   `last_control_admin_id` bigint(20) NULL DEFAULT NULL COMMENT '上一个控制的admin的id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of permission
@@ -154,5 +274,21 @@ CREATE TABLE `role_permission`  (
 -- Records of role_permission
 -- ----------------------------
 INSERT INTO `role_permission` VALUES (4, 1);
+
+-- ----------------------------
+-- Table structure for tag
+-- ----------------------------
+DROP TABLE IF EXISTS `tag`;
+CREATE TABLE `tag`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `create_time` datetime(0) NOT NULL,
+  `update_time` datetime(0) NOT NULL,
+  `update_admin_id` bigint(20) NOT NULL,
+  `update_admin_name` varchar(0) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `parent_tag_id` int(11) NOT NULL COMMENT '父标签的id',
+  `type` int(1) NOT NULL COMMENT '标签等级 1 一级标签 2 二级标签 3 三级标签',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;

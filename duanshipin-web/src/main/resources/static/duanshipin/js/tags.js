@@ -10,7 +10,7 @@ function initView() {
     // 把页面所在左边的item设置为选中
     $('#left_item_one').css('backgroundColor', '#191d26');
     $('#left_item_one_a').css('color', '#fff');
-    $('#item_one_one').css('borderLeft', '3px solid #44c9a8');
+    $('#item_two_one').css('borderLeft', '3px solid #44c9a8');
     $('#left_item_one_img').css('backgroundImage', "url('/duanshipin/img/video_content_h.png')");
 }
 
@@ -44,6 +44,38 @@ function btnCommon(dom) {
     dom.style.border = '1px solid #dcdfe6';
     dom.style.backgroundColor = '#fff'
     dom.style.color = '#333'
+}
+
+function getTagList() {
+
+}
+
+function addTag() {
+    ajax({
+        url: "/api/tag/add",
+        type: 'post',
+        data: {
+            name: '测试一级标签',
+            parentTagId: '-1',
+            type: '1'
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
 }
 
 // 返回选择的btn的下标
@@ -80,6 +112,7 @@ function dialogSelect() {
     let htmlStr = '<option class="select_font" value="-1">根目录</option>';
     $('#dialog_select').html(htmlStr);
 }
+
 function createTags() {
-    
+
 }

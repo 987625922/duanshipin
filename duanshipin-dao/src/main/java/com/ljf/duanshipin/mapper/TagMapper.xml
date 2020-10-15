@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ljf.duanshipin.mapper.TagMapper">
+
+    <resultMap id="BaseResultMap" type="com.ljf.duanshipin.domain.Tag">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="update_time" property="updateTime" javaType="DATE"/>
+        <result column="update_admin_id" property="updateAdminId" jdbcType="BIGINT"/>
+        <result column="update_admin_name" property="updateAdminName" jdbcType="VARCHAR"/>
+        <result column="parent_tag_id" property="parentTagId" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        name,create_time,update_time,update_admin_id,update_admin_name,
+            parent_tag_id,type
+    </sql>
+
+    <insert id="insert" parameterType="com.ljf.duanshipin.domain.Tag">
+    INSERT INTO tag(name,create_time,update_time,update_admin_id,update_admin_name,
+            parent_tag_id,type) VALUES(
+            #{name},#{createTime},#{updateTime},#{updateAdminId},#{updateAdminName},
+            #{parentTagId},#{type})
+    </insert>
+
+    <select id="getTagList" parameterType="int" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from album where type = #{type}
+    </select>
+</mapper>

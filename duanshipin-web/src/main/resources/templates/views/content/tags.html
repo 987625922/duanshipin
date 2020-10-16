@@ -39,60 +39,61 @@
                     <span>标签名称：</span>
                     <input type="text" class="input_zj_title"/>
                     <div class="btn_list_search">查询</div>
-                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh"/>
+                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getTagList()"/>
                 </div>
             </div>
-            <div class="table_div">
-                <table class="content_table">
-                    <tr>
-                        <th>
-                            <span class="table_id table_th">标签ID</span>
-                        </th>
-                        <th id="table-th-tags-one">
-                            <span class="table_title table_th">一级标签</span>
-                        </th>
-                        <th id="table-th-tags-two">
-                            <span class="table_title table_th">二级标签</span>
-                        </th>
-                        <th id="table-th-tags-three">
-                            <span class="table_title table_th">三级标签</span>
-                        </th>
-                        <th>
-                            <span class="table_time table_th">最后操作时间</span>
-                        </th>
-                        <th>
-                            <span class="table_user table_th">操作人</span>
-                        </th>
-                        <th>
-                            <span class="table_controll table_th">操作</span>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="table_id"> 987123 </span>
-                        </td>
-                        <td id="table-td-tags-one">
-                            <span class="table_title">一级标签</span>
-                        </td>
-                        <td id="table-td-tags-two">
-                            <span class="table_title">二级标签</span>
-                        </td>
-                        <td id="table-td-tags-three">
-                            <span class="table_title">三级标签</span>
-                        </td>
-                        <td>
-                            <span class="table_time"> 2018-11-28 14:01:19 </span>
-                        </td>
-                        <td>
-                            <span class="table_user"> xxx@yy-inc.cn </span>
-                        </td>
-                        <td>
-                            <div class="table_content_controll">
-                                <a href="#">删除</a>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            <div class="table_div" id="table-content">
+            </div>
+                <!--<table class="content_table">-->
+                    <!--<tr>-->
+                        <!--<th>-->
+                            <!--<span class="table_id table_th">标签ID</span>-->
+                        <!--</th>-->
+                        <!--<th id="table-th-tags-one">-->
+                            <!--<span class="table_title table_th">一级标签</span>-->
+                        <!--</th>-->
+                        <!--<th id="table-th-tags-two">-->
+                            <!--<span class="table_title table_th">二级标签</span>-->
+                        <!--</th>-->
+                        <!--<th id="table-th-tags-three">-->
+                            <!--<span class="table_title table_th">三级标签</span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_time table_th">最后操作时间</span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_user table_th">操作人</span>-->
+                        <!--</th>-->
+                        <!--<th>-->
+                            <!--<span class="table_controll table_th">操作</span>-->
+                        <!--</th>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                        <!--<td>-->
+                            <!--<span class="table_id"> 987123 </span>-->
+                        <!--</td>-->
+                        <!--<td id="table-td-tags-one">-->
+                            <!--<span class="table_title">一级标签</span>-->
+                        <!--</td>-->
+                        <!--<td id="table-td-tags-two">-->
+                            <!--<span class="table_title">二级标签</span>-->
+                        <!--</td>-->
+                        <!--<td id="table-td-tags-three">-->
+                            <!--<span class="table_title">三级标签</span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<span class="table_time"> 2018-11-28 14:01:19 </span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<span class="table_user"> xxx@yy-inc.cn </span>-->
+                        <!--</td>-->
+                        <!--<td>-->
+                            <!--<div class="table_content_controll">-->
+                                <!--<a href="#">删除</a>-->
+                            <!--</div>-->
+                        <!--</td>-->
+                    <!--</tr>-->
+                <!--</table>-->
             </div>
             <div class="page_select" id="page_select">
                 <div class="page_select_inner">
@@ -163,5 +164,6 @@
 <script th:src="@{/duanshipin/js/tags.js}"></script>
 <script type="text/javascript">
     initView()
+    getTagList()
 </script>
 </html>

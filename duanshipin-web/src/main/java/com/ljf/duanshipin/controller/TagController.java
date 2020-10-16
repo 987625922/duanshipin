@@ -24,7 +24,7 @@ public class TagController extends BaseController {
     public Object list(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
                        @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize
             , @RequestParam(value = "type", defaultValue = "2") Integer type) {
-        return tagService.getTagForPage(pageIndex, pageSize,type);
+        return JsonResult.buildSuccess(tagService.getTagForPage(pageIndex, pageSize,type));
     }
 
     @RequestMapping("/add")

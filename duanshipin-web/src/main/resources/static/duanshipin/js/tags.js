@@ -1,3 +1,15 @@
+//请求的类型
+var type = 1;
+//显示的页面下标
+var pageIndex = 1;
+//每一页显示的条目
+var pageSize = 10;
+//是否有下一页
+var hasNextPage;
+//是否有上一页
+var hasPreviousPage;
+
+
 //页码选择器
 $('#page_select').hide();
 const tagsOne = document.getElementById('tags-one');
@@ -47,7 +59,91 @@ function btnCommon(dom) {
 }
 
 function getTagList() {
-
+    ajax({
+        url: "/api/tag/listForType",
+        type: 'get',
+        data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            type: type
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            var json = JSON.parse(data);
+            if (json.code == 200) {
+                var htmlStr = ''
+                htmlStr += '<table class="content_table"><thead><tr>\n' +
+                    '                        <th>\n' +
+                    '                            <span class="table_id table_th">标签ID</span>\n' +
+                    '                        </th>\n' +
+                    '                        <th id="table-th-tags-one">\n' +
+                    '                            <span class="table_title table_th">标签名</span>\n' +
+                    '                        </th>\n' +
+                    // '                        <th id="table-th-tags-two">\n' +
+                    // '                            <span class="table_title table_th">二级标签</span>\n' +
+                    // '                        </th>\n' +
+                    // '                        <th id="table-th-tags-three">\n' +
+                    // '                            <span class="table_title table_th">三级标签</span>\n' +
+                    // '                        </th>\n' +
+                    '                        <th>\n' +
+                    '                            <span class="table_time table_th">最后操作时间</span>\n' +
+                    '                        </th>\n' +
+                    '                        <th>\n' +
+                    '                            <span class="table_user table_th">操作人</span>\n' +
+                    '                        </th>\n' +
+                    '                        <th>\n' +
+                    '                            <span class="table_controll table_th">操作</span>\n' +
+                    '                        </th>\n' +
+                    '                    </tr></thead>';
+                if (json.data.list.length > 6) {
+                    htmlStr += '<tbody style="display: block;height: 430px;overflow-y: scroll;">';
+                } else if (json.data.list.length == 0) {
+                    htmlStr += '<tbody style="display:block;height: 5px;">';
+                } else {
+                    htmlStr += '<tbody style="height: 5px;">';
+                }
+                for (var i = 0; i < json.data.list.length; i++) {
+                    let bean = json.data.list[i];
+                    htmlStr += '<tr>\n' +
+                        '                        <td>\n' +
+                        '                            <span class="table_id">' + bean.id + '</span>\n' +
+                        '                        </td>\n' +
+                        '                        <td id="table-td-tags-one">\n' +
+                        '                            <span class="table_title">' + bean.name + '</span>\n' +
+                        '                        </td>\n' +
+                        // '                        <td id="table-td-tags-two">\n' +
+                        // '                            <span class="table_title">二级标签</span>\n' +
+                        // '                        </td>\n' +
+                        // '                        <td id="table-td-tags-three">\n' +
+                        // '                            <span class="table_title">三级标签</span>\n' +
+                        // '                        </td>\n' +
+                        '                        <td>\n' +
+                        '                            <span class="table_time"> 2018-11-28 14:01:19 </span>\n' +
+                        '                        </td>\n' +
+                        '                        <td>\n' +
+                        '                            <span class="table_user"> xxx@yy-inc.cn </span>\n' +
+                        '                        </td>\n' +
+                        '                        <td>\n' +
+                        '                            <div class="table_content_controll">\n' +
+                        '                                <a href="#">删除</a>\n' +
+                        '                            </div>\n' +
+                        '                        </td>\n' +
+                        '                    </tr>'
+                }
+                htmlStr += '</tbody></table>';
+                $('#content-table').html(htmlStr)
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
 }
 
 function addTag() {
@@ -63,9 +159,9 @@ function addTag() {
         timeout: 10000,
         contentType: "application/json",
         success: function (data) {
-            let json = JSON.parse(data);
+            var json = JSON.parse(data);
             if (json.code == 200) {
-
+                addDialogCancel()
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);

@@ -14,7 +14,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        name,create_time,update_time,update_admin_id,update_admin_name,
+        id,name,create_time,update_time,update_admin_id,update_admin_name,
             parent_tag_id,type
     </sql>
 
@@ -28,6 +28,6 @@
     <select id="getTagList" parameterType="int" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from album where type = #{type}
+        from tag where type = #{type}
     </select>
 </mapper>

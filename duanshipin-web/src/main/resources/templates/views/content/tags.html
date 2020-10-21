@@ -117,11 +117,11 @@
                     <span>页</span>
                 </div>
             </div>
-        </div>
         <script type="text/javascript">
             writeLeft()
             writeLeftTwoOfLeft()
         </script>
+        </div>
     </div>
 </div>
 <div class="dialog_wrapper" id="dialog_loginout_wrapper" style="z-index: 2008;">
@@ -135,9 +135,11 @@
                     父标签：
                 </label>
                 <div class="from-item-content" style="margin-left:120px">
-                    <select class="select_label select_font" id="dialog_select">
-
-                    </select>
+                    <div class="select_label" id="dialog_select" onclick="dialogGetList()">
+                        <div id="select_item">
+                            <div class="select_font">根目录</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="dialog-form-item">

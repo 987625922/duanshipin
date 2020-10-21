@@ -343,8 +343,19 @@
     height: 35px;
     width: 200px;
     border: 1px solid #dcdfe6;
+    background: #ffffff;
     padding-left: 15px;
+    font-size: 15px;
 }
 .select_font{
+    height: 35px;
+    width: 200px;
+    border: 1px solid #dcdfe6;
+    background: #ffffff;
+    padding-left: 15px;
     font-size: 15px;
+    z-index: 100;
+}
+.dialog-form-item{
+    z-index: -1;
 }

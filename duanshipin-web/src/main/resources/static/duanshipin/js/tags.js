@@ -8,7 +8,9 @@ var pageSize = 10;
 var hasNextPage;
 //是否有上一页
 var hasPreviousPage;
-
+//dialog参数
+var dialogPageIndex = 1;
+var dialogPageSize = 10;
 
 //页码选择器
 $('#page_select').hide();
@@ -151,9 +153,9 @@ function addTag() {
         url: "/api/tag/add",
         type: 'post',
         data: {
-            name: '测试一级标签',
+            name: $('#input-intro').val(),
             parentTagId: '-1',
-            type: '1'
+            type: type
         },
         dataType: 'json',
         timeout: 10000,
@@ -197,16 +199,46 @@ function showAddDialog() {
         document.getElementById('dialog-content').innerText = '三级标签名称：'
     }
     $('#dialog_loginout_wrapper').show();
-    dialogSelect();
 }
 
 function addDialogCancel() {
     $('#dialog_loginout_wrapper').hide();
 }
 
+function dialogGetList() {
+    ajax({
+        url: "/api/tag/listForType",
+        type: 'get',
+        data: {
+            pageIndex: dialogPageIndex,
+            pageSize: dialogPageSize,
+            type: type
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            var json = JSON.parse(data);
+            if (json.code == 200) {
+                let htmlStr = '<div class="select_font" value="-1">根目录</div>';
+                for (let i = 0; i < json.data.list.length; i++) {
+                    htmlStr += '<div class="select_font" value="' + json.data.list[i].id + '">' + json.data.list[i].name + '</div>'
+                }
+                $('#select_item').html(htmlStr);
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
 function dialogSelect() {
-    let htmlStr = '<option class="select_font" value="-1">根目录</option>';
-    $('#dialog_select').html(htmlStr);
+
 }
 
 function createTags() {

@@ -341,21 +341,24 @@
 }
 .select_label{
     height: 35px;
-    width: 200px;
+    width: 250px;
     border: 1px solid #dcdfe6;
     background: #ffffff;
-    padding-left: 15px;
     font-size: 15px;
+}
+.select_inner{
+    position: absolute;
+    height: 135px;
+    overflow-y: scroll;
+    flex: 1;
+    -webkit-box-flex: 1;
 }
 .select_font{
     height: 35px;
-    width: 200px;
+    width: 235px;
     border: 1px solid #dcdfe6;
     background: #ffffff;
     padding-left: 15px;
     font-size: 15px;
-    z-index: 100;
-}
-.dialog-form-item{
-    z-index: -1;
+    z-index: 99999;
 }

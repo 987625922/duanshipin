@@ -8,10 +8,12 @@
     <link rel="stylesheet" th:href="@{/duanshipin/css/project.css}" media="all">
     <link rel="stylesheet" th:href="@{/duanshipin/css/views/tags.css}" media="all">
     <link rel="stylesheet" th:href="@{/duanshipin/css/views/commonLayout.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/utils/dropload.css}" media="all">
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
     <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/dropload.min.js}"></script>
 </head>
 
 <body>
@@ -44,85 +46,85 @@
             </div>
             <div class="table_div" id="table-content">
             </div>
-                <!--<table class="content_table">-->
-                    <!--<tr>-->
-                        <!--<th>-->
-                            <!--<span class="table_id table_th">标签ID</span>-->
-                        <!--</th>-->
-                        <!--<th id="table-th-tags-one">-->
-                            <!--<span class="table_title table_th">一级标签</span>-->
-                        <!--</th>-->
-                        <!--<th id="table-th-tags-two">-->
-                            <!--<span class="table_title table_th">二级标签</span>-->
-                        <!--</th>-->
-                        <!--<th id="table-th-tags-three">-->
-                            <!--<span class="table_title table_th">三级标签</span>-->
-                        <!--</th>-->
-                        <!--<th>-->
-                            <!--<span class="table_time table_th">最后操作时间</span>-->
-                        <!--</th>-->
-                        <!--<th>-->
-                            <!--<span class="table_user table_th">操作人</span>-->
-                        <!--</th>-->
-                        <!--<th>-->
-                            <!--<span class="table_controll table_th">操作</span>-->
-                        <!--</th>-->
-                    <!--</tr>-->
-                    <!--<tr>-->
-                        <!--<td>-->
-                            <!--<span class="table_id"> 987123 </span>-->
-                        <!--</td>-->
-                        <!--<td id="table-td-tags-one">-->
-                            <!--<span class="table_title">一级标签</span>-->
-                        <!--</td>-->
-                        <!--<td id="table-td-tags-two">-->
-                            <!--<span class="table_title">二级标签</span>-->
-                        <!--</td>-->
-                        <!--<td id="table-td-tags-three">-->
-                            <!--<span class="table_title">三级标签</span>-->
-                        <!--</td>-->
-                        <!--<td>-->
-                            <!--<span class="table_time"> 2018-11-28 14:01:19 </span>-->
-                        <!--</td>-->
-                        <!--<td>-->
-                            <!--<span class="table_user"> xxx@yy-inc.cn </span>-->
-                        <!--</td>-->
-                        <!--<td>-->
-                            <!--<div class="table_content_controll">-->
-                                <!--<a href="#">删除</a>-->
-                            <!--</div>-->
-                        <!--</td>-->
-                    <!--</tr>-->
-                <!--</table>-->
+            <!--<table class="content_table">-->
+            <!--<tr>-->
+            <!--<th>-->
+            <!--<span class="table_id table_th">标签ID</span>-->
+            <!--</th>-->
+            <!--<th id="table-th-tags-one">-->
+            <!--<span class="table_title table_th">一级标签</span>-->
+            <!--</th>-->
+            <!--<th id="table-th-tags-two">-->
+            <!--<span class="table_title table_th">二级标签</span>-->
+            <!--</th>-->
+            <!--<th id="table-th-tags-three">-->
+            <!--<span class="table_title table_th">三级标签</span>-->
+            <!--</th>-->
+            <!--<th>-->
+            <!--<span class="table_time table_th">最后操作时间</span>-->
+            <!--</th>-->
+            <!--<th>-->
+            <!--<span class="table_user table_th">操作人</span>-->
+            <!--</th>-->
+            <!--<th>-->
+            <!--<span class="table_controll table_th">操作</span>-->
+            <!--</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>-->
+            <!--<span class="table_id"> 987123 </span>-->
+            <!--</td>-->
+            <!--<td id="table-td-tags-one">-->
+            <!--<span class="table_title">一级标签</span>-->
+            <!--</td>-->
+            <!--<td id="table-td-tags-two">-->
+            <!--<span class="table_title">二级标签</span>-->
+            <!--</td>-->
+            <!--<td id="table-td-tags-three">-->
+            <!--<span class="table_title">三级标签</span>-->
+            <!--</td>-->
+            <!--<td>-->
+            <!--<span class="table_time"> 2018-11-28 14:01:19 </span>-->
+            <!--</td>-->
+            <!--<td>-->
+            <!--<span class="table_user"> xxx@yy-inc.cn </span>-->
+            <!--</td>-->
+            <!--<td>-->
+            <!--<div class="table_content_controll">-->
+            <!--<a href="#">删除</a>-->
+            <!--</div>-->
+            <!--</td>-->
+            <!--</tr>-->
+            <!--</table>-->
+        </div>
+        <div class="page_select" id="page_select">
+            <div class="page_select_inner">
+                <span>共</span>
+                <span>100</span>
+                <span>条</span>
+                <span class="page_select_position_one">每页</span>
+                <input type="number" class="page_input_mun"/>
+                <span>条</span>
+                <img src="/duanshipin/img/last_page.png" alt="" class="last_page"/>
+                <ul class="page_select_ul">
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>...</li>
+                    <li>10</li>
+                </ul>
+                <img src="/duanshipin/img/next_page.png" alt="" class="last_page"/>
+                <span class="page_select_position_two">前往</span>
+                <input type="number" class="page_input_to_mun"/>
+                <span>页</span>
             </div>
-            <div class="page_select" id="page_select">
-                <div class="page_select_inner">
-                    <span>共</span>
-                    <span>100</span>
-                    <span>条</span>
-                    <span class="page_select_position_one">每页</span>
-                    <input type="number" class="page_input_mun"/>
-                    <span>条</span>
-                    <img src="/duanshipin/img/last_page.png" alt="" class="last_page"/>
-                    <ul class="page_select_ul">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>...</li>
-                        <li>10</li>
-                    </ul>
-                    <img src="/duanshipin/img/next_page.png" alt="" class="last_page"/>
-                    <span class="page_select_position_two">前往</span>
-                    <input type="number" class="page_input_to_mun"/>
-                    <span>页</span>
-                </div>
-            </div>
+        </div>
         <script type="text/javascript">
             writeLeft()
             writeLeftTwoOfLeft()
         </script>
-        </div>
     </div>
+</div>
 </div>
 <div class="dialog_wrapper" id="dialog_loginout_wrapper" style="z-index: 2008;">
     <div class="dialog">
@@ -136,6 +138,9 @@
                 </label>
                 <div class="from-item-content" style="margin-left:120px">
                     <div class="select_label" id="dialog_select" onclick="dialogGetList()">
+                        <div style="padding-left: 15px;" id="select-item_value">根目录</div>
+                    </div>
+                    <div class="select_inner inner" id="select_list" style="display: none;">
                         <div id="select_item">
                             <div class="select_font">根目录</div>
                         </div>
@@ -146,14 +151,15 @@
                 <label id="dialog-content" style="width:120px">
                     标签名称：
                 </label>
-                <div class="from-item-content" style="margin-left:120px">
+                <div style="margin-left:120px">
                     <input type="text" id="input-intro">
                 </div>
             </div>
             <div class="dialog-form-item">
-                <div class="from-item-content" style="margin-left:120px">
+                <div style="margin-left:120px">
                     <button class="dialog-form-btn-save" id="dialog_loginout_enter"
-                            onclick="addTag()">确定</button>
+                            onclick="addTag()">确定
+                    </button>
                     <button class="dialog-form-btn-cancel" id="dialog_loginout_cancel"
                             onclick="addDialogCancel()">取消
                     </button>
@@ -165,7 +171,7 @@
 </body>
 <script th:src="@{/duanshipin/js/tags.js}"></script>
 <script type="text/javascript">
-    initView()
-    getTagList()
+    initView();
+    getTagList();
 </script>
 </html>

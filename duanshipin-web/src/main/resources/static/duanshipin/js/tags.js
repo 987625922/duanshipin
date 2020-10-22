@@ -11,6 +11,7 @@ var hasPreviousPage;
 //dialog参数
 var dialogPageIndex = 1;
 var dialogPageSize = 10;
+var dialogIsLoad = false;
 
 //页码选择器
 $('#page_select').hide();
@@ -198,6 +199,7 @@ function showAddDialog() {
     } else if (getSelectIndex() == 3) {
         document.getElementById('dialog-content').innerText = '三级标签名称：'
     }
+    dialogIsLoad = false;
     $('#dialog_loginout_wrapper').show();
 }
 
@@ -206,6 +208,11 @@ function addDialogCancel() {
 }
 
 function dialogGetList() {
+    if (dialogIsLoad) {
+        return
+    }
+    dialogIsLoad = true;
+    dialogPageIndex = 1;
     ajax({
         url: "/api/tag/listForType",
         type: 'get',
@@ -220,11 +227,23 @@ function dialogGetList() {
         success: function (data) {
             var json = JSON.parse(data);
             if (json.code == 200) {
-                let htmlStr = '<div class="select_font" value="-1">根目录</div>';
-                for (let i = 0; i < json.data.list.length; i++) {
-                    htmlStr += '<div class="select_font" value="' + json.data.list[i].id + '">' + json.data.list[i].name + '</div>'
+                if (dialogPageIndex == 1) {
+                    let htmlStr = '<div class="select_font" value="-1" onclick="selectItemOnclick(this)">根目录</div>';
+                    for (let i = 0; i < json.data.list.length; i++) {
+                        htmlStr += '<div class="select_font" value="'
+                            + json.data.list[i].id + '" onclick="selectItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                    }
+                    $('#select_item').html(htmlStr);
+                } else {
+                    let htmlStr = '';
+                    for (let i = 0; i < json.data.list.length; i++) {
+                        htmlStr += '<div class="select_font" value="'
+                            + json.data.list[i].id + '" onclick="selectItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                    }
+                    $('#select_item').append(htmlStr);
                 }
-                $('#select_item').html(htmlStr);
+                dialogPageIndex++;
+                dropload();
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);
@@ -235,6 +254,85 @@ function dialogGetList() {
             console.log(e);
         }
     })
+}
+
+function dropload() {
+    // dropload
+    var dropload = $('.inner').dropload({
+        domUp: {
+            domClass: 'dropload-up',
+            domRefresh: '<div class="dropload-refresh">↓下拉刷新</div>',
+            domUpdate: '<div class="dropload-update">↑释放更新</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+        },
+        domDown: {
+            domClass: 'dropload-down',
+            domRefresh: '<div class="dropload-refresh">↑上拉加载更多</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+            domNoData: '<div class="dropload-noData">暂无数据</div>'
+        },
+        loadUpFn: function (me) {
+            dropload.resetload()
+        },
+        loadDownFn: function (me) {
+            console.log(dialogPageIndex)
+            ajax({
+                url: "/api/tag/listForType",
+                type: 'get',
+                data: {
+                    pageIndex: dialogPageIndex,
+                    pageSize: dialogPageSize,
+                    type: type
+                },
+                dataType: 'json',
+                timeout: 10000,
+                contentType: "application/json",
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if (json.code == 200) {
+                        $('#select_list').show();
+                        dropload.resetload();
+                        if (!json.data.hasNextPage) {
+                            // 锁定
+                            dropload.lock();
+                            $('.dropload-down').hide();
+                        }
+                        if (dialogPageIndex == 1) {
+                            let htmlStr = '<div value="-1" onclick="selectItemOnclick(this)">根目录</div>';
+                            for (let i = 0; i < json.data.list.length; i++) {
+                                htmlStr += '<div class="select_font" value="'
+                                    + json.data.list[i].id + '" onclick="selectItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                            }
+                            $('#select_item').html(htmlStr);
+                        } else {
+                            let htmlStr = '';
+                            for (let i = 0; i < json.data.list.length; i++) {
+                                htmlStr += '<div class="select_font" value="'
+                                    + json.data.list[i].id + '" onclick="selectItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                            }
+                            $('#select_item').append(htmlStr);
+                        }
+                        dialogPageIndex++;
+                    } else {
+                        console.log(json.msg);
+                        Toast(json.msg, 1000);
+                        dropload.resetload()
+                    }
+                },
+                //异常处理
+                error: function (e) {
+                    console.log(e);
+                    dropload.resetload()
+                }
+            })
+        }
+    });
+}
+
+
+function selectItemOnclick(dom) {
+    $('#select_list').hide();
+    $('#select-item_value').html(dom.innerHTML).attr('value', dom.getAttribute("value"));
 }
 
 function dialogSelect() {

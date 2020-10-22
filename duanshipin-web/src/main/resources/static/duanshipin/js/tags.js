@@ -155,7 +155,7 @@ function addTag() {
         type: 'post',
         data: {
             name: $('#input-intro').val(),
-            parentTagId: '-1',
+            parentTagId: $('#select-item_value').attr('value'),
             type: type
         },
         dataType: 'json',
@@ -208,6 +208,9 @@ function addDialogCancel() {
 }
 
 function dialogGetList() {
+    if (type == 1){
+        return
+    }
     if (dialogIsLoad) {
         return
     }
@@ -228,7 +231,7 @@ function dialogGetList() {
             var json = JSON.parse(data);
             if (json.code == 200) {
                 if (dialogPageIndex == 1) {
-                    let htmlStr = '<div class="select_font" value="-1" onclick="selectItemOnclick(this)">根目录</div>';
+                    let htmlStr = '';
                     for (let i = 0; i < json.data.list.length; i++) {
                         htmlStr += '<div class="select_font" value="'
                             + json.data.list[i].id + '" onclick="selectItemOnclick(this)">' + json.data.list[i].name + '</div>'

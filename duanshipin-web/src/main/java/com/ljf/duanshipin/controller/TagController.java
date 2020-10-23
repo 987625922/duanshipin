@@ -23,8 +23,8 @@ public class TagController extends BaseController {
     @RequestMapping("/listForType")
     public Object list(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
                        @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize
-            , @RequestParam(value = "type", defaultValue = "2") Integer type) {
-        return JsonResult.buildSuccess(tagService.getTagForPage(pageIndex, pageSize,type));
+            , @RequestParam(value = "type", defaultValue = "1") Integer type) {
+        return JsonResult.buildSuccess(tagService.getTagForPage(pageIndex, pageSize, type));
     }
 
     @RequestMapping("/add")
@@ -33,5 +33,19 @@ public class TagController extends BaseController {
                 .setUpdateAdminName(getCurrentAdmin().getUserName());
         tagService.insert(tag);
         return JsonResult.buildSuccess();
+    }
+
+    @RequestMapping("/delete")
+    public Object del(Integer id) {
+        tagService.delete(id);
+        return JsonResult.buildSuccess();
+    }
+
+    @RequestMapping("/select")
+    public Object select(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
+                         @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize
+            , @RequestParam(value = "type", defaultValue = "1") Integer type,
+                         String name) {
+        return JsonResult.buildSuccess(tagService.getTagByNameAndType(pageIndex, pageSize, name, type));
     }
 }

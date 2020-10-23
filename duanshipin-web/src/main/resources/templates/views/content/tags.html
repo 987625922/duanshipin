@@ -39,84 +39,26 @@
                 </button>
                 <div class="list_search">
                     <span>标签名称：</span>
-                    <input type="text" class="input_zj_title"/>
-                    <div class="btn_list_search">查询</div>
+                    <input type="text" class="input_zj_title" id="select-name"/>
+                    <div class="btn_list_search" onclick="select()" style="cursor: pointer;">查询</div>
                     <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getTagList()"/>
                 </div>
             </div>
             <div class="table_div" id="table-content">
             </div>
-            <!--<table class="content_table">-->
-            <!--<tr>-->
-            <!--<th>-->
-            <!--<span class="table_id table_th">标签ID</span>-->
-            <!--</th>-->
-            <!--<th id="table-th-tags-one">-->
-            <!--<span class="table_title table_th">一级标签</span>-->
-            <!--</th>-->
-            <!--<th id="table-th-tags-two">-->
-            <!--<span class="table_title table_th">二级标签</span>-->
-            <!--</th>-->
-            <!--<th id="table-th-tags-three">-->
-            <!--<span class="table_title table_th">三级标签</span>-->
-            <!--</th>-->
-            <!--<th>-->
-            <!--<span class="table_time table_th">最后操作时间</span>-->
-            <!--</th>-->
-            <!--<th>-->
-            <!--<span class="table_user table_th">操作人</span>-->
-            <!--</th>-->
-            <!--<th>-->
-            <!--<span class="table_controll table_th">操作</span>-->
-            <!--</th>-->
-            <!--</tr>-->
-            <!--<tr>-->
-            <!--<td>-->
-            <!--<span class="table_id"> 987123 </span>-->
-            <!--</td>-->
-            <!--<td id="table-td-tags-one">-->
-            <!--<span class="table_title">一级标签</span>-->
-            <!--</td>-->
-            <!--<td id="table-td-tags-two">-->
-            <!--<span class="table_title">二级标签</span>-->
-            <!--</td>-->
-            <!--<td id="table-td-tags-three">-->
-            <!--<span class="table_title">三级标签</span>-->
-            <!--</td>-->
-            <!--<td>-->
-            <!--<span class="table_time"> 2018-11-28 14:01:19 </span>-->
-            <!--</td>-->
-            <!--<td>-->
-            <!--<span class="table_user"> xxx@yy-inc.cn </span>-->
-            <!--</td>-->
-            <!--<td>-->
-            <!--<div class="table_content_controll">-->
-            <!--<a href="#">删除</a>-->
-            <!--</div>-->
-            <!--</td>-->
-            <!--</tr>-->
-            <!--</table>-->
-        </div>
-        <div class="page_select" id="page_select">
-            <div class="page_select_inner">
-                <span>共</span>
-                <span>100</span>
-                <span>条</span>
-                <span class="page_select_position_one">每页</span>
-                <input type="number" class="page_input_mun"/>
-                <span>条</span>
-                <img src="/duanshipin/img/last_page.png" alt="" class="last_page"/>
-                <ul class="page_select_ul">
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>...</li>
-                    <li>10</li>
-                </ul>
-                <img src="/duanshipin/img/next_page.png" alt="" class="last_page"/>
-                <span class="page_select_position_two">前往</span>
-                <input type="number" class="page_input_to_mun"/>
-                <span>页</span>
+            <div class="page_select" id="page_select">
+                <div class="page_select_inner">
+                    <span>共</span>
+                    <span id="page-total-mun"></span>
+                    <span>条</span>
+                    <span class="page_select_position_one">每页</span>
+                    <span id="page-size" class="page_input_mun"></span>
+                    <span>条</span>
+                    <img src="/duanshipin/img/last_page.png" alt="" class="last_page" onclick="previousPage()"/>
+                    <ul class="page_select_ul" id="page_select_ul">
+                    </ul>
+                    <img src="/duanshipin/img/next_page.png" alt="" class="last_page" onclick="nextPage()"/>
+                </div>
             </div>
         </div>
         <script type="text/javascript">

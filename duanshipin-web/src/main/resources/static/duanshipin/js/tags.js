@@ -33,18 +33,27 @@ function oneTagsClick() {
     btnCommon(selectClick);
     btnPre(tagsOne);
     selectClick = tagsOne;
+    type = 1
+    pageIndex = 1
+    getTagList()
 }
 
 function twoTagsClick() {
     btnCommon(selectClick);
     btnPre(tagsTwo);
     selectClick = tagsTwo;
+    type = 2
+    pageIndex = 1
+    getTagList()
 }
 
 function threeTagsClick() {
     btnCommon(selectClick);
     btnPre(tagsThree);
     selectClick = tagsThree;
+    type = 3
+    pageIndex = 1
+    getTagList()
 }
 
 //把view改成按下按钮的颜色
@@ -59,6 +68,12 @@ function btnCommon(dom) {
     dom.style.border = '1px solid #dcdfe6';
     dom.style.backgroundColor = '#fff'
     dom.style.color = '#333'
+}
+
+function getSpecialAlbumList(_pageIndex, _pageSize) {
+    pageIndex = _pageIndex;
+    pageSize = _pageSize;
+    getTagList();
 }
 
 function getTagList() {
@@ -76,67 +91,7 @@ function getTagList() {
         success: function (data) {
             var json = JSON.parse(data);
             if (json.code == 200) {
-                var htmlStr = ''
-                htmlStr += '<table class="content_table"><thead><tr>\n' +
-                    '                        <th>\n' +
-                    '                            <span class="table_id table_th">标签ID</span>\n' +
-                    '                        </th>\n' +
-                    '                        <th id="table-th-tags-one">\n' +
-                    '                            <span class="table_title table_th">标签名</span>\n' +
-                    '                        </th>\n' +
-                    // '                        <th id="table-th-tags-two">\n' +
-                    // '                            <span class="table_title table_th">二级标签</span>\n' +
-                    // '                        </th>\n' +
-                    // '                        <th id="table-th-tags-three">\n' +
-                    // '                            <span class="table_title table_th">三级标签</span>\n' +
-                    // '                        </th>\n' +
-                    '                        <th>\n' +
-                    '                            <span class="table_time table_th">最后操作时间</span>\n' +
-                    '                        </th>\n' +
-                    '                        <th>\n' +
-                    '                            <span class="table_user table_th">操作人</span>\n' +
-                    '                        </th>\n' +
-                    '                        <th>\n' +
-                    '                            <span class="table_controll table_th">操作</span>\n' +
-                    '                        </th>\n' +
-                    '                    </tr></thead>';
-                if (json.data.list.length > 6) {
-                    htmlStr += '<tbody style="display: block;height: 430px;overflow-y: scroll;">';
-                } else if (json.data.list.length == 0) {
-                    htmlStr += '<tbody style="display:block;height: 5px;">';
-                } else {
-                    htmlStr += '<tbody style="height: 5px;">';
-                }
-                for (var i = 0; i < json.data.list.length; i++) {
-                    let bean = json.data.list[i];
-                    htmlStr += '<tr>\n' +
-                        '                        <td>\n' +
-                        '                            <span class="table_id">' + bean.id + '</span>\n' +
-                        '                        </td>\n' +
-                        '                        <td id="table-td-tags-one">\n' +
-                        '                            <span class="table_title">' + bean.name + '</span>\n' +
-                        '                        </td>\n' +
-                        // '                        <td id="table-td-tags-two">\n' +
-                        // '                            <span class="table_title">二级标签</span>\n' +
-                        // '                        </td>\n' +
-                        // '                        <td id="table-td-tags-three">\n' +
-                        // '                            <span class="table_title">三级标签</span>\n' +
-                        // '                        </td>\n' +
-                        '                        <td>\n' +
-                        '                            <span class="table_time"> 2018-11-28 14:01:19 </span>\n' +
-                        '                        </td>\n' +
-                        '                        <td>\n' +
-                        '                            <span class="table_user"> xxx@yy-inc.cn </span>\n' +
-                        '                        </td>\n' +
-                        '                        <td>\n' +
-                        '                            <div class="table_content_controll">\n' +
-                        '                                <a href="#">删除</a>\n' +
-                        '                            </div>\n' +
-                        '                        </td>\n' +
-                        '                    </tr>'
-                }
-                htmlStr += '</tbody></table>';
-                $('#content-table').html(htmlStr)
+                dealTable(json)
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);
@@ -149,14 +104,147 @@ function getTagList() {
     })
 }
 
+function dealTable(json) {
+    var htmlStr = ''
+    htmlStr += '<table class="content_table"><thead><tr>\n' +
+        '                        <th class="frist-item">\n' +
+        '                            <span>标签ID</span>\n' +
+        '                        </th>\n' +
+        '                        <th id="table-th-tags-one">\n' +
+        '                            <span class="table_th">标签名</span>\n' +
+        '                        </th>\n';
+    if (type == 2) {
+        htmlStr += '                        <th>' +
+            '                            <span class="table_th">一级标签</span>' +
+            '                        </th>'
+    }
+    if (type == 3) {
+        htmlStr += '                        <th>' +
+            '                            <span class="table_th">二级标签</span>' +
+            '                        </th>'
+    }
+    htmlStr += '                        <th>\n' +
+        '                            <span class="table_th">最后操作时间</span>\n' +
+        '                        </th>\n' +
+        '                        <th>\n' +
+        '                            <span class="table_th">操作人</span>\n' +
+        '                        </th>\n' +
+        '                        <th>\n' +
+        '                            <span class="table_th">操作</span>\n' +
+        '                        </th>\n' +
+        '                    </tr></thead>';
+    if (json.data.list.length > 6) {
+        htmlStr += '<tbody style="display:block;height: 430px;overflow-y: scroll;">';
+    } else if (json.data.list.length == 0) {
+        htmlStr += '<tbody style="display:block;height: 5px;">';
+    } else {
+        htmlStr += '<tbody style="height: 5px;">';
+    }
+    for (var i = 0; i < json.data.list.length; i++) {
+        let bean = json.data.list[i];
+        let updateTime = new Date(Date.parse(bean.updateTime));
+        let formatTime = dateFormat("YYYY-mm-dd HH:MM", updateTime);
+        htmlStr += '<tr>' +
+            '                        <td class="frist-item">' +
+            '                            <span>' + bean.id + '</span>' +
+            '                        </td>' +
+            '                        <td>' +
+            '                            <span  class="table_th">' + bean.name + '</span>' +
+            '                        </td>';
+        if (type == 2) {
+            htmlStr += '                        <td>' +
+                '                            <span class="table_th">' + bean.parentTagName + '</span>' +
+                '                        </td>'
+        }
+        if (type == 3) {
+            htmlStr += '                        <td>' +
+                '                            <span class="table_th">' + bean.parentTagName + '</span>' +
+                '                        </td>'
+        }
+        // '                        <td id="table-td-tags-three">\n' +
+        // '                            <span class="table_title">三级标签</span>\n' +
+        // '                        </td>\n' +
+        htmlStr += '                        <td>' +
+            '                            <span  class="table_th">' + formatTime + '</span>' +
+            '                        </td>' +
+            '                        <td>' +
+            '                            <span  class="table_th">' + bean.updateAdminName + '</span>' +
+            '                        </td>' +
+            '                        <td>' +
+            '                            <div>' +
+            '                                <span style="cursor: pointer;" onclick="delectItem(' + bean.id + ')">删除</span>' +
+            '                            </div>' +
+            '                        </td>' +
+            '                    </tr>'
+    }
+    htmlStr += '</tbody></table>';
+    $('#table-content').html(htmlStr)
+    hasNextPage = json.data.hasNextPage;
+    hasPreviousPage = json.data.hasPreviousPage;
+    if (json.data.pages > 1) {
+        $('#page_select').show();
+        $("#page-total-mun").html(json.data.total);
+        $("#page-size").html(pageSize);
+        var liStr = '';
+        if (json.data.pages <= 7) {
+            for (var i = 0; i < json.data.navigatepageNums.length; i++) {
+                if (i == json.data.prePage) {
+                    liStr += '<li style="background-color:#44c9a8;color: #fff;">' + json.data.navigatepageNums[i] + '</li>'
+                } else {
+                    liStr += '<li onclick="getSpecialAlbumList(' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
+                }
+            }
+        } else {
+            if (json.data.prePage == 0 || json.data.prePage == 1 || json.data.prePage == 2) {
+                for (var i = 0; i < json.data.navigatepageNums.length; i++) {
+                    if (i <= 3) {
+                        if (i == json.data.prePage) {
+                            liStr += '<li style="background-color:#44c9a8;color: #fff;">' + json.data.navigatepageNums[i] + '</li>'
+                        } else {
+                            liStr += '<li onclick="getSpecialAlbumList(' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
+                        }
+                    }
+                }
+                liStr += '<li>...</li>'
+                liStr += '<li onclick="getSpecialAlbumList(' + json.data.pages + ',pageSize)">' + json.data.pages + '</li>'
+            } else {
+                liStr += '<li onclick="getSpecialAlbumList(1,pageSize)">1</li>'
+                liStr += '<li>...</li>'
+                if (json.data.pages - (json.data.prePage + 2) >= 3) {
+                    liStr += '<li onclick="getSpecialAlbumList(' + json.data.prePage + ',pageSize)">' + json.data.prePage + '</li>'
+                    liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
+                    liStr += '<li onclick="getSpecialAlbumList(' + (json.data.prePage + 2) + ',pageSize)">' + (json.data.prePage + 2) + '</li>'
+                    liStr += '<li>...</li>'
+                    liStr += '<li onclick="getSpecialAlbumList(' + (json.data.pages) + ',pageSize)">' + (json.data.pages) + '</li>'
+                } else {
+                    for (var i = 4; i >= 0; i--) {
+                        if ((json.data.pages - i) == (json.data.prePage + 1)) {
+                            liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
+                        } else {
+                            liStr += '<li onclick="getSpecialAlbumList(' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
+                        }
+                    }
+                }
+            }
+        }
+        $('#page_select_ul').html(liStr);
+    } else {
+        $('#page_select').hide();
+    }
+}
+
 function addTag() {
+    var _type = type
+    if ($('#select-item_value').attr('value') == "-1") {
+        _type = 1
+    }
     ajax({
         url: "/api/tag/add",
         type: 'post',
         data: {
             name: $('#input-intro').val(),
             parentTagId: $('#select-item_value').attr('value'),
-            type: type
+            type: _type
         },
         dataType: 'json',
         timeout: 10000,
@@ -165,6 +253,62 @@ function addTag() {
             var json = JSON.parse(data);
             if (json.code == 200) {
                 addDialogCancel()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function select() {
+    pageIndex = 1
+    ajax({
+        url: "/api/tag/select",
+        type: 'post',
+        data: {
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            type: type,
+            name: $('#select-name').val()
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            var json = JSON.parse(data);
+            if (json.code == 200) {
+                dealTable(json)
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function delectItem(id) {
+    ajax({
+        url: "/api/tag/delete",
+        type: 'get',
+        data: {
+            id: id
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            var json = JSON.parse(data);
+            if (json.code == 200) {
+                getTagList()
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);
@@ -205,13 +349,15 @@ function showAddDialog() {
 
 function addDialogCancel() {
     $('#dialog_loginout_wrapper').hide();
+    getTagList()
 }
 
 function dialogGetList() {
-    if (type == 1){
+    if (type == 1) {
         return
     }
     if (dialogIsLoad) {
+        $('#select_list').show();
         return
     }
     dialogIsLoad = true;
@@ -222,7 +368,7 @@ function dialogGetList() {
         data: {
             pageIndex: dialogPageIndex,
             pageSize: dialogPageSize,
-            type: type
+            type: type - 1
         },
         dataType: 'json',
         timeout: 10000,
@@ -230,6 +376,7 @@ function dialogGetList() {
         success: function (data) {
             var json = JSON.parse(data);
             if (json.code == 200) {
+                $('#select_list').show();
                 if (dialogPageIndex == 1) {
                     let htmlStr = '';
                     for (let i = 0; i < json.data.list.length; i++) {
@@ -246,7 +393,11 @@ function dialogGetList() {
                     $('#select_item').append(htmlStr);
                 }
                 dialogPageIndex++;
-                dropload();
+                if (json.data.list.length >= pageSize) {
+                    dropload();
+                } else {
+                    $('#select_list').css("overflow-y", "hidden")
+                }
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);

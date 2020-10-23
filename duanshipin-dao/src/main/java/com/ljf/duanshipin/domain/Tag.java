@@ -21,4 +21,8 @@ public class Tag {
     private String updateAdminName;
     private Integer parentTagId;
     private Integer type;
+    /**
+     * 不进入数据库使用
+     */
+    private String parentTagName;
 }

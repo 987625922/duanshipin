@@ -32,10 +32,34 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public PageInfo<Tag> getTagForPage(Integer pageIndex, Integer pageSize,Integer type) {
+    public PageInfo<Tag> getTagForPage(Integer pageIndex, Integer pageSize, Integer type) {
         PageHelper.startPage(pageIndex, pageSize);
         List<Tag> tagList = tagMapper.getTagList(type);
         PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
+        pageInfo.getList().forEach(tag -> {
+            if (tag.getParentTagId() != -1) {
+                tag.setParentTagName(tagMapper.getTagNameById(tag.getParentTagId()));
+            }
+        });
+        return pageInfo;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void delete(Integer id) {
+        tagMapper.detele(id);
+    }
+
+    @Override
+    public PageInfo<Tag> getTagByNameAndType(Integer pageIndex, Integer pageSize,String name, Integer type) {
+        PageHelper.startPage(pageIndex, pageSize);
+        List<Tag> tagList = tagMapper.getTagByNameAndType(name, type);
+        PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
+        pageInfo.getList().forEach(tag -> {
+            if (tag.getParentTagId() != -1) {
+                tag.setParentTagName(tagMapper.getTagNameById(tag.getParentTagId()));
+            }
+        });
         return pageInfo;
     }
 }

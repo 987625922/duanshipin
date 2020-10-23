@@ -30,4 +30,24 @@
         <include refid="Base_Column_List"/>
         from tag where type = #{type}
     </select>
+
+    <select id="getTagById" parameterType="int">
+        select
+        <include refid="Base_Column_List"/>
+        from tag where id = #{id}
+    </select>
+
+    <select id="getTagByNameAndType" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tag where type = #{type} and name like '%${name}%'
+    </select>
+
+    <select id="getTagNameById" parameterType="int" resultType="String">
+        select name from tag where id = #{id}
+    </select>
+
+    <delete id="detele" parameterType="int">
+        delete from tag where id = #{id}
+    </delete>
 </mapper>

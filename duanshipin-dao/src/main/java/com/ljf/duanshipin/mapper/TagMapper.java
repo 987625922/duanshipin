@@ -13,4 +13,8 @@ public interface TagMapper {
 
     void insert(Tag tag);
     List<Tag> getTagList(Integer type);
+    Tag getTagById(Integer id);
+    String getTagNameById(Integer id);
+    void detele(Integer id);
+    List<Tag> getTagByNameAndType(String name,Integer type);
 }

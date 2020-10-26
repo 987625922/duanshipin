@@ -37,3 +37,23 @@
     height: 40px;
     width: 200px;
 }
+.inputfile {
+    width: 0;
+    height: 0;
+    opacity: 0;
+    display: none;
+}
+.choose-book{
+    background-color: rgb(68, 201, 168);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border-width: 0px;
+    line-height: 40px;
+    width: 100px;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-right: 15px;
+}

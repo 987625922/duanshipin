@@ -5,10 +5,17 @@ import com.ljf.duanshipin.common.dto.JsonResult;
 import com.ljf.duanshipin.domain.Album;
 import com.ljf.duanshipin.service.AlbumService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
 
 /**
  * @Author: 98762
@@ -18,19 +25,41 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api/album")
-public class AlbumController {
+@PropertySource({"classpath:resource.properties"})
+public class AlbumController extends BaseController {
 
     @Autowired
     private AlbumService albumService;
 
+
+    @Value("${web.file.path}")
+    private String filePath;
+
     /**
      * 添加专辑
      *
-     * @param album
      * @return
      */
     @RequestMapping("/add")
-    public Object add(Album album) {
+    public Object add(String title, @RequestParam(defaultValue = "") String introduction,
+                      @RequestParam(defaultValue = "0") Integer totalMun,
+                      @RequestParam(defaultValue = "0") Integer currentMun,
+                      @RequestParam(value = "cover", required = false) MultipartFile file)
+            throws IOException {
+        Album album = new Album();
+        if (file != null) {
+            //获取文件的后缀名
+            String fileName = file.getOriginalFilename();
+            if (!fileName.isEmpty()) {
+                String suffixName = fileName.substring(fileName.lastIndexOf("."));
+                fileName = UUID.randomUUID() + suffixName;
+                file.transferTo(new File(filePath + fileName));
+                album.setImgSrc(fileName);
+            }
+        }
+        album.setTitle(title).setIntroduction(introduction).setTotalMun(totalMun)
+                .setCurrentMun(currentMun).setUpdateAdminId(getCurrentAdmin().getId())
+                .setUpdateAdminName(getCurrentAdmin().getUserName());
         albumService.add(album);
         return JsonResult.buildSuccess();
     }
@@ -117,4 +146,6 @@ public class AlbumController {
         albumService.deleteForids(ids);
         return JsonResult.buildSuccess();
     }
+
+
 }

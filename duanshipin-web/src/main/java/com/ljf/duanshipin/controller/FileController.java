@@ -20,7 +20,7 @@ import java.util.UUID;
  * @Date:Create：in 2020/10/23 17:41
  */
 @Controller
-@RequestMapping("/file")
+@RequestMapping("/api/file")
 @PropertySource({"classpath:resource.properties"})
 public class FileController {
 
@@ -29,7 +29,7 @@ public class FileController {
 
     @RequestMapping("/upload")
     @ResponseBody
-    public Object upload(@RequestParam("head_img") MultipartFile file,
+    public Object upload(@RequestParam("cover") MultipartFile file,
                          HttpServletRequest request) {
         String name = request.getParameter("name");
         System.out.println("用户名：" + name);

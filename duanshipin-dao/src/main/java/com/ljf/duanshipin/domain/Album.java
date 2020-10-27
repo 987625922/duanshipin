@@ -21,6 +21,7 @@ public class Album {
     //推荐语
     private String recommendation;
     private String imgSrc;
+    private Integer type;
     private Integer totalMun;
     private Integer currentMun;
     private Date createTime;
@@ -38,7 +39,8 @@ public class Album {
     //三级标签id
     private Integer threeClassTagsId;
     //绑定客户
-    private Long adminId;
+    private Long publistAdminId;
     //是否屏蔽搜索
     private Integer isBlockSearch;
+    private String performer;
 }

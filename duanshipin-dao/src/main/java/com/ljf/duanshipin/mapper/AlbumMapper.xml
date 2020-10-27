@@ -13,18 +13,31 @@
         <result column="update_time" property="updateTime" javaType="DATE"/>
         <result column="update_admin_id" property="updateAdminId" jdbcType="BIGINT"/>
         <result column="update_admin_name" property="updateAdminName" jdbcType="VARCHAR"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="is_complete" property="isComplete" jdbcType="INTEGER"/>
+        <result column="director" property="director" jdbcType="VARCHAR"/>
+        <result column="one_class_tag_id" property="oneClassTagId" jdbcType="INTEGER"/>
+        <result column="two_class_tag_id" property="twoClassTagId" jdbcType="INTEGER"/>
+        <result column="three_class_tag_id" property="threeClassTagId" jdbcType="INTEGER"/>
+        <result column="publish_admin_id" property="publishAdminId" jdbcType="BIGINT"/>
+        <result column="is_block_search" property="isBlockSearch" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
     id,title,introduction,img_src,total_mun,current_mun,create_time,update_time
-            ,update_admin_id,update_admin_name
+            ,update_admin_id,update_admin_name,type,is_commplete,director,
+            one_class_tag_id,two_class_tag_id,three_class_tag_id,publish_admin_id
+          ,is_block_search,performer
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Album">
         INSERT INTO album(title,introduction,img_src,total_mun,current_mun,create_time,update_time
-            ,update_admin_id,update_admin_name)
+            ,update_admin_id,update_admin_name,type,is_commplete,director,one_class_tag_id,
+            two_class_tag_id,three_class_tag_id,publish_admin_id,is_block_search,performer)
             VALUES(#{title},#{introduction},#{imgSrc},#{totalMun},#{currentMun},#{createTime}
-        ,#{updateTime},#{updateAdminId},#{updateAdminName})
+        ,#{updateTime},#{updateAdminId},#{updateAdminName},#{type},#{isCommplete},#{director},
+        #{oneClassTagId},#{twoClassTagId},#{threeClassTagId},#{publishAdminId},#{isBlockSearch},
+        #{performer})
     </insert>
 
     <select id="getAlbumList" parameterType="int" resultMap="BaseResultMap">
@@ -55,7 +68,7 @@
     </update>
 
     <delete id="deleteForids" parameterType="java.util.List">
-      DELETE from album WHERE id in
+        DELETE from album WHERE id in
         <foreach item="id" collection="list" open="(" close=")" separator=",">
             #{id}
         </foreach>
@@ -65,11 +78,11 @@
         select
         <include refid="Base_Column_List"/>
         from album where album.type = #{arg2}
-            <if test="arg1 != null and arg1 != '' ">
-                and title like '%${arg1}%'
-            </if>
-            <if test="arg0 != null">
-                and id = #{arg0}
-            </if>
+        <if test="arg1 != null and arg1 != '' ">
+            and title like '%${arg1}%'
+        </if>
+        <if test="arg0 != null">
+            and id = #{arg0}
+        </if>
     </select>
 </mapper>

@@ -44,7 +44,13 @@ public class AlbumController extends BaseController {
     public Object add(String title, @RequestParam(defaultValue = "") String introduction,
                       @RequestParam(defaultValue = "0") Integer totalMun,
                       @RequestParam(defaultValue = "0") Integer currentMun,
-                      @RequestParam(value = "cover", required = false) MultipartFile file)
+                      @RequestParam(value = "cover", required = false) MultipartFile file,
+                      @RequestParam(defaultValue = "2") Integer type,
+                      @RequestParam(defaultValue = "2") Integer isComplete,
+                      @RequestParam(required = false) String director,
+                      Integer oneClassTagId, Integer twoClassTagId, Integer threeClassTagId,
+                      Long publishAdminId, Integer isBlockSearch
+    )
             throws IOException {
         Album album = new Album();
         if (file != null) {
@@ -59,7 +65,10 @@ public class AlbumController extends BaseController {
         }
         album.setTitle(title).setIntroduction(introduction).setTotalMun(totalMun)
                 .setCurrentMun(currentMun).setUpdateAdminId(getCurrentAdmin().getId())
-                .setUpdateAdminName(getCurrentAdmin().getUserName());
+                .setUpdateAdminName(getCurrentAdmin().getUserName()).setType(type)
+                .setIsComplete(isComplete).setDirector(director).setOneClassTagsId(oneClassTagId)
+                .setTwoClassTagsId(twoClassTagId).setThreeClassTagsId(threeClassTagId)
+                .setPublistAdminId(publishAdminId).setIsBlockSearch(isBlockSearch);
         albumService.add(album);
         return JsonResult.buildSuccess();
     }

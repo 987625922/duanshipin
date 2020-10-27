@@ -27,7 +27,7 @@
     width: 20px;
     height: 15px;
 }
-.form-input-isEnd-span{
+#form-input-isEnd-span{
     margin-right: 20px;
 }
 #from-item-content-input-w200{
@@ -56,4 +56,42 @@
     font-size: 14px;
     box-sizing: border-box;
     margin-right: 15px;
+}
+
+.select_inner {
+    position: absolute;
+    height: 135px;
+    width: 100%;
+    overflow-y: scroll;
+    flex: 1;
+    -webkit-box-flex: 1;
+    z-index: 99999;
+    background: #fff;
+}
+.div-select{
+    background-color: #fff;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #DCDFE6;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    padding: 0 15px;
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+    cursor: pointer;
+}
+
+.select_font {
+    height: 35px;
+    width: 80%;
+    background: #ffffff;
+    padding-left: 15px;
+    font-size: 15px;
+    z-index: 99999;
+    cursor: pointer;
 }

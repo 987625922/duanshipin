@@ -13,8 +13,9 @@
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
-    <script th:src="@{/duanshipin/js/publishAlbum.js}"></script>
     <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/dropload.min.js}"></script>
+    <script th:src="@{/duanshipin/js/publishAlbum.js}"></script>
 </head>
 
 <body>
@@ -59,36 +60,37 @@
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">集数：</label>
                         <div class="from-item-content">
-                            <input type="text"></div>
+                            <input type="text" id="total-mun"></div>
                     </div>
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">是否完结：</label>
                         <div class="from-item-content">
-                            <input type="radio" name="isEnd" value="noEnd" id="form-input-isEnd">
+                            <input type="radio" name="isEnd" value="2" style="width: 20px;height: 15px;">
                             <span class="form-input-isEnd-span">未完结</span>
-                            <input type="radio" name="isEnd" value="isEnd" id="form-input-isEnd" checked="checked">
+                            <input type="radio" name="isEnd" value="1" style="width: 20px;height: 15px;"
+                                   checked="checked">
                             <span class="form-input-isEnd-span">完结</span></div>
                     </div>
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">导演：</label>
                         <div class="from-item-content">
-                            <input type="text" name="lname"/>
+                            <input type="text" name="lname" id="director"/>
                         </div>
                     </div>
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">主演：</label>
                         <div class="from-item-content">
-                            <input type="text" name="lname"/></div>
+                            <input type="text" name="lname" id="performer"/></div>
                     </div>
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">一级标签：</label>
                         <div class="from-item-content">
-                            <select class="select_auth_user">
-                                <option value="volvo">Volvo</option>
-                                <option value="saab">Saab</option>
-                                <option value="opel">Opel</option>
-                                <option value="audi">Audi</option>
-                            </select></div>
+                            <div class="div-select" id="div-select-value" onclick="dialogGetList()" style="width: 100%;height: 40px"></div>
+                            <div class="select_inner inner" id="select_list" style="display: none;">
+                                <div id="select_item">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">二级标签：</label>
@@ -103,27 +105,27 @@
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">绑定用户：</label>
                         <div class="from-item-content">
-                            <input id="from-item-content-input-w200" type="text" name="lname"/>
+                            <input id="robotId" type="text" name="lname"/>
                             <button class="form-btn-upload">选取机器人</button>
                         </div>
                     </div>
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">屏蔽搜索：</label>
                         <div class="from-item-content">
-                            <input type="radio" name="isSelect" value="noEnd" id="form-input-isEnd">
+                            <input type="radio" name="isSelect" value="1" style="width: 20px;height: 15px;">
                             <span class="form-input-isEnd-span">是</span>
-                            <input type="radio" name="isSelect" value="isEnd" checked="checked"
-                                   id="form-input-isEnd">
+                            <input type="radio" name="isSelect" value="2" checked="checked"
+                                   style="width: 20px;height: 15px;">
                             <span class="form-input-isEnd-span">否</span>
                         </div>
                     </div>
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">状态：</label>
                         <div class="from-item-content">
-                            <input type="radio" name="isState" value="noEnd" id="form-input-isEnd">
+                            <input type="radio" name="isState" value="1" style="width: 20px;height: 15px;">
                             <span class="form-input-isEnd-span">上线</span>
-                            <input type="radio" name="isState" value="isEnd" checked="checked"
-                                   id="form-input-isEnd">
+                            <input type="radio" name="isState" value="2" checked="checked"
+                                   style="width: 20px;height: 15px;">
                             <span class="form-input-isEnd-span">草稿</span>
 
                         </div>

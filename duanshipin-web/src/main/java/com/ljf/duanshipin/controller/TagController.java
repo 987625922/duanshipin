@@ -48,4 +48,21 @@ public class TagController extends BaseController {
                          String name) {
         return JsonResult.buildSuccess(tagService.getTagByNameAndType(pageIndex, pageSize, name, type));
     }
+
+    /**
+     * 通过父id搜索
+     *
+     * @param pageIndex
+     * @param pageSize
+     * @param type
+     * @return
+     */
+    @RequestMapping("/selectByParentId")
+    public Object selectByParentId(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
+                                   @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
+                                   @RequestParam(value = "type", defaultValue = "1") Integer type,
+                                   Integer parentId) {
+        return JsonResult.buildSuccess(tagService.selectByParentId(pageIndex, pageSize, type, parentId));
+    }
+
 }

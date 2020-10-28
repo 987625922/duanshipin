@@ -18,4 +18,6 @@ public interface TagService {
     void delete(Integer id);
 
     PageInfo<Tag> getTagByNameAndType(Integer pageIndex, Integer pageSize,String name, Integer type);
+
+    PageInfo<Tag> selectByParentId(Integer pageIndex, Integer pageSize,Integer type, Integer parentId);
 }

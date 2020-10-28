@@ -37,6 +37,12 @@
         from tag where id = #{id}
     </select>
 
+    <select id="selectByParentId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tag where type = #{type} and parent_tag_id = #{parentTagId}
+    </select>
+
     <select id="getTagByNameAndType" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

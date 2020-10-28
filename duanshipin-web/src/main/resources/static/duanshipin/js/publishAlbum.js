@@ -1,7 +1,8 @@
 var oneTagPageIndex = 1
 var oneTagPageSize = 10
 var dialogIsLoad = false;
-
+var twoDialogIsLoad = false
+var twoTagPageIndex = 1
 
 function changepic(obj) {
     //console.log(obj.files[0]);//这里可以获取上传文件的name
@@ -47,8 +48,9 @@ function publishAlbum() {
 }
 
 function dialogGetList() {
+    $("#dialog-wrapper").show()
     if (dialogIsLoad) {
-        $('#select_list').show();
+        $('#one-tag-dialog').show();
         return
     }
     dialogIsLoad = true;
@@ -67,7 +69,7 @@ function dialogGetList() {
         success: function (data) {
             var json = JSON.parse(data);
             if (json.code == 200) {
-                $('#select_list').show();
+                $('#one-tag-dialog').show();
                 if (oneTagPageIndex == 1) {
                     let htmlStr = '';
                     for (let i = 0; i < json.data.list.length; i++) {
@@ -174,7 +176,153 @@ function dropload() {
 
     });
 }
+
 function selectItemOnclick(dom) {
-    $('#select_list').hide();
+    $('#one-tag-dialog').hide();
+    $('#dialog-wrapper').hide();
     $('#div-select-value').html(dom.innerHTML).attr('value', dom.getAttribute("value"));
+}
+
+function selectTwoTagItemOnclick(dom) {
+    $('#two-tag-dialog').hide();
+    $('#dialog-wrapper').hide();
+    $('#div-select-value-two-tag').html(dom.innerHTML).attr('value', dom.getAttribute("value"));
+}
+
+function getTwoTagList() {
+    $("#dialog-wrapper").show()
+    if (twoDialogIsLoad) {
+        $('#two-tag-dialog').show();
+        return
+    }
+    twoDialogIsLoad = true;
+    twoTagPageIndex = 1;
+    ajax({
+        url: "/api/tag/selectByParentId",
+        type: 'get',
+        data: {
+            pageIndex: twoTagPageIndex,
+            pageSize: oneTagPageSize,
+            type: 2,
+            parentId: $('#div-select-value').attr('value')
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            var json = JSON.parse(data);
+            if (json.code == 200) {
+                $('#two-tag-dialog').show();
+                if (twoTagPageIndex == 1) {
+                    let htmlStr = '';
+                    for (let i = 0; i < json.data.list.length; i++) {
+                        htmlStr += '<div class="select_font" value="'
+                            + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                    }
+                    $('#two-select_item').html(htmlStr);
+                } else {
+                    let htmlStr = '';
+                    for (let i = 0; i < json.data.list.length; i++) {
+                        htmlStr += '<div class="select_font" value="'
+                            + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                    }
+                    $('#two-select_item').append(htmlStr);
+                }
+                twoTagPageIndex++;
+                if (json.data.list.length >= oneTagPageSize) {
+                    twoDropload()
+                } else {
+                    $('#two-select_list').css("overflow-y", "hidden")
+                }
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+
+}
+
+function hideDialog() {
+    $('#one-tag-dialog').hide();
+    $('#dialog-wrapper').hide();
+}
+
+function twoDropload() {
+    // dropload
+    var dropload = $('.two-inner').dropload({
+        domUp: {
+            domClass: 'dropload-up',
+            domRefresh: '<div class="dropload-refresh">↓下拉刷新</div>',
+            domUpdate: '<div class="dropload-update">↑释放更新</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+        },
+        domDown: {
+            domClass: 'dropload-down',
+            domRefresh: '<div class="dropload-refresh">↑上拉加载更多</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+            domNoData: '<div class="dropload-noData">暂无数据</div>'
+        },
+        loadUpFn: function () {
+            dropload.resetload()
+        },
+        loadDownFn: function () {
+            console.log(oneTagPageIndex)
+            ajax({
+                url: "/api/tag/selectByParentId",
+                type: 'get',
+                data: {
+                    pageIndex: twoTagPageIndex,
+                    pageSize: oneTagPageSize,
+                    type: 2,
+                    parentId: $('#div-select-value').attr('value')
+                },
+                dataType: 'json',
+                timeout: 10000,
+                contentType: "application/json",
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if (json.code == 200) {
+                        $('#two-select_list').show();
+                        dropload.resetload();
+                        if (!json.data.hasNextPage) {
+                            // 锁定
+                            dropload.lock();
+                            $('.dropload-down').hide();
+                        }
+                        if (twoTagPageIndex == 1) {
+                            let htmlStr = '<div value="-1" onclick="selectTwoTagItemOnclick(this)">根目录</div>';
+                            for (let i = 0; i < json.data.list.length; i++) {
+                                htmlStr += '<div class="select_font" value="'
+                                    + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                            }
+                            $('#two-select_item').html(htmlStr);
+                        } else {
+                            let htmlStr = '';
+                            for (let i = 0; i < json.data.list.length; i++) {
+                                htmlStr += '<div class="select_font" value="'
+                                    + json.data.list[i].id + '" onclick="selectItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                            }
+                            $('#two-select_item').append(htmlStr);
+                        }
+                        oneTagPageIndex++;
+                    } else {
+                        console.log(json.msg);
+                        Toast(json.msg, 1000);
+                        dropload.resetload()
+                    }
+                },
+                //异常处理
+                error: function (e) {
+                    console.log(e);
+                    dropload.resetload()
+                }
+            })
+        }
+
+    });
 }

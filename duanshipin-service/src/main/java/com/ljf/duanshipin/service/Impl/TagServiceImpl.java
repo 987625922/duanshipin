@@ -51,9 +51,23 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public PageInfo<Tag> getTagByNameAndType(Integer pageIndex, Integer pageSize,String name, Integer type) {
+    public PageInfo<Tag> getTagByNameAndType(Integer pageIndex, Integer pageSize, String name, Integer type) {
         PageHelper.startPage(pageIndex, pageSize);
         List<Tag> tagList = tagMapper.getTagByNameAndType(name, type);
+        PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
+        pageInfo.getList().forEach(tag -> {
+            if (tag.getParentTagId() != -1) {
+                tag.setParentTagName(tagMapper.getTagNameById(tag.getParentTagId()));
+            }
+        });
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo<Tag> selectByParentId(Integer pageIndex, Integer pageSize,
+                                          Integer type, Integer parentId) {
+        PageHelper.startPage(pageIndex, pageSize);
+        List<Tag> tagList = tagMapper.selectByParentId(type, parentId);
         PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
         pageInfo.getList().forEach(tag -> {
             if (tag.getParentTagId() != -1) {

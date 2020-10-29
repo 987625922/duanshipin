@@ -31,10 +31,18 @@ public class TagServiceTest {
             tag.setUpdateTime(new Date());
             tag.setUpdateAdminId(1l)
                     .setUpdateAdminName("11")
-                    .setName("测试1")
-                    .setCreateTime(new Date()).setType(2).setParentTagId(1);
+                    .setName("测试父tag为2 " + i)
+                    .setCreateTime(new Date()).setType(2).setParentTagId(2);
             tagService.insert(tag);
         }
+    }
+
+    @Test
+    public void selectByMoreParentId() {
+        tagService.selectByMoreParentId(1, 10,
+                2, "2,3").getList().forEach(tag -> {
+            log.info(tag.toString());
+        });
     }
 
 }

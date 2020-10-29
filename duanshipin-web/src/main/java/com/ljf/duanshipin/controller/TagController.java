@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @Author: LL
  * @Description:
@@ -63,6 +65,22 @@ public class TagController extends BaseController {
                                    @RequestParam(value = "type", defaultValue = "1") Integer type,
                                    Integer parentId) {
         return JsonResult.buildSuccess(tagService.selectByParentId(pageIndex, pageSize, type, parentId));
+    }
+
+    /**
+     * 通过多个父id搜索
+     *
+     * @param pageIndex
+     * @param pageSize
+     * @param type
+     * @return
+     */
+    @RequestMapping("/selectByMoreParentId")
+    public Object selectByMoreParentId(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
+                                       @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
+                                       @RequestParam(value = "type", defaultValue = "1") Integer type,
+                                       String parentIds) {
+        return JsonResult.buildSuccess(tagService.selectByMoreParentId(pageIndex, pageSize, type, parentIds));
     }
 
 }

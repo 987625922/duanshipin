@@ -3,6 +3,7 @@ var oneTagPageSize = 10
 var dialogIsLoad = false;
 var twoDialogIsLoad = false
 var twoTagPageIndex = 1
+var twoSelectIndexs = new Array()
 
 function changepic(obj) {
     //console.log(obj.files[0]);//这里可以获取上传文件的name
@@ -138,9 +139,9 @@ function dropload() {
                     var json = JSON.parse(data);
                     if (json.code == 200) {
                         $('#select_list').show();
-                        dropload.resetload();
                         if (!json.data.hasNextPage) {
                             // 锁定
+                            dropload.noData();
                             dropload.lock();
                             $('.dropload-down').hide();
                         }
@@ -160,6 +161,7 @@ function dropload() {
                             $('#select_item').append(htmlStr);
                         }
                         oneTagPageIndex++;
+                        dropload.resetload()
                     } else {
                         console.log(json.msg);
                         Toast(json.msg, 1000);
@@ -183,10 +185,37 @@ function selectItemOnclick(dom) {
     $('#div-select-value').html(dom.innerHTML).attr('value', dom.getAttribute("value"));
 }
 
-function selectTwoTagItemOnclick(dom) {
-    $('#two-tag-dialog').hide();
+function enterTwoTag() {
     $('#dialog-wrapper').hide();
-    $('#div-select-value-two-tag').html(dom.innerHTML).attr('value', dom.getAttribute("value"));
+    $('#two-tag-dialog').hide();
+    var str = ""
+    for(var i =0;i<twoSelectIndexs.length;i++){
+        if (i == 0){
+            str += twoSelectIndexs[i].title
+        }else {
+            str += " / "+twoSelectIndexs[i].title
+        }
+    }
+    $('#div-select-value-two-tag').html(str);
+}
+
+function selectTwoTagItemOnclick(dom) {
+    for (var i in twoSelectIndexs) {
+        if (twoSelectIndexs[i].id == dom.getAttribute("value")) {
+            const index = twoSelectIndexs.indexOf(twoSelectIndexs[i])
+            twoSelectIndexs.splice(index, 1)
+            dom.style.color = "#606266"
+            console.log(twoSelectIndexs + "  " + dom.getAttribute("value"))
+            return
+        }
+    }
+    var tagBean = createTwoTag(dom.getAttribute("value"), dom.innerHTML);
+    twoSelectIndexs.push(tagBean)
+    console.log(twoSelectIndexs + "  " + dom.getAttribute("value"))
+    dom.style.color = "#44c9a8"
+    // $('#two-tag-dialog').hide();
+    // $('#dialog-wrapper').hide();
+    // $('#div-select-value-two-tag').html(dom.innerHTML).attr('value', dom.getAttribute("value"));
 }
 
 function getTwoTagList() {
@@ -249,6 +278,7 @@ function getTwoTagList() {
 
 function hideDialog() {
     $('#one-tag-dialog').hide();
+    $('#two-tag-dialog').hide();
     $('#dialog-wrapper').hide();
 }
 
@@ -288,9 +318,10 @@ function twoDropload() {
                     var json = JSON.parse(data);
                     if (json.code == 200) {
                         $('#two-select_list').show();
-                        dropload.resetload();
+                        console.log(json.data.hasNextPage)
                         if (!json.data.hasNextPage) {
                             // 锁定
+                            dropload.noData();
                             dropload.lock();
                             $('.dropload-down').hide();
                         }
@@ -309,7 +340,8 @@ function twoDropload() {
                             }
                             $('#two-select_item').append(htmlStr);
                         }
-                        oneTagPageIndex++;
+                        twoTagPageIndex++;
+                        dropload.resetload()
                     } else {
                         console.log(json.msg);
                         Toast(json.msg, 1000);
@@ -325,4 +357,11 @@ function twoDropload() {
         }
 
     });
+}
+
+function createTwoTag(id, title) {
+    var bean = new Object;
+    bean.id = id;
+    bean.title = title;
+    return bean;
 }

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -68,6 +69,21 @@ public class TagServiceImpl implements TagService {
                                           Integer type, Integer parentId) {
         PageHelper.startPage(pageIndex, pageSize);
         List<Tag> tagList = tagMapper.selectByParentId(type, parentId);
+        PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
+        pageInfo.getList().forEach(tag -> {
+            if (tag.getParentTagId() != -1) {
+                tag.setParentTagName(tagMapper.getTagNameById(tag.getParentTagId()));
+            }
+        });
+        return pageInfo;
+    }
+
+    @Override
+    public PageInfo<Tag> selectByMoreParentId(Integer pageIndex, Integer pageSize,
+                                              Integer type, String parentTagIds) {
+        List<String> idList = Arrays.asList(parentTagIds.split(parentTagIds));
+        PageHelper.startPage(pageIndex, pageSize);
+        List<Tag> tagList = tagMapper.selectByMoreParentId(type, idList);
         PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
         pageInfo.getList().forEach(tag -> {
             if (tag.getParentTagId() != -1) {

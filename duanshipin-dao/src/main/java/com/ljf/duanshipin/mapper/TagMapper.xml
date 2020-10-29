@@ -53,6 +53,16 @@
         select name from tag where id = #{id}
     </select>
 
+    <select id="selectByMoreParentId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tag where type = #{type} and in
+        <foreach collection="parentTagIds" item="item" index="index" open="("
+                 separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
     <delete id="detele" parameterType="int">
         delete from tag where id = #{id}
     </delete>

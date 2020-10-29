@@ -20,4 +20,6 @@ public interface TagService {
     PageInfo<Tag> getTagByNameAndType(Integer pageIndex, Integer pageSize,String name, Integer type);
 
     PageInfo<Tag> selectByParentId(Integer pageIndex, Integer pageSize,Integer type, Integer parentId);
+
+    PageInfo<Tag> selectByMoreParentId(Integer pageIndex, Integer pageSize,Integer type, String parentTagIds);
 }

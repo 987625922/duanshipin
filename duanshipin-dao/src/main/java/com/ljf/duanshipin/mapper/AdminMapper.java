@@ -2,6 +2,8 @@ package com.ljf.duanshipin.mapper;
 
 import com.ljf.duanshipin.domain.Admin;
 
+import java.util.List;
+
 /**
  * @Author: LL
  * @Description: 管理员
@@ -32,7 +34,13 @@ public interface AdminMapper {
 
     /**
      * 更新
+     *
      * @param admin
      */
     void updateById(Admin admin);
+
+    /**
+     * 搜索是否为机器人
+     */
+    List<Admin> findAdminByIsRobot(Integer isRobot);
 }

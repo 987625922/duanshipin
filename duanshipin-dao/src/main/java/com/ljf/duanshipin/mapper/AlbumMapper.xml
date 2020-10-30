@@ -16,9 +16,9 @@
         <result column="type" property="type" jdbcType="INTEGER"/>
         <result column="is_complete" property="isComplete" jdbcType="INTEGER"/>
         <result column="director" property="director" jdbcType="VARCHAR"/>
-        <result column="one_class_tag_id" property="oneClassTagId" jdbcType="INTEGER"/>
-        <result column="two_class_tag_id" property="twoClassTagId" jdbcType="INTEGER"/>
-        <result column="three_class_tag_id" property="threeClassTagId" jdbcType="INTEGER"/>
+        <result column="one_class_tag_id" property="oneClassTagId" jdbcType="VARCHAR"/>
+        <result column="two_class_tag_ids" property="twoClassTagIds" jdbcType="VARCHAR"/>
+        <result column="three_class_tag_ids" property="threeClassTagIds" jdbcType="VARCHAR"/>
         <result column="publish_admin_id" property="publishAdminId" jdbcType="BIGINT"/>
         <result column="is_block_search" property="isBlockSearch" jdbcType="INTEGER"/>
     </resultMap>
@@ -26,17 +26,17 @@
     <sql id="Base_Column_List">
     id,title,introduction,img_src,total_mun,current_mun,create_time,update_time
             ,update_admin_id,update_admin_name,type,is_commplete,director,
-            one_class_tag_id,two_class_tag_id,three_class_tag_id,publish_admin_id
+            one_class_tag_id,two_class_tag_ids,three_class_tag_ids,publish_admin_id
           ,is_block_search,performer
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Album">
         INSERT INTO album(title,introduction,img_src,total_mun,current_mun,create_time,update_time
             ,update_admin_id,update_admin_name,type,is_commplete,director,one_class_tag_id,
-            two_class_tag_id,three_class_tag_id,publish_admin_id,is_block_search,performer)
+            two_class_tag_ids,three_class_tag_ids,publish_admin_id,is_block_search,performer)
             VALUES(#{title},#{introduction},#{imgSrc},#{totalMun},#{currentMun},#{createTime}
         ,#{updateTime},#{updateAdminId},#{updateAdminName},#{type},#{isCommplete},#{director},
-        #{oneClassTagId},#{twoClassTagId},#{threeClassTagId},#{publishAdminId},#{isBlockSearch},
+        #{oneClassTagId},#{twoClassTagIds},#{threeClassTagIds},#{publishAdminId},#{isBlockSearch},
         #{performer})
     </insert>
 

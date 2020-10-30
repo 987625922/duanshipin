@@ -8,10 +8,7 @@ import com.ljf.duanshipin.service.AdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.constraints.NotBlank;
 
@@ -51,6 +48,13 @@ public class AdminController extends BaseController {
         admin.setId(getCurrentAdmin().getId());
         adminService.update(admin);
         return JsonResult.buildSuccess();
+    }
+
+    @RequestMapping("/getByIsRobot")
+    public Object getByIsRobot(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
+                               @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
+                               @RequestParam(defaultValue = "0") Integer isRobot) {
+        return JsonResult.buildSuccess(adminService.findAdminByIsRobot(pageIndex, pageSize, isRobot));
     }
 
 }

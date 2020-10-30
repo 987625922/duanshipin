@@ -5,6 +5,15 @@ var twoDialogIsLoad = false
 var twoTagPageIndex = 1
 var twoSelectIndexs = new Array()
 
+var threeDialogIsLoad = false;
+var threeTagPageIndex = 1;
+var threeSelectIndexs = new Array()
+var twoSelectParentIds = ""
+
+var robotPageIndex = 1
+var robotDialogIsLoad = false;
+var threeSelectParentIds = ""
+
 function changepic(obj) {
     //console.log(obj.files[0]);//这里可以获取上传文件的name
     var newsrc = getObjectURL(obj.files[0]);
@@ -28,14 +37,18 @@ function getObjectURL(file) {
 function publishAlbum() {
     var formData = new FormData();
     formData.append("title", $("#form-title").val());
+    formData.append("introduction",$("#input-intro").val());
     formData.append("cover", $("#img-file")[0].files[0]);
     formData.append("totalMun", $("#total-mun").val());
     formData.append("director", $("#director").val());
     formData.append("performer", $("#director").val());
-    formData.append("robotId", $("#robotId").val());
     formData.append("isComplete", $("input[name='isEnd']:checked").val());
     formData.append("type", $("input[name='isState']:checked").val());
     formData.append("isBlockSearch", $("input[name='isSelect']:checked").val());
+    formData.append("oneClassTagId", $('#div-select-value').attr('value'))
+    formData.append("twoClassTagIds", twoSelectParentIds);
+    formData.append("threeClassTagIds", threeSelectParentIds);
+    formData.append("publishAdminId", $('#robotId').attr('name'))
     $.ajax({
         url: '/api/album/add',
         type: 'post',
@@ -45,6 +58,143 @@ function publishAlbum() {
         success: function (msg) {
             console.log(msg)
         }
+    });
+}
+
+function robotBeSelect(dom) {
+    $('#robot-tag-dialog').hide();
+    $('#dialog-wrapper').hide();
+    $('#robotId').attr('value', dom.innerHTML).attr('name', dom.getAttribute("value"));
+}
+
+function getRobotAdminList() {
+    $("#dialog-wrapper").show()
+    if (robotDialogIsLoad) {
+        $('#robot-tag-dialog').show();
+        return
+    }
+    robotDialogIsLoad = true
+    robotPageIndex = 1
+    ajax({
+        url: "/api/admin/getByIsRobot",
+        type: 'get',
+        data: {
+            pageIndex: robotPageIndex,
+            pageSize: oneTagPageSize,
+            isRobot: 1
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            var json = JSON.parse(data);
+            if (json.code == 200) {
+                $('#robot-tag-dialog').show();
+                if (robotPageIndex == 1) {
+                    let htmlStr = '';
+                    for (let i = 0; i < json.data.list.length; i++) {
+                        htmlStr += '<div class="select_font" value="'
+                            + json.data.list[i].id + '" onclick="robotBeSelect(this)">' + json.data.list[i].userName + '</div>'
+                    }
+                    $('#robot-select_item').html(htmlStr);
+                } else {
+                    let htmlStr = '';
+                    for (let i = 0; i < json.data.list.length; i++) {
+                        htmlStr += '<div class="select_font" value="'
+                            + json.data.list[i].id + '" onclick="robotBeSelect(this)">' + json.data.list[i].userName + '</div>'
+                    }
+                    $('#robot-select_item').append(htmlStr);
+                }
+                robotPageIndex++;
+                if (json.data.list.length >= oneTagPageSize) {
+                    robotDropload();
+                } else {
+                    $('#robot-select_item').css("overflow-y", "hidden")
+                }
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function robotDropload() {
+    // dropload
+    var dropload = $('.robot-inner').dropload({
+        domUp: {
+            domClass: 'dropload-up',
+            domRefresh: '<div class="dropload-refresh">↓下拉刷新</div>',
+            domUpdate: '<div class="dropload-update">↑释放更新</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+        },
+        domDown: {
+            domClass: 'dropload-down',
+            domRefresh: '<div class="dropload-refresh">↑上拉加载更多</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+            domNoData: '<div class="dropload-noData">暂无数据</div>'
+        },
+        loadUpFn: function (me) {
+            dropload.resetload()
+        },
+        loadDownFn: function (me) {
+            console.log(oneTagPageIndex)
+            ajax({
+                url: "/api/admin/getByIsRobot",
+                type: 'get',
+                data: {
+                    pageIndex: robotPageIndex,
+                    pageSize: oneTagPageSize,
+                    isRobot: 1
+                },
+                dataType: 'json',
+                timeout: 10000,
+                contentType: "application/json",
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if (json.code == 200) {
+                        $('#robot-select_list').show();
+                        if (!json.data.hasNextPage) {
+                            // 锁定
+                            dropload.noData();
+                            dropload.lock();
+                            $('.dropload-down').hide();
+                        }
+                        if (robotPageIndex == 1) {
+                            let htmlStr = '';
+                            for (let i = 0; i < json.data.list.length; i++) {
+                                htmlStr += '<div class="select_font" value="'
+                                    + json.data.list[i].id + '" onclick="robotBeSelect(this)">' + json.data.list[i].userName + '</div>'
+                            }
+                            $('#robot-select_item').html(htmlStr);
+                        } else {
+                            let htmlStr = '';
+                            for (let i = 0; i < json.data.list.length; i++) {
+                                htmlStr += '<div class="select_font" value="'
+                                    + json.data.list[i].id + '" onclick="robotBeSelect(this)">' + json.data.list[i].userName + '</div>'
+                            }
+                            $('#robot-select_item').append(htmlStr);
+                        }
+                        robotPageIndex++;
+                        dropload.resetload()
+                    } else {
+                        console.log(json.msg);
+                        Toast(json.msg, 1000);
+                        dropload.resetload()
+                    }
+                },
+                //异常处理
+                error: function (e) {
+                    console.log(e);
+                    dropload.resetload()
+                }
+            })
+        }
+
     });
 }
 
@@ -189,11 +339,13 @@ function enterTwoTag() {
     $('#dialog-wrapper').hide();
     $('#two-tag-dialog').hide();
     var str = ""
-    for(var i =0;i<twoSelectIndexs.length;i++){
-        if (i == 0){
+    for (var i = 0; i < twoSelectIndexs.length; i++) {
+        if (i == 0) {
             str += twoSelectIndexs[i].title
-        }else {
-            str += " / "+twoSelectIndexs[i].title
+            twoSelectParentIds += twoSelectIndexs[i].id
+        } else {
+            str += " / " + twoSelectIndexs[i].title
+            twoSelectParentIds += "," + twoSelectIndexs[i].id
         }
     }
     $('#div-select-value-two-tag').html(str);
@@ -216,6 +368,98 @@ function selectTwoTagItemOnclick(dom) {
     // $('#two-tag-dialog').hide();
     // $('#dialog-wrapper').hide();
     // $('#div-select-value-two-tag').html(dom.innerHTML).attr('value', dom.getAttribute("value"));
+}
+
+function selectThreeTagItemOnclick(dom) {
+    for (var i in threeSelectIndexs) {
+        if (threeSelectIndexs[i].id == dom.getAttribute("value")) {
+            const index = threeSelectIndexs.indexOf(threeSelectIndexs[i])
+            threeSelectIndexs.splice(index, 1)
+            dom.style.color = "#606266"
+            console.log(threeSelectIndexs + "  " + dom.getAttribute("value"))
+            return
+        }
+    }
+    var tagBean = createTwoTag(dom.getAttribute("value"), dom.innerHTML);
+    threeSelectIndexs.push(tagBean)
+    console.log(threeSelectIndexs + "  " + dom.getAttribute("value"))
+    dom.style.color = "#44c9a8"
+}
+
+function enterThreeTag() {
+    $('#dialog-wrapper').hide();
+    $('#three-tag-dialog').hide();
+    var str = ""
+    threeSelectParentIds = ""
+    for (var i = 0; i < threeSelectIndexs.length; i++) {
+        if (i == 0) {
+            str += threeSelectIndexs[i].title
+            threeSelectParentIds += threeSelectIndexs[i].id
+        } else {
+            str += " / " + threeSelectIndexs[i].title
+            threeSelectParentIds += "," + threeSelectIndexs[i].id
+        }
+    }
+    console.log(threeSelectParentIds);
+    $('#div-select-value-three-tag').html(str);
+}
+
+
+function getThreeTagList() {
+    $("#dialog-wrapper").show()
+    if (threeDialogIsLoad) {
+        $('#three-tag-dialog').show();
+        return
+    }
+    threeDialogIsLoad = true;
+    threeTagPageIndex = 1;
+    ajax({
+        url: "/api/tag/selectByMoreParentId",
+        type: 'get',
+        data: {
+            pageIndex: threeTagPageIndex,
+            pageSize: oneTagPageSize,
+            type: 3,
+            parentIds: twoSelectParentIds
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            var json = JSON.parse(data);
+            if (json.code == 200) {
+                $('#three-tag-dialog').show();
+                if (threeTagPageIndex == 1) {
+                    let htmlStr = '';
+                    for (let i = 0; i < json.data.list.length; i++) {
+                        htmlStr += '<div class="select_font" value="'
+                            + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                    }
+                    $('#three-select_item').html(htmlStr);
+                } else {
+                    let htmlStr = '';
+                    for (let i = 0; i < json.data.list.length; i++) {
+                        htmlStr += '<div class="select_font" value="'
+                            + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                    }
+                    $('#three-select_item').append(htmlStr);
+                }
+                twoTagPageIndex++;
+                if (json.data.list.length >= oneTagPageSize) {
+                    threeDropload()
+                } else {
+                    $('#three-select_list').css("overflow-y", "hidden")
+                }
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
 }
 
 function getTwoTagList() {
@@ -279,6 +523,7 @@ function getTwoTagList() {
 function hideDialog() {
     $('#one-tag-dialog').hide();
     $('#two-tag-dialog').hide();
+    $('#three-tag-dialog').hide();
     $('#dialog-wrapper').hide();
 }
 
@@ -341,6 +586,83 @@ function twoDropload() {
                             $('#two-select_item').append(htmlStr);
                         }
                         twoTagPageIndex++;
+                        dropload.resetload()
+                    } else {
+                        console.log(json.msg);
+                        Toast(json.msg, 1000);
+                        dropload.resetload()
+                    }
+                },
+                //异常处理
+                error: function (e) {
+                    console.log(e);
+                    dropload.resetload()
+                }
+            })
+        }
+
+    });
+}
+
+function threeDropload() {
+    // dropload
+    var dropload = $('.three-inner').dropload({
+        domUp: {
+            domClass: 'dropload-up',
+            domRefresh: '<div class="dropload-refresh">↓下拉刷新</div>',
+            domUpdate: '<div class="dropload-update">↑释放更新</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>'
+        },
+        domDown: {
+            domClass: 'dropload-down',
+            domRefresh: '<div class="dropload-refresh">↑上拉加载更多</div>',
+            domLoad: '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+            domNoData: '<div class="dropload-noData">暂无数据</div>'
+        },
+        loadUpFn: function () {
+            dropload.resetload()
+        },
+        loadDownFn: function () {
+            console.log(oneTagPageIndex)
+            ajax({
+                url: "/api/tag/selectByParentId",
+                type: 'get',
+                data: {
+                    pageIndex: threeTagPageIndex,
+                    pageSize: oneTagPageSize,
+                    type: 3,
+                    parentIds: twoSelectParentIds
+                },
+                dataType: 'json',
+                timeout: 10000,
+                contentType: "application/json",
+                success: function (data) {
+                    var json = JSON.parse(data);
+                    if (json.code == 200) {
+                        $('#three-select_list').show();
+                        console.log(json.data.hasNextPage)
+                        if (!json.data.hasNextPage) {
+                            // 锁定
+                            dropload.noData();
+                            dropload.lock();
+                            $('.dropload-down').hide();
+                        }
+                        if (threeTagPageIndex == 1) {
+                            let htmlStr = '<div value="-1" onclick="selectThreeTagItemOnclick(this)">根目录</div>';
+                            for (let i = 0; i < json.data.list.length; i++) {
+                                htmlStr += '<div class="select_font" value="'
+                                    + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                            }
+                            $('#three-select_item').html(htmlStr);
+                        } else {
+                            let htmlStr = '';
+                            for (let i = 0; i < json.data.list.length; i++) {
+                                htmlStr += '<div class="select_font" value="'
+                                    + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                            }
+                            $('#three-select_item').append(htmlStr);
+                        }
+                        threeTagPageIndex++;
                         dropload.resetload()
                     } else {
                         console.log(json.msg);

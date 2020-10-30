@@ -14,18 +14,19 @@
         <result column="last_control_admin_id" property="lastControlAdminId" jdbcType="BIGINT"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="account" property="account" jdbcType="VARCHAR"/>
+        <result column="is_robot" property="isRobot" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
     id,user_name,real_name,phone,status,create_time,last_update_time
-            ,role_id,last_control_admin_id,password,account
+            ,role_id,last_control_admin_id,password,account,is_robot
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Admin">
         INSERT INTO admin(user_name,real_name,phone,status,create_time,last_update_time
-            ,role_id,last_control_admin_id,password,account)
+            ,role_id,last_control_admin_id,password,account,is_robot)
         VALUES(#{userName},#{realName},#{phone},#{status},#{createTime},#{lastUpdateTime}
-        ,#{roleId},#{lastControlAdminId},#{password},#{account})
+        ,#{roleId},#{lastControlAdminId},#{password},#{account},#{isRobot})
     </insert>
 
     <select id="findAdminByUsername" resultMap="BaseResultMap"
@@ -33,6 +34,13 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM admin WHERE user_name = #{userName}
+    </select>
+
+    <select id="findAdminByIsRobot" resultMap="BaseResultMap"
+            parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM admin WHERE is_robot = #{isRobot}
     </select>
 
     <select id="findAdminByAccount" resultMap="BaseResultMap"

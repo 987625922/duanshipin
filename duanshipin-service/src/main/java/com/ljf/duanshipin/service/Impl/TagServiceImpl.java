@@ -70,26 +70,16 @@ public class TagServiceImpl implements TagService {
         PageHelper.startPage(pageIndex, pageSize);
         List<Tag> tagList = tagMapper.selectByParentId(type, parentId);
         PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
-        pageInfo.getList().forEach(tag -> {
-            if (tag.getParentTagId() != -1) {
-                tag.setParentTagName(tagMapper.getTagNameById(tag.getParentTagId()));
-            }
-        });
         return pageInfo;
     }
 
     @Override
     public PageInfo<Tag> selectByMoreParentId(Integer pageIndex, Integer pageSize,
                                               Integer type, String parentTagIds) {
-        List<String> idList = Arrays.asList(parentTagIds.split(parentTagIds));
+        List<String> idList = Arrays.asList(parentTagIds.split(","));
         PageHelper.startPage(pageIndex, pageSize);
         List<Tag> tagList = tagMapper.selectByMoreParentId(type, idList);
         PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
-        pageInfo.getList().forEach(tag -> {
-            if (tag.getParentTagId() != -1) {
-                tag.setParentTagName(tagMapper.getTagNameById(tag.getParentTagId()));
-            }
-        });
         return pageInfo;
     }
 }

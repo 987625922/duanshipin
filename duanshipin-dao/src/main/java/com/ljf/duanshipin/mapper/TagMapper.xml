@@ -56,10 +56,9 @@
     <select id="selectByMoreParentId" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from tag where type = #{type} and in
-        <foreach collection="parentTagIds" item="item" index="index" open="("
-                 separator="," close=")">
-            #{item}
+        from tag where type = #{type} and parent_tag_id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
         </foreach>
     </select>
 

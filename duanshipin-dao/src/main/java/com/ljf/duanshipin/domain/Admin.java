@@ -14,7 +14,7 @@ import java.util.Date;
 @Accessors(chain = true)
 @Data
 public class Admin implements Serializable {
-    
+
     private static final long serialVersionUID = -6894575627133924440L;
 
     private Long id;
@@ -34,4 +34,7 @@ public class Admin implements Serializable {
      */
     private Long roleId;
     private String password;
+    //是否是机器人
+    private Integer isRobot;
+
 }

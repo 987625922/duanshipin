@@ -39,8 +39,7 @@ public class TagServiceTest {
 
     @Test
     public void selectByMoreParentId() {
-        tagService.selectByMoreParentId(1, 10,
-                2, "2,3").getList().forEach(tag -> {
+        tagService.selectByMoreParentId(1, 10, 2, "2,3").getList().forEach(tag -> {
             log.info(tag.toString());
         });
     }

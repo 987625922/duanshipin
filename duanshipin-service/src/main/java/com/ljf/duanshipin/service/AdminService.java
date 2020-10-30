@@ -1,5 +1,6 @@
 package com.ljf.duanshipin.service;
 
+import com.github.pagehelper.PageInfo;
 import com.ljf.duanshipin.domain.Admin;
 
 /**
@@ -21,4 +22,6 @@ public interface AdminService {
     void update(Admin admin);
 
     void toOnline(String albumIds);
+
+    PageInfo<Admin> findAdminByIsRobot(Integer pageIndex, Integer pageSize, Integer isRobot);
 }

@@ -48,7 +48,7 @@ public class AlbumController extends BaseController {
                       @RequestParam(defaultValue = "2") Integer type,
                       @RequestParam(defaultValue = "2") Integer isComplete,
                       @RequestParam(required = false) String director,
-                      Integer oneClassTagId, Integer twoClassTagId, Integer threeClassTagId,
+                      Integer oneClassTagId, String twoClassTagIds, String threeClassTagIds,
                       Long publishAdminId, Integer isBlockSearch
     )
             throws IOException {
@@ -66,8 +66,8 @@ public class AlbumController extends BaseController {
         album.setTitle(title).setIntroduction(introduction).setTotalMun(totalMun)
                 .setCurrentMun(currentMun).setUpdateAdminId(getCurrentAdmin().getId())
                 .setUpdateAdminName(getCurrentAdmin().getUserName()).setType(type)
-                .setIsComplete(isComplete).setDirector(director).setOneClassTagsId(oneClassTagId)
-                .setTwoClassTagsId(twoClassTagId).setThreeClassTagsId(threeClassTagId)
+                .setIsComplete(isComplete).setDirector(director).setOneClassTagsId(String.valueOf(oneClassTagId))
+                .setTwoClassTagsIds(twoClassTagIds).setThreeClassTagsIds(threeClassTagIds)
                 .setPublistAdminId(publishAdminId).setIsBlockSearch(isBlockSearch);
         albumService.add(album);
         return JsonResult.buildSuccess();

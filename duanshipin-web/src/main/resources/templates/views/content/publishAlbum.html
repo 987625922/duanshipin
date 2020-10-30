@@ -117,14 +117,33 @@
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">三级标签：</label>
                         <div class="from-item-content">
-                            <input type="text" name="lname"/>
+                            <div class="div-select" id="div-select-value-three-tag" onclick="getThreeTagList(this)"
+                                 style="width: 100%;height: 40px"></div>
+                            <div class="one-tag-dialog" id="three-tag-dialog" style="display: none;height: 175px">
+                                <div class="select_inner three-inner" id="three-select_list">
+                                    <div id="three-select_item">
+
+                                    </div>
+                                </div>
+                                <div style="float: right;">
+                                    <button style="height: 25px;" onclick="enterThreeTag()">确定</button>
+                                    <button style="margin-left: 10px;margin-right:10px;height: 25px;" >取消</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="dialog-form-item">
                         <label class="dialog-form-item-label">绑定用户：</label>
                         <div class="from-item-content">
-                            <input id="robotId" type="text" name="lname"/>
-                            <button class="form-btn-upload">选取机器人</button>
+                            <input id="robotId" type="text" name="lname" readonly="readonly"/>
+                            <button class="form-btn-upload" onclick="getRobotAdminList()">选取机器人</button>
+                            <div class="one-tag-dialog" id="robot-tag-dialog" style="display: none;">
+                                <div class="select_inner robot-inner" id="robot-select_list">
+                                    <div id="robot-select_item">
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="dialog-form-item">

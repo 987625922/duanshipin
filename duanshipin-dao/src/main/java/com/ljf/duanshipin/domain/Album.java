@@ -33,11 +33,11 @@ public class Album {
     //导演
     private String director;
     //一级标签id
-    private Integer oneClassTagsId;
+    private String oneClassTagsId;
     //二级标签id
-    private Integer twoClassTagsId;
+    private String twoClassTagsIds;
     //三级标签id
-    private Integer threeClassTagsId;
+    private String threeClassTagsIds;
     //绑定客户
     private Long publistAdminId;
     //是否屏蔽搜索

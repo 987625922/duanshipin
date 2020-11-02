@@ -12,7 +12,7 @@ import java.util.List;
 public interface AlbumMapper {
     int insert(Album album);
 
-    List<Album> getAlbumList(Integer type);
+    List<Album> getAlbumList(Integer type,Integer isUserPublish);
 
     void toOnline(List<String> list);
 
@@ -22,5 +22,6 @@ public interface AlbumMapper {
 
     void deleteForids(List<String> list);
 
-    List<Album> selectForPage(Long id,String title,Integer type);
+    List<Album> selectForPage(Long id,String title,Integer type,
+                              Integer isUserPublish);
 }

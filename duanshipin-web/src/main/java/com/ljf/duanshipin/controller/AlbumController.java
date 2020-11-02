@@ -66,9 +66,9 @@ public class AlbumController extends BaseController {
         album.setTitle(title).setIntroduction(introduction).setTotalMun(totalMun)
                 .setCurrentMun(currentMun).setUpdateAdminId(getCurrentAdmin().getId())
                 .setUpdateAdminName(getCurrentAdmin().getUserName()).setType(type)
-                .setIsComplete(isComplete).setDirector(director).setOneClassTagsId(String.valueOf(oneClassTagId))
-                .setTwoClassTagsIds(twoClassTagIds).setThreeClassTagsIds(threeClassTagIds)
-                .setPublistAdminId(publishAdminId).setIsBlockSearch(isBlockSearch);
+                .setIsComplete(isComplete).setDirector(director).setOneClassTagId(String.valueOf(oneClassTagId))
+                .setTwoClassTagIds(twoClassTagIds).setThreeClassTagIds(threeClassTagIds)
+                .setPublishAdminId(publishAdminId).setIsBlockSearch(isBlockSearch).setIsUserPublish(1);
         albumService.add(album);
         return JsonResult.buildSuccess();
     }
@@ -85,8 +85,9 @@ public class AlbumController extends BaseController {
     @ResponseBody
     public Object list(@RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
                        @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize
-            , @RequestParam(value = "type", defaultValue = "2") Integer type) {
-        PageInfo<Album> page = albumService.getAlbumForPage(pageIndex, pageSize, type);
+            , @RequestParam(value = "type", defaultValue = "2") Integer type
+            , @RequestParam(value = "isUserPublish", defaultValue = "0") Integer isUserPublish) {
+        PageInfo<Album> page = albumService.getAlbumForPage(pageIndex, pageSize, type, isUserPublish);
         return JsonResult.buildSuccess(page);
     }
 
@@ -139,8 +140,9 @@ public class AlbumController extends BaseController {
     public Object select(Long id, String title,
                          @RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
                          @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
-                         @RequestParam(value = "type", defaultValue = "2") Integer type) {
-        return JsonResult.buildSuccess(albumService.selectForPage(id, title, pageIndex, pageSize, type));
+                         @RequestParam(value = "type", defaultValue = "2") Integer type
+            , @RequestParam(value = "isUserPublish", defaultValue = "0") Integer isUserPublish) {
+        return JsonResult.buildSuccess(albumService.selectForPage(id, title, pageIndex, pageSize, type,isUserPublish));
     }
 
     /**

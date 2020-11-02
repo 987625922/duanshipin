@@ -231,7 +231,8 @@ function select() {
             id: selectId,
             pageIndex:pageIndex,
             pageSize:pageSize,
-            type:type
+            type:type,
+            isUserPublish:0
         },
         dataType: 'json',
         timeout: 10000,
@@ -273,7 +274,8 @@ function getAlbumList() {
         data: {
             pageIndex: pageIndex,
             pageSize: pageSize,
-            type: type
+            type: type,
+            isUserPublish:0
         },
         dataType: 'json',
         timeout: 10000,

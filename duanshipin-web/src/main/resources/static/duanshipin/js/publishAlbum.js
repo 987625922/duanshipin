@@ -56,7 +56,7 @@ function publishAlbum() {
         processData: false,
         contentType: false,
         success: function (msg) {
-            console.log(msg)
+            window.history.back(-1);
         }
     });
 }

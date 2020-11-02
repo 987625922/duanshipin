@@ -33,14 +33,17 @@ public class Album {
     //导演
     private String director;
     //一级标签id
-    private String oneClassTagsId;
+    private String oneClassTagId;
     //二级标签id
-    private String twoClassTagsIds;
+    private String twoClassTagIds;
     //三级标签id
-    private String threeClassTagsIds;
+    private String threeClassTagIds;
     //绑定客户
-    private Long publistAdminId;
+    private Long publishAdminId;
     //是否屏蔽搜索
     private Integer isBlockSearch;
+    //演员
     private String performer;
+    //是否是用户的专辑
+    private Integer isUserPublish;
 }

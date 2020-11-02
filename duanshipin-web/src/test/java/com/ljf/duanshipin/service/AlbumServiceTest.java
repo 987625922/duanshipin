@@ -40,6 +40,6 @@ public class AlbumServiceTest {
 
     @Test
     public void getAlbumList() {
-        log.info(albumService.getAlbumForPage(1, 10, 2).toString());
+        log.info(albumService.getAlbumForPage(1, 10, 2,0).toString());
     }
 }

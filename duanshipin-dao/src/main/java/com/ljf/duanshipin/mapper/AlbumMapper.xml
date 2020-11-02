@@ -21,29 +21,36 @@
         <result column="three_class_tag_ids" property="threeClassTagIds" jdbcType="VARCHAR"/>
         <result column="publish_admin_id" property="publishAdminId" jdbcType="BIGINT"/>
         <result column="is_block_search" property="isBlockSearch" jdbcType="INTEGER"/>
+        <result column="is_user_publish" property="isUserPublish" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
     id,title,introduction,img_src,total_mun,current_mun,create_time,update_time
-            ,update_admin_id,update_admin_name,type,is_commplete,director,
+            ,update_admin_id,update_admin_name,type,is_complete,director,
             one_class_tag_id,two_class_tag_ids,three_class_tag_ids,publish_admin_id
-          ,is_block_search,performer
+          ,is_block_search,performer,is_user_publish
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Album">
         INSERT INTO album(title,introduction,img_src,total_mun,current_mun,create_time,update_time
-            ,update_admin_id,update_admin_name,type,is_commplete,director,one_class_tag_id,
-            two_class_tag_ids,three_class_tag_ids,publish_admin_id,is_block_search,performer)
+            ,update_admin_id,update_admin_name,type,is_complete,director,one_class_tag_id,
+            two_class_tag_ids,three_class_tag_ids,publish_admin_id,is_block_search,performer,is_user_publish)
             VALUES(#{title},#{introduction},#{imgSrc},#{totalMun},#{currentMun},#{createTime}
-        ,#{updateTime},#{updateAdminId},#{updateAdminName},#{type},#{isCommplete},#{director},
+        ,#{updateTime},#{updateAdminId},#{updateAdminName},#{type},#{isComplete},#{director},
         #{oneClassTagId},#{twoClassTagIds},#{threeClassTagIds},#{publishAdminId},#{isBlockSearch},
-        #{performer})
+        #{performer},#{isUserPublish})
     </insert>
 
-    <select id="getAlbumList" parameterType="int" resultMap="BaseResultMap">
+    <select id="getAlbumList" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from album where type = #{type}
+        from album where 1=1
+        <if test="type != null and type != '' ">
+            and type = type
+        </if>
+        <if test="isUserPublish != null and isUserPublish != '' ">
+            and isUserPublish = isUserPublish
+        </if>
     </select>
 
     <update id="toOnline" parameterType="java.util.List">
@@ -83,6 +90,9 @@
         </if>
         <if test="arg0 != null">
             and id = #{arg0}
+        </if>
+        <if test="arg2 != null">
+            and id = #{arg2}
         </if>
     </select>
 </mapper>

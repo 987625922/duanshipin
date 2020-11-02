@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 30/10/2020 17:51:24
+ Date: 02/11/2020 17:13:16
 */
 
 SET NAMES utf8mb4;
@@ -36,7 +36,7 @@ CREATE TABLE `admin`  (
   `is_robot` int(1) NOT NULL DEFAULT 0 COMMENT '1 为机器人',
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `account`(`account`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admin
@@ -70,8 +70,20 @@ CREATE TABLE `album`  (
   `publish_admin_id` bigint(20) NOT NULL COMMENT '绑定用户',
   `is_block_search` int(1) NOT NULL COMMENT '是否屏蔽搜索 1 为屏蔽 2 为不屏蔽',
   `performer` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `is_user_publish` int(1) NULL DEFAULT 0 COMMENT '0 为运营方提交 1 为用户提交',
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 629 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of album
+-- ----------------------------
+INSERT INTO `album` VALUES (629, '12', '123', NULL, '123', '0', '2020-11-02 15:33:17', '2020-11-02 15:33:17', 9, 'Admin', 1, 1, '123', '2', '18,42', '19', 26, 2, NULL, 0);
+INSERT INTO `album` VALUES (630, '123', '123', NULL, '13', '0', '2020-11-02 15:34:54', '2020-11-02 15:34:54', 9, 'Admin', 2, 1, '123', '2', '18,42', '19', 26, 2, NULL, 0);
+INSERT INTO `album` VALUES (631, '123', '123', NULL, '13', '0', '2020-11-02 15:35:03', '2020-11-02 15:35:03', 9, 'Admin', 2, 1, '123', '2', '18,42', '19', 26, 2, NULL, 0);
+INSERT INTO `album` VALUES (632, '123', '123', NULL, '13', '0', '2020-11-02 15:35:08', '2020-11-02 15:35:08', 9, 'Admin', 2, 1, '123', '2', '18,42', '19', 26, 2, NULL, 0);
+INSERT INTO `album` VALUES (633, '123', '123', NULL, '13', '0', '2020-11-02 15:35:17', '2020-11-02 15:35:17', 9, 'Admin', 2, 1, '123', '2', '18,42', '19', 26, 2, NULL, 0);
+INSERT INTO `album` VALUES (634, '12', '21233', NULL, '12', '0', '2020-11-02 15:37:20', '2020-11-02 15:37:20', 9, 'Admin', 2, 1, '22', '2', '42,18', '19', 26, 2, NULL, 0);
+INSERT INTO `album` VALUES (635, '12', '21233', NULL, '12', '0', '2020-11-02 15:37:25', '2020-11-02 15:37:25', 9, 'Admin', 2, 1, '22', '2', '42,18', '19', 26, 2, NULL, 0);
 
 -- ----------------------------
 -- Table structure for login_log
@@ -92,7 +104,7 @@ CREATE TABLE `login_log`  (
 -- ----------------------------
 -- Records of login_log
 -- ----------------------------
-INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-10-30 17:35:58', 173, '2020-10-30 17:33:02');
+INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-11-02 16:57:01', 181, '2020-11-02 15:47:27');
 
 -- ----------------------------
 -- Table structure for permission
@@ -108,7 +120,7 @@ CREATE TABLE `permission`  (
   `update_time` datetime(0) NULL DEFAULT NULL,
   `last_control_admin_id` bigint(20) NULL DEFAULT NULL COMMENT '上一个控制的admin的id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of permission

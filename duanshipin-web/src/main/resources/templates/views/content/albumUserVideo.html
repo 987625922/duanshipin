@@ -14,6 +14,8 @@
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/duanshipin/js/albumUserVideo.js}"></script>
 </head>
 
 <body>
@@ -105,113 +107,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="table_div">
-                    <table class="content_table">
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" id="" class="table_checkbox" />
-                            </th>
-                            <th>
-                                <span class="table_id table_th"> 专辑ID </span>
-                            </th>
-                            <th>
-                                <span class="table_title table_th"> 专辑标题 </span>
-                            </th>
-                            <th>
-                                <span class="table_introducation table_th"> 专辑简介 </span>
-                            </th>
-                            <th>
-                                <span class="table_img table_th"> 缩略图 </span>
-                            </th>
-                            <th>
-                                <span class="table_mun table_th"> 总集/已更新 </span>
-                            </th>
-                            <th>
-                                <span class="table_time table_th"> 最后操作时间 </span>
-                            </th>
-                            <th>
-                                <span class="table_user table_th"> 操作人 </span>
-                            </th>
-                            <th>
-                                <span class="table_controll table_th"> 操作 </span>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name="" id="" class="table_checkbox" />
-                            </td>
-                            <td>
-                                <span class="table_id"> 987123 </span>
-                            </td>
-                            <td>
-                                <span class="table_title"> 办公室爆笑锦集 </span>
-                            </td>
-                            <td>
-                                <span class="table_introducation">
-                                    这是一份简介占位这是一份简介占位这是一份简介占位这是一份简介占位~
-                                </span>
-                            </td>
-                            <td>
-                                <img src="/duanshipin/img/tx.jpg" alt="" class="table_content_img" />
-                            </td>
-                            <td>
-                                <span class="table_mun"> 22/30 </span>
-                            </td>
-                            <td>
-                                <span class="table_time"> 2018-11-28 14:01:19 </span>
-                            </td>
-                            <td>
-                                <span class="table_user"> xxx@yy-inc.cn </span>
-                            </td>
-                            <td>
-                                <div class="table_content_controll">
-                                    <div id="table-content-controll-one">
-                                        <a href="/views/content/albumVideoManager">视频管理</a>
-                                        <a href="/views/content/lbumpreview">专辑预览</a>
-                                    </div>
-                                    <div id="table-content-controll-two">
-                                        <a href="/views/content/albumpreview">预览</a>
-                                        <a href="#">还原</a>
-                                    </div>
-                                    <div id="table-content-controll-three">
-                                        <a href="/views/content/albumpreview">预览</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="table_div" id="table-content">
                 </div>
                 <div class="page_select" id="page_select">
                     <div class="page_select_inner">
                         <span>共</span>
-                        <span>100</span>
+                        <span id="page-total-mun"></span>
                         <span>条</span>
                         <span class="page_select_position_one">每页</span>
-                        <input type="number" class="page_input_mun" />
+                        <span id="page-size" class="page_input_mun"></span>
                         <span>条</span>
-                        <img src="/duanshipin/img/last_page.png" alt="" class="last_page" />
-                        <ul class="page_select_ul">
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>...</li>
-                            <li>10</li>
+                        <img src="/duanshipin/img/last_page.png" alt="" class="last_page" onclick="previousPage()"/>
+                        <ul class="page_select_ul" id="page_select_ul">
                         </ul>
-                        <img src="/duanshipin/img/next_page.png" alt="" class="last_page" />
-                        <span class="page_select_position_two">前往</span>
-                        <input type="number" class="page_input_to_mun" />
-                        <span>页</span>
+                        <img src="/duanshipin/img/next_page.png" alt="" class="last_page" onclick="nextPage()"/>
                     </div>
                 </div>
             </div>
             <script type="text/javascript">
                 writeLeft()
                 writeLeftTwoOfLeft()
+                init()
+                getAlbumList()
             </script>
         </div>
     </div>
 </body>
-
-<script th:src="@{/duanshipin/js/albumUserVideo.js}"></script>
 
 </html>

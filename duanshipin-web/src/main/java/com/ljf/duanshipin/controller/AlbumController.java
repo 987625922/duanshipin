@@ -59,6 +59,7 @@ public class AlbumController extends BaseController {
             if (!fileName.isEmpty()) {
                 String suffixName = fileName.substring(fileName.lastIndexOf("."));
                 fileName = UUID.randomUUID() + suffixName;
+                fileName = fileName.replaceAll("-","");
                 file.transferTo(new File(filePath + fileName));
                 album.setImgSrc(fileName);
             }
@@ -68,7 +69,7 @@ public class AlbumController extends BaseController {
                 .setUpdateAdminName(getCurrentAdmin().getUserName()).setType(type)
                 .setIsComplete(isComplete).setDirector(director).setOneClassTagId(String.valueOf(oneClassTagId))
                 .setTwoClassTagIds(twoClassTagIds).setThreeClassTagIds(threeClassTagIds)
-                .setPublishAdminId(publishAdminId).setIsBlockSearch(isBlockSearch).setIsUserPublish(1);
+                .setPublishAdminId(publishAdminId).setIsBlockSearch(isBlockSearch).setIsUserPublish(0);
         albumService.add(album);
         return JsonResult.buildSuccess();
     }

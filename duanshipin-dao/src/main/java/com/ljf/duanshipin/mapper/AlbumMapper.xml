@@ -6,7 +6,7 @@
         <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="title" property="title" jdbcType="VARCHAR"/>
         <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
-        <result column="imgSrc" property="imgSrc" jdbcType="VARCHAR"/>
+        <result column="img_src" property="imgSrc" jdbcType="VARCHAR"/>
         <result column="total_mun" property="totalMun" jdbcType="INTEGER"/>
         <result column="current_mun" property="currentMun" jdbcType="INTEGER"/>
         <result column="create_time" property="createTime" jdbcType="DATE"/>
@@ -46,10 +46,10 @@
         <include refid="Base_Column_List"/>
         from album where 1=1
         <if test="type != null and type != '' ">
-            and type = type
+            and type = #{type}
         </if>
         <if test="isUserPublish != null and isUserPublish != '' ">
-            and isUserPublish = isUserPublish
+            and is_user_publish = #{isUserPublish}
         </if>
     </select>
 

@@ -126,7 +126,7 @@ function getAlbumList() {
             pageIndex: pageIndex,
             pageSize: pageSize,
             type: type,
-            isUserPublish:0
+            isUserPublish:1
         },
         dataType: 'json',
         timeout: 10000,

@@ -49,17 +49,17 @@ public class UserAlbumController extends BaseController {
     )
             throws IOException {
         Album album = new Album();
-        if (file != null) {
-            //获取文件的后缀名
-            String fileName = file.getOriginalFilename();
-            if (!fileName.isEmpty()) {
-                String suffixName = fileName.substring(fileName.lastIndexOf("."));
-                fileName = UUID.randomUUID() + suffixName;
-                fileName = fileName.replaceAll("-", "");
-                file.transferTo(new File(filePath + fileName));
-                album.setImgSrc(fileName);
-            }
-        }
+//        if (file != null) {
+//            //获取文件的后缀名
+//            String fileName = file.getOriginalFilename();
+//            if (!fileName.isEmpty()) {
+//                String suffixName = fileName.substring(fileName.lastIndexOf("."));
+//                fileName = UUID.randomUUID() + suffixName;
+//                fileName = fileName.replaceAll("-", "");
+//                file.transferTo(new File(filePath + fileName));
+//                album.setImgSrc(fileName);
+//            }
+//        }
         album.setTitle(title).setIntroduction(introduction).setTotalMun(totalMun)
                 .setCurrentMun(currentMun).setUpdateAdminId(getCurrentAdmin().getId())
                 .setUpdateAdminName(getCurrentAdmin().getUserName()).setType(type)

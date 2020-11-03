@@ -357,15 +357,15 @@ function dealTable(json) {
                 '                        <span class="table_introducation">空</span>' +
                 '                        </td>'
         }
-        // if (bean.imgSrc == null) {
-        //     htmlStr += '                        <td>' +
-        //         '                            <img alt="" src="/duanshipin/img/default.jpg" class="table_content_img"/>' +
-        //         '                        </td>'
-        // } else {
+        if (bean.imgSrc == null) {
             htmlStr += '                        <td>' +
-                '                            <img alt="" src="/resource/image/' + bean.imgSrc + '" class="table_content_img"/>' +
+                '                            <img alt="" src="/duanshipin/img/default.jpg" class="table_content_img"/>' +
                 '                        </td>'
-        // }
+        } else {
+            htmlStr += '                        <td>' +
+                '                            <img alt="" src="' + bean.imgSrc + '" class="table_content_img"/>' +
+                '                        </td>'
+        }
         htmlStr += '                        <td>' +
             '                            <span>' + bean.currentMun + '</span><span>/</span><span>' + bean.totalMun + '</span>' +
             '                        </td>' +

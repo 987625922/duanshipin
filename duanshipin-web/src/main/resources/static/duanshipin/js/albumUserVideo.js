@@ -1,5 +1,5 @@
 //请求的类型
-var type = 1;
+var datatype = 1;
 //显示的页面下标
 var pageIndex = 1;
 //每一页显示的条目
@@ -57,7 +57,7 @@ function init(){
         // tableControllerOne.style.display = 'block'
         // tableControllerTwo.style.display = 'none'
         // tableControllerThree.style.display = 'none'
-        type = 1
+        datatype = 1
         getAlbumList()
     }
 //草稿的点击事件
@@ -72,7 +72,7 @@ function init(){
         // tableControllerOne.style.display = 'none'
         // tableControllerTwo.style.display = 'block'
         // tableControllerThree.style.display = 'none'
-        type = 2
+        datatype = 2
         getAlbumList()
     }
     btnDel.onclick = function () {
@@ -86,7 +86,7 @@ function init(){
         // tableControllerOne.style.display = 'none'
         // tableControllerTwo.style.display = 'none'
         // tableControllerThree.style.display = 'block'
-        type = 3
+        datatype = 3
         getAlbumList()
     }
     btnRecommend.onclick = function () {
@@ -100,7 +100,7 @@ function init(){
         // tableControllerOne.style.display = 'block'
         // tableControllerTwo.style.display = 'none'
         // tableControllerThree.style.display = 'none'
-        type = 4
+        datatype = 4
         getAlbumList()
     }
 }
@@ -125,7 +125,7 @@ function getAlbumList() {
         data: {
             pageIndex: pageIndex,
             pageSize: pageSize,
-            type: type,
+            type: datatype,
             isUserPublish:1
         },
         dataType: 'json',
@@ -248,7 +248,7 @@ function dealTable(json) {
                 if (i == json.data.prePage) {
                     liStr += '<li style="background-color:#44c9a8;color: #fff;">' + json.data.navigatepageNums[i] + '</li>'
                 } else {
-                    liStr += '<li onclick="getSpecialAlbumList(type,' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
+                    liStr += '<li onclick="getSpecialAlbumList(datatype,' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
                 }
             }
         } else {
@@ -258,27 +258,27 @@ function dealTable(json) {
                         if (i == json.data.prePage) {
                             liStr += '<li style="background-color:#44c9a8;color: #fff;">' + json.data.navigatepageNums[i] + '</li>'
                         } else {
-                            liStr += '<li onclick="getSpecialAlbumList(type,' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
+                            liStr += '<li onclick="getSpecialAlbumList(datatype,' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
                         }
                     }
                 }
                 liStr += '<li>...</li>'
-                liStr += '<li onclick="getSpecialAlbumList(type,' + json.data.pages + ',pageSize)">' + json.data.pages + '</li>'
+                liStr += '<li onclick="getSpecialAlbumList(datatype,' + json.data.pages + ',pageSize)">' + json.data.pages + '</li>'
             } else {
-                liStr += '<li onclick="getSpecialAlbumList(type,1,pageSize)">1</li>'
+                liStr += '<li onclick="getSpecialAlbumList(datatype,1,pageSize)">1</li>'
                 liStr += '<li>...</li>'
                 if (json.data.pages - (json.data.prePage + 2) >= 3) {
-                    liStr += '<li onclick="getSpecialAlbumList(type,' + json.data.prePage + ',pageSize)">' + json.data.prePage + '</li>'
+                    liStr += '<li onclick="getSpecialAlbumList(datatype,' + json.data.prePage + ',pageSize)">' + json.data.prePage + '</li>'
                     liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
-                    liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.prePage + 2) + ',pageSize)">' + (json.data.prePage + 2) + '</li>'
+                    liStr += '<li onclick="getSpecialAlbumList(datatype,' + (json.data.prePage + 2) + ',pageSize)">' + (json.data.prePage + 2) + '</li>'
                     liStr += '<li>...</li>'
-                    liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages) + ',pageSize)">' + (json.data.pages) + '</li>'
+                    liStr += '<li onclick="getSpecialAlbumList(datatype,' + (json.data.pages) + ',pageSize)">' + (json.data.pages) + '</li>'
                 } else {
                     for (var i = 4; i >= 0; i--) {
                         if ((json.data.pages - i) == (json.data.prePage + 1)) {
                             liStr += '<li style="background-color:#44c9a8;color: #fff;">' +(json.data.prePage + 1) + '</li>'
                         } else {
-                            liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
+                            liStr += '<li onclick="getSpecialAlbumList(datatype,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
                         }
                     }
                 }
@@ -289,3 +289,123 @@ function dealTable(json) {
         $('#page_select').hide();
     }
 }
+function getSpecialAlbumList(_type, _pageIndex, _pageSize) {
+    type = _type;
+    pageIndex = _pageIndex;
+    pageSize = _pageSize;
+    getAlbumList();
+    console.log(type+" "+pageIndex+" "+pageSize)
+}
+
+function toRecommend() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+        return $(elem).val();
+    });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr = selectStr+',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/album/recommendForids",
+        type: 'get',
+        data: {
+            ids: selectStr,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getAlbumList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+
+}
+
+function toOnline() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+        return $(elem).val();
+    });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr = selectStr+',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/album/onlineForids",
+        type: 'get',
+        data: {
+            ids: selectStr,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getAlbumList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function toRecycler() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+        return $(elem).val();
+    });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr = selectStr+',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/album/recyclerForids",
+        type: 'get',
+        data: {
+            ids: selectStr,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getAlbumList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+

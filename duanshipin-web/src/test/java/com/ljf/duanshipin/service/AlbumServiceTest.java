@@ -30,10 +30,24 @@ public class AlbumServiceTest {
     @Test
     public void add() {
         for (int i = 0; i < 100; i++) {
-            Admin admin = (Admin) adminService.findAdminByAccount("Admin");
             Album album = new Album();
-            album.setTitle("测试的专辑标题").setUpdateAdminId(admin.getId())
-                    .setUpdateAdminName(admin.getUserName()).setTotalMun(30);
+//        if (file != null) {
+//            //获取文件的后缀名
+//            String fileName = file.getOriginalFilename();
+//            if (!fileName.isEmpty()) {
+//                String suffixName = fileName.substring(fileName.lastIndexOf("."));
+//                fileName = UUID.randomUUID() + suffixName;
+//                fileName = fileName.replaceAll("-", "");
+//                file.transferTo(new File(filePath + fileName));
+//                album.setImgSrc(fileName);
+//            }
+//        }
+            album.setTitle("123").setIntroduction("123").setTotalMun(12)
+                    .setCurrentMun(0).setUpdateAdminId(2L)
+                    .setUpdateAdminName("123").setType(1)
+                    .setIsComplete(1).setDirector("123").setOneClassTagId("123")
+                    .setTwoClassTagIds("123").setThreeClassTagIds("123")
+                    .setPublishAdminId(2L).setIsBlockSearch(1).setIsUserPublish(1);
             albumService.add(album);
         }
     }

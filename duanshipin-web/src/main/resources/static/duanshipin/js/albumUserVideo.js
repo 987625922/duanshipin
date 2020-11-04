@@ -72,7 +72,7 @@ function init(){
         // tableControllerOne.style.display = 'none'
         // tableControllerTwo.style.display = 'block'
         // tableControllerThree.style.display = 'none'
-        datatype = 2
+        datatype = 3
         getAlbumList()
     }
     btnDel.onclick = function () {
@@ -86,7 +86,7 @@ function init(){
         // tableControllerOne.style.display = 'none'
         // tableControllerTwo.style.display = 'none'
         // tableControllerThree.style.display = 'block'
-        datatype = 3
+        datatype = 5
         getAlbumList()
     }
     btnRecommend.onclick = function () {

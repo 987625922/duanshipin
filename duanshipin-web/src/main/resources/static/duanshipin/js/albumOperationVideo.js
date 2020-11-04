@@ -99,7 +99,7 @@ function toRecommend() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr = selectStr+',' + selectGroup[i];
+            selectStr = selectStr + ',' + selectGroup[i];
         }
     }
     ajax({
@@ -128,6 +128,33 @@ function toRecommend() {
 
 }
 
+function toOnline(id) {
+    ajax({
+        url: "/api/album/onlineForids",
+        type: 'get',
+        data: {
+            ids: id,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getAlbumList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+
 function toOnline() {
     var selectStr = '';
     var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
@@ -137,7 +164,7 @@ function toOnline() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr = selectStr+',' + selectGroup[i];
+            selectStr = selectStr + ',' + selectGroup[i];
         }
     }
     ajax({
@@ -174,7 +201,7 @@ function toRecycler() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr = selectStr+',' + selectGroup[i];
+            selectStr = selectStr + ',' + selectGroup[i];
         }
     }
     ajax({
@@ -229,10 +256,10 @@ function select() {
         data: {
             title: selectTitle,
             id: selectId,
-            pageIndex:pageIndex,
-            pageSize:pageSize,
-            type:type,
-            isUserPublish:0
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            type: type,
+            isUserPublish: 0
         },
         dataType: 'json',
         timeout: 10000,
@@ -275,7 +302,7 @@ function getAlbumList() {
             pageIndex: pageIndex,
             pageSize: pageSize,
             type: type,
-            isUserPublish:0
+            isUserPublish: 0
         },
         dataType: 'json',
         timeout: 10000,
@@ -375,13 +402,20 @@ function dealTable(json) {
             '                        <td>' +
             '                            <span class="table_user">' + bean.updateAdminName + '</span>' +
             '                        </td>' +
-            '                        <td>' +
-            '                            <div class="table_content_controll">' +
-            '                                    <a href="/views/content/publishAlbum">修改专辑</a>' +
-            '                                    <a href="/views/content/albumVideoManager">视频管理</a>' +
-            '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
-            '                            </div>' +
-            '                        </td></tr>'
+            '                        <td>'
+        if (type == 1 || type == 2 || type == 4) {
+            htmlStr += '                            <div class="table_content_controll">' +
+                '                                    <a href="/views/content/publishAlbum">修改专辑</a>' +
+                '                                    <a href="/views/content/albumVideoManager">视频管理</a>' +
+                '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
+                '                            </div>'
+        } else if (type == 3) {
+            htmlStr += '                            <div class="table_content_controll">' +
+                '                                    <a style="cursor: pointer" onclick="toOnline('+bean.id+')">专辑还原</a>' +
+                '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
+                '                            </div>'
+        }
+        htmlStr += '                        </td></tr>'
     }
     htmlStr += '</tbody></table>';
     $('#table-content').html(htmlStr);
@@ -425,7 +459,7 @@ function dealTable(json) {
                 } else {
                     for (var i = 4; i >= 0; i--) {
                         if ((json.data.pages - i) == (json.data.prePage + 1)) {
-                            liStr += '<li style="background-color:#44c9a8;color: #fff;">' +(json.data.prePage + 1) + '</li>'
+                            liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
                         } else {
                             liStr += '<li onclick="getSpecialAlbumList(type,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
                         }

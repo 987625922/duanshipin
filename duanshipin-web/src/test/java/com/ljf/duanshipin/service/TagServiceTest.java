@@ -44,4 +44,11 @@ public class TagServiceTest {
         });
     }
 
+    @Test
+    public void getTagsByIds() {
+        tagService.getTagsByIds("2,3").forEach(it -> {
+            log.info(it.toString());
+        });
+    }
+
 }

@@ -15,4 +15,5 @@ public interface AlbumService {
     void recyclerForids(String ids);
     PageInfo<Album> selectForPage(Long id, String title, Integer pageIndex
             , Integer pageSize, Integer type,Integer isUserPublish);
+    Album getInfoById(Long id);
 }

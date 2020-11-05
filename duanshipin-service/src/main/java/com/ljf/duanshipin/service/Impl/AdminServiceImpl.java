@@ -73,4 +73,9 @@ public class AdminServiceImpl implements AdminService {
         PageInfo<Admin> pageInfo = new PageInfo<>(list);
         return pageInfo;
     }
+
+    @Override
+    public Admin getAdminById(Long id) {
+        return adminMapper.getAdminById(id);
+    }
 }

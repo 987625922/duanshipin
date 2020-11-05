@@ -31,7 +31,7 @@
         from tag where type = #{type}
     </select>
 
-    <select id="getTagById" parameterType="int">
+    <select id="getTagById" parameterType="int" resultType="com.ljf.duanshipin.domain.Tag">
         select
         <include refid="Base_Column_List"/>
         from tag where id = #{id}
@@ -51,6 +51,15 @@
 
     <select id="getTagNameById" parameterType="int" resultType="String">
         select name from tag where id = #{id}
+    </select>
+
+    <select id="getTagsByIds" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tag where id in
+        <foreach item="id" collection="list" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
     </select>
 
     <select id="selectByMoreParentId" resultMap="BaseResultMap">

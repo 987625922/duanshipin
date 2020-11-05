@@ -122,6 +122,16 @@ public class ViewController extends BaseController {
         return mav;
     }
 
+    /**
+     * 内容 -》 专辑管理 -》 修改专辑
+     */
+    @RequestMapping("/content/editAlbum")
+    public Object editAlbum() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/editAlbum");
+        return mav;
+    }
+
     @RequestMapping("/content/albumVideoManager")
     public Object albumVideoManager() {
         ModelAndView mav = new ModelAndView();

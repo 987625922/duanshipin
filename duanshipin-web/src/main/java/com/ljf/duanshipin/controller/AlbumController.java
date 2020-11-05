@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 /**
  * @Author: 98762
@@ -143,7 +141,7 @@ public class AlbumController extends BaseController {
                          @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
                          @RequestParam(value = "type", defaultValue = "2") Integer type
             , @RequestParam(value = "isUserPublish", defaultValue = "0") Integer isUserPublish) {
-        return JsonResult.buildSuccess(albumService.selectForPage(id, title, pageIndex, pageSize, type,isUserPublish));
+        return JsonResult.buildSuccess(albumService.selectForPage(id, title, pageIndex, pageSize, type, isUserPublish));
     }
 
     /**
@@ -159,5 +157,14 @@ public class AlbumController extends BaseController {
         return JsonResult.buildSuccess();
     }
 
+    /**
+     * 通过id获取详情
+     * @param id
+     * @return
+     */
+    @RequestMapping("/getInfoById")
+    public Object getInfoById(Long id) {
+        return JsonResult.buildSuccess(albumService.getInfoById(id));
+    }
 
 }

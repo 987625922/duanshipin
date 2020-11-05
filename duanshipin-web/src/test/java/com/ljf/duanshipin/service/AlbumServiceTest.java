@@ -56,4 +56,9 @@ public class AlbumServiceTest {
     public void getAlbumList() {
         log.info(albumService.getAlbumForPage(1, 10, 2,0).toString());
     }
+
+    @Test
+    public void getAlbumById(){
+        log.info(albumService.getInfoById(629L).toString());
+    }
 }

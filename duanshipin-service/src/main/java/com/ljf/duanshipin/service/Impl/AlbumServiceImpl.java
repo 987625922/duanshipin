@@ -36,9 +36,9 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
-    public PageInfo<Album> getAlbumForPage(Integer pageIndex, Integer pageSize, Integer type,Integer isUserPublish) {
+    public PageInfo<Album> getAlbumForPage(Integer pageIndex, Integer pageSize, Integer type, Integer isUserPublish) {
         PageHelper.startPage(pageIndex, pageSize);
-        List<Album> albumList = albumMapper.getAlbumList(type,isUserPublish);
+        List<Album> albumList = albumMapper.getAlbumList(type, isUserPublish);
         PageInfo<Album> pageInfo = new PageInfo<>(albumList);
         return pageInfo;
     }
@@ -73,10 +73,15 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public PageInfo<Album> selectForPage(Long id, String title, Integer pageIndex, Integer pageSize
-            , Integer type,Integer isUserPublish) {
+            , Integer type, Integer isUserPublish) {
         PageHelper.startPage(pageIndex, pageSize);
-        List<Album> albumList = albumMapper.selectForPage(id, title, type,isUserPublish);
+        List<Album> albumList = albumMapper.selectForPage(id, title, type, isUserPublish);
         PageInfo<Album> pageInfo = new PageInfo<>(albumList);
         return pageInfo;
+    }
+
+    @Override
+    public Album getInfoById(Long id) {
+        return albumMapper.getInfoById(id);
     }
 }

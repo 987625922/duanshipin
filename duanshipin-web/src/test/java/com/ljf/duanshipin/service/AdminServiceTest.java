@@ -35,4 +35,9 @@ public class AdminServiceTest {
                 .setRoleId(1L).setRealName("");
         adminService.addAdmin(admin);
     }
+
+    @Test
+    public void getAdminById(){
+        log.info(adminService.getAdminById(9L).toString());
+    }
 }

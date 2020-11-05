@@ -82,4 +82,14 @@ public class TagServiceImpl implements TagService {
         PageInfo<Tag> pageInfo = new PageInfo<>(tagList);
         return pageInfo;
     }
+
+    @Override
+    public Tag getTagById(Integer id) {
+        return tagMapper.getTagById(id);
+    }
+
+    @Override
+    public List<Tag> getTagsByIds(String ids) {
+        return tagMapper.getTagsByIds(Arrays.asList(ids.split(",")));
+    }
 }

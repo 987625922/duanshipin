@@ -26,4 +26,6 @@ public interface TagMapper {
     List<Tag> selectByParentId(Integer type, Integer parentTagId);
 
     List<Tag> selectByMoreParentId(Integer type, List<String> list);
+
+    List<Tag> getTagsByIds(List<String> list);
 }

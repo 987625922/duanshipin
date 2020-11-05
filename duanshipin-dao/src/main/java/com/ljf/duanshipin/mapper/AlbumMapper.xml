@@ -95,4 +95,10 @@
             and id = #{arg2}
         </if>
     </select>
+
+    <select id="getInfoById" resultType="com.ljf.duanshipin.domain.Album">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM album WHERE id = #{id}
+    </select>
 </mapper>

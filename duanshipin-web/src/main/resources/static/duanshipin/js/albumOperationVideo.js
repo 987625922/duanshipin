@@ -128,32 +128,30 @@ function toRecommend() {
 
 }
 
-function toOnline(dom) {
-    console.log("=====")
-    console.log("=="+dom.getAttribute("value"))
-    // ajax({
-    //     url: "/api/album/onlineForids",
-    //     type: 'get',
-    //     data: {
-    //         ids: dom.getAttribute("href")
-    //     },
-    //     dataType: 'json',
-    //     timeout: 10000,
-    //     contentType: "application/json",
-    //     success: function (data) {
-    //         let json = JSON.parse(data);
-    //         if (json.code == 200) {
-    //             getAlbumList()
-    //         } else {
-    //             console.log(json.msg);
-    //             Toast(json.msg, 1000);
-    //         }
-    //     },
-    //     //异常处理
-    //     error: function (e) {
-    //         console.log(e);
-    //     }
-    // })
+function itemToOnline(id) {
+    ajax({
+        url: "/api/album/onlineForids",
+        type: 'get',
+        data: {
+            ids: id
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getAlbumList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
 }
 
 
@@ -407,13 +405,13 @@ function dealTable(json) {
             '                        <td>'
         if (type == 1 || type == 2 || type == 4) {
             htmlStr += '                            <div class="table_content_controll">' +
-                '                                    <a href="/views/content/publishAlbum">修改专辑</a>' +
+                '                                    <a href="/views/content/editAlbum?id='+bean.id+'">修改专辑</a>' +
                 '                                    <a href="/views/content/albumVideoManager">视频管理</a>' +
                 '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
                 '                            </div>'
         } else if (type == 3) {
             htmlStr += '                            <div class="table_content_controll">' +
-                '                                    <a style="cursor: pointer" value="'+bean.id+'" onclick="toOnline(this)">专辑还原</a>' +
+                '                                    <a style="cursor: pointer" onclick="itemToOnline('+bean.id+')">专辑还原</a>' +
                 '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
                 '                            </div>'
         }

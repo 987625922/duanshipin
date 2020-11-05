@@ -24,4 +24,6 @@ public interface AlbumMapper {
 
     List<Album> selectForPage(Long id,String title,Integer type,
                               Integer isUserPublish);
+
+    Album getInfoById(Long id);
 }

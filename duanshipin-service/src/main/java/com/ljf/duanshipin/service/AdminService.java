@@ -24,4 +24,6 @@ public interface AdminService {
     void toOnline(String albumIds);
 
     PageInfo<Admin> findAdminByIsRobot(Integer pageIndex, Integer pageSize, Integer isRobot);
+
+    Admin getAdminById(Long id);
 }

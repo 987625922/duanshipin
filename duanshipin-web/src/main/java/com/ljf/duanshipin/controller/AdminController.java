@@ -57,4 +57,9 @@ public class AdminController extends BaseController {
         return JsonResult.buildSuccess(adminService.findAdminByIsRobot(pageIndex, pageSize, isRobot));
     }
 
+
+    @RequestMapping("/getAdminById")
+    public Object getAdminById(Long id){
+        return JsonResult.buildSuccess(adminService.getAdminById(id));
+    }
 }

@@ -43,6 +43,13 @@
         FROM admin WHERE is_robot = #{isRobot}
     </select>
 
+    <select id="getAdminById" resultMap="BaseResultMap"
+            parameterType="java.lang.Long">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM admin WHERE id = #{id}
+    </select>
+
     <select id="findAdminByAccount" resultMap="BaseResultMap"
             parameterType="java.lang.String">
         SELECT

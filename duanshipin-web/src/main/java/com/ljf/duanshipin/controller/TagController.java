@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
 /**
  * @Author: LL
  * @Description:
@@ -83,4 +81,25 @@ public class TagController extends BaseController {
         return JsonResult.buildSuccess(tagService.selectByMoreParentId(pageIndex, pageSize, type, parentIds));
     }
 
+    /**
+     * 通过id获取tag
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/getInfoById")
+    public Object getInfoById(Integer id) {
+        return JsonResult.buildSuccess(tagService.getTagById(id));
+    }
+
+    /**
+     * 通过id字符串获取tag列表
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/getTagsByIds")
+    public Object getTagsByIds(String ids) {
+        return JsonResult.buildSuccess(tagService.getTagsByIds(ids));
+    }
 }

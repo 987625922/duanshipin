@@ -43,4 +43,11 @@ public interface AdminMapper {
      * 搜索是否为机器人
      */
     List<Admin> findAdminByIsRobot(Integer isRobot);
+
+    /**
+     * 通过id获取详情
+     * @param id
+     * @return
+     */
+    Admin getAdminById(Long id);
 }

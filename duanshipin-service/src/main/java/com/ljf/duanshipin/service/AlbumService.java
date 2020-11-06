@@ -8,6 +8,7 @@ import com.ljf.duanshipin.domain.Album;
  */
 public interface AlbumService {
     void add(Album album);
+    void update(Album album);
     PageInfo<Album> getAlbumForPage(Integer pageIndex,Integer pageSize,Integer type,Integer isUserPublish);
     void onlineForids(String ids);
     void recommendForids(String ids);

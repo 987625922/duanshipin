@@ -11,6 +11,7 @@ import java.util.List;
  */
 public interface AlbumMapper {
     int insert(Album album);
+    void update(Album album);
 
     List<Album> getAlbumList(Integer type,Integer isUserPublish);
 

@@ -36,6 +36,14 @@ public class AlbumServiceImpl implements AlbumService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
+    public void update(Album album) {
+        Date date = new Date();
+        album.setUpdateTime(date);
+        albumMapper.update(album);
+    }
+
+    @Override
     public PageInfo<Album> getAlbumForPage(Integer pageIndex, Integer pageSize, Integer type, Integer isUserPublish) {
         PageHelper.startPage(pageIndex, pageSize);
         List<Album> albumList = albumMapper.getAlbumList(type, isUserPublish);

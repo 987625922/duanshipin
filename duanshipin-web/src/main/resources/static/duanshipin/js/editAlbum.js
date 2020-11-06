@@ -5,15 +5,15 @@ var twoDialogIsLoad = false
 var oneTagIndex
 var twoTagPageIndex = 1
 var twoSelectIndexs = new Array()
+var twoSelectParentIds = ""
 
 var threeDialogIsLoad = false;
 var threeTagPageIndex = 1;
 var threeSelectIndexs = new Array()
-var twoSelectParentIds = ""
+var threeSelectParentIds = ""
 
 var robotPageIndex = 1
 var robotDialogIsLoad = false;
-var threeSelectParentIds = ""
 //需要更新的id
 var id
 
@@ -39,21 +39,24 @@ function getObjectURL(file) {
 
 function publishAlbum() {
     var formData = new FormData();
+    var cover = $("#img-file")[0].files[0]
+    formData.append("id", id);
     formData.append("title", $("#form-title").val());
     formData.append("introduction", $("#input-intro").val());
-    formData.append("cover", $("#img-file")[0].files[0]);
+    if (cover != undefined) {
+        formData.append("cover", cover);
+    }
     formData.append("totalMun", $("#total-mun").val());
     formData.append("director", $("#director").val());
     formData.append("performer", $("#director").val());
     formData.append("isComplete", $("input[name='isEnd']:checked").val());
-    formData.append("type", $("input[name='isState']:checked").val());
     formData.append("isBlockSearch", $("input[name='isSelect']:checked").val());
     formData.append("oneClassTagId", $('#div-select-value').attr('value'))
     formData.append("twoClassTagIds", twoSelectParentIds);
     formData.append("threeClassTagIds", threeSelectParentIds);
     formData.append("publishAdminId", $('#robotId').attr('name'))
     $.ajax({
-        url: '/api/album/add',
+        url: '/api/album/update',
         type: 'post',
         data: formData,
         processData: false,
@@ -349,11 +352,12 @@ function enterTwoTag() {
     $('#two-tag-dialog').hide();
     var str = ""
     for (var i = 0; i < twoSelectIndexs.length; i++) {
+        console.log(twoSelectIndexs[i])
         if (i == 0) {
-            str += twoSelectIndexs[i].title
+            str += twoSelectIndexs[i].name
             twoSelectParentIds += twoSelectIndexs[i].id
         } else {
-            str += " / " + twoSelectIndexs[i].title
+            str += " / " + twoSelectIndexs[i].name
             twoSelectParentIds += "," + twoSelectIndexs[i].id
         }
     }
@@ -402,10 +406,10 @@ function enterThreeTag() {
     threeSelectParentIds = ""
     for (var i = 0; i < threeSelectIndexs.length; i++) {
         if (i == 0) {
-            str += threeSelectIndexs[i].title
+            str += threeSelectIndexs[i].name
             threeSelectParentIds += threeSelectIndexs[i].id
         } else {
-            str += " / " + threeSelectIndexs[i].title
+            str += " / " + threeSelectIndexs[i].name
             threeSelectParentIds += "," + threeSelectIndexs[i].id
         }
     }
@@ -441,15 +445,25 @@ function getThreeTagList() {
                 if (threeTagPageIndex == 1) {
                     let htmlStr = '';
                     for (let i = 0; i < json.data.list.length; i++) {
-                        htmlStr += '<div class="select_font" value="'
-                            + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        if (threeTagIsSelect(json.data.list[i].id)) {
+                            htmlStr += '<div class="select_font" value="'
+                                + json.data.list[i].id + '" style="color: #44c9a8;" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        } else {
+                            htmlStr += '<div class="select_font" value="'
+                                + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        }
                     }
                     $('#three-select_item').html(htmlStr);
                 } else {
                     let htmlStr = '';
                     for (let i = 0; i < json.data.list.length; i++) {
-                        htmlStr += '<div class="select_font" value="'
-                            + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        if (threeTagIsSelect(json.data.list[i].id)) {
+                            htmlStr += '<div class="select_font" value="'
+                                + json.data.list[i].id + '" style="color: #44c9a8;" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        } else {
+                            htmlStr += '<div class="select_font" value="'
+                                + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        }
                     }
                     $('#three-select_item').append(htmlStr);
                 }
@@ -469,6 +483,15 @@ function getThreeTagList() {
             console.log(e);
         }
     })
+}
+
+function twoTagIsSelect(id) {
+    for (let j = 0; j < twoSelectIndexs.length; j++) {
+        if (twoSelectIndexs[j].id == id) {
+            return true
+        }
+    }
+    return false
 }
 
 function getTwoTagList() {
@@ -498,15 +521,25 @@ function getTwoTagList() {
                 if (twoTagPageIndex == 1) {
                     let htmlStr = '';
                     for (let i = 0; i < json.data.list.length; i++) {
-                        htmlStr += '<div class="select_font" value="'
-                            + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        if (twoTagIsSelect(json.data.list[i].id)) {
+                            htmlStr += '<div class="select_font" value="'
+                                + json.data.list[i].id + '" style="color: #44c9a8;" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        } else {
+                            htmlStr += '<div class="select_font" value="'
+                                + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        }
                     }
                     $('#two-select_item').html(htmlStr);
                 } else {
                     let htmlStr = '';
                     for (let i = 0; i < json.data.list.length; i++) {
-                        htmlStr += '<div class="select_font" value="'
-                            + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        if (twoTagIsSelect(json.data.list[i].id)) {
+                            htmlStr += '<div class="select_font" value="'
+                                + json.data.list[i].id + '" style="color: #44c9a8;" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        } else {
+                            htmlStr += '<div class="select_font" value="'
+                                + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                        }
                     }
                     $('#two-select_item').append(htmlStr);
                 }
@@ -582,15 +615,25 @@ function twoDropload() {
                         if (twoTagPageIndex == 1) {
                             let htmlStr = '<div value="-1" onclick="selectTwoTagItemOnclick(this)">根目录</div>';
                             for (let i = 0; i < json.data.list.length; i++) {
-                                htmlStr += '<div class="select_font" value="'
-                                    + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                if (twoTagIsSelect(json.data.list[i].id)) {
+                                    htmlStr += '<div class="select_font" value="'
+                                        + json.data.list[i].id + '" style="color: #44c9a8;" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                } else {
+                                    htmlStr += '<div class="select_font" value="'
+                                        + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                }
                             }
                             $('#two-select_item').html(htmlStr);
                         } else {
                             let htmlStr = '';
                             for (let i = 0; i < json.data.list.length; i++) {
-                                htmlStr += '<div class="select_font" value="'
-                                    + json.data.list[i].id + '" onclick="selectItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                if (twoTagIsSelect(json.data.list[i].id)) {
+                                    htmlStr += '<div class="select_font" value="'
+                                        + json.data.list[i].id + '" style="color: #44c9a8;" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                } else {
+                                    htmlStr += '<div class="select_font" value="'
+                                        + json.data.list[i].id + '" onclick="selectTwoTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                }
                             }
                             $('#two-select_item').append(htmlStr);
                         }
@@ -612,6 +655,16 @@ function twoDropload() {
 
     });
 }
+
+function threeTagIsSelect(id) {
+    for (let j = 0; j < threeSelectIndexs.length; j++) {
+        if (threeSelectIndexs[j].id == id) {
+            return true
+        }
+    }
+    return false
+}
+
 
 function threeDropload() {
     // dropload
@@ -659,15 +712,27 @@ function threeDropload() {
                         if (threeTagPageIndex == 1) {
                             let htmlStr = '<div value="-1" onclick="selectThreeTagItemOnclick(this)">根目录</div>';
                             for (let i = 0; i < json.data.list.length; i++) {
-                                htmlStr += '<div class="select_font" value="'
-                                    + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                if (threeTagIsSelect(json.data.list[i].id)) {
+                                    htmlStr += '<div class="select_font" value="'
+                                        + json.data.list[i].id + '" style="color: #44c9a8;" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+
+                                } else {
+                                    htmlStr += '<div class="select_font" value="'
+                                        + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                }
                             }
                             $('#three-select_item').html(htmlStr);
                         } else {
                             let htmlStr = '';
                             for (let i = 0; i < json.data.list.length; i++) {
-                                htmlStr += '<div class="select_font" value="'
-                                    + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                if (threeTagIsSelect(json.data.list[i].id)) {
+                                    htmlStr += '<div class="select_font" value="'
+                                        + json.data.list[i].id + '" style="color: #44c9a8;" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+
+                                } else {
+                                    htmlStr += '<div class="select_font" value="'
+                                        + json.data.list[i].id + '" onclick="selectThreeTagItemOnclick(this)">' + json.data.list[i].name + '</div>'
+                                }
                             }
                             $('#three-select_item').append(htmlStr);
                         }
@@ -693,7 +758,7 @@ function threeDropload() {
 function createTwoTag(id, title) {
     var bean = new Object;
     bean.id = id;
-    bean.title = title;
+    bean.name = title;
     return bean;
 }
 
@@ -804,6 +869,7 @@ function getTagsByIds(ids, index) {
                     twoSelectIndexs.splice(0, twoSelectIndexs.length);
                     for (var i = 0; i < json.data.length; i++) {
                         twoSelectIndexs.push(json.data[i])
+                        console.log("two class array length " + twoSelectIndexs.length)
                         if (i == 0) {
                             str = json.data[i].name
                             twoSelectParentIds += json.data[i].id

@@ -159,12 +159,40 @@ public class AlbumController extends BaseController {
 
     /**
      * 通过id获取详情
+     *
      * @param id
      * @return
      */
     @RequestMapping("/getInfoById")
     public Object getInfoById(Long id) {
         return JsonResult.buildSuccess(albumService.getInfoById(id));
+    }
+
+    /**
+     * 更新专辑
+     *
+     * @return
+     */
+    @RequestMapping("/update")
+    public Object update(Long id, String title, @RequestParam(defaultValue = "") String introduction,
+                         @RequestParam(defaultValue = "0") Integer totalMun,
+                         @RequestParam(defaultValue = "0") Integer currentMun,
+                         @RequestParam(value = "cover", required = false) MultipartFile file,
+                         @RequestParam(defaultValue = "2") Integer type,
+                         @RequestParam(defaultValue = "2") Integer isComplete,
+                         @RequestParam(required = false) String director,
+                         Integer oneClassTagId, String twoClassTagIds, String threeClassTagIds,
+                         Long publishAdminId, Integer isBlockSearch
+    ) {
+        Album album = new Album();
+        album.setId(id).setTitle(title).setIntroduction(introduction).setTotalMun(totalMun)
+                .setCurrentMun(currentMun).setUpdateAdminId(getCurrentAdmin().getId())
+                .setUpdateAdminName(getCurrentAdmin().getUserName()).setType(type)
+                .setIsComplete(isComplete).setDirector(director).setOneClassTagId(String.valueOf(oneClassTagId))
+                .setTwoClassTagIds(twoClassTagIds).setThreeClassTagIds(threeClassTagIds)
+                .setPublishAdminId(publishAdminId).setIsBlockSearch(isBlockSearch).setIsUserPublish(0);
+        albumService.update(album);
+        return JsonResult.buildSuccess();
     }
 
 }

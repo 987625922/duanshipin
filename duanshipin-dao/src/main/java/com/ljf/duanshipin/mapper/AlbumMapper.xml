@@ -101,4 +101,52 @@
         <include refid="Base_Column_List"/>
         FROM album WHERE id = #{id}
     </select>
+
+    <update id="update" parameterType="com.ljf.duanshipin.domain.Album">
+        update album
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="introduction != null">
+                introduction = #{introduction},
+            </if>
+            <if test="totalMun != null">
+                total_mun = #{totalMun},
+            </if>
+            <if test="currentMun != null">
+                current_mun = #{currentMun},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="isComplete != null">
+                is_complete = #{isComplete},
+            </if>
+            <if test="director != null">
+                director = #{director},
+            </if>
+            <if test="oneClassTagId != null">
+                one_class_tag_id = #{oneClassTagId},
+            </if>
+            <if test="twoClassTagIds != null">
+                two_class_tag_ids = #{twoClassTagIds},
+            </if>
+            <if test="threeClassTagIds != null">
+                three_class_tag_ids = #{threeClassTagIds},
+            </if>
+            <if test="publishAdminId != null">
+                publish_admin_id = #{publishAdminId},
+            </if>
+            <if test="isBlockSearch != null">
+                is_block_search = #{isBlockSearch},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime}
+            </if>
+
+        </set>
+        WHERE id = #{id}
+    </update>
+
 </mapper>

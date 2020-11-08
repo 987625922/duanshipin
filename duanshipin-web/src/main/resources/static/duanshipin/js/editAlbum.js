@@ -802,6 +802,7 @@ function init() {
                 getTagsByIds(json.data.twoClassTagIds, 1)
                 getTagsByIds(json.data.threeClassTagIds, 2)
                 getAlbumById(json.data.isUserPublish)
+                type = json.data.type
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);
@@ -923,6 +924,7 @@ function getAlbumById(id) {
             var json = JSON.parse(data);
             if (json.code == 200) {
                 $('#robotId').attr('value', json.data.userName).attr('name', json.data.id);
+                json.data.list[i].userName
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);
@@ -935,4 +937,3 @@ function getAlbumById(id) {
     })
 
 }
-

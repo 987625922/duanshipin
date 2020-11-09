@@ -91,8 +91,11 @@
         <if test="arg0 != null">
             and id = #{arg0}
         </if>
-        <if test="arg2 != null">
-            and id = #{arg2}
+        <if test="arg3 != null">
+            and is_user_publish = #{arg3}
+        </if>
+        <if test="arg4 != null">
+            and publish_admin_id = #{arg4}
         </if>
     </select>
 

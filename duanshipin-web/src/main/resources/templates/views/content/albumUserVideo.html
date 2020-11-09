@@ -42,14 +42,14 @@
                 <div class="controll_operation" id="controll_online">
                     <div class="controll_operation_one">
                         <span>专辑标题：</span>
-                        <input type="text">
+                        <input type="text" id="input-online-title">
                     </div>
                     <div class="controll_operation_two">
                         <span>用户昵称：</span>
-                        <input type="text">
+                        <input type="text" id="input-online-name">
                         <span>专辑ID：</span>
-                        <input type="text">
-                        <button class="btn-search">查询</button>
+                        <input type="text" id="input-online-album-id">
+                        <button class="btn-search" onclick="onlineSelect()">查询</button>
                         <div class="fr controll-operation-two-fr">
                             <button class="btn-search"  onclick="toRecommend()">推荐</button>
                             <button class="btn-search" onclick="toRecycler()">下线</button>

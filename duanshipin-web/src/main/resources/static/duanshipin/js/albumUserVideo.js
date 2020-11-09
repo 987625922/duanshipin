@@ -5,7 +5,7 @@ var pageIndex = 1;
 //每一页显示的条目
 var pageSize = 10;
 
-function init(){
+function init() {
 
 // 把页面所在左边的item设置为选中
     document.getElementById('left_item_one').style.backgroundColor = '#191d26';
@@ -104,12 +104,14 @@ function init(){
         getAlbumList()
     }
 }
+
 //把view改成按下按钮的颜色
 function btnPre(dom) {
     dom.style.borderWidth = '0px';
     dom.style.backgroundColor = '#44c9a8'
     dom.style.color = '#fff'
 }
+
 //把view改成普通颜色
 function btnCommon(dom) {
     dom.style.border = '1px solid #dcdfe6';
@@ -117,6 +119,39 @@ function btnCommon(dom) {
     dom.style.color = '#333'
 }
 
+function onlineSelect() {
+    let onlineTitle = $("#input-online-title").val()
+    let onlineName = $("#input-online-name").val()
+    let onlineAlbumId = $("#input-online-album-id").val()
+    // console.log(onlineTitle + "  " + onlineName + "  " + onlineAlbum)
+    ajax({
+        url: "/api/album/select",
+        type: 'post',
+        data: {
+            id: onlineAlbumId,
+            title: onlineTitle,
+            type: 1,
+            isUserPublish: 1,
+            publishAdminName:onlineName
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code === 200) {
+                dealTable(json)
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
 
 function getAlbumList() {
     ajax({
@@ -126,7 +161,7 @@ function getAlbumList() {
             pageIndex: pageIndex,
             pageSize: pageSize,
             type: datatype,
-            isUserPublish:1
+            isUserPublish: 1
         },
         dataType: 'json',
         timeout: 10000,
@@ -276,7 +311,7 @@ function dealTable(json) {
                 } else {
                     for (var i = 4; i >= 0; i--) {
                         if ((json.data.pages - i) == (json.data.prePage + 1)) {
-                            liStr += '<li style="background-color:#44c9a8;color: #fff;">' +(json.data.prePage + 1) + '</li>'
+                            liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
                         } else {
                             liStr += '<li onclick="getSpecialAlbumList(datatype,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
                         }
@@ -289,12 +324,13 @@ function dealTable(json) {
         $('#page_select').hide();
     }
 }
+
 function getSpecialAlbumList(_type, _pageIndex, _pageSize) {
     type = _type;
     pageIndex = _pageIndex;
     pageSize = _pageSize;
     getAlbumList();
-    console.log(type+" "+pageIndex+" "+pageSize)
+    console.log(type + " " + pageIndex + " " + pageSize)
 }
 
 function toRecommend() {
@@ -306,7 +342,7 @@ function toRecommend() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr = selectStr+',' + selectGroup[i];
+            selectStr = selectStr + ',' + selectGroup[i];
         }
     }
     ajax({
@@ -344,7 +380,7 @@ function toOnline() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr = selectStr+',' + selectGroup[i];
+            selectStr = selectStr + ',' + selectGroup[i];
         }
     }
     ajax({
@@ -381,7 +417,7 @@ function toRecycler() {
         if (i == 0) {
             selectStr += selectGroup[i];
         } else {
-            selectStr = selectStr+',' + selectGroup[i];
+            selectStr = selectStr + ',' + selectGroup[i];
         }
     }
     ajax({

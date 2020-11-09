@@ -81,9 +81,9 @@ public class AlbumServiceImpl implements AlbumService {
 
     @Override
     public PageInfo<Album> selectForPage(Long id, String title, Integer pageIndex, Integer pageSize
-            , Integer type, Integer isUserPublish) {
+            , Integer type, Integer isUserPublish, Long publishAdminId) {
         PageHelper.startPage(pageIndex, pageSize);
-        List<Album> albumList = albumMapper.selectForPage(id, title, type, isUserPublish);
+        List<Album> albumList = albumMapper.selectForPage(id, title, type, isUserPublish, publishAdminId);
         PageInfo<Album> pageInfo = new PageInfo<>(albumList);
         return pageInfo;
     }

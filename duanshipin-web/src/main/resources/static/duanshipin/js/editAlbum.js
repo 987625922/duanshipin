@@ -935,5 +935,7 @@ function getAlbumById(id) {
             console.log(e);
         }
     })
-
+}
+function back() {
+    window.history.back(-1);
 }

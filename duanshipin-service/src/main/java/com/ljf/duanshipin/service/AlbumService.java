@@ -15,6 +15,6 @@ public interface AlbumService {
     void deleteForids(String ids);
     void recyclerForids(String ids);
     PageInfo<Album> selectForPage(Long id, String title, Integer pageIndex
-            , Integer pageSize, Integer type,Integer isUserPublish);
+            , Integer pageSize, Integer type,Integer isUserPublish,Long publishAdminId);
     Album getInfoById(Long id);
 }

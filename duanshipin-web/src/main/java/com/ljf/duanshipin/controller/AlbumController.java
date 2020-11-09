@@ -140,8 +140,10 @@ public class AlbumController extends BaseController {
                          @RequestParam(value = "pageIndex", defaultValue = "1") Integer pageIndex,
                          @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
                          @RequestParam(value = "type", defaultValue = "2") Integer type
-            , @RequestParam(value = "isUserPublish", defaultValue = "0") Integer isUserPublish) {
-        return JsonResult.buildSuccess(albumService.selectForPage(id, title, pageIndex, pageSize, type, isUserPublish));
+            , @RequestParam(value = "isUserPublish", defaultValue = "0") Integer isUserPublish,
+                         @RequestParam(required = false) Long publishAdminName) {
+        return JsonResult.buildSuccess(albumService.selectForPage(id, title, pageIndex, pageSize,
+                type, isUserPublish, publishAdminId));
     }
 
     /**

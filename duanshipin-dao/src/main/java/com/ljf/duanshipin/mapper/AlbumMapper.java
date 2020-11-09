@@ -24,7 +24,7 @@ public interface AlbumMapper {
     void deleteForids(List<String> list);
 
     List<Album> selectForPage(Long id,String title,Integer type,
-                              Integer isUserPublish);
+                              Integer isUserPublish,Long publishAdminId);
 
     Album getInfoById(Long id);
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ljf.duanshipin.mapper.TagMapper">
+
+    <resultMap id="BaseResultMap" type="com.ljf.duanshipin.domain.Video">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
+        <result column="img" property="img" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="update_time" property="updateTime" javaType="DATE"/>
+        <result column="controller_admin_id" property="controllerAdminId" jdbcType="BIGINT"/>
+        <result column="number_of_plays" property="numberOfPlays" jdbcType="INTEGER"/>
+        <result column="number_of_goods" property="numberOfGoods" jdbcType="INTEGER"/>
+        <result column="type" property="type" jdbcType="INTEGER"/>
+        <result column="is_user_publish" property="isUserPublish" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,title,introduction,update_time,update_admin_id,update_admin_name,
+            parent_tag_id,type
+    </sql>
+
+</mapper>

@@ -84,18 +84,18 @@
     <select id="selectForPage" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from album where album.type = #{arg2}
-        <if test="arg1 != null and arg1 != '' ">
-            and title like '%${arg1}%'
+        from album where album.type = #{type}
+        <if test="title != null and title != '' ">
+            and title like '%${title}%'
         </if>
-        <if test="arg0 != null">
-            and id = #{arg0}
+        <if test="id != null">
+            and id = #{id}
         </if>
-        <if test="arg3 != null">
-            and is_user_publish = #{arg3}
+        <if test="isUserPublish != null">
+            and is_user_publish = #{isUserPublish}
         </if>
-        <if test="arg4 != null">
-            and publish_admin_id = #{arg4}
+        <if test="publishAdminName != null and publishAdminName != ''">
+            and publish_admin_id in (select id from admin where user_name = #{publishAdminName})
         </if>
     </select>
 

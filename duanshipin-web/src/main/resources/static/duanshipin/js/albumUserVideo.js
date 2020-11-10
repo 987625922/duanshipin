@@ -130,7 +130,72 @@ function onlineSelect() {
         data: {
             id: onlineAlbumId,
             title: onlineTitle,
-            type: 1,
+            type: datatype,
+            isUserPublish: 1,
+            publishAdminName:onlineName
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code === 200) {
+                dealTable(json)
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function offlineSelect() {
+    let id = $("#input-offline-id").val()
+    let title = $("#input-offline-name").val()
+    ajax({
+        url: "/api/album/select",
+        type: 'post',
+        data: {
+            id: id,
+            title: title,
+            type: datatype,
+            isUserPublish: 1
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code === 200) {
+                dealTable(json)
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function recommendSelect() {
+    let onlineTitle = $("#input-recommend-title").val()
+    let onlineName = $("#input-recommend-name").val()
+    let onlineAlbumId = $("#input-recommend-album-id").val()
+    // console.log(onlineTitle + "  " + onlineName + "  " + onlineAlbum)
+    ajax({
+        url: "/api/album/select",
+        type: 'post',
+        data: {
+            id: onlineAlbumId,
+            title: onlineTitle,
+            type: datatype,
             isUserPublish: 1,
             publishAdminName:onlineName
         },
@@ -263,7 +328,7 @@ function dealTable(json) {
             '                        </td>' +
             '                        <td>' +
             '                            <div class="table_content_controll">' +
-            '                                    <a href="/views/content/publishAlbum">修改专辑</a>' +
+            '                                    <a href="/views/content/editAlbum?id='+bean.id+'">修改专辑</a>' +
             '                                    <a href="/views/content/albumVideoManager">视频管理</a>' +
             '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
             '                            </div>' +

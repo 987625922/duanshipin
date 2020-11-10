@@ -60,10 +60,10 @@
                 <div class="controll_bar" id="controll_offline">
                     <div class="controll_recycle_bin_left">
                         <span>专辑标题：</span>
-                        <input type="text">
+                        <input type="text" id="input-offline-name">
                         <span>专辑ID：</span>
-                        <input type="text">
-                        <button>查询</button>
+                        <input type="text" id="input-offline-id">
+                        <button onclick="offlineSelect()">查询</button>
                     </div>
                     <div class="fr controll_recycle_bin_right">
                         <button onclick="toOnline()">还原</button>
@@ -78,14 +78,14 @@
                 <div class="controll_operation" id="controll_recommend">
                     <div class="controll_operation_one">
                         <span>专辑标题：</span>
-                        <input type="text">
+                        <input type="text" id="input-recommend-title">
                     </div>
                     <div class="controll_operation_two">
                         <span>用户昵称：</span>
-                        <input type="text">
+                        <input type="text" id="input-recommend-name">
                         <span>专辑ID：</span>
-                        <input type="text">
-                        <button class="btn-search">查询</button>
+                        <input type="text" id="input-recommend-album-id">
+                        <button class="btn-search" onclick="recommendSelect()">查询</button>
                         <div class="fr controll-operation-two-fr">
                             <button class="btn-search" onclick="toOnline()">取消推荐</button>
                             <button class="btn-search" onclick="toRecycler()">下线</button>

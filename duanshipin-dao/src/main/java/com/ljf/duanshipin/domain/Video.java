@@ -1,6 +1,7 @@
 package com.ljf.duanshipin.domain;
 
 import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ import java.util.Date;
  * @Date:Create：in 2020/11/10 17:53
  */
 @Data
+@Accessors(chain = true)
 public class Video {
     private Integer id;
     private String title;

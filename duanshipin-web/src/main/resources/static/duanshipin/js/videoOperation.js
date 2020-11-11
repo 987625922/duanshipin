@@ -308,7 +308,7 @@ function toOnline() {
         success: function (data) {
             let json = JSON.parse(data);
             if (json.code == 200) {
-                getAlbumList()
+                getVideoList()
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);
@@ -319,4 +319,41 @@ function toOnline() {
             console.log(e);
         }
     })
+}
+function toRecommend() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+        return $(elem).val();
+    });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr = selectStr + ',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/video/recommendForids",
+        type: 'get',
+        data: {
+            ids: selectStr,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getVideoList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+
 }

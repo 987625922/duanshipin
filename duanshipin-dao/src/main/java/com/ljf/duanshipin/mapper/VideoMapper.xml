@@ -57,21 +57,21 @@
     </update>
 
     <update id="toRecommend" parameterType="java.util.List">
-        update album set album.type = 4 where id in
+        update video set video.type = 4 where id in
         <foreach item="id" collection="list" open="(" close=")" separator=",">
             #{id}
         </foreach>
     </update>
 
     <update id="toRecycler" parameterType="java.util.List">
-        update album set album.type = 3 where id in
+        update video set video.type = 3 where id in
         <foreach item="id" collection="list" open="(" close=")" separator=",">
             #{id}
         </foreach>
     </update>
 
     <delete id="deleteForids" parameterType="java.util.List">
-        DELETE from album WHERE id in
+        DELETE from video WHERE id in
         <foreach item="id" collection="list" open="(" close=")" separator=",">
             #{id}
         </foreach>

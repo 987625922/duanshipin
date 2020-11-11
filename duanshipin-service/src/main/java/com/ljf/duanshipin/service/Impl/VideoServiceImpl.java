@@ -42,24 +42,28 @@ public class VideoServiceImpl implements VideoService {
         videoMapper.deleteById(id);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void onlineForids(String ids) {
         List<String> idList = Arrays.asList(ids.split(","));
         videoMapper.toOnline(idList);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void recommendForids(String ids) {
         List<String> idList = Arrays.asList(ids.split(","));
         videoMapper.toRecommend(idList);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void deleteForids(String ids) {
         List<String> idList = Arrays.asList(ids.split(","));
         videoMapper.deleteForids(idList);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     @Override
     public void recyclerForids(String ids) {
         List<String> idList = Arrays.asList(ids.split(","));

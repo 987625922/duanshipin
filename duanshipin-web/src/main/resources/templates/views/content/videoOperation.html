@@ -49,8 +49,8 @@
                     <button>查询</button>
                 </div>
                 <div class="fr controll_online_right">
-                    <button onclick="toOnline()">推荐</button>
-                    <button>删除</button>
+                    <button  onclick="toRecommend()">推荐</button>
+                    <button onclick="toRecycler()">删除</button>
                     <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getVideoList()"/>
                 </div>
             </div>
@@ -58,6 +58,9 @@
             <div class="controll_bar clearfix" id="controll_draf">
                 <button class="list_controll">
                     <a href="publishVideo.html">发布视频</a>
+                </button>
+                <button class="list_controll" id="draf-controll-online" onclick="toOnline()">
+                    上线
                 </button>
                 <div class="list_search">
                     <span>视频标题：</span>
@@ -79,7 +82,7 @@
                     <button>查询</button>
                 </div>
                 <div class="fr controll_recycle_bin_right">
-                    <button>还原视频</button>
+                    <button onclick="toOnline()">还原视频</button>
                     <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getVideoList()"/>
                 </div>
             </div>

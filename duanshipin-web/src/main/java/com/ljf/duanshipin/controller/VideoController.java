@@ -28,8 +28,8 @@ public class VideoController {
     }
 
     @RequestMapping("/list")
-    public Object add(Integer type,Integer isUserPublish, Integer currentPage, Integer pageSize) {
-        return JsonResult.buildSuccess(videoService.getPageListByType(type, isUserPublish,currentPage, pageSize));
+    public Object add(Integer type, Integer isUserPublish, Integer currentPage, Integer pageSize) {
+        return JsonResult.buildSuccess(videoService.getPageListByType(type, isUserPublish, currentPage, pageSize));
     }
 
     /**
@@ -42,6 +42,45 @@ public class VideoController {
     @ResponseBody
     public Object albumOnline(String ids) {
         videoService.onlineForids(ids);
+        return JsonResult.buildSuccess();
+    }
+
+    /**
+     * 专辑推荐
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/recommendForids")
+    @ResponseBody
+    public Object albumRecommend(String ids) {
+        videoService.recommendForids(ids);
+        return JsonResult.buildSuccess();
+    }
+
+    /**
+     * 专辑回收
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/recyclerForids")
+    @ResponseBody
+    public Object recyclerForids(String ids) {
+        videoService.recyclerForids(ids);
+        return JsonResult.buildSuccess();
+    }
+
+    /**
+     * 批量删除
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/deleteForids")
+    @ResponseBody
+    public Object deleteForids(String ids) {
+        videoService.deleteForids(ids);
         return JsonResult.buildSuccess();
     }
 }

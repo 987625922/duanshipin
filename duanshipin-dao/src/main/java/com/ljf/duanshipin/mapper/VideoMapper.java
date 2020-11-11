@@ -2,6 +2,8 @@ package com.ljf.duanshipin.mapper;
 
 import com.ljf.duanshipin.domain.Video;
 
+import java.util.List;
+
 /**
  * @Author: LL
  * @Description:
@@ -15,4 +17,14 @@ public interface VideoMapper {
     Video selectById(Long id);
 
     void deleteById(Long id);
+
+    List<Video> getListByType(Integer type, Integer isUserPublish);
+
+    void toOnline(List<String> list);
+
+    void toRecommend(List<String> list);
+
+    void toRecycler(List<String> list);
+
+    void deleteForids(List<String> list);
 }

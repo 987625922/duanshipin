@@ -5,6 +5,7 @@ import com.ljf.duanshipin.domain.Video;
 import com.ljf.duanshipin.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -26,6 +27,21 @@ public class VideoController {
         return JsonResult.buildSuccess();
     }
 
+    @RequestMapping("/list")
+    public Object add(Integer type,Integer isUserPublish, Integer currentPage, Integer pageSize) {
+        return JsonResult.buildSuccess(videoService.getPageListByType(type, isUserPublish,currentPage, pageSize));
+    }
 
-
+    /**
+     * 视频改成上线
+     *
+     * @param ids
+     * @return
+     */
+    @RequestMapping("/onlineForids")
+    @ResponseBody
+    public Object albumOnline(String ids) {
+        videoService.onlineForids(ids);
+        return JsonResult.buildSuccess();
+    }
 }

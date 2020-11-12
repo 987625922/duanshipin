@@ -36,4 +36,12 @@ public class VideoServiceTest {
             videoService.add(video);
         }
     }
+
+    @Test
+    public void select(){
+        videoService.getPageListByType(1,1,
+                1,10).getList().forEach(it -> {
+                    log.info(it.toString());
+        });
+    }
 }

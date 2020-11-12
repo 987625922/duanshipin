@@ -24,4 +24,5 @@ public class Video {
     private Date createTime;
     private Integer type;
     private Integer isUserPublish;
+    private Admin admin;
 }

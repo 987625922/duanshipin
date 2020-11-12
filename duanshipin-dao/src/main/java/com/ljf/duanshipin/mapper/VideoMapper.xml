@@ -14,6 +14,20 @@
         <result column="number_of_goods" property="numberOfGoods" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="INTEGER"/>
         <result column="is_user_publish" property="isUserPublish" jdbcType="INTEGER"/>
+        <result column="updateAdminName" property="user_name" jdbcType="VARCHAR"/>
+        <association property="admin" javaType="com.ljf.duanshipin.domain.Admin">
+            <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+            <result column="real_name" property="realName" jdbcType="VARCHAR"/>
+            <result column="phone" property="phone" jdbcType="VARCHAR"/>
+            <result column="status" property="status" jdbcType="INTEGER"/>
+            <result column="create_time" property="createTime" jdbcType="DATE"/>
+            <result column="last_update_time" property="lastUpdateTime" javaType="DATE"/>
+            <result column="role_id" property="roleId" jdbcType="BIGINT"/>
+            <result column="last_control_admin_id" property="lastControlAdminId" jdbcType="BIGINT"/>
+            <result column="password" property="password" jdbcType="VARCHAR"/>
+            <result column="account" property="account" jdbcType="VARCHAR"/>
+            <result column="is_robot" property="isRobot" jdbcType="INTEGER"/>
+        </association>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -37,13 +51,14 @@
     <select id="selectById" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from video where id = #{id}
+        ,user_name
+        from video where id = #{id} left join admin
+        on video.controller_admin_id = admin.id
     </select>
 
     <select id="getListByType" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from video where type = #{type}
+        select * from video v left join admin a
+        on (v.controller_admin_id = a.id) where type = #{type}
         <if test="isUserPublish != null and isUserPublish != ''">
             and is_user_publish = #{isUserPublish}
         </if>

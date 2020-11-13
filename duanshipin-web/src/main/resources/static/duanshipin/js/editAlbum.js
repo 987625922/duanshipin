@@ -802,7 +802,6 @@ function init() {
                 getTagsByIds(json.data.twoClassTagIds, 1)
                 getTagsByIds(json.data.threeClassTagIds, 2)
                 getAlbumById(json.data.isUserPublish)
-                type = json.data.type
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);

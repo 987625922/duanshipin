@@ -27,4 +27,7 @@ public interface VideoMapper {
     void toRecycler(List<String> list);
 
     void deleteForids(List<String> list);
+
+    List<Video> selectForPage(Long id, String title, Integer type,
+                              Integer isUserPublish, String publishAdminName);
 }

@@ -28,11 +28,6 @@ function init() {
     var onlineControll = document.getElementById('controll_online');
     var recycleControll = document.getElementById('controll_recycle_bin');
     var recommendContrll = document.getElementById('controll_recommend');
-// 回收站table里的控制和其他按钮不一样，要单独分开处理
-    var tableControllerOne = document.getElementById('table_controll_one');
-    var tableControllerTwo = document.getElementById('table_controll_two');
-    var tableControllerThree = document.getElementById('table_controll_three');
-    var tableControllerFour = document.getElementById('table-controll-four');
 // 正在选中的按钮
     var isSelectBtn = btnOnline
     btnOnline.onclick = function () {
@@ -108,7 +103,7 @@ function getVideoList() {
             currentPage: pageIndex,
             pageSize: pageSize,
             type: type,
-            isUserPublish: 0
+            isUserPublish: 1
         },
         dataType: 'json',
         timeout: 10000,
@@ -207,7 +202,7 @@ function dealTable(json) {
             '                            <span class="table_time">' + formatTime + '</span>' +
             '                        </td>' +
             '                        <td>' +
-            '                            <span class="table_user">' + bean.updateAdminName + '</span>' +
+            '                            <span class="table_user">' + bean.admin.userName + '</span>' +
             '                        </td>' +
             '                        <td>'
         if (type == 1 || type == 2 || type == 4) {
@@ -284,6 +279,7 @@ function getSpecialAlbumList(_type, _pageIndex, _pageSize) {
     pageSize = _pageSize;
     getVideoList();
 }
+
 function toOnline() {
     var selectStr = '';
     var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
@@ -320,6 +316,7 @@ function toOnline() {
         }
     })
 }
+
 function toRecommend() {
     var selectStr = '';
     var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
@@ -355,5 +352,92 @@ function toRecommend() {
             console.log(e);
         }
     })
+}
 
+function select() {
+    var selectTitle;
+    var selectId;
+    if (type == 1) {
+        selectTitle = $('#online-select-title').val()
+        selectId = $('#online-select-id').val()
+    } else if (type == 2) {
+        selectTitle = $('#draf-select-title').val()
+        selectId = $('#draf-select-id').val()
+    } else if (type == 3) {
+        selectTitle = $('#recycle-select-title').val()
+        selectId = $('#recycle-select-id').val()
+    } else if (type == 4) {
+        selectTitle = $('#recommend-select-title').val()
+        selectId = $('#recommend-select-id').val()
+    }
+    if (selectTitle == null && selectId == null) {
+        Toast('搜索条件不能为空', 1000);
+        return
+    }
+    pageIndex = 1;
+    ajax({
+        url: "/api/video/select",
+        type: 'get',
+        data: {
+            title: selectTitle,
+            id: selectId,
+            pageIndex: pageIndex,
+            pageSize: pageSize,
+            type: type,
+            isUserPublish: 1
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                dealTable(json)
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function toRecycler() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked").map(function (index, elem) {
+        return $(elem).val();
+    });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr = selectStr + ',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/video/recyclerForids",
+        type: 'get',
+        data: {
+            ids: selectStr,
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getVideoList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
 }

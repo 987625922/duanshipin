@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <!-- 用户池视频管理 -->
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>视频管理平台</title>
     <!-- import CSS -->
     <link rel="stylesheet" th:href="@{/duanshipin/css/project.css}" media="all">
@@ -15,199 +15,112 @@
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
 </head>
 
 <body>
-    <div class="body">
-        <script type="text/javascript">
-            writeHander()
-        </script>
-        <div class="content">
-            <div class="main_content">
-                <div class="title">
-                    <span>视频管理</span>
+<div class="body">
+    <script type="text/javascript">
+        writeHander()
+    </script>
+    <div class="content">
+        <div class="main_content">
+            <div class="title">
+                <span>视频管理</span>
+            </div>
+            <div class="title_line"></div>
+            <div class="title_bar">
+                <a href="/views/content/videoOperation" class="operate_video_pool" id="operate_video_pool">运营视频池</a>
+                <a href="#" class="user_video_pool" id="user_video_pool">用户视频池</a>
+            </div>
+            <div class="category">
+                <div class="online" id="online">上线</div>
+                <div class="draf" id="offline">运营下线</div>
+                <div class="recycle_bin" id="del">用户自删</div>
+                <div class="recommend" id="recommend">推荐池</div>
+            </div>
+            <div class="controll_operation" id="controll_online">
+                <div class="controll_operation_one">
+                    <span>视频标题：</span>
+                    <input type="text" id="input-online-title">
                 </div>
-                <div class="title_line"></div>
-                <div class="title_bar">
-                    <a href="/views/content/videoOperation" class="operate_video_pool" id="operate_video_pool">运营视频池</a>
-                    <a href="#" class="user_video_pool" id="user_video_pool">用户视频池</a>
-                </div>
-                <div class="category">
-                    <div class="online" id="online">上线</div>
-                    <div class="draf" id="offline">运营下线</div>
-                    <div class="recycle_bin" id="del">用户自删</div>
-                    <div class="recommend" id="recommend">推荐池</div>
-                </div>
-                <div class="controll_operation" id="controll_online">
-                    <div class="controll_operation_one">
-                        <span>认证用户：</span>
-                        <select>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
-                        </select>
-                        <span>视频标题：</span>
-                        <input type="text">
-                    </div>
-                    <div class="controll_operation_two">
-                        <span>用户昵称：</span>
-                        <input type="text">
-                        <span>视频ID：</span>
-                        <input type="text">
-                        <button class="btn-search">查询</button>
-                        <div class="fr controll-operation-two-fr">
-                            <button class="btn-search">推荐</button>
-                            <button class="btn-search">下线</button>
-                            <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" />
-                        </div>
-                    </div>
-                </div>
-                <div class="controll_bar" id="controll_offline">
-                    <div class="controll_recycle_bin_left">
-                        <span>视频标题：</span>
-                        <input type="text">
-                        <span>视频ID：</span>
-                        <input type="text">
-                        <button>查询</button>
-                    </div>
-                    <div class="fr controll_recycle_bin_right">
-                        <button>还原</button>
-                        <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" />
-                    </div>
-                </div>
-                <div class="controll_bar" id="controll_del">
-                    <div class="fr controll_recycle_bin_right">
-                        <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" />
-                    </div>
-                </div>
-                <div class="controll_operation" id="controll_recommend">
-                    <div class="controll_operation_one">
-                        <span>认证用户：</span>
-                        <select>
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
-                        </select>
-                        <span>视频标题：</span>
-                        <input type="text">
-                    </div>
-                    <div class="controll_operation_two">
-                        <span>用户昵称：</span>
-                        <input type="text">
-                        <span>视频ID：</span>
-                        <input type="text">
-                        <button class="btn-search">查询</button>
-                        <div class="fr controll-operation-two-fr">
-                            <button class="btn-search">取消推荐</button>
-                            <button class="btn-search">下线</button>
-                            <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" />
-                        </div>
-                    </div>
-                </div>
-                <div class="table_div">
-                    <table class="content_table">
-                        <tr>
-                            <th>
-                                <input type="checkbox" name="" id="" class="table_checkbox" />
-                            </th>
-                            <th>
-                                <span class="table_id table_th"> 视频ID </span>
-                            </th>
-                            <th>
-                                <span class="table_title table_th"> 视频标题 </span>
-                            </th>
-                            <th>
-                                <span class="table_introducation table_th"> 视频简介 </span>
-                            </th>
-                            <th>
-                                <span class="table_img table_th"> 缩略图 </span>
-                            </th>
-                            <th>
-                                <span class="table_mun table_th"> 总集/已更新 </span>
-                            </th>
-                            <th>
-                                <span class="table_time table_th"> 最后操作时间 </span>
-                            </th>
-                            <th>
-                                <span class="table_user table_th"> 操作人 </span>
-                            </th>
-                            <th>
-                                <span class="table_controll table_th"> 操作 </span>
-                            </th>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="checkbox" name="" id="" class="table_checkbox" />
-                            </td>
-                            <td>
-                                <span class="table_id"> 987123 </span>
-                            </td>
-                            <td>
-                                <span class="table_title"> 办公室爆笑锦集 </span>
-                            </td>
-                            <td>
-                                <span class="table_introducation">
-                                    这是一份简介占位这是一份简介占位这是一份简介占位这是一份简介占位~
-                                </span>
-                            </td>
-                            <td>
-                                <img src="/duanshipin/img/tx.jpg" alt="" class="table_content_img" />
-                            </td>
-                            <td>
-                                <span class="table_mun"> 22/30 </span>
-                            </td>
-                            <td>
-                                <span class="table_time"> 2018-11-28 14:01:19 </span>
-                            </td>
-                            <td>
-                                <span class="table_user"> xxx@yy-inc.cn </span>
-                            </td>
-                            <td>
-                                <div class="table_content_controll">
-                                    <div id="table-content-controll-one">
-                                        <a href="/views/content/albumpreview">预览</a>
-                                        <a href="/views/content/commentManager">评论</a>
-                                    </div>
-                                    <div id="table-content-controll-two">
-                                        <a href="/views/content/albumpreview">预览</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="page_select" id="page_select">
-                    <div class="page_select_inner">
-                        <span>共</span>
-                        <span>100</span>
-                        <span>条</span>
-                        <span class="page_select_position_one">每页</span>
-                        <input type="number" class="page_input_mun" />
-                        <span>条</span>
-                        <img src="/duanshipin/img/last_page.png" alt="" class="last_page" />
-                        <ul class="page_select_ul">
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>...</li>
-                            <li>10</li>
-                        </ul>
-                        <img src="/duanshipin/img/next_page.png" alt="" class="last_page" />
-                        <span class="page_select_position_two">前往</span>
-                        <input type="number" class="page_input_to_mun" />
-                        <span>页</span>
+                <div class="controll_operation_two">
+                    <span>用户昵称：</span>
+                    <input type="text" id="input-online-name">
+                    <span>视频ID：</span>
+                    <input type="text" id="input-online-album-id">
+                    <button class="btn-search" onclick="onlineSelect()">查询</button>
+                    <div class="fr controll-operation-two-fr">
+                        <button class="btn-search" onclick="toRecommend()">推荐</button>
+                        <button class="btn-search" onclick="toRecycler()">下线</button>
+                        <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getVideoList()"/>
                     </div>
                 </div>
             </div>
-            <script type="text/javascript">
-                writeLeft()
-                writeLeftTwoOfLeft()
-            </script>
+            <div class="controll_bar" id="controll_offline">
+                <div class="controll_recycle_bin_left">
+                    <span>视频标题：</span>
+                    <input type="text" id="input-offline-name">
+                    <span>视频ID：</span>
+                    <input type="text" id="input-offline-id">
+                    <button onclick="offlineSelect()">查询</button>
+                </div>
+                <div class="fr controll_recycle_bin_right">
+                    <button onclick="toOnline()">还原</button>
+                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getVideoList()"/>
+                </div>
+            </div>
+            <div class="controll_bar" id="controll_del">
+                <div class="fr controll_recycle_bin_right">
+                    <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getVideoList()"/>
+                </div>
+            </div>
+            <div class="controll_operation" id="controll_recommend">
+                <div class="controll_operation_one">
+                    <span>视频标题：</span>
+                    <input type="text" id="input-recommend-title">
+                </div>
+                <div class="controll_operation_two">
+                    <span>用户昵称：</span>
+                    <input type="text" id="input-recommend-name">
+                    <span>视频ID：</span>
+                    <input type="text" id="input-recommend-album-id">
+                    <button class="btn-search" onclick="recommendSelect()">查询</button>
+                    <div class="fr controll-operation-two-fr">
+                        <button class="btn-search" onclick="toOnline()">取消推荐</button>
+                        <button class="btn-search" onclick="toRecycler()">下线</button>
+                        <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getVideoList()"/>
+                    </div>
+                </div>
+            </div>
+            <div class="table_div" id="table-content">
+            </div>
+            <div class="page_select" id="page_select">
+                <div class="page_select_inner">
+                    <span>共</span>
+                    <span id="page-total-mun"></span>
+                    <span>条</span>
+                    <span class="page_select_position_one">每页</span>
+                    <span id="page-size" class="page_input_mun"></span>
+                    <span>条</span>
+                    <img src="/duanshipin/img/last_page.png" alt="" class="last_page" onclick="previousPage()"/>
+                    <ul class="page_select_ul" id="page_select_ul">
+                    </ul>
+                    <img src="/duanshipin/img/next_page.png" alt="" class="last_page" onclick="nextPage()"/>
+                </div>
+            </div>
         </div>
+        <script type="text/javascript">
+            writeLeft()
+            writeLeftTwoOfLeft()
+        </script>
     </div>
+</div>
 </body>
 
 <script th:src="@{/duanshipin/js/videoUser.js}"></script>
+<script type="text/javascript">
+    init()
+    getVideoList()
+</script>
 </html>

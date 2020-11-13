@@ -19,4 +19,8 @@ public interface VideoService {
     void recyclerForids(String ids);
 
     PageInfo<Video> getPageListByType(Integer type, Integer isUserPublish, Integer currentPage, Integer pageSize);
+
+    PageInfo<Video> selectForPage(Long id, String title, Integer type,
+                                  Integer isUserPublish, String publishAdminName
+            , Integer currentPage, Integer pageSize);
 }

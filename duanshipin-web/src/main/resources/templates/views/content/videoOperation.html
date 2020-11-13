@@ -13,7 +13,6 @@
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
-    <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
     <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
 </head>
 
@@ -43,13 +42,13 @@
             <div class="controll_bar clearfix" id="controll_online">
                 <div class="controll_online_left">
                     <span>视频标题：</span>
-                    <input type="text">
+                    <input type="text" id="online-select-title">
                     <span>视频ID：</span>
-                    <input type="text">
-                    <button>查询</button>
+                    <input type="text" id="online-select-id">
+                    <button onclick="select()">查询</button>
                 </div>
                 <div class="fr controll_online_right">
-                    <button  onclick="toRecommend()">推荐</button>
+                    <button onclick="toRecommend()">推荐</button>
                     <button onclick="toRecycler()">删除</button>
                     <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getVideoList()"/>
                 </div>
@@ -64,10 +63,10 @@
                 </button>
                 <div class="list_search">
                     <span>视频标题：</span>
-                    <input type="text" class="input_zj_title"/>
+                    <input type="text" class="input_zj_title" id="draf-select-title"/>
                     <span>视频ID：</span>
-                    <input type="text" class="input_zj_id"/>
-                    <div class="btn_list_search">查询</div>
+                    <input type="text" class="input_zj_id" id="draf-select-id"/>
+                    <div class="btn_list_search" onclick="select()">查询</div>
                     <div class="btn_list_search">删除</div>
                     <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh" onclick="getVideoList()"/>
                 </div>
@@ -76,10 +75,10 @@
             <div class="controll_bar clearfix" id="controll_recycle_bin">
                 <div class="controll_recycle_bin_left">
                     <span>视频标题：</span>
-                    <input type="text">
+                    <input type="text" id="recycle-select-title">
                     <span>视频ID：</span>
-                    <input type="text">
-                    <button>查询</button>
+                    <input type="text" id="recycle-select-id">
+                    <button onclick="select()">查询</button>
                 </div>
                 <div class="fr controll_recycle_bin_right">
                     <button onclick="toOnline()">还原视频</button>
@@ -90,10 +89,10 @@
             <div class="controll_bar clearfix" id="controll_recommend">
                 <div class="controll_recommend_left">
                     <span>视频标题：</span>
-                    <input type="text">
+                    <input type="text" id="recommend-select-title">
                     <span>视频ID：</span>
-                    <input type="text">
-                    <button>查询</button>
+                    <input type="text" id="recommend-select-id">
+                    <button onclick="select()">查询</button>
                 </div>
                 <div class="fr controll_recommend_right">
                     <button>取消推荐</button>

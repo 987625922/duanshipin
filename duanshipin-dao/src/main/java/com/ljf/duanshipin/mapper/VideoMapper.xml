@@ -15,6 +15,7 @@
         <result column="type" property="type" jdbcType="INTEGER"/>
         <result column="is_user_publish" property="isUserPublish" jdbcType="INTEGER"/>
         <result column="updateAdminName" property="user_name" jdbcType="VARCHAR"/>
+        <result column="publish_admin_id" property="publishAdminId" jdbcType="BIGINT"/>
         <association property="admin" javaType="com.ljf.duanshipin.domain.Admin">
             <result column="user_name" property="userName" jdbcType="VARCHAR"/>
             <result column="real_name" property="realName" jdbcType="VARCHAR"/>
@@ -51,7 +52,6 @@
     <select id="selectById" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        ,user_name
         from video where id = #{id} left join admin
         on video.controller_admin_id = admin.id
     </select>
@@ -91,4 +91,22 @@
             #{id}
         </foreach>
     </delete>
+
+    <select id="selectForPage" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video where video.type = #{type}
+        <if test="title != null and title != '' ">
+            and title like '%${title}%'
+        </if>
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="isUserPublish != null">
+            and is_user_publish = #{isUserPublish}
+        </if>
+        <if test="publishAdminName != null and publishAdminName != ''">
+            and publish_admin_id in (select id from admin where user_name = #{publishAdminName})
+        </if>
+    </select>
 </mapper>

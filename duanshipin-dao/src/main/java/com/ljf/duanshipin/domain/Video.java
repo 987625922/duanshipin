@@ -25,4 +25,5 @@ public class Video {
     private Integer type;
     private Integer isUserPublish;
     private Admin admin;
+    private Long publishAdminId;
 }

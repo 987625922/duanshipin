@@ -77,4 +77,13 @@ public class VideoServiceImpl implements VideoService {
         PageInfo<Video> pageInfo = new PageInfo<>(tagList);
         return pageInfo;
     }
+
+    @Override
+    public PageInfo<Video> selectForPage(Long id, String title, Integer type, Integer isUserPublish
+            , String publishAdminName, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Video> tagList = videoMapper.selectForPage(id, title, type, isUserPublish, publishAdminName);
+        PageInfo<Video> pageInfo = new PageInfo<>(tagList);
+        return pageInfo;
+    }
 }

@@ -5,6 +5,7 @@ import com.ljf.duanshipin.domain.Video;
 import com.ljf.duanshipin.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -82,5 +83,21 @@ public class VideoController {
     public Object deleteForids(String ids) {
         videoService.deleteForids(ids);
         return JsonResult.buildSuccess();
+    }
+
+    /**
+     * 专辑搜索
+     *
+     * @return
+     */
+    @RequestMapping("/select")
+    @ResponseBody
+    public Object select(Long id, String title,
+                         @RequestParam(value = "pageIndex", defaultValue = "1") Integer currentPage,
+                         @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
+                         @RequestParam(value = "type", defaultValue = "2") Integer type
+            , @RequestParam(value = "isUserPublish", defaultValue = "0") Integer isUserPublish,
+                         @RequestParam(required = false) String publishAdminName) {
+        return JsonResult.buildSuccess(videoService.selectForPage(id, title, type, isUserPublish, publishAdminName, currentPage, pageSize));
     }
 }

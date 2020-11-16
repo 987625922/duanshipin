@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -28,6 +29,9 @@ public class VideoServiceImpl implements VideoService {
     @Transactional(rollbackFor = Exception.class)
     @Override
     public void add(Video video) {
+        Date date = new Date();
+        video.setCreateTime(date).setUpdateTime(date)
+        .setNumberOfPlays(0).setNumberOfGoods(0);
         videoMapper.insert(video);
     }
 

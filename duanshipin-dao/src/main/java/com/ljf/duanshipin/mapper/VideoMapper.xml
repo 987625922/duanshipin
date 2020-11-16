@@ -14,7 +14,10 @@
         <result column="number_of_goods" property="numberOfGoods" jdbcType="INTEGER"/>
         <result column="type" property="type" jdbcType="INTEGER"/>
         <result column="is_user_publish" property="isUserPublish" jdbcType="INTEGER"/>
-        <result column="updateAdminName" property="user_name" jdbcType="VARCHAR"/>
+        <result column="one_class_tag_id" property="oneClassTagId" jdbcType="VARCHAR"/>
+        <result column="two_class_tag_ids" property="twoClassTagIds" jdbcType="VARCHAR"/>
+        <result column="three_class_tag_ids" property="threeClassTagIds" jdbcType="VARCHAR"/>
+        <result column="is_block_search" property="isBlockSearch" jdbcType="INTEGER"/>
         <result column="publish_admin_id" property="publishAdminId" jdbcType="BIGINT"/>
         <association property="admin" javaType="com.ljf.duanshipin.domain.Admin">
             <result column="user_name" property="userName" jdbcType="VARCHAR"/>
@@ -27,6 +30,7 @@
             <result column="last_control_admin_id" property="lastControlAdminId" jdbcType="BIGINT"/>
             <result column="password" property="password" jdbcType="VARCHAR"/>
             <result column="account" property="account" jdbcType="VARCHAR"/>
+            <result column="director" property="director" jdbcType="VARCHAR"/>
             <result column="is_robot" property="isRobot" jdbcType="INTEGER"/>
         </association>
     </resultMap>
@@ -34,15 +38,21 @@
     <sql id="Base_Column_List">
         id,title,introduction,img,create_time,update_time,
             controller_admin_id,number_of_plays,number_of_goods,
-            type,is_user_publish
+            type,is_user_publish,director,one_class_tag_id,
+            two_class_tag_ids,three_class_tag_ids,is_block_search
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Video">
     INSERT INTO video(title,introduction,img,create_time,update_time,
             controller_admin_id,number_of_plays,number_of_goods,
-            type,is_user_publish) VALUES(
+            type,is_user_publish,director,one_class_tag_id,
+            two_class_tag_ids,three_class_tag_ids,is_block_search
+            ,publish_admin_id) VALUES(
             #{title},#{introduction},#{img},#{createTime},#{updateTime},
-            #{controllerAdminId},#{numberOfPlays},#{numberOfGoods},#{type},#{isUserPublish})
+            #{controllerAdminId},#{numberOfPlays},#{numberOfGoods},#{type}
+            ,#{isUserPublish},#{director},#{oneClassTagId},
+            #{twoClassTagIds},#{threeClassTagIds},#{isBlockSearch}
+            ,#{publishAdminId})
     </insert>
 
     <delete id="deleteById" parameterType="int">

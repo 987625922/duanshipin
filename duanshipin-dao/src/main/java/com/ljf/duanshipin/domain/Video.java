@@ -26,4 +26,9 @@ public class Video {
     private Integer isUserPublish;
     private Admin admin;
     private Long publishAdminId;
+    private String director;
+    private String oneClassTagId;
+    private String twoClassTagIds;
+    private String threeClassTagIds;
+    private Integer isBlockSearch;
 }

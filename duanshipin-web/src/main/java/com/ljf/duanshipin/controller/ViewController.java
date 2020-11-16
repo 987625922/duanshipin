@@ -27,8 +27,6 @@ public class ViewController extends BaseController {
     private RoleService roleService;
     @Autowired
     private LoginLogService loginLogService;
-    @Autowired
-    private AlbumService albumService;
 
     /**
      * 首页
@@ -166,4 +164,13 @@ public class ViewController extends BaseController {
         mav.setViewName("views/content/commentManager");
         return mav;
     }
+
+    @RequestMapping("/content/editVideo")
+    public Object editVideo(){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/content/editVideo");
+        return mav;
+    }
+
+
 }

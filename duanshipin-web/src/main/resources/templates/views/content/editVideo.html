@@ -15,7 +15,7 @@
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
     <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
     <script th:src="@{/duanshipin/js/utils/dropload.min.js}"></script>
-    <script th:src="@{/duanshipin/js/publishVideo.js}"></script>
+    <script th:src="@{/duanshipin/js/editVideo.js}"></script>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
         <div class="main_content">
             <div class="full-content" style="height:100%;overflow-y:scroll; overflow-x:hidden;">
                 <div class="title">
-                    <span>发布视频</span>
+                    <span>编辑视频</span>
                 </div>
                 <div class="title_line"></div>
                 <div class="form">
@@ -53,7 +53,7 @@
                             <input type="file" name="cover" id="img-file"
                                    class="inputfile" style="display: none;"
                                    onchange="changepic(this)" accept="image/png, image/jpeg,image/jpg"/>
-                            <label for="img-file" class="choose-book">选择课本封面</label>
+                            <label for="img-file" class="choose-book">选择视频封面</label>
                             <img src="/duanshipin/img/default_kb.jpeg" class="form-img-upload" id="show" alt="">
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                                 </div>
                                 <div style="float: right;">
                                     <button style="height: 25px;" onclick="enterTwoTag()">确定</button>
-                                    <button style="margin-left: 10px;margin-right:10px;height: 25px;" >取消</button>
+                                    <button style="margin-left: 10px;margin-right:10px;height: 25px;">取消</button>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                                 </div>
                                 <div style="float: right;">
                                     <button style="height: 25px;" onclick="enterThreeTag()">确定</button>
-                                    <button style="margin-left: 10px;margin-right:10px;height: 25px;" >取消</button>
+                                    <button style="margin-left: 10px;margin-right:10px;height: 25px;">取消</button>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@
         <script type="text/javascript">
             writeLeft()
             writeLeftTwoOfLeft()
-            // init()
+            init()
         </script>
     </div>
 </div>

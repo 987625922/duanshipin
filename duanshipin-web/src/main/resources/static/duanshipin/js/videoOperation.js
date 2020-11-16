@@ -207,7 +207,7 @@ function dealTable(json) {
             '                        <td>'
         if (type == 1 || type == 2 || type == 4) {
             htmlStr += '                            <div class="table_content_controll">' +
-                '                                    <a href="/views/content/editAlbum?id=' + bean.id + '">视频编辑</a>' +
+                '                                    <a href="/views/content/editVideo?id=' + bean.id + '">视频编辑</a>' +
                 '                                    <a href="/views/content/albumpreview">视频预览</a>' +
                 '                            </div>'
         } else if (type == 3) {

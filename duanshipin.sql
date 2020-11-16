@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 13/11/2020 17:58:05
+ Date: 16/11/2020 17:47:57
 */
 
 SET NAMES utf8mb4;
@@ -306,7 +306,7 @@ CREATE TABLE `login_log`  (
 -- ----------------------------
 -- Records of login_log
 -- ----------------------------
-INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-11-13 17:55:09', 232, '2020-11-13 17:53:19');
+INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-11-16 17:11:54', 238, '2020-11-16 17:07:19');
 
 -- ----------------------------
 -- Table structure for permission
@@ -322,7 +322,7 @@ CREATE TABLE `permission`  (
   `update_time` datetime(0) NULL DEFAULT NULL,
   `last_control_admin_id` bigint(20) NULL DEFAULT NULL COMMENT '上一个控制的admin的id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of permission
@@ -477,31 +477,37 @@ CREATE TABLE `video`  (
   `type` int(1) NOT NULL COMMENT '1.上线 2.草稿 3.回收站 4.推荐 5.用户自删',
   `is_user_publish` int(1) NULL DEFAULT NULL COMMENT '0 为运营方提交 1 为用户提交',
   `publish_admin_id` bigint(11) NULL DEFAULT NULL,
+  `director` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `one_class_tag_id` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `two_class_tag_ids` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `three_class_tag_ids` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `is_block_search` int(1) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 21 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of video
 -- ----------------------------
-INSERT INTO `video` VALUES (1, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:43', 26, '2020-11-11 16:10:43', 4, 1, NULL);
-INSERT INTO `video` VALUES (2, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 4, 1, NULL);
-INSERT INTO `video` VALUES (3, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 26, '2020-11-11 16:10:44', 1, 0, NULL);
-INSERT INTO `video` VALUES (4, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, NULL);
-INSERT INTO `video` VALUES (5, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, NULL);
-INSERT INTO `video` VALUES (6, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, NULL);
-INSERT INTO `video` VALUES (7, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, NULL);
-INSERT INTO `video` VALUES (8, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:45', 1, '2020-11-11 16:10:45', 3, 1, NULL);
-INSERT INTO `video` VALUES (9, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:45', 1, '2020-11-11 16:10:45', 3, 1, NULL);
-INSERT INTO `video` VALUES (10, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:45', 1, '2020-11-11 16:10:45', 1, 1, NULL);
-INSERT INTO `video` VALUES (11, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL);
-INSERT INTO `video` VALUES (12, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL);
-INSERT INTO `video` VALUES (13, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL);
-INSERT INTO `video` VALUES (14, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL);
-INSERT INTO `video` VALUES (15, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 3, 2, NULL);
-INSERT INTO `video` VALUES (16, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 26, '2020-11-11 16:47:32', 4, 2, 26);
-INSERT INTO `video` VALUES (17, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL);
-INSERT INTO `video` VALUES (18, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL);
-INSERT INTO `video` VALUES (19, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL);
-INSERT INTO `video` VALUES (20, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL);
+INSERT INTO `video` VALUES (1, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:43', 26, '2020-11-11 16:10:43', 4, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (2, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 4, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (3, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 26, '2020-11-11 16:10:44', 1, 0, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (4, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (5, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (6, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (7, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (8, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:45', 1, '2020-11-11 16:10:45', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (9, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:45', 1, '2020-11-11 16:10:45', 3, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (10, '测试', '测试', '测试', 0, 0, '2020-11-11 16:10:45', 1, '2020-11-11 16:10:45', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (11, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (12, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (13, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (14, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (15, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 3, 2, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (16, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 26, '2020-11-11 16:47:32', 4, 2, 26, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (17, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (18, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (19, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (20, '测试', '测试', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `video` VALUES (24, '123', '123', NULL, 0, 0, '2020-11-16 17:36:36', 9, '2020-11-16 17:36:36', 2, 1, 9, '123', '2', '18,42', '19', 2);
 
 SET FOREIGN_KEY_CHECKS = 1;

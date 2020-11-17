@@ -27,6 +27,7 @@ public class Video {
     private Admin admin;
     private Long publishAdminId;
     private String director;
+    private String performer;
     private String oneClassTagId;
     private String twoClassTagIds;
     private String threeClassTagIds;

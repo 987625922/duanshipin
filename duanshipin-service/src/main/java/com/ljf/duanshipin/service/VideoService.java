@@ -6,9 +6,9 @@ import com.ljf.duanshipin.domain.Video;
 public interface VideoService {
     void add(Video video);
 
-    void getVideoById(Long id);
+    void getVideoById(Integer id);
 
-    void deleteById(Long id);
+    void deleteById(Integer id);
 
     void onlineForids(String ids);
 
@@ -20,7 +20,8 @@ public interface VideoService {
 
     PageInfo<Video> getPageListByType(Integer type, Integer isUserPublish, Integer currentPage, Integer pageSize);
 
-    PageInfo<Video> selectForPage(Long id, String title, Integer type,
+    PageInfo<Video> selectForPage(Integer id, String title, Integer type,
                                   Integer isUserPublish, String publishAdminName
             , Integer currentPage, Integer pageSize);
+    Video getInfoById(Integer id);
 }

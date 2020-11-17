@@ -89,7 +89,7 @@ public class VideoController extends BaseController {
      */
     @RequestMapping("/select")
     @ResponseBody
-    public Object select(Long id, String title,
+    public Object select(Integer id, String title,
                          @RequestParam(value = "pageIndex", defaultValue = "1") Integer currentPage,
                          @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
                          @RequestParam(value = "type", defaultValue = "2") Integer type
@@ -110,7 +110,7 @@ public class VideoController extends BaseController {
                       @RequestParam(defaultValue = "2") Integer type,
                       @RequestParam(required = false) String director,
                       Integer oneClassTagId, String twoClassTagIds, String threeClassTagIds,
-                      Integer isBlockSearch
+                      Integer isBlockSearch, String performer
     ) throws IOException {
 //        if (file != null) {
 //            //获取文件的后缀名
@@ -127,9 +127,20 @@ public class VideoController extends BaseController {
         Video video = new Video();
         video.setTitle(title).setIntroduction(introduction).setControllerAdminId(getCurrentAdmin().getId())
                 .setType(type).setDirector(director).setOneClassTagId(String.valueOf(oneClassTagId))
-                .setTwoClassTagIds(twoClassTagIds).setThreeClassTagIds(threeClassTagIds)
+                .setTwoClassTagIds(twoClassTagIds).setThreeClassTagIds(threeClassTagIds).setPerformer(performer)
                 .setIsBlockSearch(isBlockSearch).setIsUserPublish(1).setPublishAdminId(getCurrentAdmin().getId());
         videoService.add(video);
         return JsonResult.buildSuccess();
+    }
+
+    /**
+     * 通过id获取详情
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping("/getInfoById")
+    public Object getInfoById(Integer id) {
+        return JsonResult.buildSuccess(videoService.getInfoById(id));
     }
 }

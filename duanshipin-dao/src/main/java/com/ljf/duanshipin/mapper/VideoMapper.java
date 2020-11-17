@@ -14,9 +14,9 @@ public interface VideoMapper {
 
     void update(Video video);
 
-    Video selectById(Long id);
+    Video getInfoById(Integer id);
 
-    void deleteById(Long id);
+    void deleteById(Integer id);
 
     List<Video> getListByType(Integer type, Integer isUserPublish);
 
@@ -28,6 +28,6 @@ public interface VideoMapper {
 
     void deleteForids(List<String> list);
 
-    List<Video> selectForPage(Long id, String title, Integer type,
+    List<Video> selectForPage(Integer id, String title, Integer type,
                               Integer isUserPublish, String publishAdminName);
 }

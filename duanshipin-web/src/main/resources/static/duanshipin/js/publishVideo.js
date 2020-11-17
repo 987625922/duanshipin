@@ -40,7 +40,7 @@ function publishAlbum() {
     formData.append("introduction",$("#input-intro").val());
     formData.append("cover", $("#img-file")[0].files[0]);
     formData.append("director", $("#director").val());
-    formData.append("performer", $("#director").val());
+    formData.append("performer", $("#performer").val());
     formData.append("isBlockSearch", $("input[name='isSelect']:checked").val());
     formData.append("oneClassTagId", $('#div-select-value').attr('value'))
     formData.append("twoClassTagIds", twoSelectParentIds);

@@ -38,10 +38,15 @@ public class VideoServiceTest {
     }
 
     @Test
-    public void select(){
-        videoService.getPageListByType(1,1,
-                1,10).getList().forEach(it -> {
-                    log.info(it.toString());
+    public void select() {
+        videoService.getPageListByType(1, 1,
+                1, 10).getList().forEach(it -> {
+            log.info(it.toString());
         });
+    }
+
+    @Test
+    public void getInfoById() {
+        log.info(videoService.getInfoById(10).toString());
     }
 }

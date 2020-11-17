@@ -31,18 +31,18 @@ public class VideoServiceImpl implements VideoService {
     public void add(Video video) {
         Date date = new Date();
         video.setCreateTime(date).setUpdateTime(date)
-        .setNumberOfPlays(0).setNumberOfGoods(0);
+                .setNumberOfPlays(0).setNumberOfGoods(0);
         videoMapper.insert(video);
     }
 
     @Override
-    public void getVideoById(Long id) {
-        videoMapper.selectById(id);
+    public void getVideoById(Integer id) {
+        videoMapper.getInfoById(id);
     }
 
     @Transactional(rollbackFor = Exception.class)
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(Integer id) {
         videoMapper.deleteById(id);
     }
 
@@ -83,11 +83,16 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
-    public PageInfo<Video> selectForPage(Long id, String title, Integer type, Integer isUserPublish
+    public PageInfo<Video> selectForPage(Integer id, String title, Integer type, Integer isUserPublish
             , String publishAdminName, Integer currentPage, Integer pageSize) {
         PageHelper.startPage(currentPage, pageSize);
         List<Video> tagList = videoMapper.selectForPage(id, title, type, isUserPublish, publishAdminName);
         PageInfo<Video> pageInfo = new PageInfo<>(tagList);
         return pageInfo;
+    }
+
+    @Override
+    public Video getInfoById(Integer id) {
+        return videoMapper.getInfoById(id);
     }
 }

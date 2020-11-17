@@ -766,7 +766,7 @@ function init() {
     id = getUrlParam("id")
     console.log(id)
     ajax({
-        url: "/api/album/getInfoById",
+        url: "/api/video/getInfoById",
         type: 'get',
         data: {
             id: id
@@ -801,7 +801,7 @@ function init() {
                 getTagById(json.data.oneClassTagId)
                 getTagsByIds(json.data.twoClassTagIds, 1)
                 getTagsByIds(json.data.threeClassTagIds, 2)
-                getAlbumById(json.data.isUserPublish)
+                getAlbumById(json.data.publishAdminId)
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);
@@ -935,6 +935,7 @@ function getAlbumById(id) {
         }
     })
 }
+
 function back() {
     window.history.back(-1);
 }

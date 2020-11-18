@@ -3,7 +3,6 @@ package com.ljf.duanshipin.controller;
 import com.ljf.duanshipin.domain.Admin;
 import com.ljf.duanshipin.domain.LoginLog;
 import com.ljf.duanshipin.domain.Role;
-import com.ljf.duanshipin.service.AlbumService;
 import com.ljf.duanshipin.service.LoginLogService;
 import com.ljf.duanshipin.service.RoleService;
 import lombok.extern.slf4j.Slf4j;
@@ -144,10 +143,10 @@ public class ViewController extends BaseController {
         return mav;
     }
 
-    @RequestMapping("/content/videopreview")
+    @RequestMapping("/content/videoPreview")
     public Object videopreview() {
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("views/content/videopreview");
+        mav.setViewName("views/content/videoPreview");
         return mav;
     }
 

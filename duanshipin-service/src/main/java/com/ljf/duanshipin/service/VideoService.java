@@ -24,4 +24,6 @@ public interface VideoService {
                                   Integer isUserPublish, String publishAdminName
             , Integer currentPage, Integer pageSize);
     Video getInfoById(Integer id);
+
+    void update(Video video);
 }

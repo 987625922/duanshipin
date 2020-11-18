@@ -47,6 +47,6 @@ public class VideoServiceTest {
 
     @Test
     public void getInfoById() {
-        log.info(videoService.getInfoById(10).toString());
+        log.info(videoService.getInfoById(20).toString());
     }
 }

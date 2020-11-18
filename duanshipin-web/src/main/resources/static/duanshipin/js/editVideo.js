@@ -46,17 +46,15 @@ function publishAlbum() {
     if (cover != undefined) {
         formData.append("cover", cover);
     }
-    formData.append("totalMun", $("#total-mun").val());
     formData.append("director", $("#director").val());
     formData.append("performer", $("#director").val());
-    formData.append("isComplete", $("input[name='isEnd']:checked").val());
     formData.append("isBlockSearch", $("input[name='isSelect']:checked").val());
     formData.append("oneClassTagId", $('#div-select-value').attr('value'))
     formData.append("twoClassTagIds", twoSelectParentIds);
     formData.append("threeClassTagIds", threeSelectParentIds);
     formData.append("publishAdminId", $('#robotId').attr('name'))
     $.ajax({
-        url: '/api/album/update',
+        url: '/api/video/update',
         type: 'post',
         data: formData,
         processData: false,
@@ -785,17 +783,11 @@ function init() {
                 } else {
                     $("#show").attr('src', '/duanshipin/img/default.jpg')
                 }
-                if (data.isComplete == 1) {
-                    $("input[name='isEnd']").eq(0).attr('checked', true);
-                } else {
-                    $("input[name='isEnd']").eq(1).attr('checked', true);
-                }
                 if (data.isBlockSearch == 1) {
                     $("input[name='isSelect']").eq(0).attr('checked', true);
                 } else {
                     $("input[name='isSelect']").eq(1).attr('checked', true);
                 }
-                $("#total-mun").val(json.data.totalMun)
                 $("#director").val(json.data.director)
                 $("#performer").val(json.data.performer)
                 getTagById(json.data.oneClassTagId)

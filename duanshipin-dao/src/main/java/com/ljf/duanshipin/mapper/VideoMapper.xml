@@ -21,19 +21,10 @@
         <result column="three_class_tag_ids" property="threeClassTagIds" jdbcType="VARCHAR"/>
         <result column="is_block_search" property="isBlockSearch" jdbcType="INTEGER"/>
         <result column="publish_admin_id" property="publishAdminId" jdbcType="BIGINT"/>
-        <association property="admin" javaType="com.ljf.duanshipin.domain.Admin">
-            <id column="id" property="id" jdbcType="BIGINT"/>
-            <result column="user_name" property="userName" jdbcType="VARCHAR"/>
-            <result column="real_name" property="realName" jdbcType="VARCHAR"/>
-            <result column="phone" property="phone" jdbcType="VARCHAR"/>
-            <result column="status" property="status" jdbcType="INTEGER"/>
-            <result column="create_time" property="createTime" jdbcType="DATE"/>
-            <result column="last_update_time" property="lastUpdateTime" javaType="DATE"/>
-            <result column="role_id" property="roleId" jdbcType="BIGINT"/>
-            <result column="last_control_admin_id" property="lastControlAdminId" jdbcType="BIGINT"/>
-            <result column="password" property="password" jdbcType="VARCHAR"/>
-            <result column="account" property="account" jdbcType="VARCHAR"/>
-            <result column="is_robot" property="isRobot" jdbcType="INTEGER"/>
+        <association property="admin"
+                     select="com.ljf.duanshipin.mapper.AdminMapper.getAdminById"
+                     javaType="com.ljf.duanshipin.domain.Admin"
+                     column="publish_admin_id">
         </association>
     </resultMap>
 
@@ -45,15 +36,11 @@
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Video">
-    INSERT INTO video(title,introduction,img,create_time,update_time,
-            controller_admin_id,number_of_plays,number_of_goods,
-            type,is_user_publish,director,one_class_tag_id,performer,
-            two_class_tag_ids,three_class_tag_ids,is_block_search
-            ,publish_admin_id) VALUES(
+    INSERT INTO video(title,introduction,img,create_time,update_time,controller_admin_id,number_of_plays,number_of_goods,type,is_user_publish,director,one_class_tag_id,performer,two_class_tag_ids,three_class_tag_ids,is_block_search,publish_admin_id) VALUES(
             #{title},#{introduction},#{img},#{createTime},#{updateTime},
             #{controllerAdminId},#{numberOfPlays},#{numberOfGoods},#{type}
             ,#{isUserPublish},#{director},#{oneClassTagId},#{performer}
-            #{twoClassTagIds},#{threeClassTagIds},#{isBlockSearch}
+            ,#{twoClassTagIds},#{threeClassTagIds},#{isBlockSearch}
             ,#{publishAdminId})
     </insert>
 
@@ -62,13 +49,11 @@
     </delete>
 
     <select id="getInfoById" resultMap="BaseResultMap">
-        select * from video v left join admin a
-        on (v.publish_admin_id = a.id) where v.id = #{id}
+        select * from video where id = #{id}
     </select>
 
     <select id="getListByType" resultMap="BaseResultMap">
-        select * from video v left join admin a
-        on (v.publish_admin_id = a.id) where type = #{type}
+        select * from video v where type = #{type}
         <if test="isUserPublish != null and isUserPublish != ''">
             and is_user_publish = #{isUserPublish}
         </if>
@@ -119,4 +104,53 @@
             and publish_admin_id in (select id from admin where user_name = #{publishAdminName})
         </if>
     </select>
+
+    <update id="update" parameterType="com.ljf.duanshipin.domain.Video">
+        update video
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="introduction != null">
+                introduction = #{introduction},
+            </if>
+            <if test="type != null">
+                type = #{type},
+            </if>
+            <if test="director != null">
+                director = #{director},
+            </if>
+            <if test="oneClassTagId != null">
+                one_class_tag_id = #{oneClassTagId},
+            </if>
+            <if test="twoClassTagIds != null">
+                two_class_tag_ids = #{twoClassTagIds},
+            </if>
+            <if test="threeClassTagIds != null">
+                three_class_tag_ids = #{threeClassTagIds},
+            </if>
+            <if test="publishAdminId != null">
+                publish_admin_id = #{publishAdminId},
+            </if>
+            <if test="controllerAdminId != null">
+                controller_admin_id = #{controllerAdminId},
+            </if>
+            <if test="isBlockSearch != null">
+                is_block_search = #{isBlockSearch},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="numberOfGoods != null">
+                number_of_goods = #{numberOfGoods},
+            </if>
+            <if test="numberOfPlays != null">
+                number_of_plays = #{numberOfPlays},
+            </if>
+            <if test="performer != null">
+                performer = #{performer},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
 </mapper>

@@ -208,12 +208,12 @@ function dealTable(json) {
         if (type == 1 || type == 2 || type == 4) {
             htmlStr += '                            <div class="table_content_controll">' +
                 '                                    <a href="/views/content/editVideo?id=' + bean.id + '">视频编辑</a>' +
-                '                                    <a href="/views/content/albumpreview">视频预览</a>' +
+                '                                    <a href="/views/content/videoPreview?id=' + bean.id + '">视频预览</a>' +
                 '                            </div>'
         } else if (type == 3) {
             htmlStr += '                            <div class="table_content_controll">' +
                 '                                    <a style="cursor: pointer" onclick="itemToOnline(' + bean.id + ')">专辑还原</a>' +
-                '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
+                '                                    <a href="/views/content/videoPreview?id=' + bean.id + '">专辑预览</a>' +
                 '                            </div>'
         }
         htmlStr += '                        </td></tr>'

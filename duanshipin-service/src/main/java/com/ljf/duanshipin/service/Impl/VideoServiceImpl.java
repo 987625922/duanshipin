@@ -95,4 +95,10 @@ public class VideoServiceImpl implements VideoService {
     public Video getInfoById(Integer id) {
         return videoMapper.getInfoById(id);
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void update(Video video) {
+        videoMapper.update(video);
+    }
 }

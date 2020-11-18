@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.experimental.Accessors;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @Author: 98762
@@ -46,4 +47,6 @@ public class Album {
     private String performer;
     //是否是用户的专辑
     private Integer isUserPublish;
+
+    private List<Video> videoList;
 }

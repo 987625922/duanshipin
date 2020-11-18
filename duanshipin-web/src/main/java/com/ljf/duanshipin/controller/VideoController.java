@@ -143,4 +143,27 @@ public class VideoController extends BaseController {
     public Object getInfoById(Integer id) {
         return JsonResult.buildSuccess(videoService.getInfoById(id));
     }
+
+    /**
+     * 更新专辑
+     *
+     * @return
+     */
+    @RequestMapping("/update")
+    public Object update(Integer id, String title,
+                         @RequestParam(defaultValue = "") String introduction,
+                         @RequestParam(value = "cover", required = false) MultipartFile file,
+                         @RequestParam(required = false) String director,
+                         @RequestParam(required = false) String performer,
+                         String oneClassTagId, String twoClassTagIds, String threeClassTagIds,
+                         Long publishAdminId, Integer isBlockSearch
+    ) {
+        Video video = new Video();
+        video.setId(id).setTitle(title).setIntroduction(introduction).setDirector(director)
+                .setPerformer(performer).setOneClassTagId(oneClassTagId)
+                .setTwoClassTagIds(twoClassTagIds).setThreeClassTagIds(threeClassTagIds)
+                .setPublishAdminId(publishAdminId).setIsBlockSearch(isBlockSearch);
+        videoService.update(video);
+        return JsonResult.buildSuccess();
+    }
 }

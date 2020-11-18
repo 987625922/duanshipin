@@ -13,6 +13,7 @@
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
 </head>
 
 <body>
@@ -33,24 +34,29 @@
                         </div>
                         <div class="div-intro">
                             <div class="div-intro-item">
-                                <label>视频简介：</label>
+                                <label>视频ID：</label>
                                 <div class="div-intro-content">
-                                    <span>
-                                        办公室爆笑锦集第一集
+                                    <span id="video-id">
                                     </span>
                                 </div>
                             </div>
                             <div class="div-intro-item">
-                                <label>视频推荐语：</label>
+                                <label>视频标题：</label>
                                 <div class="div-intro-content">
-                                    <span>
-                                        我是一只推荐语，用户都很喜欢我呢
+                                    <span id="video-title">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="div-intro-item">
+                                <label>视频简介：</label>
+                                <div class="div-intro-content">
+                                    <span id="video-introduction">
                                     </span>
                                 </div>
                             </div>
 
-                            <div class="div-intro-item">
-                                <button>返回</button>
+                            <div class="div-intro-item" style="margin-top: 120px;margin-right: 50px">
+                                <button onclick="deleteVideo()">删除</button>
                             </div>
                         </div>
                     </div>
@@ -71,6 +77,9 @@
         </div>
     </div>
 </body>
-
-
+<script th:src="@{/duanshipin/js/videoPreview.js}">
+</script>
+<script type="text/javascript">
+    getInfo()
+</script>
 </html>

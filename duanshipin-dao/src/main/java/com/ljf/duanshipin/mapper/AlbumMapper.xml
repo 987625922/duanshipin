@@ -22,7 +22,6 @@
         <result column="publish_admin_id" property="publishAdminId" jdbcType="BIGINT"/>
         <result column="is_block_search" property="isBlockSearch" jdbcType="INTEGER"/>
         <result column="is_user_publish" property="isUserPublish" jdbcType="INTEGER"/>
-
     </resultMap>
 
     <sql id="Base_Column_List">

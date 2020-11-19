@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ljf.duanshipin.mapper.AlbumVideoMapper">
+
+    <resultMap id="BaseResultMap" type="com.ljf.duanshipin.domain.AlbumVideo">
+        <id column="album_id" property="id" jdbcType="BIGINT"/>
+        <id column="video_id" property="id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.ljf.duanshipin.domain.Admin">
+        INSERT INTO t_album_video(album_id,video_id)
+        VALUES(#{albumId},#{videoId})
+    </insert>
+
+</mapper>

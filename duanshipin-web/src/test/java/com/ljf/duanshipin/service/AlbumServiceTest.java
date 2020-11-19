@@ -61,4 +61,5 @@ public class AlbumServiceTest {
     public void getAlbumById(){
         log.info(albumService.getInfoById(629L).toString());
     }
+
 }

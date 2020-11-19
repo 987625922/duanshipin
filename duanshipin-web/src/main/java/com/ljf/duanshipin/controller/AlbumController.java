@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.ljf.duanshipin.common.dto.JsonResult;
 import com.ljf.duanshipin.domain.Album;
 import com.ljf.duanshipin.service.AlbumService;
+import com.ljf.duanshipin.service.AlbumVideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
@@ -28,7 +29,8 @@ public class AlbumController extends BaseController {
 
     @Autowired
     private AlbumService albumService;
-
+    @Autowired
+    private AlbumVideoService albumVideoService;
 
     @Value("${web.file.path}")
     private String filePath;
@@ -196,4 +198,17 @@ public class AlbumController extends BaseController {
         return JsonResult.buildSuccess();
     }
 
+
+    /**
+     * 专辑添加视频
+     *
+     * @param albumId
+     * @param videoId
+     * @return
+     */
+    @RequestMapping("/albumAddVideo")
+    public Object albumAddVideo(Long albumId, Integer videoId) {
+        albumVideoService.add(albumId, videoId);
+        return JsonResult.buildSuccess();
+    }
 }

@@ -13,6 +13,8 @@
     <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/duanshipin/js/albumVideoManager.js}"></script>
 </head>
 
 <body>
@@ -34,84 +36,27 @@
                     <input type="text">
                     <button class="btn-search">查询</button>
                     <div class="fr controll-operation-two-fr">
+                        <button class="btn-search">添加</button>
                         <button class="btn-search">删除</button>
                         <img src="/duanshipin/img/img_fresh.png" alt=""
                              class="fresh"/>
                     </div>
                 </div>
             </div>
-            <div class="table_div">
-                <table class="content_table">
-                    <tr>
-                        <th>
-                            <input type="checkbox" name="" id="" class="table_checkbox"/>
-                        </th>
-                        <th>
-                            <span class="table_id table_th"> 视频ID </span>
-                        </th>
-                        <th>
-                            <span class="table_title table_th"> 视频标题 </span>
-                        </th>
-                        <th>
-                            <span class="table_introducation table_th"> 视频简介 </span>
-                        </th>
-                        <th>
-                            <span class="table_img table_th"> 缩略图 </span>
-                        </th>
-                        <th>
-                            <span class="table_time table_th"> 最后操作时间 </span>
-                        </th>
-                        <th>
-                            <span class="table_user table_th"> 操作人 </span>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="checkbox" name="" id="" class="table_checkbox"/>
-                        </td>
-                        <td>
-                            <span class="table_id"> 987123 </span>
-                        </td>
-                        <td>
-                            <span class="table_title"> 办公室爆笑锦集 </span>
-                        </td>
-                        <td>
-                                <span class="table_introducation">
-                                    这是一份简介占位这是一份简介占位这是一份简介占位这是一份简介占位~
-                                </span>
-                        </td>
-                        <td>
-                            <img src="/duanshipin/img/tx.jpg" alt="" class="table_content_img"/>
-                        </td>
-                        <td>
-                            <span class="table_time"> 2018-11-28 14:01:19 </span>
-                        </td>
-                        <td>
-                            <span class="table_user"> xxx@yy-inc.cn </span>
-                        </td>
-                    </tr>
-                </table>
-                <div class="page_select" id="page_select">
-                    <div class="page_select_inner">
-                        <span>共</span>
-                        <span>100</span>
-                        <span>条</span>
-                        <span class="page_select_position_one">每页</span>
-                        <input type="number" class="page_input_mun"/>
-                        <span>条</span>
-                        <img src="/duanshipin/img/last_page.png" alt="" class="last_page"/>
-                        <ul class="page_select_ul">
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>...</li>
-                            <li>10</li>
-                        </ul>
-                        <img src="/duanshipin/img/next_page.png" alt="" class="last_page"/>
-                        <span class="page_select_position_two">前往</span>
-                        <input type="number" class="page_input_to_mun"/>
-                        <span>页</span>
-                    </div>
+            <div class="table_div" id="table-content">
+            </div>
+            <div class="page_select" id="page_select">
+                <div class="page_select_inner">
+                    <span>共</span>
+                    <span id="page-total-mun"></span>
+                    <span>条</span>
+                    <span class="page_select_position_one">每页</span>
+                    <span id="page-size" class="page_input_mun"></span>
+                    <span>条</span>
+                    <img src="/duanshipin/img/last_page.png" alt="" class="last_page" onclick="previousPage()"/>
+                    <ul class="page_select_ul" id="page_select_ul">
+                    </ul>
+                    <img src="/duanshipin/img/next_page.png" alt="" class="last_page" onclick="nextPage()"/>
                 </div>
             </div>
         </div>
@@ -122,6 +67,8 @@
     </div>
 </div>
 </body>
-
+<script type="text/javascript">
+    getVideoList()
+</script>
 
 </html>

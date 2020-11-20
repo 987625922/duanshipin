@@ -59,6 +59,13 @@
         </if>
     </select>
 
+    <select id="getListByAlbumId" resultMap="BaseResultMap">
+        select * from video v where type = #{type}
+        <if test="isUserPublish != null and isUserPublish != ''">
+            and is_user_publish = #{isUserPublish}
+        </if>
+    </select>
+
     <update id="toOnline" parameterType="java.util.List">
         update video set video.type = 1 where id in
         <foreach item="id" collection="list" open="(" close=")" separator=",">

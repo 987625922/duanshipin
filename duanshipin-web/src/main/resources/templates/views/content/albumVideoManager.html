@@ -18,6 +18,26 @@
 </head>
 
 <body>
+<div class="dialog_wrapper" id="dialog_loginout_wrapper" style="z-index: 2008;">
+    <div class="dialog">
+        <div class="dialog_header">
+            <span class="login-dialog-title">选择视频</span>
+        </div>
+        <div class="dialog_body">
+            <div class="dialog-form-item">
+
+            </div>
+            <div>
+                <button class="dialog-form-btn-save" id="dialog_loginout_enter">
+                    <a href="/logout" style="color: #fff;">
+                        确定
+                    </a>
+                </button>
+                <button class="dialog-form-btn-cancel" id="dialog_loginout_cancel">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="body">
     <script type="text/javascript">
         writeHander()
@@ -31,15 +51,15 @@
             <div class="controll_bar clearfix" id="controll_recommend">
                 <div class="controll_operation_two">
                     <span>视频标题：</span>
-                    <input type="text">
+                    <input type="text" id="select-id">
                     <span>视频ID：</span>
-                    <input type="text">
-                    <button class="btn-search">查询</button>
+                    <input type="text" id="select-title">
+                    <button class="btn-search" onclick="select()">查询</button>
                     <div class="fr controll-operation-two-fr">
-                        <button class="btn-search">添加</button>
-                        <button class="btn-search">删除</button>
+                        <button class="btn-search" onclick="addDialogShow()">添加</button>
+                        <button class="btn-search" onclick="toDelete()">删除</button>
                         <img src="/duanshipin/img/img_fresh.png" alt=""
-                             class="fresh"/>
+                             class="fresh" onclick="getVideoList()"/>
                     </div>
                 </div>
             </div>

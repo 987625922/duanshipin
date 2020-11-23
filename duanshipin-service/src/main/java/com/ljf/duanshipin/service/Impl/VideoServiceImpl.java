@@ -48,6 +48,13 @@ public class VideoServiceImpl implements VideoService {
 
     @Transactional(rollbackFor = Exception.class)
     @Override
+    public void deleteByAlbumAndVideoIds(Long albumId, String videoIds) {
+        List<String> idList = Arrays.asList(videoIds.split(","));
+        videoMapper.deleteByAlbumAndVideoIds(albumId, idList);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
     public void onlineForids(String ids) {
         List<String> idList = Arrays.asList(ids.split(","));
         videoMapper.toOnline(idList);
@@ -83,6 +90,14 @@ public class VideoServiceImpl implements VideoService {
     }
 
     @Override
+    public PageInfo<Video> getListByAlbumId(Long albumId, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Video> tagList = videoMapper.getListByAlbumId(albumId);
+        PageInfo<Video> pageInfo = new PageInfo<>(tagList);
+        return pageInfo;
+    }
+
+    @Override
     public PageInfo<Video> selectForPage(Integer id, String title, Integer type, Integer isUserPublish
             , String publishAdminName, Integer currentPage, Integer pageSize) {
         PageHelper.startPage(currentPage, pageSize);
@@ -100,5 +115,13 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public void update(Video video) {
         videoMapper.update(video);
+    }
+
+    @Override
+    public PageInfo<Video> selectForPageByalbumId(Long albumId, String title, Integer videoId, Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Video> tagList = videoMapper.selectForPageByalbumId(albumId, title, videoId);
+        PageInfo<Video> pageInfo = new PageInfo<>(tagList);
+        return pageInfo;
     }
 }

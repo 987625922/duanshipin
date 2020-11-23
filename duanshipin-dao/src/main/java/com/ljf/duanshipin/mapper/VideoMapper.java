@@ -20,6 +20,8 @@ public interface VideoMapper {
 
     List<Video> getListByType(Integer type, Integer isUserPublish);
 
+    List<Video> getListByAlbumId(Long albumId);
+
     void toOnline(List<String> list);
 
     void toRecommend(List<String> list);
@@ -30,4 +32,10 @@ public interface VideoMapper {
 
     List<Video> selectForPage(Integer id, String title, Integer type,
                               Integer isUserPublish, String publishAdminName);
+
+    List<Video> selectForPageByalbumId(Long albumId,String title,Integer id);
+
+    void deleteByAlbumAndVideoId(Long albumId,Integer videoId);
+
+    void deleteByAlbumAndVideoIds(Long albumId, List<String> videoIds);
 }

@@ -329,7 +329,7 @@ function dealTable(json) {
             '                        <td>' +
             '                            <div class="table_content_controll">' +
             '                                    <a href="/views/content/editAlbum?id='+bean.id+'">修改专辑</a>' +
-            '                                    <a href="/views/content/albumVideoManager">视频管理</a>' +
+            '                                    <a href="/views/content/albumVideoManager?id='+bean.id+'">视频管理</a>' +
             '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
             '                            </div>' +
             '                        </td></tr>'

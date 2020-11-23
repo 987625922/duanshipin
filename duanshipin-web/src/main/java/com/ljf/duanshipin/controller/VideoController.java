@@ -166,4 +166,24 @@ public class VideoController extends BaseController {
         videoService.update(video);
         return JsonResult.buildSuccess();
     }
+
+
+    @RequestMapping("/getListByAlbumId")
+    public Object getListByAlbumId(Long ablumId, Integer currentPage,
+                                   Integer pageSize) {
+        return JsonResult.buildSuccess(videoService.getListByAlbumId(ablumId, currentPage, pageSize));
+    }
+
+    @RequestMapping("/deleteByAlbumAndVideoIds")
+    public Object deleteByAlbumAndVideoIds(Long albumId, String videoIds) {
+        videoService.deleteByAlbumAndVideoIds(albumId, videoIds);
+        return JsonResult.buildSuccess();
+    }
+
+    @RequestMapping("/selectForPageByalbumId")
+    public Object selectForPageByalbumId(Long albumId, Integer videoId, String title,
+                                         Integer currentPage, Integer pageSize) {
+        return JsonResult.buildSuccess(videoService.selectForPageByalbumId(albumId,
+                title, videoId, currentPage, pageSize));
+    }
 }

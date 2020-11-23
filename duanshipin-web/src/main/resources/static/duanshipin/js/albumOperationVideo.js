@@ -406,7 +406,7 @@ function dealTable(json) {
         if (type == 1 || type == 2 || type == 4) {
             htmlStr += '                            <div class="table_content_controll">' +
                 '                                    <a href="/views/content/editAlbum?id='+bean.id+'">修改专辑</a>' +
-                '                                    <a href="/views/content/albumVideoManager">视频管理</a>' +
+                '                                    <a href="/views/content/albumVideoManager?id='+bean.id+'">视频管理</a>' +
                 '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
                 '                            </div>'
         } else if (type == 3) {

@@ -1,16 +1,17 @@
 var pageIndex = 1
 var pageSize = 10
 var type = 1
+var albumId = 1
 
 function getVideoList() {
+    albumId = getUrlParam("id")
     ajax({
-        url: "/api/video/list",
+        url: "/api/video/getListByAlbumId",
         type: 'post',
         data: {
             currentPage: pageIndex,
             pageSize: pageSize,
-            type: type,
-            isUserPublish: 1
+            ablumId: albumId
         },
         dataType: 'json',
         timeout: 10000,
@@ -61,7 +62,8 @@ function dealTable(json) {
         '                    </tr></thead>';
 
     if (json.data.list.length > 6) {
-        htmlStr += '<tbody style="display: block;height: 430px;overflow-y: scroll;">';
+        htmlStr += '<tbody style="display: block;height: 430px;' +
+            'overflow-y: scroll;">';
     } else if (json.data.list.length == 0) {
         htmlStr += '<tbody style="display:block;height: 5px;">';
     } else {
@@ -165,8 +167,94 @@ function dealTable(json) {
         $('#page_select').hide();
     }
 }
+
 function getSpecialAlbumList(_type, _pageIndex, _pageSize) {
     pageIndex = _pageIndex;
     pageSize = _pageSize;
     getVideoList();
+}
+
+function getUrlParam(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+    if (r != null) return unescape(r[2]);
+    return null; //返回参数值
+}
+
+function toDelete() {
+    var selectStr = '';
+    var selectGroup = $("input:checkbox[name='id-select-group']:checked")
+        .map(function (index, elem) {
+            return $(elem).val();
+        });
+    for (let i = 0; i < selectGroup.length; i++) {
+        if (i == 0) {
+            selectStr += selectGroup[i];
+        } else {
+            selectStr = selectStr + ',' + selectGroup[i];
+        }
+    }
+    ajax({
+        url: "/api/video/deleteByAlbumAndVideoIds",
+        type: 'get',
+        data: {
+            videoIds: selectStr,
+            albumId: albumId
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getVideoList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function select() {
+    var selectTitle;
+    var selectId;
+    selectTitle = $('#select-title').val()
+    selectId = $('#select-id').val()
+    pageIndex = 1;
+    ajax({
+        url: "/api/album/selectForPageByalbumId",
+        type: 'get',
+        data: {
+            title: selectTitle,
+            albumId: albumId,
+            videoId: selectId,
+            currentPage: pageIndex,
+            pageSize: pageSize
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                dealTable(json)
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+function addDialogShow() {
+    $("#dialog_loginout_wrapper").show()
+
 }

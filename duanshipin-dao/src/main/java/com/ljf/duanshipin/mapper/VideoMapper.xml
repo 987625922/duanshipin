@@ -48,6 +48,11 @@
         delete from video where id = #{id}
     </delete>
 
+    <delete id="deleteByAlbumAndVideoId" parameterType="int">
+        delete from t_album_video where album_id = #{albumId}
+        and video_id = #{videoId}
+    </delete>
+
     <select id="getInfoById" resultMap="BaseResultMap">
         select * from video where id = #{id}
     </select>
@@ -60,11 +65,10 @@
     </select>
 
     <select id="getListByAlbumId" resultMap="BaseResultMap">
-        select * from video v where type = #{type}
-        <if test="isUserPublish != null and isUserPublish != ''">
-            and is_user_publish = #{isUserPublish}
-        </if>
+        select * from video where id in
+        (select video_id from t_album_video where album_id = #{albumId})
     </select>
+
 
     <update id="toOnline" parameterType="java.util.List">
         update video set video.type = 1 where id in
@@ -94,6 +98,14 @@
         </foreach>
     </delete>
 
+    <delete id="deleteByAlbumAndVideoIds" parameterType="java.util.List">
+        DELETE from t_album_video where album_id = #{albumId}
+        and video_id in
+        <foreach item="id" collection="videoIds" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
     <select id="selectForPage" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
@@ -109,6 +121,20 @@
         </if>
         <if test="publishAdminName != null and publishAdminName != ''">
             and publish_admin_id in (select id from admin where user_name = #{publishAdminName})
+        </if>
+    </select>
+
+    <select id="selectForPageByalbumId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from video where video.id in (
+          select video_id from t_album_video where album_id = #{albumId}
+        )
+        <if test="title != null and title != '' ">
+            and video.title like '%${title}%'
+        </if>
+        <if test="id != null">
+            and video.id = #{videoId}
         </if>
     </select>
 

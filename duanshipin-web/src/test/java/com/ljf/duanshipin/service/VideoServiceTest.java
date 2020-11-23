@@ -49,4 +49,11 @@ public class VideoServiceTest {
     public void getInfoById() {
         log.info(videoService.getInfoById(20).toString());
     }
+
+    @Test
+    public void getListByAlbumId() {
+        videoService.getListByAlbumId(629L, 1, 10).getList().forEach(a -> {
+            log.info(a.toString());
+        });
+    }
 }

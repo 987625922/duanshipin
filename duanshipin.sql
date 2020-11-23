@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 18/11/2020 17:38:44
+ Date: 23/11/2020 17:17:27
 */
 
 SET NAMES utf8mb4;
@@ -306,7 +306,7 @@ CREATE TABLE `login_log`  (
 -- ----------------------------
 -- Records of login_log
 -- ----------------------------
-INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-11-18 15:11:42', 254, '2020-11-18 14:28:29');
+INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-11-23 16:11:31', 260, '2020-11-23 15:48:51');
 
 -- ----------------------------
 -- Table structure for permission
@@ -322,7 +322,7 @@ CREATE TABLE `permission`  (
   `update_time` datetime(0) NULL DEFAULT NULL,
   `last_control_admin_id` bigint(20) NULL DEFAULT NULL COMMENT '上一个控制的admin的id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of permission
@@ -391,6 +391,13 @@ CREATE TABLE `t_album_video`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
+-- Records of t_album_video
+-- ----------------------------
+INSERT INTO `t_album_video` VALUES (629, 1);
+INSERT INTO `t_album_video` VALUES (629, 2);
+INSERT INTO `t_album_video` VALUES (629, 3);
+
+-- ----------------------------
 -- Table structure for tag
 -- ----------------------------
 DROP TABLE IF EXISTS `tag`;
@@ -404,7 +411,7 @@ CREATE TABLE `tag`  (
   `parent_tag_id` int(11) NOT NULL COMMENT '父标签的id -1为根标签',
   `type` int(1) NOT NULL COMMENT '标签等级 1 一级标签 2 二级标签 3 三级标签',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tag
@@ -517,10 +524,10 @@ INSERT INTO `video` VALUES (17, '测试123123', '测试123', '测试', 0, 0, '20
 INSERT INTO `video` VALUES (18, '测试123123', '测试123', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
 INSERT INTO `video` VALUES (19, '测试123123', '测试123', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
 INSERT INTO `video` VALUES (20, '测试123123', '测试123', '测试', 0, 0, '2020-11-11 16:47:32', 1, '2020-11-11 16:47:32', 1, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
-INSERT INTO `video` VALUES (24, '测试123123', '测试123', NULL, 0, 0, '2020-11-16 17:36:36', 9, '2020-11-16 17:36:36', 2, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
-INSERT INTO `video` VALUES (25, '测试123123', '测试123', NULL, 0, 0, '2020-11-17 16:11:54', 9, '2020-11-17 16:11:54', 2, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
-INSERT INTO `video` VALUES (26, '测试123', '测试123', NULL, 0, 0, '2020-11-18 10:27:27', 9, NULL, 2, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
-INSERT INTO `video` VALUES (27, '测试12', '测试123', NULL, 0, 0, '2020-11-18 10:27:27', 9, NULL, 2, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
+INSERT INTO `video` VALUES (24, '测试123123', '测试123', NULL, 0, 0, '2020-11-16 17:36:36', 9, '2020-11-16 17:36:36', 1, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
+INSERT INTO `video` VALUES (25, '测试123123', '测试123', NULL, 0, 0, '2020-11-17 16:11:54', 9, '2020-11-17 16:11:54', 1, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
+INSERT INTO `video` VALUES (26, '测试123', '测试123', NULL, 0, 0, '2020-11-18 10:27:27', 9, NULL, 1, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
+INSERT INTO `video` VALUES (27, '测试12', '测试123', NULL, 0, 0, '2020-11-18 10:27:27', 9, NULL, 1, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
 INSERT INTO `video` VALUES (28, '测试123123', '测试123', NULL, 0, 0, '2020-11-18 10:27:27', 9, NULL, 2, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
 INSERT INTO `video` VALUES (29, '测试123123', '测试123', NULL, 0, 0, '2020-11-18 10:42:11', 9, '2020-11-18 10:42:11', 2, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
 INSERT INTO `video` VALUES (30, '测试123123', '测试123', NULL, 0, 0, '2020-11-18 10:43:16', 9, '2020-11-18 10:43:16', 2, 1, 9, '测试123', '2', '18', '19', 2, '测试123');

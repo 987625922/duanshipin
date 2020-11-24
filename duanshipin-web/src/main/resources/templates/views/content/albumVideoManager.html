@@ -25,7 +25,27 @@
         </div>
         <div class="dialog_body">
             <div class="dialog-form-item">
+                <div><span>视频id：</span><input>
+                    <span>视频标题：</span><input></div>
+            </div>
+            <div class="dialog-form-item">
+                <div class="table_div" id="dialog-content">
 
+                </div>
+                <div class="page_select">
+                    <div class="page_select_inner">
+                        <span>共</span>
+                        <span></span>
+                        <span>条</span>
+                        <span class="page_select_position_one">每页</span>
+                        <span class="page_input_mun"></span>
+                        <span>条</span>
+                        <img src="/duanshipin/img/last_page.png" alt="" class="last_page" onclick="previousPage()"/>
+                        <ul class="page_select_ul">
+                        </ul>
+                        <img src="/duanshipin/img/next_page.png" alt="" class="last_page" onclick="nextPage()"/>
+                    </div>
+                </div>
             </div>
             <div>
                 <button class="dialog-form-btn-save" id="dialog_loginout_enter">
@@ -51,9 +71,9 @@
             <div class="controll_bar clearfix" id="controll_recommend">
                 <div class="controll_operation_two">
                     <span>视频标题：</span>
-                    <input type="text" id="select-id">
-                    <span>视频ID：</span>
                     <input type="text" id="select-title">
+                    <span>视频ID：</span>
+                    <input type="text" id="select-id">
                     <button class="btn-search" onclick="select()">查询</button>
                     <div class="fr controll-operation-two-fr">
                         <button class="btn-search" onclick="addDialogShow()">添加</button>

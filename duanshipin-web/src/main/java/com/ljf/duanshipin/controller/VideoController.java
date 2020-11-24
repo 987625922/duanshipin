@@ -26,7 +26,8 @@ public class VideoController extends BaseController {
     private VideoService videoService;
 
     @RequestMapping("/list")
-    public Object add(Integer type, Integer isUserPublish, Integer currentPage, Integer pageSize) {
+    public Object add(Integer type, Integer isUserPublish,
+                      Integer currentPage, Integer pageSize) {
         return JsonResult.buildSuccess(videoService.getPageListByType(type, isUserPublish, currentPage, pageSize));
     }
 

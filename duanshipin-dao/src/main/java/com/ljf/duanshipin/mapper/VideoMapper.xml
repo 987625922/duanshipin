@@ -58,7 +58,10 @@
     </select>
 
     <select id="getListByType" resultMap="BaseResultMap">
-        select * from video v where type = #{type}
+        select * from video v
+        <if test="type != null and type != ''">
+        where type = #{type}
+        </if>
         <if test="isUserPublish != null and isUserPublish != ''">
             and is_user_publish = #{isUserPublish}
         </if>
@@ -125,15 +128,13 @@
     </select>
 
     <select id="selectForPageByalbumId" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from video where video.id in (
+        select * from video where video.id in (
           select video_id from t_album_video where album_id = #{albumId}
         )
         <if test="title != null and title != '' ">
             and video.title like '%${title}%'
         </if>
-        <if test="id != null">
+        <if test="videoId != null">
             and video.id = #{videoId}
         </if>
     </select>

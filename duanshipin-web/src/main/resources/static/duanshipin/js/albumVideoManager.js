@@ -221,18 +221,14 @@ function toDelete() {
 }
 
 function select() {
-    var selectTitle;
-    var selectId;
-    selectTitle = $('#select-title').val()
-    selectId = $('#select-id').val()
     pageIndex = 1;
     ajax({
-        url: "/api/album/selectForPageByalbumId",
+        url: "/api/video/selectForPageByalbumId",
         type: 'get',
         data: {
-            title: selectTitle,
+            title: $('#select-title').val(),
             albumId: albumId,
-            videoId: selectId,
+            videoId: $('#select-id').val(),
             currentPage: pageIndex,
             pageSize: pageSize
         },
@@ -254,7 +250,49 @@ function select() {
         }
     })
 }
+
 function addDialogShow() {
     $("#dialog_loginout_wrapper").show()
+    getDialogVideoList()
+}
 
+function getDialogVideoList() {
+    ajax({
+        url: "/api/video/list",
+        type: 'post',
+        data: {
+            currentPage: pageIndex,
+            pageSize: pageSize
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code === 200) {
+                dealDialog(json)
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function dealDialog(json) {
+    let htmlStr = '';
+    htmlStr += '<table class="content_table"><thead><tr>';
+    htmlStr += '                          <th>  <span class="table_th">视频ID</span>' +
+        '                        </th>' +
+        '                        <th>' +
+        '                            <span class="table_th">视频标题</span>' +
+        '                        </th><th>' +
+    '                            <span class="table_th">操作</span>' +
+    '                        </th>';
+    htmlStr += '</tr></thead></table>'
+    $('#dialog-content').html(htmlStr);
 }

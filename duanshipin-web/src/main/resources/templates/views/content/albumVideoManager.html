@@ -25,35 +25,23 @@
         </div>
         <div class="dialog_body">
             <div class="dialog-form-item">
-                <div><span>视频id：</span><input>
-                    <span>视频标题：</span><input></div>
+                <div><span>视频id：</span><input style="width: 80px;height: 20px">
+                    <span>视频标题：</span><input style="width: 80px;height: 20px">
+                    <button style="float: right">
+                        搜索
+                    </button>
+                </div>
             </div>
-            <div class="dialog-form-item">
-                <div class="table_div" id="dialog-content">
+            <div id="dialog-content">
 
-                </div>
-                <div class="page_select">
-                    <div class="page_select_inner">
-                        <span>共</span>
-                        <span></span>
-                        <span>条</span>
-                        <span class="page_select_position_one">每页</span>
-                        <span class="page_input_mun"></span>
-                        <span>条</span>
-                        <img src="/duanshipin/img/last_page.png" alt="" class="last_page" onclick="previousPage()"/>
-                        <ul class="page_select_ul">
-                        </ul>
-                        <img src="/duanshipin/img/next_page.png" alt="" class="last_page" onclick="nextPage()"/>
-                    </div>
-                </div>
             </div>
-            <div>
-                <button class="dialog-form-btn-save" id="dialog_loginout_enter">
-                    <a href="/logout" style="color: #fff;">
-                        确定
-                    </a>
-                </button>
-                <button class="dialog-form-btn-cancel" id="dialog_loginout_cancel">取消</button>
+            <div style="height: 30px">
+                <img src="/duanshipin/img/last_page.png" alt="" class="last_page" style="width: 10px;height: 15px;
+                margin-top: 10px" onclick="previousPage()"/>
+                <ul class="page_select_ul" id="dialog_page_select_ul">
+                </ul>
+                <img src="/duanshipin/img/next_page.png" alt="" class="last_page" style="width: 10px;height: 15px;
+                margin-top: 10px" onclick="nextPage()"/>
             </div>
         </div>
     </div>

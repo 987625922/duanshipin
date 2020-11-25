@@ -256,13 +256,16 @@ function addDialogShow() {
     getDialogVideoList()
 }
 
+var dialogPageIndex = 1
+var dialogPageSize = 5
+
 function getDialogVideoList() {
     ajax({
         url: "/api/video/list",
         type: 'post',
         data: {
-            currentPage: pageIndex,
-            pageSize: pageSize
+            currentPage: dialogPageIndex,
+            pageSize: dialogPageSize
         },
         dataType: 'json',
         timeout: 10000,
@@ -291,8 +294,83 @@ function dealDialog(json) {
         '                        <th>' +
         '                            <span class="table_th">视频标题</span>' +
         '                        </th><th>' +
-    '                            <span class="table_th">操作</span>' +
-    '                        </th>';
-    htmlStr += '</tr></thead></table>'
+        '                            <span class="table_th">操作</span>' +
+        '                        </th>';
+    htmlStr += '</tr></thead>'
+    for (var i = 0; i < json.data.list.length; i++) {
+        var isShowAdd = true
+        htmlStr += '<tr>'
+        htmlStr += '<td>'
+        htmlStr += json.data.list[i].id
+        htmlStr += '</td>'
+        htmlStr += '<td>'
+        htmlStr += json.data.list[i].title
+        htmlStr += '</td>'
+        if (isShowAdd) {
+            htmlStr += '<td>'
+            htmlStr += '<span>添加</span>'
+            htmlStr += '</td>'
+        } else {
+            htmlStr += '<td>'
+            htmlStr += '<span>移除</span>'
+            htmlStr += '</td>'
+        }
+        htmlStr += '</tr>'
+    }
+    htmlStr += '</table>'
     $('#dialog-content').html(htmlStr);
+
+    if (json.data.pages > 1) {
+        $('#dialog_page_select').show();
+        var liStr = '';
+        if (json.data.pages <= 7) {
+            for (var i = 0; i < json.data.navigatepageNums.length; i++) {
+                if (i == json.data.prePage) {
+                    liStr += '<li style="background-color:#44c9a8;color: #fff;">' + json.data.navigatepageNums[i] + '</li>'
+                } else {
+                    liStr += '<li onclick="getSpaceDialogVideoList(type,' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
+                }
+            }
+        } else {
+            if (json.data.prePage == 0 || json.data.prePage == 1 || json.data.prePage == 2) {
+                for (var i = 0; i < json.data.navigatepageNums.length; i++) {
+                    if (i <= 3) {
+                        if (i == json.data.prePage) {
+                            liStr += '<li style="background-color:#44c9a8;color: #fff;">' + json.data.navigatepageNums[i] + '</li>'
+                        } else {
+                            liStr += '<li onclick="getSpaceDialogVideoList(type,' + (i + 1) + ',pageSize)">' + json.data.navigatepageNums[i] + '</li>'
+                        }
+                    }
+                }
+                liStr += '<li>...</li>'
+                liStr += '<li onclick="getSpaceDialogVideoList(type,' + json.data.pages + ',pageSize)">' + json.data.pages + '</li>'
+            } else {
+                liStr += '<li onclick="getSpaceDialogVideoList(type,1,pageSize)">1</li>'
+                liStr += '<li>...</li>'
+                if (json.data.pages - (json.data.prePage + 2) >= 3) {
+                    liStr += '<li onclick="getSpaceDialogVideoList(type,' + json.data.prePage + ',pageSize)">' + json.data.prePage + '</li>'
+                    liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
+                    liStr += '<li onclick="getSpaceDialogVideoList(type,' + (json.data.prePage + 2) + ',pageSize)">' + (json.data.prePage + 2) + '</li>'
+                    liStr += '<li>...</li>'
+                    liStr += '<li onclick="getSpaceDialogVideoList(type,' + (json.data.pages) + ',pageSize)">' + (json.data.pages) + '</li>'
+                } else {
+                    for (var i = 4; i >= 0; i--) {
+                        if ((json.data.pages - i) == (json.data.prePage + 1)) {
+                            liStr += '<li style="background-color:#44c9a8;color: #fff;">' + (json.data.prePage + 1) + '</li>'
+                        } else {
+                            liStr += '<li onclick="getSpaceDialogVideoList(type,' + (json.data.pages - i) + ',pageSize)">' + (json.data.pages - i) + '</li>'
+                        }
+                    }
+                }
+            }
+        }
+        $('#dialog_page_select_ul').html(liStr);
+    } else {
+        $('#dialog_page_select').hide();
+    }
+}
+
+function getSpaceDialogVideoList(_type, _pageIndex, _pageSize) {
+    dialogPageIndex = _pageIndex
+    getDialogVideoList()
 }

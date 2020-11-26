@@ -124,4 +124,16 @@ public class VideoServiceImpl implements VideoService {
         PageInfo<Video> pageInfo = new PageInfo<>(tagList);
         return pageInfo;
     }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void videoAddToAlbum(Long albumId, Integer videoId) {
+        videoMapper.videoAddToAlbum(albumId, videoId);
+    }
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void videoRemoveToAlbum(Long albumId, Integer videoId) {
+        videoMapper.videoRemoveToAlbum(albumId, videoId);
+    }
 }

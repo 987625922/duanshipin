@@ -33,9 +33,13 @@ public interface VideoMapper {
     List<Video> selectForPage(Integer id, String title, Integer type,
                               Integer isUserPublish, String publishAdminName);
 
-    List<Video> selectForPageByalbumId(Long albumId,String title,Integer videoId);
+    List<Video> selectForPageByalbumId(Long albumId, String title, Integer videoId);
 
-    void deleteByAlbumAndVideoId(Long albumId,Integer videoId);
+    void deleteByAlbumAndVideoId(Long albumId, Integer videoId);
 
     void deleteByAlbumAndVideoIds(Long albumId, List<String> videoIds);
+
+    void videoAddToAlbum(Long albumId, Integer videoId);
+
+    void videoRemoveToAlbum(Long albumId, Integer videoId);
 }

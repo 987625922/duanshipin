@@ -36,13 +36,28 @@
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Video">
-    INSERT INTO video(title,introduction,img,create_time,update_time,controller_admin_id,number_of_plays,number_of_goods,type,is_user_publish,director,one_class_tag_id,performer,two_class_tag_ids,three_class_tag_ids,is_block_search,publish_admin_id) VALUES(
+    INSERT INTO video(title,introduction,img,create_time,update_time,
+    controller_admin_id,number_of_plays,number_of_goods,
+    type,is_user_publish,director,one_class_tag_id,performer,
+    two_class_tag_ids,three_class_tag_ids,is_block_search,
+    publish_admin_id) VALUES(
             #{title},#{introduction},#{img},#{createTime},#{updateTime},
             #{controllerAdminId},#{numberOfPlays},#{numberOfGoods},#{type}
             ,#{isUserPublish},#{director},#{oneClassTagId},#{performer}
             ,#{twoClassTagIds},#{threeClassTagIds},#{isBlockSearch}
             ,#{publishAdminId})
     </insert>
+
+    <insert id="videoAddToAlbum">
+        INSERT INTO t_album_video(album_id,video_id) VALUES(
+        #{albumId},#{videoId}
+        )
+    </insert>
+
+    <delete id="videoRemoveToAlbum">
+        delete from t_album_video where
+        album_id = #{albumId} and video_id = #{videoId}
+    </delete>
 
     <delete id="deleteById" parameterType="int">
         delete from video where id = #{id}
@@ -60,7 +75,7 @@
     <select id="getListByType" resultMap="BaseResultMap">
         select * from video v
         <if test="type != null and type != ''">
-        where type = #{type}
+            where type = #{type}
         </if>
         <if test="isUserPublish != null and isUserPublish != ''">
             and is_user_publish = #{isUserPublish}
@@ -112,7 +127,10 @@
     <select id="selectForPage" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        from video where video.type = #{type}
+        from video where 1=1
+        <if test="type != null and type != '' ">
+            video.type = #{type}
+        </if>
         <if test="title != null and title != '' ">
             and title like '%${title}%'
         </if>
@@ -129,7 +147,7 @@
 
     <select id="selectForPageByalbumId" resultMap="BaseResultMap">
         select * from video where video.id in (
-          select video_id from t_album_video where album_id = #{albumId}
+        select video_id from t_album_video where album_id = #{albumId}
         )
         <if test="title != null and title != '' ">
             and video.title like '%${title}%'

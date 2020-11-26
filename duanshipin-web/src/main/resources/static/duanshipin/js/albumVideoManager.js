@@ -261,22 +261,46 @@ var dialogPageSize = 5
 
 function getDialogVideoList() {
     ajax({
-        url: "/api/video/list",
+        url: "/api/video/getListByAlbumId",
         type: 'post',
         data: {
-            currentPage: dialogPageIndex,
-            pageSize: dialogPageSize
+            currentPage: 1,
+            pageSize: 1000,
+            ablumId: albumId
         },
         dataType: 'json',
         timeout: 10000,
         contentType: "application/json",
         success: function (data) {
-            let json = JSON.parse(data);
-            if (json.code === 200) {
-                dealDialog(json)
+            let json1 = JSON.parse(data);
+            if (json1.code === 200) {
+                ajax({
+                    url: "/api/video/list",
+                    type: 'post',
+                    data: {
+                        currentPage: dialogPageIndex,
+                        pageSize: dialogPageSize
+                    },
+                    dataType: 'json',
+                    timeout: 10000,
+                    contentType: "application/json",
+                    success: function (data) {
+                        let json = JSON.parse(data);
+                        if (json.code === 200) {
+                            dealDialog(json, json1)
+                        } else {
+                            console.log(json.msg);
+                            Toast(json.msg, 1000);
+                        }
+                    },
+                    //异常处理
+                    error: function (e) {
+                        console.log(e);
+                    }
+                })
             } else {
-                console.log(json.msg);
-                Toast(json.msg, 1000);
+                console.log(json1.msg);
+                Toast(json1.msg, 1000);
             }
         },
         //异常处理
@@ -284,9 +308,10 @@ function getDialogVideoList() {
             console.log(e);
         }
     })
+
 }
 
-function dealDialog(json) {
+function dealDialog(json, json1) {
     let htmlStr = '';
     htmlStr += '<table class="content_table"><thead><tr>';
     htmlStr += '                          <th>  <span class="table_th">视频ID</span>' +
@@ -306,13 +331,18 @@ function dealDialog(json) {
         htmlStr += '<td>'
         htmlStr += json.data.list[i].title
         htmlStr += '</td>'
+        for (var j = 0; j < json1.data.list.length; j++) {
+            if (json1.data.list[j].id == json.data.list[i].id) {
+                isShowAdd = false
+            }
+        }
         if (isShowAdd) {
             htmlStr += '<td>'
-            htmlStr += '<span>添加</span>'
+            htmlStr += '<span onclick="albumAddVideo(' + json.data.list[i].id + ')" style="cursor: pointer">添加</span>'
             htmlStr += '</td>'
         } else {
             htmlStr += '<td>'
-            htmlStr += '<span>移除</span>'
+            htmlStr += '<span onclick="albumRemoveVideo(' + json.data.list[i].id + ')" style="cursor: pointer">移除</span>'
             htmlStr += '</td>'
         }
         htmlStr += '</tr>'
@@ -373,4 +403,118 @@ function dealDialog(json) {
 function getSpaceDialogVideoList(_type, _pageIndex, _pageSize) {
     dialogPageIndex = _pageIndex
     getDialogVideoList()
+}
+
+function albumAddVideo(videoId) {
+    ajax({
+        url: "/api/video/albumToAddVideo",
+        type: 'get',
+        data: {
+            albumId: albumId,
+            videoId: videoId
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getDialogVideoList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function albumRemoveVideo(videoId) {
+    ajax({
+        url: "/api/video/videoRemoveToAlbum",
+        type: 'get',
+        data: {
+            albumId: albumId,
+            videoId: videoId
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json = JSON.parse(data);
+            if (json.code == 200) {
+                getDialogVideoList()
+            } else {
+                console.log(json.msg);
+                Toast(json.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+}
+
+function dialogHide() {
+    $('#dialog_loginout_wrapper').hide()
+    getVideoList()
+}
+
+function selectDialogVideoList() {
+    dialogPageIndex = 1;
+    ajax({
+        url: "/api/video/getListByAlbumId",
+        type: 'post',
+        data: {
+            currentPage: 1,
+            pageSize: 1000,
+            ablumId: albumId
+        },
+        dataType: 'json',
+        timeout: 10000,
+        contentType: "application/json",
+        success: function (data) {
+            let json1 = JSON.parse(data);
+            if (json1.code === 200) {
+                ajax({
+                    url: "/api/video/select",
+                    type: 'post',
+                    data: {
+                        id:$('#dialog-input-id').val(),
+                        title:$('#dialog-input-title').val(),
+                        currentPage: dialogPageIndex,
+                        pageSize: dialogPageSize
+                    },
+                    dataType: 'json',
+                    timeout: 10000,
+                    contentType: "application/json",
+                    success: function (data) {
+                        let json = JSON.parse(data);
+                        if (json.code === 200) {
+                            dealDialog(json, json1)
+                        } else {
+                            console.log(json.msg);
+                            Toast(json.msg, 1000);
+                        }
+                    },
+                    //异常处理
+                    error: function (e) {
+                        console.log(e);
+                    }
+                })
+            } else {
+                console.log(json1.msg);
+                Toast(json1.msg, 1000);
+            }
+        },
+        //异常处理
+        error: function (e) {
+            console.log(e);
+        }
+    })
+
 }

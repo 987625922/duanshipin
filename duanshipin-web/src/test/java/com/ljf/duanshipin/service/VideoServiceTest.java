@@ -56,4 +56,14 @@ public class VideoServiceTest {
             log.info(a.toString());
         });
     }
+
+    @Test
+    public void videoAddToAlbum(){
+        videoService.videoAddToAlbum(629L,5);
+    }
+
+    @Test
+    public void videoRemoveToAlbum(){
+        videoService.videoRemoveToAlbum(629L,5);
+    }
 }

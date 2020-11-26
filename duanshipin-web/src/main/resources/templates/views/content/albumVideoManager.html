@@ -20,14 +20,16 @@
 <body>
 <div class="dialog_wrapper" id="dialog_loginout_wrapper" style="z-index: 2008;">
     <div class="dialog">
+        <img src="/duanshipin/img/close.png" style="height: 25px;width: 25px;z-index:3000;
+        position:absolute;display:inline-block;cursor: pointer;top: 5px;right: 5px" onclick="dialogHide()"/>
         <div class="dialog_header">
             <span class="login-dialog-title">选择视频</span>
         </div>
         <div class="dialog_body">
             <div class="dialog-form-item">
-                <div><span>视频id：</span><input style="width: 80px;height: 20px">
-                    <span>视频标题：</span><input style="width: 80px;height: 20px">
-                    <button style="float: right">
+                <div><span>视频id：</span><input id="dialog-input-id" style="width: 80px;height: 20px">
+                    <span>视频标题：</span><input id="dialog-input-title" style="width: 80px;height: 20px">
+                    <button onclick="selectDialogVideoList()" style="float: right">
                         搜索
                     </button>
                 </div>
@@ -35,13 +37,15 @@
             <div id="dialog-content">
 
             </div>
-            <div style="height: 30px">
-                <img src="/duanshipin/img/last_page.png" alt="" class="last_page" style="width: 10px;height: 15px;
+            <div style="height: 30px;">
+                <div style="float: right;">
+                    <img src="/duanshipin/img/last_page.png" alt="" class="last_page" style="width: 10px;height: 15px;
                 margin-top: 10px" onclick="previousPage()"/>
-                <ul class="page_select_ul" id="dialog_page_select_ul">
-                </ul>
-                <img src="/duanshipin/img/next_page.png" alt="" class="last_page" style="width: 10px;height: 15px;
+                    <ul class="page_select_ul" id="dialog_page_select_ul">
+                    </ul>
+                    <img src="/duanshipin/img/next_page.png" alt="" class="last_page" style="width: 10px;height: 15px;
                 margin-top: 10px" onclick="nextPage()"/>
+                </div>
             </div>
         </div>
     </div>

@@ -34,4 +34,8 @@ public interface VideoService {
     void update(Video video);
 
     PageInfo<Video> selectForPageByalbumId(Long albumId,String title,Integer videoId,Integer currentPage,Integer pageSize);
+
+    void videoAddToAlbum(Long albumId, Integer videoId);
+
+    void videoRemoveToAlbum(Long albumId, Integer videoId);
 }

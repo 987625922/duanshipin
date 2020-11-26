@@ -94,8 +94,8 @@ public class VideoController extends BaseController {
     public Object select(Integer id, String title,
                          @RequestParam(value = "pageIndex", defaultValue = "1") Integer currentPage,
                          @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize,
-                         @RequestParam(value = "type", defaultValue = "2") Integer type
-            , @RequestParam(value = "isUserPublish", defaultValue = "0") Integer isUserPublish,
+                         @RequestParam(required = false) Integer type
+            , @RequestParam(required = false) Integer isUserPublish,
                          @RequestParam(required = false) String publishAdminName) {
         return JsonResult.buildSuccess(videoService.selectForPage(id, title, type, isUserPublish, publishAdminName, currentPage, pageSize));
     }
@@ -187,5 +187,17 @@ public class VideoController extends BaseController {
                                          Integer currentPage, Integer pageSize) {
         return JsonResult.buildSuccess(videoService.selectForPageByalbumId(albumId,
                 title, videoId, currentPage, pageSize));
+    }
+
+    @RequestMapping("/albumToAddVideo")
+    public Object albumToAddVideo(Long albumId, Integer videoId) {
+        videoService.videoAddToAlbum(albumId, videoId);
+        return JsonResult.buildSuccess();
+    }
+
+    @RequestMapping("/videoRemoveToAlbum")
+    public Object videoRemoveToAlbum(Long albumId, Integer videoId) {
+        videoService.videoRemoveToAlbum(albumId, videoId);
+        return JsonResult.buildSuccess();
     }
 }

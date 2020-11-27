@@ -1,5 +1,6 @@
 package com.ljf.duanshipin.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -12,6 +13,7 @@ import java.util.Date;
  */
 @Data
 @Accessors(chain = true)
+@JsonIgnoreProperties(value = { "handler" })
 public class Video {
     private Integer id;
     private String title;

@@ -1,5 +1,6 @@
 package com.ljf.duanshipin.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -14,6 +15,7 @@ import java.util.List;
  */
 @Data
 @Accessors(chain = true)
+@JsonIgnoreProperties(value = { "handler" })
 public class Album {
     private Long id;
     private String title;

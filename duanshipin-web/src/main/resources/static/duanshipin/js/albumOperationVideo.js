@@ -302,7 +302,7 @@ function getAlbumList() {
             pageIndex: pageIndex,
             pageSize: pageSize,
             type: type,
-            isUserPublish: 0
+            isUserPublish: 2
         },
         dataType: 'json',
         timeout: 10000,
@@ -407,12 +407,12 @@ function dealTable(json) {
             htmlStr += '                            <div class="table_content_controll">' +
                 '                                    <a href="/views/content/editAlbum?id='+bean.id+'">修改专辑</a>' +
                 '                                    <a href="/views/content/albumVideoManager?id='+bean.id+'">视频管理</a>' +
-                '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
+                '                                    <a href="/views/content/albumpreview?id='+bean.id+'">专辑预览</a>' +
                 '                            </div>'
         } else if (type == 3) {
             htmlStr += '                            <div class="table_content_controll">' +
                 '                                    <a style="cursor: pointer" onclick="itemToOnline('+bean.id+')">专辑还原</a>' +
-                '                                    <a href="/views/content/albumpreview">专辑预览</a>' +
+                '                                    <a href="/views/content/albumpreview?id='+bean.id+'">专辑预览</a>' +
                 '                            </div>'
         }
         htmlStr += '                        </td></tr>'
@@ -474,7 +474,7 @@ function dealTable(json) {
 }
 
 function getSpecialAlbumList(_type, _pageIndex, _pageSize) {
-    type = _type;
+    // type = _type;
     pageIndex = _pageIndex;
     pageSize = _pageSize;
     getAlbumList();

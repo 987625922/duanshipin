@@ -22,6 +22,16 @@
         <result column="publish_admin_id" property="publishAdminId" jdbcType="BIGINT"/>
         <result column="is_block_search" property="isBlockSearch" jdbcType="INTEGER"/>
         <result column="is_user_publish" property="isUserPublish" jdbcType="INTEGER"/>
+        <collection property="videoList" javaType="ArrayList"
+                    column="id" ofType="com.ljf.duanshipin.domain.Video"
+                    select="com.ljf.duanshipin.mapper.VideoMapper.getInfoById"
+                    fetchType="lazy"
+        >
+            <id property="id" column="id"/>
+            <result column="title" property="title" jdbcType="VARCHAR"/>
+            <result column="introduction" property="introduction" jdbcType="VARCHAR"/>
+            <result column="img" property="img" jdbcType="VARCHAR"/>
+        </collection>
     </resultMap>
 
     <sql id="Base_Column_List">
@@ -82,9 +92,7 @@
     </delete>
 
     <select id="selectForPage" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List"/>
-        from album where album.type = #{type}
+        select * from album where album.type = #{type}
         <if test="title != null and title != '' ">
             and title like '%${title}%'
         </if>
@@ -99,10 +107,8 @@
         </if>
     </select>
 
-    <select id="getInfoById" resultType="com.ljf.duanshipin.domain.Album">
-        SELECT
-        <include refid="Base_Column_List"/>
-        FROM album WHERE id = #{id}
+    <select id="getInfoById" resultMap="BaseResultMap">
+        SELECT * FROM album WHERE id = #{id}
     </select>
 
     <update id="update" parameterType="com.ljf.duanshipin.domain.Album">
@@ -151,5 +157,4 @@
         </set>
         WHERE id = #{id}
     </update>
-
 </mapper>

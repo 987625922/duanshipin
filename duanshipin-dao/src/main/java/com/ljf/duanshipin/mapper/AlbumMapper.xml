@@ -24,7 +24,7 @@
         <result column="is_user_publish" property="isUserPublish" jdbcType="INTEGER"/>
         <collection property="videoList" javaType="ArrayList"
                     column="id" ofType="com.ljf.duanshipin.domain.Video"
-                    select="com.ljf.duanshipin.mapper.VideoMapper.getInfoById"
+                    select="com.ljf.duanshipin.mapper.VideoMapper.getListByAlbumId"
                     fetchType="lazy"
         >
             <id property="id" column="id"/>

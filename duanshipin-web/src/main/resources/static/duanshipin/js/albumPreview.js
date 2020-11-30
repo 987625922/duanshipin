@@ -16,6 +16,17 @@ function getAlbumDetail() {
             if (json.code === 200) {
                 $('#album-title').html(json.data.title)
                 $('#album-id').html(json.data.id)
+                var htmlStr = ''
+                for (var i = 0; i < json.data.videoList.length; i++) {
+                    console.log(json.data.videoList[i].title)
+                    htmlStr += '<div class="div-video-content-item">' +
+                        '                            <img src="'+json.data.videoList[i].img+'" alt="">' +
+                        '                            <p class="div-video-content-p">'
+                        +json.data.videoList[i].title +
+                        '                            </p>' +
+                        '                        </div>'
+                }
+                $('#div-video-content').html(htmlStr);
             } else {
                 console.log(json.msg);
                 Toast(json.msg, 1000);

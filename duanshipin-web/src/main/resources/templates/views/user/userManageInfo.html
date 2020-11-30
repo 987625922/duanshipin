@@ -1,176 +1,179 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <!-- 用户管理详情页 -->
 
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>视频管理平台</title>
     <!-- import CSS -->
-    <link rel="stylesheet" href="../../../static/duanshipin/css/project.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/commonLayout.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/userManageInfo.css" type="text/css" />
+    <link rel="stylesheet" th:href="@{/duanshipin/css/project.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/userManageInfo.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/commonLayout.css}" media="all">
+
     <!-- hander  -->
-    <script src="../../../static/duanshipin/js/commonLayout.js" type="text/javascript"></script>
+    <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
+    <script th:src="@{/duanshipin/js/common.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
+
 </head>
 
 <body>
-    <div class="body">
-        <script type="text/javascript">
-            writeHander()
-        </script>
-        <div class="content">
-            <div class="main_content">
-                <div class="full-content" style="height:100%;overflow-y:scroll; overflow-x:hidden;">
-                    <div class="title">
-                        <span>用户管理详情</span>
-                    </div>
-                    <div class="title_line">
-                    </div>
-                    <div class="div-user-info">
-                        <div class="div-user-info-left">
-                            <div class="div-user-info-left-left">
-                                <div class="div-user-info-item-tips">
-                                    <span>用户ID：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>123478975</span>
-                                </div>
+<div class="body">
+    <script type="text/javascript">
+        writeHander()
+    </script>
+    <div class="content">
+        <div class="main_content">
+            <div class="full-content" style="height:100%;overflow-y:scroll; overflow-x:hidden;">
+                <div class="title">
+                    <span>用户管理详情</span>
+                </div>
+                <div class="title_line">
+                </div>
+                <div class="div-user-info">
+                    <div class="div-user-info-left">
+                        <div class="div-user-info-left-left">
+                            <div class="div-user-info-item-tips">
+                                <span>用户ID：</span>
                             </div>
-                            <div class="div-user-info-left-right">
-                                <div class="div-user-info-item-tips">
-                                    <span>设备型号：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>小米6</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-left">
-                                <div class="div-user-info-item-tips">
-                                    <span>用户昵称：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>小明</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-right">
-                                <div class="div-user-info-item-tips">
-                                    <span>地区：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>无</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-left">
-                                <div class="div-user-info-item-tips">
-                                    <span>性别：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>男</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-right">
-                                <div class="div-user-info-item-tips">
-                                    <span>手机号：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>131*****4588</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-left">
-                                <div class="div-user-info-item-tips">
-                                    <span>作品量：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>46</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-right">
-                                <div class="div-user-info-item-tips">
-                                    <span>注册时间：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>2018-2-9 12：00：00</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-left">
-                                <div class="div-user-info-item-tips">
-                                    <span>粉丝量：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>2487</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-right">
-                                <div class="div-user-info-item-tips">
-                                    <span>最近登录时间：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>2018-7-19 12：00：00</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-left">
-                                <div class="div-user-info-item-tips">
-                                    <span>个性签名：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>这个人很懒，并没有留下什么</span>
-                                </div>
-                            </div>
-                            <div class="div-user-info-left-right">
-                                <div class="div-user-info-item-tips">
-                                    <span>用户状态：</span>
-                                </div>
-                                <div class="div-user-info-item-content">
-                                    <span>正常</span>
-                                </div>
+                            <div class="div-user-info-item-content">
+                                <span>123478975</span>
                             </div>
                         </div>
-                        <div class="div-user-info-img">
-                            <img src="../../../static/duanshipin/img/tx.jpg" alt="" />
+                        <div class="div-user-info-left-right">
+                            <div class="div-user-info-item-tips">
+                                <span>设备型号：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>小米6</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-left">
+                            <div class="div-user-info-item-tips">
+                                <span>用户昵称：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>小明</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-right">
+                            <div class="div-user-info-item-tips">
+                                <span>地区：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>无</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-left">
+                            <div class="div-user-info-item-tips">
+                                <span>性别：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>男</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-right">
+                            <div class="div-user-info-item-tips">
+                                <span>手机号：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>131*****4588</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-left">
+                            <div class="div-user-info-item-tips">
+                                <span>作品量：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>46</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-right">
+                            <div class="div-user-info-item-tips">
+                                <span>注册时间：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>2018-2-9 12：00：00</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-left">
+                            <div class="div-user-info-item-tips">
+                                <span>粉丝量：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>2487</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-right">
+                            <div class="div-user-info-item-tips">
+                                <span>最近登录时间：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>2018-7-19 12：00：00</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-left">
+                            <div class="div-user-info-item-tips">
+                                <span>个性签名：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>这个人很懒，并没有留下什么</span>
+                            </div>
+                        </div>
+                        <div class="div-user-info-left-right">
+                            <div class="div-user-info-item-tips">
+                                <span>用户状态：</span>
+                            </div>
+                            <div class="div-user-info-item-content">
+                                <span>正常</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="div-user-controll">
-                        <span class="div-user-controll-title">封禁操作</span>
-                        <div class="div-user-controll-main">
-                            <div>
-                                <span class="div-user-info-controll-tips">封禁期限：</span>
-                                <div class="div-user-info-controll-tips-check">
-                                    <input type="radio" name="isSelect" value="noEnd" id="form-input-isEnd">
-                                    <span>7天</span>
-                                    <input type="radio" name="isSelect" value="isEnd" checked="checked"
-                                        id="form-input-isEnd">
-                                    <span>14天</span>
-                                    <input type="radio" name="isSelect" value="isEnd" checked="checked"
-                                        id="form-input-isEnd">
-                                    <span>永久</span>
-                                </div>
+                    <div class="div-user-info-img">
+                        <img src="../../../static/duanshipin/img/tx.jpg" alt=""/>
+                    </div>
+                </div>
+                <div class="div-user-controll">
+                    <span class="div-user-controll-title">封禁操作</span>
+                    <div class="div-user-controll-main">
+                        <div>
+                            <span class="div-user-info-controll-tips">封禁期限：</span>
+                            <div class="div-user-info-controll-tips-check">
+                                <input type="radio" name="isSelect" value="noEnd" id="form-input-isEnd">
+                                <span>7天</span>
+                                <input type="radio" name="isSelect" value="isEnd" checked="checked"
+                                       id="form-input-isEnd">
+                                <span>14天</span>
+                                <input type="radio" name="isSelect" value="isEnd" checked="checked"
+                                       id="form-input-isEnd">
+                                <span>永久</span>
                             </div>
-                            <div class="div-user-info-controll-check-item">
-                                <span class="div-user-info-controll-check-tips">封禁理由：</span>
-                                <div class="div-user-info-controll-tips-check">
-                                    <textarea type="text" id="input-intro" placeholder="请填写封禁理由..."></textarea>
-                                </div>
+                        </div>
+                        <div class="div-user-info-controll-check-item">
+                            <span class="div-user-info-controll-check-tips">封禁理由：</span>
+                            <div class="div-user-info-controll-tips-check">
+                                <textarea type="text" id="input-intro" placeholder="请填写封禁理由..."></textarea>
                             </div>
+                        </div>
 
-                            <div class="div-user-info-controll-check-item">
-                                <div class="div-user-info-controll-tips-check">
-                                    <button style="margin-left: 80px;">保存</button>
-                                    <button>解除封禁</button>
-                                    <button>取消</button>
-                                </div>
+                        <div class="div-user-info-controll-check-item">
+                            <div class="div-user-info-controll-tips-check">
+                                <button style="margin-left: 80px;">保存</button>
+                                <button>解除封禁</button>
+                                <button>取消</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <script type="text/javascript">
-                writeLeft()
-                writeUserManage()
-            </script>
         </div>
+        <script type="text/javascript">
+            writeLeft()
+            writeUserManage()
+        </script>
     </div>
+</div>
 </body>
-
-<script src="../../../static/duanshipin/js/userManageInfo.js" type="text/javascript"></script>
-
+<script th:src="@{/duanshipin/js/userManageInfo.js}"></script>
 </html>

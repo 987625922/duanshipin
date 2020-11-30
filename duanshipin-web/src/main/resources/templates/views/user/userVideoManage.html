@@ -1,16 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <!-- 用户作品管理 -->
 
 <head>
     <meta charset="UTF-8" />
     <title>视频管理平台</title>
     <!-- import CSS -->
-    <link rel="stylesheet" href="../../../static/duanshipin/css/project.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/commonLayout.css" type="text/css" />
-    <link rel="stylesheet" href="../../../static/duanshipin/css/views/userVideoManage.css" type="text/css" />
+    <link rel="stylesheet" th:href="@{/duanshipin/css/project.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/userVideoManage.css}" media="all">
+    <link rel="stylesheet" th:href="@{/duanshipin/css/views/commonLayout.css}" media="all">
+
     <!-- hander  -->
-    <script src="../../../static/duanshipin/js/commonLayout.js" type="text/javascript"></script>
+    <script th:src="@{/duanshipin/js/commonLayout.js}"></script>
+    <script th:src="@{/duanshipin/js/common.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
+    <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
 </head>
 
 <body>
@@ -81,7 +85,7 @@
                             </td>
                             <td>
                                 <div class="table_content_controll">
-                                    <a href="../content/videoPreview.html">预览</a>
+                                    <a href="/views/content/videoPreview">预览</a>
                                     <br />
                                     <a href="#">下线</a>
                                 </div>
@@ -119,7 +123,5 @@
         </div>
     </div>
 </body>
-
-<script src="../../../static/duanshipin/js/userVideoManage.js" type="text/javascript"></script>
-
+<script th:src="@{/duanshipin/js/userVideoManage.js}"></script>
 </html>

@@ -165,10 +165,30 @@ public class ViewController extends BaseController {
     }
 
     @RequestMapping("/content/editVideo")
-    public Object editVideo(){
+    public Object editVideo() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("views/content/editVideo");
         return mav;
     }
 
+    @RequestMapping("/user/userManage")
+    public Object userManage() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/user/userManage");
+        return mav;
+    }
+
+    @RequestMapping("/user/userManageInfo")
+    public Object userManageInfo() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/user/userManageInfo");
+        return mav;
+    }
+
+    @RequestMapping("/user/userVideoManage")
+    public Object userVideoManage() {
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("views/user/userVideoManage");
+        return mav;
+    }
 }

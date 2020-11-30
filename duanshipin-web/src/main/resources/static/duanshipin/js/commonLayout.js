@@ -34,7 +34,7 @@ function writeLeft() {
     document.writeln("                            </a>");
     document.writeln("                        </div>");
     document.writeln("                        <div class=\'left_item left_item_two\'  id=\'left_item_two\'>");
-    document.writeln("                            <a href=\'../user/userManage.html\' id=\'left_item_two_a\'>");
+    document.writeln("                            <a href=\'/views/user/userManage\' id=\'left_item_two_a\'>");
     document.writeln("                                <i id=\'left_item_two_img\'>");
     document.writeln("                                 </i>");
     document.writeln("                                <span>用户</span>");
@@ -99,7 +99,7 @@ function writeUserManage() {
     document.writeln("                    <div id=\'left_two_nav_item\'>");
     document.writeln("                        <span>用户管理</span>");
     document.writeln("                    </div>");
-    document.writeln("                    <a href=\'../user/userManage.html\' class=\'item_one_one item_style\' id=\'item_one_one\'>");
+    document.writeln("                    <a href=\'/views/user/userManage\' class=\'item_one_one item_style\' id=\'item_one_one\'>");
     document.writeln("                        <span>用户管理</span>");
     document.writeln("                    </a>");
     document.writeln("                </div>");

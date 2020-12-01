@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 27/11/2020 11:41:24
+ Date: 01/12/2020 17:51:18
 */
 
 SET NAMES utf8mb4;
@@ -34,6 +34,9 @@ CREATE TABLE `admin`  (
   `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `account` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   `is_robot` int(1) NOT NULL DEFAULT 0 COMMENT '1 为机器人',
+  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `number_of_works` int(11) NULL DEFAULT NULL,
+  `number_of_fans` int(11) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `account`(`account`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 27 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
@@ -41,10 +44,10 @@ CREATE TABLE `admin`  (
 -- ----------------------------
 -- Records of admin
 -- ----------------------------
-INSERT INTO `admin` VALUES (9, 'Admin', '', '123', 1, '2020-09-21 11:19:17', '2020-09-21 11:19:17', 1, 4, '4280d89a5a03f812751f504cc10ee8a5', 'Admin', 0);
-INSERT INTO `admin` VALUES (12, 'Admin', '', NULL, 1, '2020-09-22 11:14:50', '2020-09-22 11:14:50', 1, 1, '4280d89a5a03f812751f504cc10ee8a5', 'Admin1', 0);
-INSERT INTO `admin` VALUES (14, 'ljf@qq.com', '', NULL, 1, '2020-09-25 17:19:17', '2020-09-25 17:19:17', 1, 1, '123456', 'admin2', 0);
-INSERT INTO `admin` VALUES (26, '测试机器人', '', NULL, 1, '2020-10-30 16:55:20', '2020-10-30 16:55:20', 1, 1, '123456', 'admin122', 1);
+INSERT INTO `admin` VALUES (9, 'Admin', '', '123', 1, '2020-09-21 11:19:17', '2020-09-21 11:19:17', 1, 4, '4280d89a5a03f812751f504cc10ee8a5', 'Admin', 0, NULL, NULL, NULL);
+INSERT INTO `admin` VALUES (12, 'Admin', '', NULL, 1, '2020-09-22 11:14:50', '2020-09-22 11:14:50', 1, 1, '4280d89a5a03f812751f504cc10ee8a5', 'Admin1', 0, NULL, NULL, NULL);
+INSERT INTO `admin` VALUES (14, 'ljf@qq.com', '', NULL, 1, '2020-09-25 17:19:17', '2020-09-25 17:19:17', 1, 1, '123456', 'admin2', 0, NULL, NULL, NULL);
+INSERT INTO `admin` VALUES (26, '测试机器人', '', NULL, 1, '2020-10-30 16:55:20', '2020-10-30 16:55:20', 1, 1, '123456', 'admin122', 1, NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for album
@@ -306,7 +309,7 @@ CREATE TABLE `login_log`  (
 -- ----------------------------
 -- Records of login_log
 -- ----------------------------
-INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-11-27 11:38:20', 277, '2020-11-27 11:37:35');
+INSERT INTO `login_log` VALUES (4, 9, '2020-09-25 14:49:41', '2020-12-01 17:15:23', 281, '2020-12-01 16:26:34');
 
 -- ----------------------------
 -- Table structure for permission
@@ -322,7 +325,7 @@ CREATE TABLE `permission`  (
   `update_time` datetime(0) NULL DEFAULT NULL,
   `last_control_admin_id` bigint(20) NULL DEFAULT NULL COMMENT '上一个控制的admin的id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of permission
@@ -420,7 +423,7 @@ CREATE TABLE `tag`  (
   `parent_tag_id` int(11) NOT NULL COMMENT '父标签的id -1为根标签',
   `type` int(1) NOT NULL COMMENT '标签等级 1 一级标签 2 二级标签 3 三级标签',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 61 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tag
@@ -515,7 +518,7 @@ CREATE TABLE `video`  (
 -- ----------------------------
 -- Records of video
 -- ----------------------------
-INSERT INTO `video` VALUES (1, '测试123123', '测试123', '测试', 0, 0, '2020-11-11 16:10:43', 26, '2020-11-11 16:10:43', 4, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
+INSERT INTO `video` VALUES (1, '测试1', '测试123', '测试', 0, 0, '2020-11-11 16:10:43', 26, '2020-11-11 16:10:43', 4, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
 INSERT INTO `video` VALUES (2, '测试123123', '测试123', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 4, 1, 9, '测试123', '2', '18', '19', 2, '测试123');
 INSERT INTO `video` VALUES (3, '测试123123', '测试123', '测试', 0, 0, '2020-11-11 16:10:44', 26, '2020-11-11 16:10:44', 1, 0, 9, '测试123', '2', '18', '19', 2, '测试123');
 INSERT INTO `video` VALUES (4, '测试123123', '测试123', '测试', 0, 0, '2020-11-11 16:10:44', 1, '2020-11-11 16:10:44', 3, 1, 9, '测试123', '2', '18', '19', 2, '测试123');

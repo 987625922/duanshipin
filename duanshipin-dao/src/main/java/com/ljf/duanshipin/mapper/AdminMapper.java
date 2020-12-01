@@ -46,8 +46,11 @@ public interface AdminMapper {
 
     /**
      * 通过id获取详情
+     *
      * @param id
      * @return
      */
     Admin getAdminById(Long id);
+
+    List<Admin> getAdmins();
 }

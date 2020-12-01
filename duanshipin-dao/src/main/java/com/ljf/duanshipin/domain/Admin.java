@@ -25,6 +25,9 @@ public class Admin implements Serializable {
     private Date lastUpdateTime;
     private Date createTime;
     private String account;
+    private String avatar;
+    private Integer numberOfWorks;
+    private Integer numberOfFans;
     /**
      * 上一次操作该管理员的管理员id
      */

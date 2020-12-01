@@ -15,6 +15,7 @@
     <script th:src="@{/duanshipin/js/common.js}"></script>
     <script th:src="@{/duanshipin/js/utils/ajax.js}"></script>
     <script th:src="@{/duanshipin/js/utils/jquery-3.3.1.min.js}"></script>
+    <script th:src="@{/duanshipin/js/userManage.js}"></script>
 </head>
 <body>
 <div class="body">
@@ -54,90 +55,24 @@
                     </select>
                     <button class="btn-search">查询</button>
                     <div class="fr controll-operation-two-fr">
-                        <img src="../../../static/duanshipin/img/img_fresh.png" alt="" class="fresh"/>
+                        <img src="/duanshipin/img/img_fresh.png" alt="" class="fresh"/>
                     </div>
                 </div>
             </div>
-            <div class="table_div">
-                <table class="content_table">
-                    <tr>
-                        <th>
-                            <span class="table_id table_th"> 用户ID </span>
-                        </th>
-                        <th>
-                            <span class="table_title table_th"> 用户昵称 </span>
-                        </th>
-                        <th>
-                            <span class="table_introducation table_th"> 用户签名 </span>
-                        </th>
-                        <th>
-                            <span class="table_img table_th"> 用户头像 </span>
-                        </th>
-                        <th>
-                            <span class="table_mun table_th"> 作品量 </span>
-                        </th>
-                        <th>
-                            <span class="table_user table_th">粉丝量</span>
-                        </th>
-                        <th>
-                            <span class="table_time table_th"> 注册时间 </span>
-                        </th>
-                        <th>
-                            <span class="table_controll table_th"> 操作 </span>
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <span class="table_id"> 987123 </span>
-                        </td>
-                        <td>
-                            <span class="table_title">@Luffy</span>
-                        </td>
-                        <td>
-                                <span class="table_introducation">
-                                    该用户很懒，还没有签名哦
-                                </span>
-                        </td>
-                        <td>
-                            <img src="../../../static/duanshipin/img/tx.jpg" alt="" class="table_content_img"/>
-                        </td>
-                        <td>
-                            <span class="table_mun"> 30 </span>
-                        </td>
-                        <td>
-                            <span class="table_user"> 30 </span>
-                        </td>
-                        <td>
-                            <span class="table_time"> 2018-11-28 14:01:19 </span>
-                        </td>
-                        <td>
-                            <div class="table_content_controll">
-                                <div id="table_controll_two">
-                                    <a href="userManageInfo">管理</a>
-                                    <a href="userVideoManage">作品</a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
+            <div class="table_div" id="table-content">
             </div>
             <div class="page_select" id="page_select">
                 <div class="page_select_inner">
                     <span>共</span>
-                    <span>100</span>
+                    <span id="page-total-mun"></span>
                     <span>条</span>
                     <span class="page_select_position_one">每页</span>
                     <input type="number" class="page_input_mun"/>
                     <span>条</span>
-                    <img src="../../../static/duanshipin/img/last_page.png" alt="" class="last_page"/>
+                    <img src="/duanshipin/img/last_page.png" alt="" class="last_page"/>
                     <ul class="page_select_ul">
-                        <li>1</li>
-                        <li>2</li>
-                        <li>3</li>
-                        <li>...</li>
-                        <li>10</li>
                     </ul>
-                    <img src="../../../static/duanshipin/img/next_page.png" alt="" class="last_page"/>
+                    <img src="/duanshipin/img/next_page.png" alt="" class="last_page"/>
                     <span class="page_select_position_two">前往</span>
                     <input type="number" class="page_input_to_mun"/>
                     <span>页</span>
@@ -151,5 +86,8 @@
     </div>
 </div>
 </body>
-<script th:src="@{/duanshipin/js/userManage.js}"></script>
+<script type="text/javascript">
+    initView();
+    getAdmins();
+</script>
 </html>

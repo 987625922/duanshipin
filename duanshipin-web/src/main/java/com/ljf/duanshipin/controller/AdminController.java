@@ -59,7 +59,13 @@ public class AdminController extends BaseController {
 
 
     @RequestMapping("/getAdminById")
-    public Object getAdminById(Long id){
+    public Object getAdminById(Long id) {
         return JsonResult.buildSuccess(adminService.getAdminById(id));
+    }
+
+    @RequestMapping("/getAdminsByPage")
+    public Object getAdminsByPage(@RequestParam(value = "currentPage", defaultValue = "1") Integer currentPage,
+                                  @RequestParam(value = "pageSize", defaultValue = "10") Integer pageSize) {
+        return JsonResult.buildSuccess(adminService.getAdminsByPage(currentPage, pageSize));
     }
 }

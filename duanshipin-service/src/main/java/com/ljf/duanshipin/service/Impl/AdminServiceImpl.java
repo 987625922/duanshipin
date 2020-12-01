@@ -78,4 +78,12 @@ public class AdminServiceImpl implements AdminService {
     public Admin getAdminById(Long id) {
         return adminMapper.getAdminById(id);
     }
+
+    @Override
+    public PageInfo<Admin> getAdminsByPage(Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Admin> tagList = adminMapper.getAdmins();
+        PageInfo<Admin> pageInfo = new PageInfo<>(tagList);
+        return pageInfo;
+    }
 }

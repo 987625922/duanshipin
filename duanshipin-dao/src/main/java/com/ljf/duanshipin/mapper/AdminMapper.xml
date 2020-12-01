@@ -15,11 +15,15 @@
         <result column="password" property="password" jdbcType="VARCHAR"/>
         <result column="account" property="account" jdbcType="VARCHAR"/>
         <result column="is_robot" property="isRobot" jdbcType="INTEGER"/>
+        <result column="avatar" property="avatar" jdbcType="VARCHAR"/>
+        <result column="number_of_works" property="numberOfWorks" jdbcType="INTEGER"/>
+        <result column="number_of_fans" property="numberOfFans" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="Base_Column_List">
     id,user_name,real_name,phone,status,create_time,last_update_time
-            ,role_id,last_control_admin_id,password,account,is_robot
+            ,role_id,last_control_admin_id,password,account,is_robot,
+            avatar,number_of_works,number_of_fans
     </sql>
 
     <insert id="insert" parameterType="com.ljf.duanshipin.domain.Admin">
@@ -93,4 +97,10 @@
         </set>
         WHERE id = #{id}
     </update>
+
+    <select id="getAdmins" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM admin
+    </select>
 </mapper>

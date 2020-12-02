@@ -53,4 +53,7 @@ public interface AdminMapper {
     Admin getAdminById(Long id);
 
     List<Admin> getAdmins();
+
+    List<Admin> selectAdmin(Long id, String userName, Integer status
+            , Integer numberOfFans, Integer numberOfWorks);
 }

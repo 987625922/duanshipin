@@ -86,4 +86,14 @@ public class AdminServiceImpl implements AdminService {
         PageInfo<Admin> pageInfo = new PageInfo<>(tagList);
         return pageInfo;
     }
+
+    @Override
+    public PageInfo<Admin> selectAdmin(Long id, String userName, Integer status,
+                                       Integer numberOfFans, Integer numberOfWorks,
+                                       Integer currentPage, Integer pageSize) {
+        PageHelper.startPage(currentPage, pageSize);
+        List<Admin> tagList = adminMapper.getAdmins();
+        PageInfo<Admin> pageInfo = new PageInfo<>(tagList);
+        return pageInfo;
+    }
 }

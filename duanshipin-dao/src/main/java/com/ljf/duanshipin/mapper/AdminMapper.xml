@@ -103,4 +103,25 @@
         <include refid="Base_Column_List"/>
         FROM admin
     </select>
+
+    <select id="selectAdmin" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM admin where 1=1
+        <if test="id != null">
+            and id = #{id}
+        </if>
+        <if test="userName != null and userName != ''">
+            and user_name = #{userName}
+        </if>
+        <if test="status != null">
+            and status = #{status}
+        </if>
+        <if test="numberOfFans != null">
+            and number_of_fans = #{numberOfFans}
+        </if>
+        <if test="numberOfWorks != null">
+            and number_of_works = #{numberOfWorks}
+        </if>
+    </select>
 </mapper>

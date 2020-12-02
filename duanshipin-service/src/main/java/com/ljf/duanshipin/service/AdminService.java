@@ -28,4 +28,7 @@ public interface AdminService {
     Admin getAdminById(Long id);
 
     PageInfo<Admin> getAdminsByPage(Integer currentPage,Integer pageSize);
+
+    PageInfo<Admin> selectAdmin(Long id, String userName, Integer status
+            , Integer numberOfFans, Integer numberOfWorks,Integer currentPage, Integer pageSize);
 }

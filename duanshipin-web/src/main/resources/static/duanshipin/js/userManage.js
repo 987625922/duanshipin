@@ -110,10 +110,10 @@ function dealTable(json) {
                 '                        </td>'
         }
         htmlStr += '                        <td>' +
-            '                            <span>' + bean.currentMun + '</span>' +
+            '                            <span>' + bean.numberOfWorks + '</span>' +
             '                        </td>' +
             '                        <td>' +
-            '                            <span class="table_time">' + bean.updateAdminName + '</span>' +
+            '                            <span class="table_time">' + bean.numberOfFans + '</span>' +
             '                        </td>' +
             '                        <td>' +
             '                            <span class="table_user">' + formatTime + '</span>' +
